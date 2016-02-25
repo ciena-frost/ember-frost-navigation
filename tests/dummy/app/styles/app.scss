@@ -1,12 +1,15 @@
-@import 'frost-core';
-@import 'frost-theme';
+@import 'node_modules/ember-frost-theme/scss/frost-theme';
+@import 'node_modules/ember-frost-css-core/scss/frost-core';
+@import 'tests/dummy/app/pods/application/styles';
 
-.dummy-notification-container {
-  position: fixed;
-  top: 60px;
-  right: 10px;
-  z-index: 999;
-  width: 80%;
-  max-width: 400px;
-  margin: auto;
+.dummy-content {
+  position: relative;
+  top: 50px;
+//  height: calc(100% - 50px);
+}
+
+.frost-tabs.iframe {
+  .navigation {
+    display: none;
+  }
 }

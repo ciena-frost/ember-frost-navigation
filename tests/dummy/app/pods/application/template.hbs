@@ -1,11 +1,29 @@
-<div class="dummy-notification-container">
-  {{#each notifications as |notification|}}
-    {{notification-message notification=notification}}
-  {{/each}}
+<div class='frost-application-bar dummy-nav'>
+  {{#frost-link 'dashboard' class='branding'}}
+    {{frost-icon icon='pinpoint/nav/logo'}}
+  {{/frost-link}}
+
+  {{#frost-button class='navigation' on-click=(action 'openFiberplantNav') priority="" size=""}}
+      <div class='icon-text'>
+        {{frost-icon icon='pinpoint/nav/fiberplant'}}
+          <div class='text'>Fiberplant</div>
+      </div>
+  {{/frost-button}}
+
+  {{#frost-button class='navigation' on-click=(action 'openAdminNav') priority="" size=""}}
+      <div class='icon-text'>
+        {{frost-icon icon='pinpoint/nav/admin'}}
+          <div class='text'>Administration</div>
+      </div>
+  {{/frost-button}}
+
+  {{#frost-button class='icon user' priority="" size=""}}
+    {{frost-icon icon='pinpoint/nav/user'}}
+  {{/frost-button}}
 </div>
 
-<div class="dummy-body">
-  <div class="dummy-content">
-    {{outlet}}
-  </div>
+{{liquid-modal}}
+
+<div class='dummy-content'>
+  {{outlet}}
 </div>

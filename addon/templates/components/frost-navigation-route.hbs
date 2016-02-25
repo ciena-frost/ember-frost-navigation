@@ -1,0 +1,7 @@
+{{#if hasBlock}}
+  {{yield}}
+{{else}}
+  {{frost-icon class="icon" icon=svgPath}}
+    <span class="alias">{{alias}}</span>
+  {{frost-icon class="transition-arrow" icon="launch/transition-arrow"}}
+{{/if}}
