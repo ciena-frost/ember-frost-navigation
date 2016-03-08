@@ -2,6 +2,7 @@
   "name": "ember-frost-navigation",
   "version": "0.0.2",
   "description": "The default blueprint for ember-cli addons.",
+  "frostGuideDirectory": "ui-components/menu-controls/navigation",
   "directories": {
     "doc": "doc",
     "test": "tests"
