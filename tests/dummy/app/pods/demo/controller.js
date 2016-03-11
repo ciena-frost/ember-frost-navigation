@@ -2,9 +2,9 @@ import Ember from 'ember'
 
 export default Ember.Controller.extend({
   fiberplantNav: false,
-  fiberplantNavTemplate: 'nav-fiberplant',
+  fiberplantNavTemplate: 'demo/nav-fiberplant',
   adminNav: false,
-  adminNavTemplate: 'nav-admin',
+  adminNavTemplate: 'demo/nav-admin',
   navigation: false,
 
   actions: {

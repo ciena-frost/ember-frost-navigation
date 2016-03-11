@@ -1,35 +1,19 @@
 import Ember from 'ember'
 import config from './config/environment'
+import addRoute from 'frost-guide-custom-routing/utils/addRoute'
 
 var Router = Ember.Router.extend({
   location: config.locationType
 })
 
 Router.map(function () {
-  this.modal('frost-navigation-modal', {
-    withParams: 'fiberplantNav',
-    otherParams: {
-      'fiberplantNavTemplate': 'navigationTemplate'
-    },
-    dialogClass: 'frost-navigation-modal',
-    actions: {
-      openRoute: 'openRoute'
-    }
+  let routerConfig = config.APP.routingConfig
+  routerConfig.forEach((item) => {
+    console.log(item)
+    addRoute.call(this, item)
   })
 
-  this.modal('frost-navigation-modal', {
-    withParams: 'adminNav',
-    otherParams: {
-      'adminNavTemplate': 'navigationTemplate'
-    },
-    dialogClass: 'frost-navigation-modal',
-    actions: {
-      openRoute: 'openRoute'
-    }
-  })
 
-  this.route('resource')
-  this.route('dashboard')
 })
 
 export default Router
