@@ -12,8 +12,6 @@ Router.map(function () {
     console.log(item)
     addRoute.call(this, item)
   })
-
-
 })
 
 export default Router

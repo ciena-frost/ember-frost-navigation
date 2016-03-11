@@ -7,7 +7,8 @@ module.exports = [
     path: {
       path: '/'
     },
-    modals: [{
+    modals: [
+      {
         modalName: 'frost-navigation-modal',
         modal: {
           withParams: 'fiberplantNav',
@@ -19,8 +20,7 @@ module.exports = [
             openRoute: 'openRoute'
           }
         }
-      },
-      {
+      }, {
         modalName: 'frost-navigation-modal',
         modal: {
           withParams: 'adminNav',
@@ -41,13 +41,12 @@ module.exports = [
         alias: 'Resource',
         type: 'route',
         route: 'demo.resource'
-},
-      {
+      }, {
         id: 'dashboard',
         alias: 'Dashboard',
         type: 'route',
         route: 'demo.dashboard'
-}
+      }
     ]
   }
 ]
