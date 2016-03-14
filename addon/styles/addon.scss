@@ -1,6 +1,4 @@
 @import 'node_modules/ember-frost-theme/scss/frost-theme';
-@import 'node_modules/ember-frost-css-core/scss/frost-core';
-
 
 .frost-navigation-modal {
   position: absolute;
@@ -10,6 +8,7 @@
   padding: 0;
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  left: 0;
 }
 
 .frost-navigation {
