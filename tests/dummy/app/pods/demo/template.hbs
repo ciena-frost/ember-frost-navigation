@@ -3,23 +3,30 @@
     {{frost-icon icon='pinpoint/nav/logo'}}
   {{/frost-link}}
 
-  {{#frost-button class='navigation' on-click=(action 'openFiberplantNav') priority="" size=""}}
-      <div class='icon-text'>
-        {{frost-icon icon='pinpoint/nav/fiberplant'}}
-          <div class='text'>Fiberplant</div>
-      </div>
-  {{/frost-button}}
+  {{frost-button
+    class='navigation'
+    icon='pinpoint/nav/fiberplant'
+    onClick=(action 'openFiberplantNav')
+    priority=""
+    size=""
+    text='Fiberplant'
+  }}
 
-  {{#frost-button class='navigation' on-click=(action 'openAdminNav') priority="" size=""}}
-      <div class='icon-text'>
-        {{frost-icon icon='pinpoint/nav/admin'}}
-          <div class='text'>Administration</div>
-      </div>
-  {{/frost-button}}
+  {{frost-button
+    class='navigation'
+    icon='pinpoint/nav/admin'
+    onClick=(action 'openAdminNav')
+    priority=""
+    size=""
+    text='Administration'
+  }}
 
-  {{#frost-button class='icon user' priority="" size=""}}
-    {{frost-icon icon='pinpoint/nav/user'}}
-  {{/frost-button}}
+  {{frost-button
+    class='icon user'
+    icon='pinpoint/nav/user'
+    priority=""
+    size=""}}
+
 </div>
 
 {{liquid-modal}}

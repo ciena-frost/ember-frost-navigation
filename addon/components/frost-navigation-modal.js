@@ -1,15 +1,17 @@
 import Ember from 'ember'
 
-export default Ember.Component.extend({
-  layoutName: Ember.computed('navigationTemplate', function () {
+const {Component, computed, isEmpty, on} = Ember
+
+export default Component.extend({
+  layoutName: computed('navigationTemplate', function () {
     let navigationTemplate = this.get('navigationTemplate')
-    if (Ember.isEmpty(navigationTemplate)) {
+    if (isEmpty(navigationTemplate)) {
       return 'navigation'
     }
     return navigationTemplate
   }),
 
-  onInsert: Ember.on('didInsertElement', function () {
+  onInsert: on('didInsertElement', function () {
     Ember.$('.frost-application-bar .frost-button.navigation')
     .prop('disabled', true)
     Ember.$('.frost-application-bar')
@@ -18,7 +20,7 @@ export default Ember.Component.extend({
     })
   }),
 
-  onDestroy: Ember.on('willDestroyElement', function () {
+  onDestroy: on('willDestroyElement', function () {
     Ember.$('.frost-application-bar .frost-button.navigation')
     .prop('disabled', false)
     Ember.$('.frost-application-bar')

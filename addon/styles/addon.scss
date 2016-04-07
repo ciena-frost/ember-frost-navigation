@@ -1,4 +1,4 @@
-@import 'node_modules/ember-frost-theme/scss/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 
 .frost-navigation-modal {
   position: absolute;
@@ -49,6 +49,9 @@
   height: 30px;
   margin-left: auto;
   margin-right: 20px;
+  transform: rotate(180deg);
+  stroke: $frost-color-white;
+  fill: $frost-color-white;
 }
 
 .frost-link.sub-route {
