@@ -25,7 +25,7 @@ module.exports = [
         modal: {
           withParams: 'adminNav',
           otherParams: {
-            'fiberplantNavTemplate': 'navigationTemplate'
+            'adminNavTemplate': 'navigationTemplate'
           },
           dialogClass: 'frost-navigation-modal',
           actions: {
