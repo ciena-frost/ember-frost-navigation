@@ -5,15 +5,24 @@ export default Ember.Controller.extend({
   fiberplantNavTemplate: 'demo/nav-fiberplant',
   adminNav: false,
   adminNavTemplate: 'demo/nav-admin',
-  navigation: false,
+  isNavigationOpen: Ember.computed.or('fiberplantNav', 'adminNav'),
 
   actions: {
+    dismiss () {
+      this.set('fiberplantNav', false)
+      this.set('adminNav', false)
+    },
+
     openFiberplantNav () {
-      this.set('fiberplantNav', true)
+      Ember.run.next(this, function () {
+        this.set('fiberplantNav', true)
+      })
     },
 
     openAdminNav () {
-      this.set('adminNav', true)
+      Ember.run.next(this, function () {
+        this.set('adminNav', true)
+      })
     },
 
     openRoute: function (route) {
