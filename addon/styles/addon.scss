@@ -49,9 +49,6 @@
   height: 30px;
   margin-left: auto;
   margin-right: 20px;
-  transform: rotate(180deg);
-  stroke: $frost-color-white;
-  fill: $frost-color-white;
 }
 
 .frost-link.sub-route {
@@ -60,6 +57,7 @@
 
 .frost-link.sub-route.text {
   font-size: $frost-font-m;
+  line-height: 45px;
 }
 
 .frost-navigation .frost-link.sub-route {
@@ -87,6 +85,7 @@
 
 .frost-navigation-action.text {
   font-size: 18px;
+  line-height: 45px;
 }
 
 .frost-navigation .category.blue .frost-navigation-action {
