@@ -1,0 +1,32 @@
+{{#each columns as |column|}}
+  <div class='nav-column'>
+    {{#each column as |section|}}
+      <div class='nav-section'>
+        <div class='nav-section-header' style='
+          border-bottom-color: {{section.color}};
+        '>
+          <div>
+            {{section.title}}
+          </div>
+          <div class='nav-section-actions'>
+            {{nav-section-menu}}
+            {{#nav-section-action}}
+              Provision...
+            {{/nav-section-action}}
+          </div>
+        </div>
+        <div class='body'>
+          {{#each section.routes as |route|}}
+            {{log route.icon}}
+            {{nav-route 
+              description=route.description
+              icon=route.icon
+              pack='dummy'
+              name=route.name 
+            }}
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/each}}

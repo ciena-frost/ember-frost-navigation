@@ -12,6 +12,7 @@ Router.map(function () {
     console.log(item)
     addRoute.call(this, item)
   })
+  this.route('redesign');
 })
 
 export default Router
