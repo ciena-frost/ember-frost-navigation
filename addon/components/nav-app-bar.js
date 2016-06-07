@@ -5,8 +5,8 @@ import _ from 'lodash';
 export default Ember.Component.extend({
   classNames: ['nav-app-bar'],
   layout,
-  
+
   nav: Ember.inject.service('frost-navigation'),
-  
+
   categories: Ember.computed.alias('nav.categories')
 });

@@ -1,6 +1,25 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
+  registerCategory(name, columns){
+    this.categories.push({
+      name,
+      columns
+    })
+  },
+  registerApp(categoryName, columnTitle, icon, name, description, path){
+    let _category = this.categories.find(e => e.name === categoryName)
+    Ember.assert(`Category ${_category} does not exist!`, !_category)
+    let _column   = _category.columns.find(e => e.title === columnTitle)
+    Ember.assert(`Column ${_column} does not exist!`, !_category)
+
+    return !!_column.push({
+        icon,
+        name,
+        description,
+        path
+    })
+  },
   activeCategory: 'network',
   categories: [
     {
