@@ -9,16 +9,22 @@ export default {
       let self = this
       return new Ember.RSVP.Promise(function (resolve, reject) {
         Ember.assert('opts.navType must be either \'category\' or \'app\'',
-          opts.navType !== 'category' && opts.navType !== 'app')
+          opts.navType !== 'category' || opts.navType !== 'app')
         Ember.assert('opts.type must be either \'engine\' or \'route\'',
-          opts.type !== 'engine' && opts.type !== 'route')
+          opts.type !== 'engine' || opts.type !== 'route')
         self[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
         let r = {
           category () {
-            return navigation.registerCategory(opts.name || componentName, opts.columns || [])
+            return navigation.registerCategory(opts.name || componentName,
+              opts.columns || [])
           },
           app () {
-            return navigation.registerApp(opts.name || componentName, opts.columnTitle, opts.icon, opts.name, opts.description, opts.path)
+            return navigation.registerApp(opts.name || componentName,
+              opts.columnTitle,
+              opts.icon,
+              opts.name,
+              opts.description,
+              opts.path)
           }
         }[opts.navType]()
         r ? resolve(r) : reject(r)
