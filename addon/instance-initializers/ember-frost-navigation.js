@@ -15,7 +15,7 @@ export default {
           navigationService.registerCategory(opts.name || componentName, opts.columns || [])
         },
         app(){
-          registerApp(opts.name || componentName, columnTitle, icon, name, description, path)
+          navigation.registerApp(opts.name || componentName, columnTitle, icon, name, description, path)
         }
       }[opts.navType]()
     };
