@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   registerCategory(name, columns){
-    this.categories.push({
+    return !!this.categories.push({
       name,
       columns
     })
