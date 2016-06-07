@@ -11,10 +11,10 @@ export default Ember.Component.extend({
     name: PropTypes.string.isRequired,
     pack: PropTypes.string
   },
-  
+
   getDefaultProps () {
     return {
       pack: 'frost'
     }
   }
-});
+})

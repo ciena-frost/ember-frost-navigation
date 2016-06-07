@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-navigation/components/nav-route';
+export { default } from 'ember-frost-navigation/components/nav-route'

@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-navigation/services/frost-navigation';
+export { default } from 'ember-frost-navigation/services/frost-navigation'

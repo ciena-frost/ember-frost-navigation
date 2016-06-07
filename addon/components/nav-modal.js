@@ -10,10 +10,10 @@ export default Ember.Component.extend({
 
   activeCategory: Ember.computed.alias('nav.activeCategory'),
 
-  columns: Ember.computed('nav.categories', 'activeCategory', function() {
-   const category = _.find(this.get('nav.categories'), (category) => {
-     return category.name.toLowerCase() === this.get('activeCategory').toLowerCase()
-   })
-   return category.columns
+  columns: Ember.computed('nav.categories', 'activeCategory', function () {
+    const category = _.find(this.get('nav.categories'), (category) => {
+      return category.name.toLowerCase() === this.get('activeCategory').toLowerCase()
+    })
+    return category.columns
   })
-});
+})
