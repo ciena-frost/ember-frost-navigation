@@ -8,10 +8,10 @@ export default {
     Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
       let self = this
       return new Ember.RSVP.Promise(function (resolve, reject) {
-        if (opts.navType !== 'category' && opts.navType !== 'app')
-          Ember.assert(`opts.navType must be either 'category' or 'app'`)
-        if (opts.type !== 'engine' && opts.type !== 'route')
-          Ember.assert(`opts.type must be either 'engine' or 'route'`)
+        Ember.assert(`opts.navType must be either 'category' or 'app'`,
+          opts.navType !== 'category' && opts.navType !== 'app')
+        Ember.assert(`opts.type must be either 'engine' or 'route'`,
+          opts.type !== 'engine' && opts.type !== 'route')
         self[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
         let r =  {
           category() {
