@@ -46,6 +46,20 @@ module.exports = [
         alias: 'Dashboard',
         type: 'route',
         route: 'demo.dashboard'
+      },
+      {
+        id: 'redesign',
+        alias: 'Redesign',
+        type: 'route',
+        route: 'demo.redesign',
+        items: [
+          {
+            id: 'nested',
+            alias: 'Nested',
+            type: 'route',
+            route: 'nested'
+          }
+        ]
       }
     ]
   }

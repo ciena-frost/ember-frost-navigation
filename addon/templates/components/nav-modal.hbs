@@ -16,15 +16,22 @@
           </div>
         </div>
         <div class='body'>
-          {{#each section.routes as |route|}}
-            {{log route.icon}}
-            {{nav-route 
-              description=route.description
-              icon=route.icon
-              pack='dummy'
-              name=route.name 
-            }}
-          {{/each}}
+          {{#liquid-bind section.routes as |routes|}}
+            {{#each routes as |route|}}
+              {{log route.icon}}
+              {{#liquid-if true class='nav-item'}}
+              {{#frost-link route.route}}
+                {{nav-route
+                  description=route.description
+                  icon=route.icon
+                  pack='dummy'
+                  name=route.name
+                }}
+              {{/frost-link}}
+              {{/liquid-if}}
+            {{/each}}
+          {{/liquid-bind}}
+
         </div>
       </div>
     {{/each}}
