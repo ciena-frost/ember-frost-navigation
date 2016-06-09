@@ -28,8 +28,6 @@ export default function () {
       use: ['to-up', {
         duration: 200
       }]
-    }),
-    this.debug()
+    })
   )
-
 }

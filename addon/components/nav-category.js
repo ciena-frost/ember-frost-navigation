@@ -18,23 +18,23 @@ export default Ember.Component.extend({
       pack: 'frost'
     }
   },
-  actions: {
-    expand () {
-      let n = this.get('nav')
-      if (!n) return
-      let name = this.get('name')
-      if (name == n.get('activeCategory')) {
-        n.set('activeCategory', null)
-      }
-      else if (typeof n.get('activeCategory') === 'string') {
-        n.set('activeCategory', null)
-        Ember.run.later((function () {
-          n.set('activeCategory', name)
-        }), 200)
-      }
-      else {
-        n.set('activeCategory', name)
-      }
+  click () {
+    let navService = this.get('nav')
+    if (!navService) return
+
+    let activeCategory = navService.get('activeCategory')
+    let name = this.get('name')
+    if (name === activeCategory) {
+      navService.set('activeCategory', null)
+    }
+    else if (typeof activeCategory === 'string') {
+      navService.set('activeCategory', null)
+      Ember.run.later((function () {
+        navService.set('activeCategory', name)
+      }), 200)
+    }
+    else {
+      navService.set('activeCategory', name)
     }
   }
 })

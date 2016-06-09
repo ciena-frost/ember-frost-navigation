@@ -10,47 +10,64 @@ export default Ember.Service.extend({
     }
   },
   register (config) {
-    let self = this
     Ember.assert('Navigation Type must be specified', config.navType)
-    return new Ember.RSVP.Promise(function (resolve, reject) {
-      self._registerMap[config.navType].call(self, config)
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      this._registerMap[config.navType].call(this, config)
         .then(resolve)
         .catch(reject)
     })
   },
   _registerCategory (config = {}) {
-    let self = this
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+    return new Ember.RSVP.Promise((resolve, reject) => {
       try {
         Ember.assert('Property \'name\' was not defined.', config.name)
       } catch (e) {
         reject(e)
       }
-      self.categories.push({
+      this.categories.push({
         name: config.name,
         columns: config.columns || []
       })
-      resolve(self)
+      if (config.as) {
+        this._registerApp({
+          categoryName: config.name,
+          columnTitle: config.columnTitle,
+          name: config.as,
+          icon: config.icon,
+          color: config.color,
+          description: config.description || 'Default description',
+          route: config.as
+        }).then(resolve).catch(reject)
+      } else {
+        resolve(this)
+      }
     })
   },
   _registerApp (config = {}) {
-    let self = this
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+    return new Ember.RSVP.Promise((resolve, reject) => {
       try {
-        let _category = self.categories.find(e => e.name === config.categoryName)
+        let _category = this.categories.find(e => e.name === config.categoryName)
         Ember.assert(`Category ${_category} does not exist!`, _category)
-        let _column = _category.columns.find(e => e.title === config.columnTitle)
-        Ember.assert(`Column ${_column} does not exist!`, _column)
+        let section = _category.columns.forEach(function (row) {
+          section = row.find(e => e.title === config.columnTitle)
+        })
+        if (!section) {
+          _category.columns.push([section = {
+            title: config.columnTitle || 'default',
+            color: config.color || '#009EEF',
+            routes: []
+          }])
+        }
+        section.routes.push({
+          icon: config.icon,
+          name: config.name,
+          description: config.description,
+          route: config.route
+        })
       } catch (e) {
         reject(e)
       }
-      _column.push({
-        icon: config.icon,
-        name: config.name,
-        description: config.description,
-        route: config.route
-      })
-      resolve(self)
+      resolve(this)
     })
   },
   activeCategory: null,

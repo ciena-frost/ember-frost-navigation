@@ -9,7 +9,8 @@ export default Ember.Component.extend({
     description: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    pack: PropTypes.string
+    pack: PropTypes.string,
+    route: PropTypes.string
   },
 
   getDefaultProps () {

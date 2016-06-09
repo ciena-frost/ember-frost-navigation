@@ -8,10 +8,9 @@ export default {
     let transitionService = instance.lookup('service:liquid-fire-transitions')
     transitionService.map(transitions)
     Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
-      let self = this
-      return new Ember.RSVP.Promise(function (resolve, reject) {
+      return new Ember.RSVP.Promise((resolve, reject) => {
         opts.name = opts.name || componentName
-        self[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
+        this[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
         try {
           Ember.assert('opts.navType must be either \'category\' or \'app\'',
             opts.navType === 'category' || opts.navType === 'app')
@@ -21,11 +20,16 @@ export default {
           reject(e)
         }
         navigation.register(opts)
-          .then(function (result) {
-            self.modal('nav-modal', {
-              withParams: 'activeCategory',
-              dialogClass: 'frost-navigation-modal'
-            })
+          .then((result) => {
+            try {
+              this.modal('nav-modal', {
+                withParams: 'activeCategory',
+                dialogClass: 'frost-navigation-modal',
+                controller: opts.controller || ''
+              })
+            } catch (e) {
+              reject(e)
+            }
             resolve(result)
           })
           .catch(reject)

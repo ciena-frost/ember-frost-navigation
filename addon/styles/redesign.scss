@@ -18,7 +18,6 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
 }
 
 .nav-category-icon .frost-icon {
@@ -41,7 +40,7 @@
 }
 .nav-item:hover {
   .nav-route-name {
-    color: $frost-color-grey-6 !important;
+    color: $frost-color-grey-6;
   }
 }
 .nav-modal {
