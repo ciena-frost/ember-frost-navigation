@@ -5,7 +5,7 @@ export default {
   name: 'ember-frost-navigation',
   initialize (instance) {
     let navigation = instance.lookup('service:frost-navigation')
-    const transitionService = appInstance.lookup('service:liquid-fire-transitions')
+    let transitionService = appInstance.lookup('service:liquid-fire-transitions')
 
     transitionService.map(transitions)
     Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
@@ -16,6 +16,7 @@ export default {
         Ember.assert('opts.type must be either \'engine\' or \'route\'',
           opts.type !== 'engine' || opts.type !== 'route')
         self[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
+
         let r = {
           category () {
             return navigation.registerCategory(opts.name || componentName,

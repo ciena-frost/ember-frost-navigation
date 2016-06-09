@@ -1,6 +1,6 @@
 // import { animate, Promise } from "liquid-fire";
 
-export default function() {
+export default function () {
   // this.transition(
   //   this.toValue(true),
   //   this.use('explode', {

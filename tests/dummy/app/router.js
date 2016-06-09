@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
   location: config.locationType
 })
 
-Router.map(function() {
+Router.map(function () {
   let routerConfig = config.APP.routingConfig
   routerConfig.forEach((item) => {
     console.log(item)
@@ -16,7 +16,7 @@ Router.map(function() {
     withParams: 'activeCategory',
     controller: 'demo/redesign',
     dialogClass: 'frost-navigation-modal'
-  });
+  })
 })
 
 export default Router

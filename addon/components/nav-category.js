@@ -13,22 +13,22 @@ export default Ember.Component.extend({
     name: PropTypes.string.isRequired,
     pack: PropTypes.string
   },
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       pack: 'frost'
     }
   },
   actions: {
-    expand() {
+    expand () {
       let n = this.get('nav')
-      if(!n) return
+      if (!n) return
       let name = this.get('name')
-      if (name == n.get('activeCategory')){
+      if (name == n.get('activeCategory')) {
         n.set('activeCategory', false)
       }
       else if (typeof n.get('activeCategory') === 'string') {
         n.set('activeCategory', false)
-        Ember.run.later((function() {
+        Ember.run.later((function () {
           n.set('activeCategory', name)
         }), 200)
       }
