@@ -3,14 +3,13 @@ import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 
 export default {
   name: 'ember-frost-navigation',
-  initialize (instance) {
-    let navigation = instance.lookup('service:frost-navigation')
-    let transitionService = instance.lookup('service:liquid-fire-transitions')
-
-    transitionService.map(transitions)
-    Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
+  initialize(instance) {
+    // let navigation = instance.lookup('service:frost-navigation')
+    // let transitionService = instance.lookup('service:liquid-fire-transitions')
+    // transitionService.map(transitions)
+    Ember.RouterDSL.prototype.nav = function(componentName, opts = {}) {
       let self = this
-      return new Ember.RSVP.Promise(function (resolve, reject) {
+      return new Ember.RSVP.Promise(function(resolve, reject) {
         opts.name = opts.name || componentName
         self[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
         try {
@@ -22,7 +21,14 @@ export default {
           reject(e)
         }
         navigation.register(opts)
-          .then(resolve)
+          .then(function(result) {
+            console.log("WOOOO")
+            self.modal('nav-modal', {
+              withParams: 'activeCategory',
+              dialogClass: 'frost-navigation-modal'
+            })
+            resolve(result)
+          })
           .catch(reject)
       })
     }
