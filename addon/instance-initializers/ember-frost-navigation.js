@@ -1,10 +1,13 @@
 import Ember from 'ember'
+import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 
 export default {
   name: 'ember-frost-navigation',
   initialize (instance) {
     let navigation = instance.lookup('service:frost-navigation')
+    const transitionService = appInstance.lookup('service:liquid-fire-transitions')
 
+    transitionService.map(transitions)
     Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
       let self = this
       return new Ember.RSVP.Promise(function (resolve, reject) {

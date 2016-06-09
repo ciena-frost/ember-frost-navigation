@@ -20,7 +20,7 @@ export default Ember.Service.extend({
       path
     })
   },
-  activeCategory: 'network',
+  activeCategory: null,
   categories: [
     {
       name: 'Network',

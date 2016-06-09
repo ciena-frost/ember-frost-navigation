@@ -9,10 +9,16 @@
 
 .nav-category {
   display: flex;
+  cursor: pointer;
   flex-direction: row;
   align-items: center;
   padding: 10px;
   border-right: 1px solid rgba($frost-color-white, 0.2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
 }
 
 .nav-category-icon .frost-icon {
@@ -41,6 +47,7 @@
 .nav-modal {
   position: fixed;
   top: 50px;
+  left:0;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -132,7 +139,6 @@
 .nav-route-icon .frost-icon {
   width: 50px;
   height: 50px;
-  box-shadow: 5px 5px 3px #666
 }
 
 .nav-route-name {
