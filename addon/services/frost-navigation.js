@@ -63,13 +63,11 @@ export default Ember.Service.extend({
         routes: [{
           icon: 'sample',
           name: 'Network elements',
-          description: 'Description',
-          route: 'demo.redesign.nested'
+          description: 'Description'
         }, {
           icon: 'sample',
           name: 'Equipment',
-          description: 'Description',
-          route: 'demo.redesign'
+          description: 'Description'
         }, {
           icon: 'sample',
           name: 'Topology map',

@@ -4,9 +4,9 @@ import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 export default {
   name: 'ember-frost-navigation',
   initialize(instance) {
-    // let navigation = instance.lookup('service:frost-navigation')
-    // let transitionService = instance.lookup('service:liquid-fire-transitions')
-    // transitionService.map(transitions)
+    let navigation = instance.lookup('service:frost-navigation')
+    let transitionService = instance.lookup('service:liquid-fire-transitions')
+    transitionService.map(transitions)
     Ember.RouterDSL.prototype.nav = function(componentName, opts = {}) {
       let self = this
       return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -22,7 +22,6 @@ export default {
         }
         navigation.register(opts)
           .then(function(result) {
-            console.log("WOOOO")
             self.modal('nav-modal', {
               withParams: 'activeCategory',
               dialogClass: 'frost-navigation-modal'

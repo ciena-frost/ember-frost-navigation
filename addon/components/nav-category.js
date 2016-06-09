@@ -24,10 +24,10 @@ export default Ember.Component.extend({
       if (!n) return
       let name = this.get('name')
       if (name == n.get('activeCategory')) {
-        n.set('activeCategory', false)
+        n.set('activeCategory', null)
       }
       else if (typeof n.get('activeCategory') === 'string') {
-        n.set('activeCategory', false)
+        n.set('activeCategory', null)
         Ember.run.later((function () {
           n.set('activeCategory', name)
         }), 200)
