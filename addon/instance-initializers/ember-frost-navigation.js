@@ -60,7 +60,7 @@ export default {
             resolve(result)
           })
           .catch(reject)
-      })
+      }).catch(Ember.assert)
     }
   }
 }
