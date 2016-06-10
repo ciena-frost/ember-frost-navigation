@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   layout,
   nav: Ember.inject.service('frost-navigation'),
   activeCategory: null,
-  _categoryChanged: function(){
+  _categoryChanged: function () {
     this.set('activeCategory', this.get('nav.activeCategory'))
     if (!this.get('activeCategory'))
       this.sendAction('dismiss')

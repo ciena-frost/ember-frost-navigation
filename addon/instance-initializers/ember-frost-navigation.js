@@ -3,7 +3,7 @@ import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 
 export default {
   name: 'ember-frost-navigation',
-  _bindController(instance, app) {
+  _bindController (instance, app) {
     let config = instance.__container__.lookupFactory('config:environment')
     let lookup = {
       nav: instance.lookup('service:frost-navigation'),
@@ -20,19 +20,19 @@ export default {
     lookup.nav.addObserver(
       'activeCategory',
       lookup.nav,
-      function() {
+      function () {
         let active = lookup.nav.get('activeCategory')
         if (active) {
           lookup.ctrl.set('activeCategory', active)
         }
       })
   },
-  initialize(instance) {
+  initialize (instance) {
     let navigation = instance.lookup('service:frost-navigation')
     let transitionService = instance.lookup('service:liquid-fire-transitions')
     transitionService.map(transitions)
     this._bindController(instance)
-    Ember.RouterDSL.prototype.nav = function(componentName, opts = {}) {
+    Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
       return new Ember.RSVP.Promise((resolve, reject) => {
         opts.name = opts.name || componentName
         this[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
@@ -46,7 +46,6 @@ export default {
         }
         navigation.register(opts)
           .then((result) => {
-            console.log('ay')
             try {
               this.modal('nav-modal', {
                 withParams: 'activeCategory',
@@ -54,7 +53,6 @@ export default {
                 controller: opts.controller || ''
               })
             } catch (e) {
-              console.log(e)
               reject(e)
             }
             resolve(result)
