@@ -46,6 +46,7 @@ export default {
         }
         navigation.register(opts)
           .then((result) => {
+            console.log('ay')
             try {
               this.modal('nav-modal', {
                 withParams: 'activeCategory',
@@ -53,6 +54,7 @@ export default {
                 controller: opts.controller || ''
               })
             } catch (e) {
+              console.log(e)
               reject(e)
             }
             resolve(result)
