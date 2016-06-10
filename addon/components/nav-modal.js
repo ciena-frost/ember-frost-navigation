@@ -5,10 +5,13 @@ import _ from 'lodash'
 export default Ember.Component.extend({
   classNameBindings: ['activeCategory:nav-modal:'],
   layout,
-
   nav: Ember.inject.service('frost-navigation'),
-
-  activeCategory: Ember.computed.alias('nav.activeCategory'),
+  activeCategory: null,
+  _categoryChanged: function(){
+    this.set('activeCategory', this.get('nav.activeCategory'))
+    if (!this.get('activeCategory'))
+      this.sendAction('dismiss')
+  }.observes('nav.activeCategory'),
 
   columns: Ember.computed('nav.categories', 'activeCategory', function () {
     if (!this.get('activeCategory')) {
