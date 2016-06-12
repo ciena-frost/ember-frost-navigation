@@ -7,16 +7,8 @@ export default {
     let config = instance.__container__.lookupFactory('config:environment')
     let lookup = {
       nav: instance.lookup('service:frost-navigation'),
-      ctrl: instance.lookup(`controller:${config.navController}`),
-      route: instance.lookup(`route:${config.navController}`)
+      ctrl: instance.lookup(`controller:${config.navController}`)
     }
-    lookup.route.setProperties({
-      actions: {
-        willTransition (transition) {
-          lookup.nav.set('activeCategory', null)
-        }
-      }
-    })
     lookup.nav.addObserver(
       'activeCategory',
       lookup.nav,

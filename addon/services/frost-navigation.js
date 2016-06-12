@@ -1,6 +1,7 @@
 import Ember from 'ember'
 
 export default Ember.Service.extend({
+  routing: Ember.inject.service('-routing'),
   _registerMap: {
     category (config) {
       return this._registerCategory(config)
@@ -69,6 +70,10 @@ export default Ember.Service.extend({
       }
       resolve(this)
     })
+  },
+  transitionTo (route) {
+    this.get('routing').transitionTo(route)
+    this.set('activeCategory', null)
   },
   activeCategory: null,
   categories: Ember.A()

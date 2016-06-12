@@ -3,6 +3,7 @@ import layout from '../templates/components/nav-route'
 import { PropTypes } from 'ember-prop-types'
 
 export default Ember.Component.extend({
+  nav: Ember.inject.service('frost-navigation'),
   classNames: ['nav-route'],
   layout,
   propTypes: {
@@ -17,5 +18,8 @@ export default Ember.Component.extend({
     return {
       pack: 'frost'
     }
+  },
+  click () {
+    this.get('nav').transitionTo(this.get('route'))
   }
 })

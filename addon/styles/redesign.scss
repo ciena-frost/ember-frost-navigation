@@ -18,6 +18,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  &.disabled {
+    .nav-category-name {
+      color: $frost-color-grey-6;
+    }
+  }
 }
 
 .nav-category-icon .frost-icon {
@@ -32,17 +37,7 @@
   font-weight: 300;
   color: $frost-color-white;
 }
-.nav-item {
-  .frost-link {
-    text-align:inherit;
-    padding: 5px;
-  }
-}
-.nav-item:hover {
-  .nav-route-name {
-    color: $frost-color-grey-6;
-  }
-}
+
 .nav-modal {
   position: fixed;
   top: 50px;
@@ -127,6 +122,12 @@
   transition: color 1s ease;
   &+ .nav-route {
     margin-top: 25px;
+  }
+}
+
+.nav-route:hover {
+  .nav-route-name {
+    color: $frost-color-grey-6;
   }
 }
 

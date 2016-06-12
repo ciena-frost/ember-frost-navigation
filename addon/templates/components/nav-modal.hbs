@@ -17,16 +17,13 @@
         </div>
         <div class='body'>
           {{#each section.routes as |route|}}
-            <div class='nav-item'>
-            {{#frost-link route.route}}
-              {{nav-route
-                description=route.description
-                icon=route.icon
-                pack='app'
-                name=route.name
-              }}
-            {{/frost-link}}
-          </div>
+            {{nav-route
+              description=route.description
+              icon=route.icon
+              pack='app'
+              name=route.name
+              route=route.route
+            }}
           {{/each}}
         </div>
       </div>
