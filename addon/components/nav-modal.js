@@ -8,10 +8,10 @@ export default Ember.Component.extend({
   nav: Ember.inject.service('frost-navigation'),
   activeCategory: null,
   _categoryChanged: function () {
-    this.set('activeCategory', this.get('nav.activeCategory'))
+    this.set('activeCategory', this.get('nav._activeCategory'))
     if (!this.get('activeCategory'))
       this.sendAction('dismiss')
-  }.observes('nav.activeCategory'),
+  }.observes('nav._activeCategory'),
 
   columns: Ember.computed('nav.categories', 'activeCategory', function () {
     if (!this.get('activeCategory')) {

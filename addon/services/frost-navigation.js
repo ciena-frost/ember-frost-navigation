@@ -73,8 +73,8 @@ export default Ember.Service.extend({
   },
   transitionTo (route) {
     this.get('routing').transitionTo(route)
-    this.set('activeCategory', null)
+    this.set('_activeCategory', null)
   },
-  activeCategory: null,
+  _activeCategory: null,
   categories: Ember.A()
 })

@@ -8,10 +8,10 @@ export default {
     Ember.assert(asserts.environment, config.frostNavigation && config.frostNavigation.controller)
     let ctrl = instance.lookup(`controller:${config.frostNavigation.controller}`)
     nav.addObserver(
-      'activeCategory',
+      '_activeCategory',
       nav,
       () => {
-        let active = nav.get('activeCategory')
+        let active = nav.get('_activeCategory')
         if (active) {
           ctrl.set('activeCategory', active)
         }
