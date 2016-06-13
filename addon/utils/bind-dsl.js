@@ -1,4 +1,4 @@
-
+import asserts from './asserts'
 export default {
   init (navigation, config) {
     Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
@@ -6,10 +6,8 @@ export default {
         opts.name = opts.name || componentName
         this[opts.type === 'engine' ? 'mount' : 'route'](componentName, opts)
         try {
-          Ember.assert('opts.navType must be either \'category\' or \'app\'',
-            opts.navType === 'category' || opts.navType === 'app')
-          Ember.assert('opts.type must be either \'engine\' or \'route\'',
-            opts.type === 'engine' || opts.type === 'route')
+          Ember.assert(asserts.navType, opts.navType === 'category' || opts.navType === 'app')
+          Ember.assert(asserts.type, opts.type === 'engine' || opts.type === 'route')
         } catch (e) {
           reject(e)
         }

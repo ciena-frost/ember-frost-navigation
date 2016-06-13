@@ -1,4 +1,5 @@
 import Ember from 'ember'
+import asserts from 'ember-frost-navigation/utils/asserts'
 
 export default Ember.Service.extend({
   routing: Ember.inject.service('-routing'),
@@ -11,7 +12,6 @@ export default Ember.Service.extend({
     }
   },
   register (config) {
-    Ember.assert('Navigation Type must be specified', config.navType)
     return new Ember.RSVP.Promise((resolve, reject) => {
       this._registerMap[config.navType].call(this, config)
         .then(resolve)
@@ -21,7 +21,7 @@ export default Ember.Service.extend({
   _registerCategory (config = {}) {
     return new Ember.RSVP.Promise((resolve, reject) => {
       try {
-        Ember.assert('Property \'name\' was not defined.', config.name)
+        Ember.assert(asserts.categoryName, config.name)
       } catch (e) {
         reject(e)
       }
@@ -48,7 +48,7 @@ export default Ember.Service.extend({
     return new Ember.RSVP.Promise((resolve, reject) => {
       try {
         let _category = this.categories.find(e => e.name === config.categoryName)
-        Ember.assert(`Category ${_category} does not exist!`, _category)
+        Ember.assert(asserts.categoryNotFound, _category)
         let section = _category.columns.forEach(function (row) {
           section = row.find(e => e.title === config.columnTitle)
         })
