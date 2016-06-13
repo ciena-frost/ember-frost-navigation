@@ -7,12 +7,13 @@ export default {
   _bindController (instance, nav, config) {
     Ember.assert(asserts.environment, config.frostNavigation && config.frostNavigation.controller)
     let ctrl  = instance.lookup(`controller:${config.frostNavigation.controller}`)
-    let route = instance.lookup(`route:${config.frostNavigation.controller}`)
-    route.setProperties({
-      _handleTransition: function () {
+    ctrl.addObserver(
+      'currentPath',
+      ctrl,
+      () => {
         nav.set('_activeCategory', null)
-      }.on('willTransition')
-    })
+      }
+    )
     nav.addObserver(
       '_activeCategory',
       nav,
