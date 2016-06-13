@@ -49,7 +49,8 @@ export default Ember.Service.extend({
       try {
         let _category = this.categories.find(e => e.name === config.categoryName)
         Ember.assert(asserts.categoryNotFound, _category)
-        let section = _category.columns.forEach(function (row) {
+        let section = null;
+        _category.columns.forEach(function (row) {
           section = row.find(e => e.title === config.columnTitle)
         })
         if (!section) {
@@ -73,7 +74,6 @@ export default Ember.Service.extend({
   },
   transitionTo (route) {
     this.get('routing').transitionTo(route)
-    this.set('_activeCategory', null)
   },
   _activeCategory: null,
   categories: Ember.A()

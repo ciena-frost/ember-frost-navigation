@@ -6,7 +6,13 @@ export default {
   name: 'ember-frost-navigation',
   _bindController (instance, nav, config) {
     Ember.assert(asserts.environment, config.frostNavigation && config.frostNavigation.controller)
-    let ctrl = instance.lookup(`controller:${config.frostNavigation.controller}`)
+    let ctrl  = instance.lookup(`controller:${config.frostNavigation.controller}`)
+    let route = instance.lookup(`route:${config.frostNavigation.controller}`)
+    route.setProperties({
+      _handleTransition: function () {
+        nav.set('_activeCategory', null)
+      }.on('willTransition')
+    })
     nav.addObserver(
       '_activeCategory',
       nav,
@@ -15,7 +21,7 @@ export default {
         if (active) {
           ctrl.set('activeCategory', active)
         }
-      })
+    })
   },
   initialize (instance) {
     let config = instance.__container__.lookupFactory('config:environment')
