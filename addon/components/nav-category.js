@@ -21,7 +21,7 @@ export default Ember.Component.extend({
   click () {
     let navService = this.get('nav')
     if (!navService) return
-    
+
     let activeCategory = navService.get('activeCategory')
     let name = this.get('name')
     if (name === activeCategory) {
