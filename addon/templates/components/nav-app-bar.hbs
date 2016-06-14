@@ -1,10 +1,17 @@
-{{#frost-application-bar}}
-{{#each categories as |category|}}
-  {{nav-category
-    icon=category.icon
-    name=category.name
-    pack='app'
-  }}
-{{/each}}
-{{/frost-application-bar}}
+{{yield}}
+<div class='frost-application-bar'>
+  {{#yield-slot 'logo'}}
+    {{yield}}
+  {{/yield-slot}}
+  {{#each categories as |category|}}
+    {{nav-category
+      icon=category.icon
+      name=category.name
+      pack='app'
+    }}
+  {{/each}}
+  {{#yield-slot 'actions'}}
+    {{yield}}
+  {{/yield-slot}}
+</div>
 {{liquid-modal}}
