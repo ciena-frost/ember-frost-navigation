@@ -7,16 +7,20 @@ var Router = Ember.Router.extend({
 })
 Router.map(function () {
   let routerConfig = config.APP.routingConfig
+
+  this.route('demo.redesign', function(){
+    routerConfig.categories.forEach((category) => {
+      this.nav(category.name, {
+        navType: 'category',
+        type: 'route',
+        columns: category.columns
+      })
+    })
+  })
   routerConfig.routes.forEach((item) => {
     addRoute.call(this, item)
   })
-  routerConfig.categories.forEach((category) => {
-    this.nav(category.name, {
-      navType: 'category',
-      type: 'route',
-      columns: category.columns
-    })
-  })
+
 })
 
 export default Router

@@ -1,6 +1,6 @@
 import asserts from './asserts'
 export default {
-  init (navigation, config) {
+  init (navigation) {
     Ember.RouterDSL.prototype.nav = function (componentName, opts = {}) {
       return new Ember.RSVP.Promise((resolve, reject) => {
         opts.name = opts.name || componentName
@@ -14,11 +14,13 @@ export default {
         navigation.register(opts)
           .then((result) => {
             try {
-              this.modal('nav-modal', {
-                withParams: 'activeCategory',
-                dialogClass: 'frost-navigation-modal',
-                controller: config.frostNavigation.controller || ''
-              })
+              if(!navigation.get('_modalBound'))
+                this.modal('nav-modal', {
+                  withParams: 'activeCategory',
+                  dialogClass: 'frost-navigation-modal',
+                  controller: this.parent
+                })
+              navigation.set('_modalBound', true)
             } catch (e) {
               reject(e)
             }

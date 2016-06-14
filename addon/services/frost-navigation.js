@@ -3,6 +3,7 @@ import asserts from 'ember-frost-navigation/utils/asserts'
 
 export default Ember.Service.extend({
   routing: Ember.inject.service('-routing'),
+  _modalBound: false,
   _registerMap: {
     category (config) {
       return this._registerCategory(config)
