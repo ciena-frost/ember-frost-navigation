@@ -21,7 +21,6 @@ export default Ember.Component.extend({
   click () {
     let navService = this.get('nav')
     if (!navService) return
-
     let activeCategory = navService.get('_activeCategory')
     let name = this.get('name')
     if (name === activeCategory) {
@@ -31,7 +30,7 @@ export default Ember.Component.extend({
       navService.set('_activeCategory', null)
       Ember.run.later((function () {
         navService.set('_activeCategory', name)
-      }), 200)
+      }), 100)
     }
     else {
       navService.set('_activeCategory', name)

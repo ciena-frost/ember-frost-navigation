@@ -18,6 +18,7 @@ export default {
                 this.modal('nav-modal', {
                   withParams: 'activeCategory',
                   dialogClass: 'frost-navigation-modal',
+                  dismissWithOutsideClick: false,
                   controller: this.parent
                 })
               navigation.set('_modalBound', true)

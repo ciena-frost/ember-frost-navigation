@@ -13,7 +13,6 @@ export default Ember.Component.extend({
   nav: Ember.inject.service('frost-navigation'),
   transitionService: Ember.inject.service('liquid-fire-transitions'),
   categories: Ember.computed.alias('nav.categories'),
-
   registerTransitions: Ember.on('init', function() {
     let navigationService = this.get('nav')
     let transitionService = this.get('transitionService')
