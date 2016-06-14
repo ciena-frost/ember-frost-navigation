@@ -21,5 +21,11 @@ export default Ember.Component.extend({
       return category.name.toLowerCase() === this.get('activeCategory').toLowerCase()
     })
     return category.columns
-  })
+  }),
+  actions: {
+    outsideClick () {
+      this.get('nav').set('_activeCategory', null)
+    }
+  }
+
 })
