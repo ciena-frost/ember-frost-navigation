@@ -1,4 +1,5 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
+@import 'redesign';
 
 .frost-navigation-modal {
   position: absolute;
@@ -22,11 +23,6 @@
   flex: 1;
   font-size: $frost-font-xxl;
   color: rgba($frost-color-white, 0.7);
-}
-
-.frost-link.route {
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .frost-link.route .icon {

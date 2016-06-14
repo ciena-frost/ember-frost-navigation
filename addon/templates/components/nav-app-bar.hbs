@@ -1,0 +1,10 @@
+{{#frost-application-bar}}
+{{#each categories as |category|}}
+  {{nav-category
+    icon=category.icon
+    name=category.name
+    pack='app'
+  }}
+{{/each}}
+{{/frost-application-bar}}
+{{liquid-modal}}
