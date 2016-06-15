@@ -11,15 +11,15 @@ Router.map(function () {
   this.nav('demo.redesign', {
     categories: routerConfig.categories
   }, function (nav) {
-    this.category('category1', {}, function (category) {
+    this.category('category1', {}, function () {
       this.column('column1', {
         color: 'green'
-      }, function (column) {
+      }, function () {
         this.app('app1', {
           description: 'description1',
           icon: 'sample'
         })
-        this.section('section1', function (section){
+        this.section('section1', function (){
           this.action('action1', {
             action: 'doThis'
           })
