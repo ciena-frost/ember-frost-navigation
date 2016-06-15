@@ -5,8 +5,11 @@ export default {
   type: `${b}opts.type must be either 'engine' or 'route'`,
   categoryName: `${b}Property 'name' was not defined.`,
   categoryNotFound: `${b}Category does not exist!`,
-  category: `${b}this.category must be nested within this.nav`,
-  column: `${b}this.column must be nested within this.category`,
-  section: `${b}this.section must be nested within this.column`,
-  app: `${b}this.app must be nested within this.section or this.column`
+  category: `${b}category must be nested within this.nav`,
+  column: `${b}column must be nested within this.category`,
+  section: `${b}section must be nested within this.column`,
+  app: `${b}app must be nested within this.section or this.column`,
+  action: `${b}action must be nested within this.section or this.column`,
+  actionConfig: `${b}Configuration object requires property as an action`
+
 }

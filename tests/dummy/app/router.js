@@ -11,7 +11,7 @@ Router.map(function () {
   this.nav('demo.redesign', {
     categories: routerConfig.categories
   }, function (nav) {
-    nav.category('column1', {}, function (category) {
+    nav.category('category1', {}, function (category) {
       category.column('column1', {
         color: 'green'
       }, function (column) {
@@ -20,6 +20,9 @@ Router.map(function () {
           icon: 'sample'
         })
         column.section('section1', function (section){
+          section.action('action1', {
+            action: 'doThis'
+          })
           section.app('app2')
         })
       })

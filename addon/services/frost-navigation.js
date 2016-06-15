@@ -4,6 +4,7 @@ import asserts from 'ember-frost-navigation/utils/asserts'
 export default Ember.Service.extend({
   routing: Ember.inject.service('-routing'),
   _modalBound: false,
+  _controller: null,
   _registerMap: {
     category (config) {
       return this._registerCategory(config)
@@ -65,6 +66,18 @@ export default Ember.Service.extend({
   transitionTo (route) {
     this.get('routing').transitionTo(route)
     this.set('_activeCategory', null)
+  },
+  performAction (item) {
+    let controller = this.get('_controller')
+    let _actionHandler
+    Ember.assert(
+      `Action[${item.action}] does not exist on controller: ${controller.toString()}`,
+      _actionHandler = controller.get(item.action)
+    )
+    _actionHandler(item)
+    if (item.dismiss) {
+      this.set('_activeCategory', null)
+    }
   },
   _activeCategory: null,
   categories: Ember.A()

@@ -11,6 +11,9 @@ export default {
     let proto = Ember.RouterDSL.prototype
     let obj = {}
 
+    /**
+     * Initializes the nav
+     */
     proto.nav = function () {
       let args = argify(...arguments)
       let self = this
@@ -37,9 +40,7 @@ export default {
       })(args.string, args.object, args.function)
     }
     /**
-     * [category description]
-     * @param  {[type]} config = {} [description]
-     * @return {[type]}        [description]
+     * Creates a menu item on the navigation bar.
      */
     obj.category = function () {
       let args = argify(...arguments)
@@ -64,9 +65,7 @@ export default {
       })(args.string, args.object, args.function)
     }
     /**
-     * [column description]
-     * @param  {[type]} config =             {} [description]
-     * @return {[type]}        [description]
+     * Creates a column that performs under the context of a navigation bar.
      */
     obj.column   = function () {
       let args = argify(...arguments)
@@ -79,7 +78,8 @@ export default {
             {
               title: name,
               color: config.color || 'cyan',
-              routes: config.routes || []
+              routes: config.routes || [],
+              actions: config.actions || []
             }
           ])
           let o = {
@@ -93,7 +93,8 @@ export default {
 
           callback.call(self, {
             section: obj.section.bind(o),
-            app: obj.app.bind(o)
+            app: obj.app.bind(o),
+            action: obj.action.bind(o)
           })
         } else {
           Ember.assert('Problem in the pipeline')
@@ -101,10 +102,9 @@ export default {
 
       })(args.string, args.object, args.function)
     }
+
     /**
-     * [section description]
-     * @param  {[type]} config =             {} [description]
-     * @return {[type]}        [description]
+     * Creates a section under a given column
      */
     obj.section  = function () {
       let args = argify(...arguments)
@@ -115,25 +115,27 @@ export default {
         self.element.push(c = {
           title: name,
           color: config.color || 'cyan',
-          routes: []
+          routes: config.routes || [],
+          actions: config.actions || []
         })
+        let o = {
+          parent: 'section',
+          name,
+          config,
+          element: c,
+          context: self,
+          DSL: self.DSL
+        }
         callback.call(self, {
-          app: obj.app.bind({
-            parent: 'section',
-            name,
-            config,
-            element: c,
-            context: self,
-            DSL: self.DSL
-          })
+          app: obj.app.bind(o),
+          action: obj.action.bind(o)
         })
       })(args.string, args.object, args.function)
 
     }
     /**
-     * [app description]
-     * @param  {[type]} config =             {} [description]
-     * @return {[type]}        [description]
+     * Creates a routable interface, either of type
+     * engine or route.
      */
     obj.app = function () {
       let args = argify(...arguments)
@@ -150,6 +152,32 @@ export default {
         })
         callback.call(self, {
           parent: 'app',
+          name,
+          config
+        })
+      })(args.string, args.object, args.function)
+    }
+
+    /**
+     * Creates a menu item that serves as an action,
+     * without performing a transition
+     */
+    obj.action = function () {
+      let args = argify(...arguments)
+      let self = this
+      Ember.assert(A.action, self.parent === 'section' || self.parent === 'column')
+      ;(function (name, config = {}, callback = function () {}) {
+        Ember.assert(A.actionConfig, config.action)
+        let e = self.parent === 'section' ? self.element.actions : self.element[0].actions
+        e.push({
+          name,
+          description: config.description,
+          icon: config.icon,
+          action: config.action,
+          dismiss: config.dismiss || true
+        })
+        callback.call(self, {
+          parent: 'action',
           name,
           config
         })

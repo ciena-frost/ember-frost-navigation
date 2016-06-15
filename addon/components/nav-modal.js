@@ -25,6 +25,13 @@ export default Ember.Component.extend({
   actions: {
     outsideClick () {
       this.get('nav').set('_activeCategory', null)
+    },
+    showMore (section) {
+      this.set('showActions', true)
+      this.set('content', section)
+    },
+    goBack () {
+      this.set('showActions', false)
     }
   }
 
