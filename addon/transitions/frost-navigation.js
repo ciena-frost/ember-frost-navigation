@@ -1,4 +1,5 @@
 export default function () {
+  let duration = 200
   this.transition(
     this.inHelper('liquid-modal'),
     this.toModal('nav-modal'),
@@ -9,25 +10,31 @@ export default function () {
       pick: '.lf-overlay',
       use: ['cross-fade', {
         maxOpacity: 0.1,
-        duration: 200
+        duration
       }]
     }, {
       pick: '.lm-container',
       use: ['to-down', {
-        duration: 200
+        duration
       }]
     }),
     this.reverse('explode', {
       pick: '.lf-overlay',
       use: ['cross-fade', {
         maxOpacity: 0.1,
-        duration: 200
+        duration
       }]
     }, {
       pick: '.lm-container',
       use: ['to-up', {
-        duration: 200
+        duration
       }]
     })
+  )
+  this.transition(
+    this.hasClass('actionSlide'),
+    this.toValue(true),
+    this.use('toLeft', {duration}),
+    this.reverse('toRight', {duration})
   )
 }

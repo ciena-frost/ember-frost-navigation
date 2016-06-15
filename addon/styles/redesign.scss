@@ -39,16 +39,18 @@
 }
 
 .nav-modal {
+  width: 100%;
+  min-height: 500px;
+  max-height: 80vh;
   position: fixed;
   top: 50px;
   left:0;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 500px;
   background: rgba($frost-color-night-2, 0.8);
+  & .liquid-container .liquid-child {
+    display: flex;
+    flex-direction: row;
+  }
 }
-
 .nav-column {
   flex: 1;
   display: flex;
@@ -61,6 +63,11 @@
 }
 
 .nav-section {
+  & .flip {
+    transform: rotate(180deg);
+    height:20px;
+    width:20px;
+  }
   &+ .nav-section {
     margin-top: 50px;
   }
@@ -76,41 +83,35 @@
   font-size: $frost-font-l;
   font-weight: 300;
   color: $frost-color-white;
+  & .title {
+    display: inline-block;
+    padding-left: 10px;
+  }
+  & .frost-button > .icon {
+    align-items: initial;
+  }
 }
 
 .nav-section-actions {
+  height: 30px;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: auto;
-}
-
-.nav-section-menu {
-   height: 30px;
-
-  & .frost-icon {
-    width: 30px;
-    height: 30px;
+  font-size: $frost-font-m;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $frost-color-grey-6;
   }
-
   &+ .nav-section-action {
     padding-left: 10px;
     margin-left: 10px;
     border-left: 1px solid rgba($frost-color-white, 0.2);
   }
-}
-
-.nav-section-action {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 30px;
-  font-size: $frost-font-m;
-
   & .frost-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -119,7 +120,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  transition: color 1s ease;
   &+ .nav-route {
     margin-top: 25px;
   }
@@ -142,6 +142,7 @@
 }
 
 .nav-route-name {
+  transition: color 0.2s ease;
   margin-bottom: 5px;
   font-size: $frost-font-m;
   color: $frost-color-white;

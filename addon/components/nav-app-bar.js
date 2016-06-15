@@ -21,6 +21,7 @@ export default Ember.Component.extend({
       navigation: navigationService,
       controller: this.get('targetObject')
     }
+    lookup.navigation.set('_controller', lookup.controller)
     transitionService.map(transitions)
 
     lookup.controller.addObserver(

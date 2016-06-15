@@ -4,6 +4,7 @@ import asserts from 'ember-frost-navigation/utils/asserts'
 export default Ember.Service.extend({
   routing: Ember.inject.service('-routing'),
   _modalBound: false,
+  _controller: null,
   _registerMap: {
     category (config) {
       return this._registerCategory(config)
@@ -26,23 +27,12 @@ export default Ember.Service.extend({
       } catch (e) {
         reject(e)
       }
-      this.categories.push({
+      let c
+      this.categories.push(c = {
         name: config.name,
         columns: config.columns || []
       })
-      if (config.as) {
-        this._registerApp({
-          categoryName: config.name,
-          columnTitle: config.columnTitle,
-          name: config.as,
-          icon: config.icon,
-          color: config.color,
-          description: config.description,
-          route: config.as
-        }).then(resolve).catch(reject)
-      } else {
-        resolve(this)
-      }
+      resolve(c)
     })
   },
   _registerApp (config = {}) {
@@ -76,6 +66,19 @@ export default Ember.Service.extend({
   transitionTo (route) {
     this.get('routing').transitionTo(route)
     this.set('_activeCategory', null)
+  },
+  performAction (item) {
+    let controller = this.get('_controller')
+    let _actionHandler
+    Ember.assert(
+      `Action[${item.action}] does not exist on controller: ${controller.toString()}`,
+      _actionHandler = controller.get(item.action)
+    )
+    if (item.dismiss) {
+      this.set('_activeCategory', null)
+    }
+    _actionHandler(item)
+
   },
   _activeCategory: null,
   categories: Ember.A()

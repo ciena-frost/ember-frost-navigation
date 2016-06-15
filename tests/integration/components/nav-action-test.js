@@ -7,8 +7,8 @@ import {
 import hbs from 'htmlbars-inline-precompile';
 
 describeComponent(
-  'nav-section-action',
-  'Integration: NavSectionActionComponent',
+  'nav-action',
+  'Integration: NavActionComponent',
   {
     integration: true
   },
@@ -18,12 +18,12 @@ describeComponent(
       // Handle any actions with this.on('myAction', function(val) { ... });
       // Template block usage:
       // this.render(hbs`
-      //   {{#nav-section-action}}
+      //   {{#nav-action}}
       //     template content
-      //   {{/nav-section-action}}
+      //   {{/nav-action}}
       // `);
 
-      this.render(hbs`{{nav-section-action}}`);
+      this.render(hbs`{{nav-action}}`);
       expect(this.$()).to.have.length(1);
     });
   }

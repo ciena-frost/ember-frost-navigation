@@ -8,15 +8,28 @@ var Router = Ember.Router.extend({
 Router.map(function () {
   let routerConfig = config.APP.routingConfig
 
-  this.route('demo.redesign', function(){
-    routerConfig.categories.forEach((category) => {
-      this.nav(category.name, {
-        navType: 'category',
-        type: 'route',
-        columns: category.columns
+  this.nav('demo.redesign', {
+    categories: routerConfig.categories
+  }, function (nav) {
+    this.category('category1', {}, function () {
+      this.column('column1', {
+        color: 'green'
+      }, function () {
+        this.app('app1', {
+          description: 'description1',
+          icon: 'sample'
+        })
+        this.section('section1', function (){
+          this.action('action1', {
+            action: 'doThis'
+          })
+          this.app('app2')
+        })
       })
+      this.column('column2')
     })
   })
+
   routerConfig.routes.forEach((item) => {
     addRoute.call(this, item)
   })
