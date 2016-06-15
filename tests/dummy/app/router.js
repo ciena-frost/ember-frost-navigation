@@ -11,13 +11,19 @@ Router.map(function () {
   this.nav('demo.redesign', {
     categories: routerConfig.categories
   }, function (nav) {
-    nav.category('categoryName', {}, function (category) {
-      category.column('columnName', function (column) {
-        column.app('app1')
-        column.section('sectionName', function (section){
+    nav.category('column1', {}, function (category) {
+      category.column('column1', {
+        color: 'green'
+      }, function (column) {
+        column.app('app1', {
+          description: 'description1',
+          icon: 'sample'
+        })
+        column.section('section1', function (section){
           section.app('app2')
         })
       })
+      category.column('column2')
     })
   })
 
