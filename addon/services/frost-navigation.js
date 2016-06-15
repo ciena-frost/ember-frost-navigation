@@ -26,23 +26,12 @@ export default Ember.Service.extend({
       } catch (e) {
         reject(e)
       }
-      this.categories.push({
+      let c
+      this.categories.push(c = {
         name: config.name,
         columns: config.columns || []
       })
-      if (config.as) {
-        this._registerApp({
-          categoryName: config.name,
-          columnTitle: config.columnTitle,
-          name: config.as,
-          icon: config.icon,
-          color: config.color,
-          description: config.description,
-          route: config.as
-        }).then(resolve).catch(reject)
-      } else {
-        resolve(this)
-      }
+      resolve(c)
     })
   },
   _registerApp (config = {}) {
