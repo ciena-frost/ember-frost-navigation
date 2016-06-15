@@ -3,7 +3,7 @@ import layout from '../templates/components/nav-modal'
 import _ from 'lodash'
 
 export default Ember.Component.extend({
-  classNames: ['nav-modal'],
+  classNameBindings: ['activeCategory:nav-modal:'],
   layout,
   nav: Ember.inject.service('frost-navigation'),
   activeCategory: null,
