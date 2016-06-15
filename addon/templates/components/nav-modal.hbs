@@ -1,4 +1,4 @@
-{{#unless showActions}}
+{{#liquid-unless showActions class='actionSlide'}}
   {{#each columns as |column|}}
     <div class='nav-column'>
       {{#each column as |section|}}
@@ -30,4 +30,4 @@
   {{/each}}
 {{else}}
   {{nav-section-action section=content goBack=(action 'goBack')}}
-{{/unless}}
+{{/liquid-unless}}

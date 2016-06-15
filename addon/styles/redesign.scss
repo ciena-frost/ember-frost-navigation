@@ -39,14 +39,17 @@
 }
 
 .nav-modal {
+  width: 100%;
+  height: 500px;
   position: fixed;
   top: 50px;
   left:0;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 500px;
   background: rgba($frost-color-night-2, 0.8);
+  & .liquid-container .liquid-child {
+    display: flex;
+    flex-direction: row;
+  }
+
 }
 
 .nav-column {
