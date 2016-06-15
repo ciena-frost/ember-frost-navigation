@@ -74,10 +74,11 @@ export default Ember.Service.extend({
       `Action[${item.action}] does not exist on controller: ${controller.toString()}`,
       _actionHandler = controller.get(item.action)
     )
-    _actionHandler(item)
     if (item.dismiss) {
       this.set('_activeCategory', null)
     }
+    _actionHandler(item)
+
   },
   _activeCategory: null,
   categories: Ember.A()
