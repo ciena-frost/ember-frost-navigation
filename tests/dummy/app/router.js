@@ -11,22 +11,22 @@ Router.map(function () {
   this.nav('demo.redesign', {
     categories: routerConfig.categories
   }, function (nav) {
-    nav.category('category1', {}, function (category) {
-      category.column('column1', {
+    this.category('category1', {}, function (category) {
+      this.column('column1', {
         color: 'green'
       }, function (column) {
-        column.app('app1', {
+        this.app('app1', {
           description: 'description1',
           icon: 'sample'
         })
-        column.section('section1', function (section){
-          section.action('action1', {
+        this.section('section1', function (section){
+          this.action('action1', {
             action: 'doThis'
           })
-          section.app('app2')
+          this.app('app2')
         })
       })
-      category.column('column2')
+      this.column('column2')
     })
   })
 

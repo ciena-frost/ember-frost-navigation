@@ -28,12 +28,13 @@ export default {
           config.categories.forEach(function (e) {
             navigation._registerCategory(e)
           })
-        callback.call(self, {
+        callback.call({
           category: obj.category.bind({
-            parent: 'nav',
-            name,
-            config,
-            context: self,
+            parent: {
+              type: 'nav',
+              name,
+              config
+            },
             DSL: self
           })
         })
@@ -45,19 +46,20 @@ export default {
     obj.category = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.category, self.parent === 'nav')
+      Ember.assert(A.category, self.parent.type === 'nav')
       ;(function (name, config = {}, callback = function () {}) {
         navigation._registerCategory({
           name,
           columns: config.columns
         }).then(function (category) {
-          callback.call(self, {
+          callback.call({
             column: obj.column.bind({
-              parent: 'category',
-              name,
-              config,
+              parent: {
+                type: 'category',
+                name,
+                config
+              },
               element: category,
-              context: self,
               DSL: self.DSL
             })
           })
@@ -70,7 +72,7 @@ export default {
     obj.column   = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.column, self.parent === 'category')
+      Ember.assert(A.column, self.parent.type === 'category')
       ;(function (name, config = {}, callback = function () {}) {
         if (self.element) {
           let c
@@ -83,15 +85,16 @@ export default {
             }
           ])
           let o = {
-            parent: 'column',
-            name,
-            config,
+            parent: {
+              type: 'column',
+              name,
+              config
+            },
             element: c,
-            context: self,
             DSL: self.DSL
           }
 
-          callback.call(self, {
+          callback.call({
             section: obj.section.bind(o),
             app: obj.app.bind(o),
             action: obj.action.bind(o)
@@ -109,7 +112,7 @@ export default {
     obj.section  = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.section, self.parent === 'column')
+      Ember.assert(A.section, self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
         let c
         self.element.push(c = {
@@ -119,14 +122,15 @@ export default {
           actions: config.actions || []
         })
         let o = {
-          parent: 'section',
-          name,
-          config,
+          parent: {
+            type: 'section',
+            name,
+            config
+          },
           element: c,
-          context: self,
           DSL: self.DSL
         }
-        callback.call(self, {
+        callback.call({
           app: obj.app.bind(o),
           action: obj.action.bind(o)
         })
@@ -140,20 +144,23 @@ export default {
     obj.app = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.app, self.parent === 'section' || self.parent === 'column')
+      Ember.assert(A.app, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {type:'route'}, callback = function () {}) {
         self.DSL[config.type === 'engine' ? 'mount' : 'route'](name, config)
-        let e = self.parent === 'section' ? self.element.routes : self.element[0].routes
+        let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         e.push({
           name,
           description: config.description,
           icon: config.icon,
           route: config.route
         })
-        callback.call(self, {
-          parent: 'app',
-          name,
-          config
+        callback.call({
+          parent: {
+            type: 'app',
+            name,
+            config
+          },
+
         })
       })(args.string, args.object, args.function)
     }
@@ -165,10 +172,10 @@ export default {
     obj.action = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.action, self.parent === 'section' || self.parent === 'column')
+      Ember.assert(A.action, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
         Ember.assert(A.actionConfig, config.action)
-        let e = self.parent === 'section' ? self.element.actions : self.element[0].actions
+        let e = self.parent.type === 'section' ? self.element.actions : self.element[0].actions
         e.push({
           name,
           description: config.description,
@@ -176,10 +183,12 @@ export default {
           action: config.action,
           dismiss: config.dismiss || true
         })
-        callback.call(self, {
-          parent: 'action',
-          name,
-          config
+        callback.call({
+          parent: {
+            type: 'action',
+            name,
+            config
+          }
         })
       })(args.string, args.object, args.function)
     }
