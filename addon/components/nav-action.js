@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import layout from '../templates/components/nav-action';
+import Ember from 'ember'
+import layout from '../templates/components/nav-action'
 
 export default Ember.Component.extend({
   layout,
@@ -7,4 +7,4 @@ export default Ember.Component.extend({
   click () {
     this.get('nav').performAction(this.get('item'))
   }
-});
+})

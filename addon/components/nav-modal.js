@@ -9,8 +9,9 @@ export default Ember.Component.extend({
   activeCategory: null,
   _categoryChanged: function () {
     this.set('activeCategory', this.get('nav._activeCategory'))
-    if (!this.get('activeCategory'))
+    if (!this.get('activeCategory')) {
       this.sendAction('dismiss')
+    }
   }.observes('nav._activeCategory'),
 
   columns: Ember.computed('nav.categories', 'activeCategory', function () {

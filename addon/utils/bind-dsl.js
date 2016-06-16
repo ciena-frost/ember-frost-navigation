@@ -5,7 +5,9 @@ export default {
     let argify = function () {
       let r = {}
       let args = [].slice.call(arguments)
-      args.forEach(e => r[typeof e] = e)
+      args.forEach(e => {
+        r[typeof e] = e
+      })
       return r
     }
     let proto = Ember.RouterDSL.prototype
@@ -26,11 +28,12 @@ export default {
           controller: name,
           actions: config.actions
         })
-        if(config.model)
+        if (config.model) {
           config.model.forEach(function (e) {
             console.log(e)
             navigation._registerCategory(e)
           })
+        }
         callback.call({
           category: obj.category.bind({
             parent: {
@@ -72,7 +75,7 @@ export default {
     /**
      * Creates a column that performs under the context of a navigation bar.
      */
-    obj.column   = function () {
+    obj.column = function () {
       let args = argify(...arguments)
       let self = this
       Ember.assert(A.column, self.parent.type === 'category')
@@ -105,14 +108,13 @@ export default {
         } else {
           Ember.assert('Problem in the pipeline')
         }
-
       })(args.string, args.object, args.function)
     }
 
     /**
      * Creates a section under a given column
      */
-    obj.section  = function () {
+    obj.section = function () {
       let args = argify(...arguments)
       let self = this
       Ember.assert(A.section, self.parent.type === 'column')
@@ -138,7 +140,6 @@ export default {
           action: obj.action.bind(o)
         })
       })(args.string, args.object, args.function)
-
     }
     /**
      * Creates a routable interface, either of type
@@ -148,7 +149,7 @@ export default {
       let args = argify(...arguments)
       let self = this
       Ember.assert(A.app, self.parent.type === 'section' || self.parent.type === 'column')
-      ;(function (name, config = {type:'route'}, callback = function () {}) {
+      ;(function (name, config = {type: 'route'}, callback = function () {}) {
         self.DSL[config.type === 'engine' ? 'mount' : 'route'](name, config)
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         e.push({
@@ -162,7 +163,7 @@ export default {
             type: 'app',
             name,
             config
-          },
+          }
 
         })
       })(args.string, args.object, args.function)

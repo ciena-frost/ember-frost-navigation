@@ -19,7 +19,7 @@ Router.map(function () {
           description: 'description1',
           icon: 'sample'
         })
-        this.section('section1', function (){
+        this.section('section1', function () {
           this.action('action1', {
             action: 'doThis'
           })
@@ -33,7 +33,6 @@ Router.map(function () {
   routerConfig.routes.forEach((item) => {
     addRoute.call(this, item)
   })
-
 })
 
 export default Router

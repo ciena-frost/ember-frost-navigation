@@ -23,7 +23,7 @@ export default Ember.Service.extend({
       try {
         let _category = this.categories.find(e => e.name === config.categoryName)
         Ember.assert(asserts.categoryNotFound, _category)
-        let section = null;
+        let section = null
         _category.columns.forEach(function (row) {
           section = row.find(e => e.title === config.columnTitle)
         })
@@ -61,7 +61,6 @@ export default Ember.Service.extend({
       this.set('_activeCategory', null)
     }
     _actionHandler(item)
-
   },
   _activeCategory: null,
   categories: Ember.A()
