@@ -10,13 +10,13 @@ module.exports = {
           icon: 'sample',
           name: 'Sample name',
           description: 'Sample description',
-          route: 'demo.go',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
           description: 'Sample description',
-          route: 'demo.go',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
