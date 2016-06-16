@@ -20,9 +20,11 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         self.modal('nav-modal', {
           withParams: 'activeCategory',
-          dialogClass: 'frost-navigation-modal',
+          dialogClass: config.dialogClass || 'frost-navigation-modal',
           dismissWithOutsideClick: false,
-          controller: name
+          dismissWithEscape: false,
+          controller: name,
+          actions: config.actions
         })
         if(config.model)
           config.model.forEach(function (e) {
