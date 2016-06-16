@@ -27,7 +27,7 @@ ember install ember-frost-navigation
 
 ## Examples
 
-[](assets/ex1.gif)
+<img src='assets/ex1.gif'/>
 
 Running `ember serve` from the context of the addon will serve a dummy application as example.
 
