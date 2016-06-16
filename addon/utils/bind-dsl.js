@@ -28,6 +28,7 @@ export default {
         })
         if(config.model)
           config.model.forEach(function (e) {
+            console.log(e)
             navigation._registerCategory(e)
           })
         callback.call({

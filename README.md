@@ -34,7 +34,7 @@ Running `ember serve` from the context of the addon will serve a dummy applicati
 Usage will mainly take place in `app/router.js`
 
 ```js
-this.nav('demo.redesign', {
+this.nav('demo', {
   categories: routerConfig.categories
 }, function (nav) {
   this.category('category1', {}, function () {
@@ -118,91 +118,6 @@ Creates a route / engine against the `RouterDSL`. Must be created within the con
 | dismiss     | Boolean flag to dismiss the navigation modal on action complete                  |
 
 
-### Example Schema
-```js
-[{
-  name: 'Network',
-  columns: [
-    [{
-      title: 'Resources',
-      color: '#009EEF',
-      routes: [{
-        icon: 'sample',
-        name: 'Network elements',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Equipment',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Topology map',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Capacity map',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Fiber plant',
-        description: 'Description'
-      }]
-    }],
-    [{
-      title: 'Services',
-      color: '#359E35',
-      routes: [{
-        icon: 'sample',
-        name: 'Packet services',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Packet infrastructure',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Photonic/OTN transport',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Links',
-        description: 'Description'
-      }]
-    }],
-    [{
-      title: 'Troubleshooting',
-      color: '#009999',
-      routes: [{
-        icon: 'sample',
-        name: 'Alarm browser',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Performance metrics browser',
-        description: 'Description'
-      }]
-    }, {
-      title: 'Glanzer',
-      color: '#009999',
-      routes: [{
-        icon: 'sample',
-        name: 'Alarm browser',
-        description: 'Description'
-      }, {
-        icon: 'sample',
-        name: 'Performance metrics browser',
-        description: 'Description'
-      }]
-    }]
-  ]
-}, {
-  name: 'System',
-  columns: []
-}, {
-  name: 'Planning',
-  columns: []
-}]
-```
 ### Setup
 ```
 git clone git@github.com:ciena-frost/ember-frost-navigation.git

@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function () {
   let routerConfig = config.APP.routingConfig
 
-  this.nav('demo.redesign', {
+  this.nav('demo', {
     model: routerConfig.categories
   }, function () {
     this.category('category1', {}, function () {
