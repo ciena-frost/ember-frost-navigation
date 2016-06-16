@@ -1,0 +1,11 @@
+<div class='nav-section'>
+  <div class='nav-section-header' style='border-bottom-color: {{section.color}};'>
+  <div>
+    {{frost-button class="transition-arrow flip" icon='launch/transition-arrow' onClick=goBack}}
+    <div class='title'>More {{section.title}}</div>
+  </div>
+</div>
+</div>
+{{#each section.actions as |item|}}
+  {{nav-action item=item}}
+{{/each}}

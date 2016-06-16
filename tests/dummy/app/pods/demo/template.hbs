@@ -1,38 +1,5 @@
-{{#frost-application-bar isNavigationOpen=isNavigationOpen dismiss=(action 'dismiss')}}
-  {{#frost-link 'demo.dashboard' class='branding'}}
-    {{frost-icon icon='pinpoint/nav/logo'}}
-  {{/frost-link}}
-
-  {{frost-button
-    class='navigation'
-    design='app-bar'
-    icon='pinpoint/nav/fiberplant'
-    text='Fiberplant'
-    disabled=fiberplantNav
-    onClick=(action 'openFiberplantNav')
-  }}
-
-  {{frost-button
-    class='navigation'
-    icon='pinpoint/nav/admin'
-    design='app-bar'
-    text='Administration'
-    disabled=adminNav
-    onClick=(action 'openAdminNav')
-  }}
-
-  <div class='user'>
-    user
-    {{frost-button
-      design='app-bar'
-      icon='pinpoint/nav/user'
-    }}
-  </div>
-
-{{/frost-application-bar}}
-
-{{liquid-modal}}
+{{frost-navigation}}
 
 <div class='dummy-content'>
-{{outlet}}
+  {{outlet}}
 </div>
