@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 
   getDefaultProps () {
     return {
-      pack: 'frost'
+      pack: 'app'
     }
   },
   click () {

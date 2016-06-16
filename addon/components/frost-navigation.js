@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import layout from '../templates/components/nav-app-bar'
+import layout from '../templates/components/frost-navigation'
 import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 
 const {
@@ -7,7 +7,7 @@ const {
 } = Ember
 
 export default Component.extend({
-  classNames: ['nav-app-bar'],
+  classNames: ['frost-navigation'],
   layout,
 
   nav: Ember.inject.service('frost-navigation'),

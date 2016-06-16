@@ -29,26 +29,15 @@ ember install ember-frost-navigation
 
 <img src='assets/ex1.gif'/>
 
-Running `ember serve` from the context of the addon will serve a dummy application as example.
-
-Usage will mainly take place in `app/router.js`
+Add the `{{frost-navigation}}` component to the template where you want the navigation to appear, then configure your navigation in `app/router.js`
 
 ```js
-this.nav('demo', {
-  categories: routerConfig.categories
-}, function (nav) {
+this.nav('demo', function () {
   this.category('category1', {}, function () {
-    this.column('column1', {
-      color: 'green'
-    }, function () {
-      this.app('app1', {
-        description: 'description1',
-        icon: 'sample'
-      })
-      this.section('section1', function (){
-        this.action('action1', {
-          action: 'doThis'
-        })
+    this.column('column1', { color: 'green' }, function () {
+      this.app('app1', { description: 'description1', icon: 'sample' })
+      this.section('section1', function () { 
+        this.action('action1', { action: 'doThis' })
         this.app('app2')
       })
     })

@@ -22,7 +22,7 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         self.modal('nav-modal', {
           withParams: 'activeCategory',
-          dialogClass: config.dialogClass || 'frost-navigation-modal',
+          dialogClass: config.dialogClass || 'nav-modal',
           dismissWithOutsideClick: false,
           dismissWithEscape: false,
           controller: name,

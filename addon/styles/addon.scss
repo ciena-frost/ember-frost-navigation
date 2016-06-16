@@ -1,7 +1,15 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
-@import 'redesign';
 
-.frost-navigation-modal {
+.frost-navigation {
+  display: flex;
+  flex-direction: row;
+
+  & > div:first-of-type {
+    border-left: 1px solid rgba($frost-color-white, 0.2);
+  }
+}
+
+.nav-modal {
   position: absolute;
   top: 50px;
   width: 100%;
@@ -12,89 +20,156 @@
   left: 0;
 }
 
-.frost-navigation {
-  padding: 50px 40px;
-  background-color: rgba($frost-color-night-2, 0.8);
+.nav-category {
   display: flex;
-  flex-direction: row;
-}
-
-.frost-navigation .category {
-  flex: 1;
-  font-size: $frost-font-xxl;
-  color: rgba($frost-color-white, 0.7);
-}
-
-.frost-link.route .icon {
-  width: 60px;
-  height: 60px;
-  padding-right: 20px;
-}
-
-.frost-link.route {
-  margin: 40px 0 20px 0;
-  display: flex;
+  cursor: pointer;
   flex-direction: row;
   align-items: center;
-  font-size: $frost-font-l;
+  padding: 10px;
+  border-right: 1px solid rgba($frost-color-white, 0.2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &.disabled {
+    .nav-category-name {
+      color: $frost-color-grey-6;
+    }
+  }
+}
+
+.nav-category-icon .frost-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.nav-category-name {
+  margin-bottom: 5px;
+  font-size: $frost-font-m;
+  font-weight: 300;
   color: $frost-color-white;
 }
 
-.frost-link.route .transition-arrow {
-  width: 30px;
+.nav-modal {
+  width: 100%;
+  min-height: 500px;
+  max-height: 80vh;
+  position: fixed;
+  top: 50px;
+  left:0;
+  background: rgba($frost-color-night-2, 0.8);
+  & .liquid-container .liquid-child {
+    display: flex;
+    flex-direction: row;
+  }
+}
+.nav-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+
+  &+ .nav-column {
+    border-left: 1px solid rgba($frost-color-white, 0.1);
+  }
+}
+
+.nav-section {
+  & .flip {
+    transform: rotate(180deg);
+    height:20px;
+    width:20px;
+  }
+  &+ .nav-section {
+    margin-top: 50px;
+  }
+}
+
+.nav-section-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $frost-color-white; // Override colors using inline style
+  font-size: $frost-font-l;
+  font-weight: 300;
+  color: $frost-color-white;
+  & .title {
+    display: inline-block;
+    padding-left: 10px;
+  }
+  & .frost-button > .icon {
+    align-items: initial;
+  }
+}
+
+.nav-section-actions {
   height: 30px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-left: auto;
-  margin-right: 20px;
-}
-
-.frost-link.sub-route {
-  background-color: inherit;
-}
-
-.frost-link.sub-route.text {
   font-size: $frost-font-m;
-  line-height: 45px;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $frost-color-grey-6;
+  }
+  &+ .nav-section-action {
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 1px solid rgba($frost-color-white, 0.2);
+  }
+  & .frost-icon {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-.frost-navigation .frost-link.sub-route {
-  background-color: inherit;
+.nav-route {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &+ .nav-route {
+    margin-top: 25px;
+  }
 }
 
-.frost-navigation .category.blue .frost-link.sub-route {
-  color: $frost-color-blue-1;
-  border-color: $frost-color-blue-1;
+.nav-route:hover {
+  .nav-route-name {
+    color: $frost-color-grey-6;
+  }
 }
 
-.frost-navigation .category.green .frost-link.sub-route {
-  color: $frost-color-green-1;
-  border-color: $frost-color-green-1;
+.nav-route-icon {
+  height: 50px;
+  margin-right: 15px;
 }
 
-.frost-navigation .category.teal .frost-link.sub-route {
-  color: $frost-color-teal-1;
-  border-color: $frost-color-teal-1;
+.nav-route-icon .frost-icon {
+  width: 50px;
+  height: 50px;
 }
 
-.frost-link.frost-navigation-action {
-  background-color: inherit;
+.nav-route-name {
+  transition: color 0.2s ease;
+  margin-bottom: 5px;
+  font-size: $frost-font-m;
+  color: $frost-color-white;
 }
 
-.frost-navigation-action.text {
-  font-size: 18px;
-  line-height: 45px;
+.nav-route-description {
+  font-size: $frost-font-s;
+  color: $frost-color-grey-6;
 }
 
-.frost-navigation .category.blue .frost-navigation-action {
-  color: $frost-color-blue-1;
-  border-color: $frost-color-blue-1;
-}
+.frost-icon-add {
+  fill: $frost-color-blue-1;
 
-.frost-navigation .category.green .frost-navigation-action {
-  color: $frost-color-green-1;
-  border-color: $frost-color-green-1;
-}
-
-.frost-navigation .category.teal .frost-navigation-action {
-  color: $frost-color-teal-1;
-  border-color: $frost-color-teal-1;
+  & svg rect {
+    fill: $frost-color-blue-1;
+  }
 }

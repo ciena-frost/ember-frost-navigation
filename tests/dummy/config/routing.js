@@ -6,23 +6,28 @@ module.exports = {
         title: 'lorem ipsum',
         color: 'cyan',
         routes: [{
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }]
@@ -31,19 +36,23 @@ module.exports = {
         title: 'lorem ipsum',
         color: 'cyan',
         routes: [{
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }]
@@ -52,11 +61,13 @@ module.exports = {
         title: 'lorem ipsum',
         color: 'cyan',
         routes: [{
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }]
@@ -64,11 +75,13 @@ module.exports = {
         title: 'lorem ipsum',
         color: 'cyan',
         routes: [{
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }, {
-          icon: 'lorem ipsum',
+          pack: 'dummy',
+          icon: 'sample',
           name: 'Sample name',
           description: 'Sample description'
         }]
