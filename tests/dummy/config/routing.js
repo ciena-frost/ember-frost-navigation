@@ -9,27 +9,32 @@ module.exports = {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go',
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go',
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }]
       }],
       [{
@@ -39,22 +44,26 @@ module.exports = {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }]
       }],
       [{
@@ -64,12 +73,14 @@ module.exports = {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }]
       }, {
         title: 'lorem ipsum',
@@ -78,12 +89,14 @@ module.exports = {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }, {
           pack: 'dummy',
           icon: 'sample',
           name: 'Sample name',
-          description: 'Sample description'
+          description: 'Sample description',
+          route: 'demo.go'
         }]
       }]
     ]
@@ -93,16 +106,5 @@ module.exports = {
   }, {
     name: 'another category',
     columns: []
-  }],
-  routes: [
-    {
-      id: 'demo',
-      alias: 'Demo',
-      type: 'route',
-      route: 'demo',
-      path: {
-        path: '/'
-      }
-    }
-  ]
+  }]
 }

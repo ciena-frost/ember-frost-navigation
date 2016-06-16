@@ -30,8 +30,8 @@ Router.map(function () {
     })
   })
 
-  routerConfig.routes.forEach((item) => {
-    addRoute.call(this, item)
+  this.route('demo', { path: '/' }, function() {
+    this.route('go')
   })
 })
 

@@ -1,7 +1,7 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
-.frost-application-bar ~ .dummy-content {
+.dummy-content {
   position: relative;
   top: 50px;
 //  height: calc(100% - 50px);
