@@ -20,12 +20,15 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         self.modal('nav-modal', {
           withParams: 'activeCategory',
-          dialogClass: 'frost-navigation-modal',
+          dialogClass: config.dialogClass || 'frost-navigation-modal',
           dismissWithOutsideClick: false,
-          controller: name
+          dismissWithEscape: false,
+          controller: name,
+          actions: config.actions
         })
-        if(config.categories)
-          config.categories.forEach(function (e) {
+        if(config.model)
+          config.model.forEach(function (e) {
+            console.log(e)
             navigation._registerCategory(e)
           })
         callback.call({
@@ -50,7 +53,7 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         navigation._registerCategory({
           name,
-          columns: config.columns
+          columns: config.model || []
         }).then(function (category) {
           callback.call({
             column: obj.column.bind({

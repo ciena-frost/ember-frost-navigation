@@ -8,9 +8,9 @@ var Router = Ember.Router.extend({
 Router.map(function () {
   let routerConfig = config.APP.routingConfig
 
-  this.nav('demo.redesign', {
-    categories: routerConfig.categories
-  }, function (nav) {
+  this.nav('demo', {
+    model: routerConfig.categories
+  }, function () {
     this.category('category1', {}, function () {
       this.column('column1', {
         color: 'green'

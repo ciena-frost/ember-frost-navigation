@@ -1,84 +1,84 @@
 module.exports = {
   categories: [{
-    name: 'Network',
+    name: 'Sample name',
     columns: [
       [{
-        title: 'Resources',
-        color: '#009EEF',
+        title: 'lorem ipsum',
+        color: 'cyan',
         routes: [{
-          icon: 'sample',
-          name: 'Network elements',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Equipment',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Topology map',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Capacity map',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Fiber plant',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }]
       }],
       [{
-        title: 'Services',
-        color: '#359E35',
+        title: 'lorem ipsum',
+        color: 'cyan',
         routes: [{
-          icon: 'sample',
-          name: 'Packet services',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Packet infrastructure',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Photonic/OTN transport',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Links',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }]
       }],
       [{
-        title: 'Troubleshooting',
-        color: '#009999',
+        title: 'lorem ipsum',
+        color: 'cyan',
         routes: [{
-          icon: 'sample',
-          name: 'Alarm browser',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Performance metrics browser',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }]
       }, {
-        title: 'Glanzer',
-        color: '#009999',
+        title: 'lorem ipsum',
+        color: 'cyan',
         routes: [{
-          icon: 'sample',
-          name: 'Alarm browser',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }, {
-          icon: 'sample',
-          name: 'Performance metrics browser',
-          description: 'Description'
+          icon: 'lorem ipsum',
+          name: 'Sample name',
+          description: 'Sample description'
         }]
       }]
     ]
   }, {
-    name: 'System',
+    name: 'sample text',
     columns: []
   }, {
-    name: 'Planning',
+    name: 'another category',
     columns: []
   }],
   routes: [
@@ -89,62 +89,7 @@ module.exports = {
       route: 'demo',
       path: {
         path: '/'
-      },
-      modals: [
-        {
-          modalName: 'frost-navigation-modal',
-          modal: {
-            withParams: 'fiberplantNav',
-            otherParams: {
-              'fiberplantNavTemplate': 'navigationTemplate'
-            },
-            dialogClass: 'frost-navigation-modal',
-            actions: {
-              openRoute: 'openRoute'
-            }
-          }
-        }, {
-          modalName: 'frost-navigation-modal',
-          modal: {
-            withParams: 'adminNav',
-            otherParams: {
-              'adminNavTemplate': 'navigationTemplate'
-            },
-            dialogClass: 'frost-navigation-modal',
-            actions: {
-              openRoute: 'openRoute'
-            }
-          }
-        }
-
-      ],
-      items: [
-        {
-          id: 'resource',
-          alias: 'Resource',
-          type: 'route',
-          route: 'demo.resource'
-        }, {
-          id: 'dashboard',
-          alias: 'Dashboard',
-          type: 'route',
-          route: 'demo.dashboard'
-        },
-        {
-          id: 'redesign',
-          alias: 'Redesign',
-          type: 'route',
-          route: 'demo.redesign',
-          items: [
-            {
-              id: 'nested',
-              alias: 'Nested',
-              type: 'route',
-              route: 'nested'
-            }
-          ]
-        }
-      ]
+      }
     }
   ]
 }

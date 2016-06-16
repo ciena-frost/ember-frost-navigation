@@ -5,28 +5,11 @@ export default Ember.Service.extend({
   routing: Ember.inject.service('-routing'),
   _modalBound: false,
   _controller: null,
-  _registerMap: {
-    category (config) {
-      return this._registerCategory(config)
-    },
-    app (config) {
-      return this._registerApp(config)
-    }
-  },
-  register (config) {
-    return new Ember.RSVP.Promise((resolve, reject) => {
-      this._registerMap[config.navType].call(this, config)
-        .then(resolve)
-        .catch(reject)
-    })
-  },
   _registerCategory (config = {}) {
     return new Ember.RSVP.Promise((resolve, reject) => {
-      try {
-        Ember.assert(asserts.categoryName, config.name)
-      } catch (e) {
-        reject(e)
-      }
+      Ember.assert(asserts.categoryName, config.name)
+      let exists = this.categories.some(e => e.name === config.name)
+      Ember.assert('Cannot have more than one categories with the same name', !exists)
       let c
       this.categories.push(c = {
         name: config.name,
