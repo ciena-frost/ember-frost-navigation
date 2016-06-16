@@ -24,8 +24,8 @@ export default {
           dismissWithOutsideClick: false,
           controller: name
         })
-        if(config.categories)
-          config.categories.forEach(function (e) {
+        if(config.model)
+          config.model.forEach(function (e) {
             navigation._registerCategory(e)
           })
         callback.call({
@@ -50,7 +50,7 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         navigation._registerCategory({
           name,
-          columns: config.columns
+          columns: config.model || []
         }).then(function (category) {
           callback.call({
             column: obj.column.bind({
