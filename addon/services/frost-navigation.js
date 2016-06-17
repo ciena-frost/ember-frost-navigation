@@ -13,6 +13,8 @@ export default Ember.Service.extend({
       let c
       this.categories.push(c = {
         name: config.name,
+        icon: config.icon,
+        pack: config.pack,
         columns: config.columns || []
       })
       resolve(c)
@@ -36,6 +38,7 @@ export default Ember.Service.extend({
         }
         section.routes.push({
           icon: config.icon,
+          pack: config.pack,
           name: config.name,
           description: config.description,
           route: config.route

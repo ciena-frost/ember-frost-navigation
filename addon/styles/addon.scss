@@ -98,10 +98,10 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     border-bottom: 1px solid $frost-color-white; // Override colors using inline style
     font-size: $frost-font-l;
-    font-weight: 300;
+    font-weight: 200;
     color: $frost-color-white;
     & .title {
       display: inline-block;
@@ -115,7 +115,16 @@
       align-items: initial;
     }
   }
-
+  .nav-section-action {
+    .nav-section {
+      .nav-section-header {
+        transition: color 0.2s ease;
+        &:hover {
+          color: $frost-color-grey-6;
+        }
+      }
+    }
+  }
   .nav-section-actions {
     height: 30px;
     display: flex;
