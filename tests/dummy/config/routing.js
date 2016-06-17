@@ -1,52 +1,110 @@
-module.exports = [
-  {
-    id: 'demo',
-    alias: 'Demo',
-    type: 'route',
-    route: 'demo',
-    path: {
-      path: '/'
-    },
-    modals: [
-      {
-        modalName: 'frost-navigation-modal',
-        modal: {
-          withParams: 'fiberplantNav',
-          otherParams: {
-            'fiberplantNavTemplate': 'navigationTemplate'
-          },
-          dialogClass: 'frost-navigation-modal',
-          actions: {
-            openRoute: 'openRoute'
-          }
-        }
+module.exports = {
+  categories: [{
+    name: 'Sample name',
+    columns: [
+      [{
+        title: 'lorem ipsum',
+        color: 'cyan',
+        routes: [{
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }]
+      }],
+      [{
+        title: 'lorem ipsum',
+        color: 'cyan',
+        routes: [{
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }]
+      }],
+      [{
+        title: 'lorem ipsum',
+        color: 'cyan',
+        routes: [{
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }]
       }, {
-        modalName: 'frost-navigation-modal',
-        modal: {
-          withParams: 'adminNav',
-          otherParams: {
-            'adminNavTemplate': 'navigationTemplate'
-          },
-          dialogClass: 'frost-navigation-modal',
-          actions: {
-            openRoute: 'openRoute'
-          }
-        }
-      }
-
-    ],
-    items: [
-      {
-        id: 'resource',
-        alias: 'Resource',
-        type: 'route',
-        route: 'demo.resource'
-      }, {
-        id: 'dashboard',
-        alias: 'Dashboard',
-        type: 'route',
-        route: 'demo.dashboard'
-      }
+        title: 'lorem ipsum',
+        color: 'cyan',
+        routes: [{
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }, {
+          pack: 'dummy',
+          icon: 'sample',
+          name: 'Sample name',
+          description: 'Sample description',
+          route: 'demo.go'
+        }]
+      }]
     ]
-  }
-]
+  }, {
+    name: 'sample text',
+    columns: []
+  }, {
+    name: 'another category',
+    columns: []
+  }]
+}

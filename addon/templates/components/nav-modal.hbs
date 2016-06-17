@@ -1,0 +1,35 @@
+{{#if activeCategory}}
+  {{#liquid-unless showActions class='actionSlide'}}
+    {{#each columns as |column|}}
+      <div class='nav-column'>
+        {{#each column as |section|}}
+          <div class='nav-section'>
+            <div class='nav-section-header' style='
+              border-bottom-color: {{section.color}};
+            '>
+              <div>
+                {{section.title}}
+              </div>
+              <div class='nav-section-actions' {{action 'showMore' section}}>
+                More...
+              </div>
+            </div>
+            <div class='body'>
+              {{#each section.routes as |route|}}
+                {{nav-route
+                  description=route.description
+                  icon=route.icon
+                  pack=route.pack
+                  name=route.name
+                  route=route.route
+                }}
+              {{/each}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+  {{else}}
+    {{nav-section-action section=content goBack=(action 'goBack')}}
+  {{/liquid-unless}}
+{{/if}}
