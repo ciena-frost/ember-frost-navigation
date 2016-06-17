@@ -1,8 +1,10 @@
 <div class='nav-section'>
-  <div class='nav-section-header' style='border-bottom-color: {{section.color}};'>
+  <div {{action goBack}} class='nav-section-header' style='border-bottom-color: {{section.color}};'>
   <div>
-    {{frost-button class="transition-arrow flip" icon='launch/transition-arrow' onClick=goBack}}
-    <div class='title'>More {{section.title}}</div>
+    <div style='display: inline-block; color:{{section.color}}'>
+      {{frost-icon class="actions-icon" icon='chevron'}}
+    </div>
+    <div class='title'>{{section.title}}'s actions</div>
   </div>
 </div>
 </div>

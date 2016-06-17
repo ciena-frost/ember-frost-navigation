@@ -22,7 +22,7 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         self.modal('nav-modal', {
           withParams: 'activeCategory',
-          dialogClass: config.dialogClass || 'nav-modal',
+          dialogClass: config.dialogClass,
           dismissWithOutsideClick: false,
           dismissWithEscape: false,
           controller: name,
@@ -55,6 +55,8 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         navigation._registerCategory({
           name,
+          icon: config.icon,
+          pack: config.pack || 'frost',
           columns: config.model || []
         }).then(function (category) {
           callback.call({
@@ -84,7 +86,7 @@ export default {
           self.element.columns.push(c = [
             {
               title: name,
-              color: config.color || 'cyan',
+              color: config.color || '#009eef',
               routes: config.routes || [],
               actions: config.actions || []
             }
@@ -121,7 +123,7 @@ export default {
         let c
         self.element.push(c = {
           title: name,
-          color: config.color || 'cyan',
+          color: config.color || '#009eef',
           routes: config.routes || [],
           actions: config.actions || []
         })
@@ -155,6 +157,7 @@ export default {
           name,
           description: config.description,
           icon: config.icon,
+          pack: config.pack || 'frost',
           route: config.route
         })
         callback.call({
@@ -183,6 +186,7 @@ export default {
           name,
           description: config.description,
           icon: config.icon,
+          pack: config.pack || 'frost',
           action: config.action,
           dismiss: config.dismiss || true
         })

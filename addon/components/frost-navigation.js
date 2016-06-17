@@ -9,7 +9,6 @@ const {
 export default Component.extend({
   classNames: ['frost-navigation'],
   layout,
-
   nav: Ember.inject.service('frost-navigation'),
   transitionService: Ember.inject.service('liquid-fire-transitions'),
   categories: Ember.computed.alias('nav.categories'),
