@@ -60,7 +60,7 @@
     "ember-computed-decorators": "^0.2.2",
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-sass": "^5.2.0",
-    "liquid-fire": "^0.23.0"
+    "liquid-fire": "srowhani/liquid-fire"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

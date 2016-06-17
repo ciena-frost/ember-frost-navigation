@@ -22,7 +22,7 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         self.modal('nav-modal', {
           withParams: 'activeCategory',
-          dialogClass: config.dialogClass || 'nav-modal',
+          dialogClass: config.dialogClass,
           dismissWithOutsideClick: false,
           dismissWithEscape: false,
           controller: name,

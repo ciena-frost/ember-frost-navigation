@@ -12,13 +12,14 @@ Router.map(function () {
   }, function () {
     this.category('category1', {}, function () {
       this.column('column1', {
-        color: 'green'
+        color: '#009eef'
       }, function () {
         this.app('app1', {
           description: 'description1',
           icon: 'sample'
         })
         this.section('section1', function () {
+          color: '#a1e7ff',
           this.action('action1', {
             action: 'doThis'
           })
