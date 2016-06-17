@@ -57,7 +57,7 @@ export default {
           name,
           icon: config.icon,
           pack: config.pack || 'frost',
-          columns: config.model || [],
+          columns: config.model || []
         }).then(function (category) {
           callback.call({
             column: obj.column.bind({
