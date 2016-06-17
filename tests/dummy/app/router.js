@@ -18,8 +18,9 @@ Router.map(function () {
           description: 'description1',
           icon: 'sample'
         })
-        this.section('section1', function () {
-          color: '#a1e7ff',
+        this.section('section1', {
+          color: '#a1e7ff'
+        }, function () {
           this.action('action1', {
             action: 'doThis'
           })
