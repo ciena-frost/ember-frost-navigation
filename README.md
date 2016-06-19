@@ -36,7 +36,7 @@ this.nav('demo', function () {
   this.category('category1', {}, function () {
     this.column('column1', { color: 'green' }, function () {
       this.app('app1', { description: 'description1', icon: 'sample' })
-      this.section('section1', function () { 
+      this.section('section1', function () {
         this.action('action1', { action: 'doThis' })
         this.app('app2')
       })
@@ -66,6 +66,10 @@ Creates a navigation drop-down by the name `categoryName`, with properties confi
 | Property | Description                         |
 |----------|-------------------------------------|
 | model  | Array of columns for given category |
+| icon  | Icon to use along side `categoryName`. Utilizes [ember-frost-core](http://ciena-frost.github.io/ember-frost-core/#/icons)|
+| pack (default=frost) | Icon pack |
+
+
 
 `this.column(String columnName, Object config, Function callback)`
 
@@ -73,7 +77,7 @@ Creates a column listed under the parent `category`
 
 | Property | Description                               |
 |----------|-------------------------------------------|
-| color    | Color of the title line                   |
+| color (default='#009eef')   | Color of the title line                 |
 | routes   | An array of routes that can be passed in  |
 | actions  | An array of actions that can be passed in |
 
@@ -83,7 +87,7 @@ In terms of usage works the same as a column, but appears under a column. Sectio
 
 | Property | Description                               |
 |----------|-------------------------------------------|
-| color    | Color of the title line                   |
+| color (default='#009eef')   | Color of the title line                 |
 | routes   | An array of routes that can be passed in  |
 | actions  | An array of actions that can be passed in |
 
@@ -93,7 +97,9 @@ Creates a route / engine against the `RouterDSL`. Must be created within the con
 
 | Property    | Description                                 |
 |-------------|---------------------------------------------|
-| icon        | Create the app with an icon                 |
+| type (default=route) | Either 'engine' or 'route', allows RouterDSL to properly set up your app |
+| icon  | Icon to use along side `appName`. Utilizes [ember-frost-core](http://ciena-frost.github.io/ember-frost-core/#/icons)|
+| pack (default=frost) | Icon pack |
 | description | Text that describes the app                 |
 | route       | Route name for your routable engine / route |
 
@@ -101,7 +107,8 @@ Creates a route / engine against the `RouterDSL`. Must be created within the con
 
 | Property    | Description                                                                      |
 |-------------|----------------------------------------------------------------------------------|
-| icon        | Create the action with an icon                                                   |
+| icon  | Icon to use along side `actionName`. Utilizes [ember-frost-core](http://ciena-frost.github.io/ember-frost-core/#/icons)|
+| pack (default=frost) | Icon pack |
 | description | Text that describes the action                                                   |
 | action      | String that references parent controller for a method to execute on action click |
 | dismiss     | Boolean flag to dismiss the navigation modal on action complete                  |

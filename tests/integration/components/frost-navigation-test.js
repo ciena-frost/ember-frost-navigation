@@ -7,15 +7,10 @@ import {
 import hbs from 'htmlbars-inline-precompile'
 
 describeComponent(
-  'nav-category',
-  'Integration: NavCategoryComponent',
+  'frost-navigation',
+  'Integration: FrostNavigationComponent',
   {
     integration: true
   },
-  function () {
-    it('renders', function () {
-      this.render(hbs`{{nav-category}}`)
-      expect(this.$()).to.have.length(1)
-    })
-  }
+  function () {}
 )

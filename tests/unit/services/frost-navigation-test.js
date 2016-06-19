@@ -18,5 +18,12 @@ describeModule(
       let service = this.subject()
       expect(service).to.be.ok
     })
+    it('adds categories correctly', function () {
+      let service = this.subject()
+      service._registerCategory({
+        name: 'Test name'
+      })
+      expect(service.categories).to.not.be.empty
+    })
   }
 )
