@@ -157,9 +157,13 @@
     flex-direction: row;
     align-items: center;
     font-weight: 200;
-    text-align: initial;
     &+ .nav-route {
       margin-top: 25px;
+    }
+    .content {
+      display: flex;
+      flex-direction: row;
+      text-align: initial;
     }
   }
 
