@@ -16,11 +16,19 @@ Router.map(function () {
       }, function () {
         this.app('app1', {
           description: 'description1',
+          pack: 'dummy',
           icon: 'sample'
         })
         this.section('section1', {
           color: '#a1e7ff'
         }, function () {
+          this.link('Google', {
+            url: 'http://google.ca',
+            description: 'Go to google',
+            pack: 'dummy',
+            icon: 'sample'
+          })
+          this.link('http://google.ca')
           this.action('action1', {
             action: 'doThis'
           })
