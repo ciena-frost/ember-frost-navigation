@@ -150,7 +150,9 @@ export default {
       let args = argify(...arguments)
       let self = this
       Ember.assert(A.app, self.parent.type === 'section' || self.parent.type === 'column')
-      ;(function (name, config = {type: 'route'}, callback = function () {}) {
+      ;(function (name, config = {}, callback = function () {}) {
+        config.type = config.type || 'route'
+        Ember.assert(A.type, config.type)
         self.DSL[config.type === 'engine' ? 'mount' : 'route'](name, config)
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         e.push({
