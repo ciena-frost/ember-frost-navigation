@@ -27,6 +27,21 @@
                   route=route.route
                 }}
               {{/each}}
+              {{#each section.links as |link|}}
+                <a class='frost-link nav-route' href='{{link.url}}' target="_blank">
+                  <div class='nav-route-icon'>
+                    {{frost-icon pack=link.pack icon=link.icon}}
+                  </div>
+                  <div>
+                    <div class='nav-route-name'>
+                      {{link.name}}
+                    </div>
+                    <div class='nav-route-description'>
+                      {{link.description}}
+                    </div>
+                  </div>
+                </a>
+              {{/each}}
             </div>
           </div>
         {{/each}}

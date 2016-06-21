@@ -88,7 +88,8 @@ export default {
               title: name,
               color: config.color || '#009eef',
               routes: config.routes || [],
-              actions: config.actions || []
+              actions: config.actions || [],
+              links: config.links || []
             }
           ])
           let o = {
@@ -104,7 +105,8 @@ export default {
           callback.call({
             section: obj.section.bind(o),
             app: obj.app.bind(o),
-            action: obj.action.bind(o)
+            action: obj.action.bind(o),
+            link: obj.link.bind(o)
           })
         } else {
           Ember.assert('Problem in the pipeline')
@@ -125,7 +127,8 @@ export default {
           title: name,
           color: config.color || '#009eef',
           routes: config.routes || [],
-          actions: config.actions || []
+          actions: config.actions || [],
+          links: config.links || []
         })
         let o = {
           parent: {
@@ -138,7 +141,8 @@ export default {
         }
         callback.call({
           app: obj.app.bind(o),
-          action: obj.action.bind(o)
+          action: obj.action.bind(o),
+          link: obj.link.bind(o)
         })
       })(args.string, args.object, args.function)
     }
@@ -195,6 +199,29 @@ export default {
         callback.call({
           parent: {
             type: 'action',
+            name,
+            config
+          }
+        })
+      })(args.string, args.object, args.function)
+    }
+    obj.link = function () {
+      let args = argify(...arguments)
+      let self = this
+      Ember.assert(A.link, self.parent.type === 'section' || self.parent.type === 'column')
+      ;(function (name, config = {}, callback = function () {}) {
+        let e = self.parent.type === 'section' ? self.element.links : self.element[0].links
+        e.push({
+          name,
+          description: config.description,
+          icon: config.icon,
+          pack: config.pack || 'frost',
+          url: config.url || name,
+          openInNewTab: config.openInNewTab || true
+        })
+        callback.call({
+          parent: {
+            type: 'link',
             name,
             config
           }
