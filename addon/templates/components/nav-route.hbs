@@ -1,11 +1,31 @@
-<div class='nav-route-icon'>
-  {{frost-icon pack=pack icon=icon}}
-</div>
-<div>
-  <div class='nav-route-name'>
-    {{name}}
-  </div>
-  <div class='nav-route-description'>
-    {{description}}
-  </div>
-</div>
+{{#unless url}}
+  {{#frost-link route disabled=true}}
+    <div class='content'>
+      <div class='nav-route-icon'>
+        {{frost-icon pack=pack icon=icon}}
+      </div>
+      <div>
+        <div class='nav-route-name'>
+          {{name}}
+        </div>
+        <div class='nav-route-description'>
+          {{description}}
+        </div>
+      </div>
+    </div>
+  {{/frost-link}}
+{{else}}
+  <a class='frost-link content' href='{{url}}' target="_blank">
+    <div class='nav-route-icon'>
+      {{frost-icon pack=pack icon=icon}}
+    </div>
+    <div>
+      <div class='nav-route-name'>
+        {{name}}
+      </div>
+      <div class='nav-route-description'>
+        {{description}}
+      </div>
+    </div>
+  </a>
+{{/unless}}

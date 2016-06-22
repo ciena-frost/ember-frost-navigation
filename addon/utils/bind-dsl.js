@@ -88,8 +88,7 @@ export default {
               title: name,
               color: config.color || '#009eef',
               routes: config.routes || [],
-              actions: config.actions || [],
-              links: config.links || []
+              actions: config.actions || []
             }
           ])
           let o = {
@@ -127,8 +126,7 @@ export default {
           title: name,
           color: config.color || '#009eef',
           routes: config.routes || [],
-          actions: config.actions || [],
-          links: config.links || []
+          actions: config.actions || []
         })
         let o = {
           parent: {
@@ -210,7 +208,7 @@ export default {
       let self = this
       Ember.assert(A.link, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
-        let e = self.parent.type === 'section' ? self.element.links : self.element[0].links
+        let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         e.push({
           name,
           description: config.description,

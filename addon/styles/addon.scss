@@ -37,7 +37,7 @@
     cursor: pointer;
     flex-direction: row;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px;
     border-right: 1px solid rgba($frost-color-white, 0.2);
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -152,13 +152,17 @@
   }
 
   .nav-route {
-    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
-    text-align: initial;
+    font-weight: 200;
     &+ .nav-route {
       margin-top: 25px;
+    }
+    .content {
+      display: flex;
+      flex-direction: row;
+      text-align: initial;
     }
   }
 
@@ -180,13 +184,14 @@
 
   .nav-route-name {
     transition: color 0.2s ease;
-    margin-bottom: 5px;
+    cursor: pointer;
     font-size: $frost-font-m;
     color: $frost-color-white;
   }
 
   .nav-route-description {
     font-size: $frost-font-s;
+    padding-top: 4px;
     color: $frost-color-grey-6;
   }
 
