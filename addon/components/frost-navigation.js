@@ -15,30 +15,22 @@ export default Component.extend({
   registerTransitions: Ember.on('init', function () {
     let navigationService = this.get('nav')
     let transitionService = this.get('transitionService')
-
-    let lookup = {
-      navigation: navigationService,
-      controller: this.get('targetObject')
-    }
-    lookup.navigation.set('_controller', lookup.controller)
+    let ctrl = this.get('targetObject')
     transitionService.map(transitions)
 
-    lookup.controller.addObserver(
-      'currentPath',
-      lookup.controller,
-      () => {
-        lookup.navigation.set('_activeCategory', null)
-      }
-    )
-    lookup.navigation.addObserver(
+    navigationService.set('_controller', ctrl)
+    navigationService.addObserver(
       '_activeCategory',
-      lookup.navigation,
+      navigationService,
       () => {
-        let active = lookup.navigation.get('_activeCategory')
+        let active = navigationService.get('_activeCategory')
         if (active) {
-          lookup.controller.set('activeCategory', active)
+          ctrl.set('activeCategory', active)
         }
       }
     )
+    window.addEventListener('popstate', () => {
+      navigationService.set('_activeCategory', null)
+    }, false)
   })
 })

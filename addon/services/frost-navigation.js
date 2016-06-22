@@ -4,6 +4,8 @@ import asserts from 'ember-frost-navigation/utils/asserts'
 export default Ember.Service.extend({
   routing: Ember.inject.service('-routing'),
   _controller: null,
+  _activeCategory: null,
+  categories: Ember.A(),
   _registerCategory (config = {}) {
     return new Ember.RSVP.Promise((resolve, reject) => {
       Ember.assert(asserts.categoryName, config.name)
@@ -63,7 +65,5 @@ export default Ember.Service.extend({
       this.set('_activeCategory', null)
     }
     _actionHandler(item)
-  },
-  _activeCategory: null,
-  categories: Ember.A()
+  }
 })
