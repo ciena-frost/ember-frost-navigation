@@ -38,15 +38,32 @@
     flex-direction: row;
     align-items: center;
     padding: 10px 20px;
+    transition: all 0.5s ease;
     border-right: 1px solid rgba($frost-color-white, 0.2);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    &.disabled {
+    .nav-category-name {
+      transition: all 0.5s ease;
+      margin-bottom: 3px;
+      font-size: 18px;
+      font-weight: 300;
+      color: $frost-color-grey-6;
+    }
+    &:hover {
       .nav-category-name {
-        color: $frost-color-grey-6;
+        color: $frost-color-white;
       }
+    }
+    &.active {
+      background: rgba(0,0,0,0.1);
+      .nav-category-name {
+        color: $frost-color-white;
+      }
+    }
+    &.disabled {
+      color: $frost-color-grey-5;
     }
   }
 
@@ -60,7 +77,6 @@
     margin-bottom: 5px;
     font-size: $frost-font-m;
     font-weight: 300;
-    color: $frost-color-white;
   }
 
   .nav-modal {
@@ -156,6 +172,36 @@
     flex-direction: row;
     align-items: center;
     font-weight: 200;
+    .frost-link {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: 3px;
+      padding: 3px;
+      width: 100%;
+      .content {
+        padding-left: 1px;
+        justify-content: initial;
+      }
+      &:focus {
+        box-shadow: 0px 0px 6px #fff;
+        outline: none;
+        background: rgba(0,0,0,0.2);
+        .nav-route-name {
+          color: $frost-color-white;
+        }
+        .nav-route-description {
+          color: $frost-color-lgrey-2;
+        }
+      }
+    }
+    &:hover {
+      .nav-route-name {
+        color: $frost-color-white;
+      }
+      .nav-route-description {
+        color: $frost-color-lgrey-2;
+      }
+    }
     &+ .nav-route {
       margin-top: 25px;
     }
@@ -164,35 +210,28 @@
       flex-direction: row;
       text-align: initial;
     }
-  }
+    .nav-route-icon {
+      height: 50px;
+      margin-right: 15px;
+    }
 
-  .nav-route:hover {
+    .nav-route-icon .frost-icon {
+      width: 50px;
+      height: 50px;
+    }
+
     .nav-route-name {
+      transition: all 0.2s ease;
+      font-size: $frost-font-m;
+      color: $frost-color-lgrey-3;
+    }
+
+    .nav-route-description {
+      transition: all 0.2s ease;
+      font-size: $frost-font-s;
+      padding-top: 4px;
       color: $frost-color-grey-6;
     }
-  }
-
-  .nav-route-icon {
-    height: 50px;
-    margin-right: 15px;
-  }
-
-  .nav-route-icon .frost-icon {
-    width: 50px;
-    height: 50px;
-  }
-
-  .nav-route-name {
-    transition: color 0.2s ease;
-    cursor: pointer;
-    font-size: $frost-font-m;
-    color: $frost-color-white;
-  }
-
-  .nav-route-description {
-    font-size: $frost-font-s;
-    padding-top: 4px;
-    color: $frost-color-grey-6;
   }
 
   .frost-icon-add {

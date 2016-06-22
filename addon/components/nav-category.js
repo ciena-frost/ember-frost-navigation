@@ -7,6 +7,10 @@ import {
 export default Ember.Component.extend({
   nav: Ember.inject.service('frost-navigation'),
   classNames: ['nav-category'],
+  classNameBindings: ['active'],
+  active: Ember.computed('nav._activeCategory', function () {
+    return this.name === this.get('nav._activeCategory')
+  }),
   layout,
   propTypes: {
     icon: PropTypes.string.isRequired,
@@ -27,7 +31,7 @@ export default Ember.Component.extend({
       navService.set('_activeCategory', null)
     } else if (typeof activeCategory === 'string') {
       navService.set('_activeCategory', null)
-      Ember.run.later(function () {
+      Ember.run.later(() => {
         navService.set('_activeCategory', name)
       }, 100)
     } else {
