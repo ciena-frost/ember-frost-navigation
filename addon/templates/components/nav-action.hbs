@@ -1,13 +1,15 @@
-<div class='nav-route'>
-  <div class='nav-route-icon' style='color: blue'>
-    {{frost-icon pack=item.pack icon=item.icon}}
-  </div>
-  <div>
-    <div class='nav-route-name'>
-      {{item.name}}
+{{#frost-link route disabled=true}}
+  <div class='content'>
+    <div class='nav-route-icon'>
+      {{frost-icon pack=item.pack icon=item.icon}}
     </div>
-    <div class='nav-route-description'>
-      {{item.description}}
+    <div>
+      <div class='nav-route-name'>
+        {{item.name}}
+      </div>
+      <div class='nav-route-description'>
+        {{item.description}}
+      </div>
     </div>
   </div>
-</div>
+{{/frost-link}}

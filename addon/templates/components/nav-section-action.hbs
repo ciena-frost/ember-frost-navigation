@@ -1,13 +1,13 @@
 <div class='nav-section'>
   <div {{action 'back'}} class='nav-section-header' style='border-bottom-color: {{section.color}};'>
-  <div>
-    <div style='display: inline-block; color:{{section.color}}'>
-      {{frost-icon class="actions-icon" icon='chevron'}}
+    <div>
+      <div style='display: inline-block; color:{{section.color}}'>
+        {{frost-icon class="actions-icon" icon='chevron'}}
+      </div>
+      <div class='title'>{{section.title}}'s actions</div>
     </div>
-    <div class='title'>{{section.title}}'s actions</div>
   </div>
+  {{#each section.actions as |item|}}
+    {{nav-action item=item}}
+  {{/each}}
 </div>
-</div>
-{{#each section.actions as |item|}}
-  {{nav-action item=item}}
-{{/each}}
