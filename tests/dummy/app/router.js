@@ -5,13 +5,15 @@ var Router = Ember.Router.extend({
   location: config.locationType
 })
 Router.map(function () {
-  this.nav('demo', function () {
+  this.nav('demo', {
+    path: '/'
+  }, function () {
     this.category('category1', {}, function () {
       this.column('column1', {
         color: '#009eef'
       }, function () {
         this.app('app1', {
-          route: 'demo.go',
+          route: 'go',
           description: 'description1',
           pack: 'dummy',
           icon: 'sample'
@@ -38,10 +40,6 @@ Router.map(function () {
       this.column('column2')
     })
   })
-
-  this.route('demo', {
-    path: '/'
-  }, function () {})
 })
 
 export default Router

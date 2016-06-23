@@ -37,16 +37,30 @@ export default {
             navigation._registerCategory(e)
           })
         }
-        callback.call({
-          category: obj.category.bind({
-            parent: {
-              type: 'nav',
-              name,
-              config
-            },
-            DSL: self
+        let parent = {
+          type: 'nav',
+          name,
+          config
+        }
+        if (name !== 'application') {
+          self.route(name, config, function () {
+            callback.call({
+              category: obj.category.bind({
+                top: parent,
+                parent,
+                DSL: this
+              })
+            })
           })
-        })
+        } else {
+          callback.call({
+            category: obj.category.bind({
+              top: parent,
+              parent,
+              DSL: self
+            })
+          })
+        }
       })(args.string, args.object, args.function)
     }
     /**
@@ -69,6 +83,7 @@ export default {
         })
         callback.call({
           column: obj.column.bind({
+            top: self.top,
             parent: {
               type: 'category',
               name,
@@ -103,6 +118,7 @@ export default {
             }
           ])
           let o = {
+            top: self.top,
             parent: {
               type: 'column',
               name,
@@ -141,6 +157,7 @@ export default {
           actions: config.actions || []
         })
         let o = {
+          top: self.top,
           parent: {
             type: 'section',
             name,
@@ -173,12 +190,15 @@ export default {
         Ember.assert(A.route, config.route)
         self.DSL.route(config.route, config)
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
+        let route = self.top.name !== 'application'
+          ? `${self.top.name}.${config.route}`
+          : config.route
         e.push({
           name,
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route: config.route
+          route
         })
         callback.call({
           parent: {
@@ -208,12 +228,15 @@ export default {
         config.as = config.as || config.route
         self.DSL.mount(config.package, config)
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
+        let route = self.top.name !== 'application'
+          ? `${self.top.name}.${config.route}`
+          : config.route
         e.push({
           name,
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route: config.route
+          route
         })
         callback.call({
           parent: {
