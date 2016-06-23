@@ -16,6 +16,9 @@
     border: initial;
     padding: initial;
   }
+  .lm-container {
+    cursor: initial;
+  }
   .nav-modal {
     background: rgba(51,66,79,0.85);
     border: none;
@@ -135,6 +138,7 @@
     }
     .nav-section-actions {
       align-items: center;
+      cursor: pointer;
       display: flex;
       flex-direction: row;
       font-size: $frost-font-m;
