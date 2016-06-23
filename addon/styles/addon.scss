@@ -114,6 +114,9 @@
       font-weight: 200;
       margin-bottom: 30px;
       padding-bottom: 5px;
+      .pointer {
+        cursor: pointer;
+      }
       & .title {
         display: inline-block;
         padding-left: 10px;
@@ -126,42 +129,7 @@
         align-items: initial;
       }
     }
-    .nav-section-action {
-      .nav-section {
-        .nav-section-header {
-          transition: color 0.2s ease;
-          &:hover {
-            color: $frost-color-grey-6;
-          }
-        }
-      }
-    }
-    .nav-section-actions {
-      align-items: center;
-      cursor: pointer;
-      display: flex;
-      flex-direction: row;
-      font-size: $frost-font-m;
-      height: 30px;
-      margin-left: auto;
-      transition: color 0.2s ease;
-      &:hover {
-        color: $frost-color-grey-6;
-      }
-      &+ .nav-section-action {
-        border-left: 1px solid rgba($frost-color-white, 0.2);
-        margin-left: 10px;
-        padding-left: 10px;
-      }
-      & .frost-icon {
-        height: 30px;
-        width: 30px;
-      }
-      & .sub {
-        font-size: $frost-font-s;
-        padding-right: 5px;
-      }
-    }
+
     .nav-route {
       align-items: center;
       display: flex;
@@ -234,6 +202,35 @@
       & svg rect {
         fill: $frost-color-blue-1;
       }
+    }
+  }
+  .nav-section-action {
+    .nav-section-header {
+      transition: color 0.2s ease;
+      &:hover {
+        color: $frost-color-grey-6;
+      }
+    }
+  }
+  .nav-section-actions {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    font-size: $frost-font-m;
+    height: 30px;
+    margin-left: auto;
+    transition: color 0.2s ease;
+    &:hover {
+      color: $frost-color-grey-6;
+    }
+    & .frost-icon {
+      height: 30px;
+      width: 30px;
+    }
+    & .sub {
+      font-size: $frost-font-s;
+      padding-right: 5px;
     }
   }
 }
