@@ -16,10 +16,9 @@ export default {
     /**
      * Initializes the navigation bar
      * @parent Ember.RouterDSL
-     * @param config.dialogClass
-     * @param config.actions
-     * @param config.model
-     * @return void
+     * @param {string} config.dialogClass class to apply to liquid-modal
+     * @param {object} config.actions actions to pass up to liquid-modal
+     * @param {array} config.model predefined model to be rendered
      */
     proto.nav = function () {
       let args = argify(...arguments)
@@ -53,10 +52,9 @@ export default {
     /**
      * Category as a navigation bar entry
      * @parent {type:nav}
-     * @param config.icon
-     * @param config.pack
-     * @param config.model
-     * @return void
+     * @param {string} config.icon icon
+     * @param {string} config.pack icon pack
+     * @param {array} config.model predefined category model
      */
     obj.category = function () {
       let args = argify(...arguments)
@@ -85,10 +83,9 @@ export default {
     /**
      * Creates a column viewable within a category
      * @parent {type:category}
-     * @param config.color
-     * @param config.routes
-     * @param config.actions
-     * @return void
+     * @param {string} config.color color
+     * @param {array} config.routes predefined routes array
+     * @param {array} config.actions predefined actions array
      */
     obj.column = function () {
       let args = argify(...arguments)
@@ -127,10 +124,9 @@ export default {
     /**
      * Creates a section under within a category
      * @parent {type:category}
-     * @param config.color
-     * @param config.routes
-     * @param config.actions
-     * @return void
+     * @param {string} config.color color
+     * @param {array} config.routes predefined routes array
+     * @param {array} config.actions predefined actions array
      */
     obj.section = function () {
       let args = argify(...arguments)
@@ -164,11 +160,10 @@ export default {
     /**
      * Creates a routable route instance
      * @parent {type:[column, section]}
-     * @param config.description
-     * @param config.icon
-     * @param config.pack
-     * @param config.route
-     * @return void
+     * @param {string} config.description description
+     * @param {string} config.icon icon
+     * @param {string} config.pack icon pack
+     * @param {string} config.route route to navigate to
      */
     obj.app = function () {
       let args = argify(...arguments)
@@ -197,13 +192,11 @@ export default {
     /**
      * Creates a routable engine instance
      * @parent {type:[column, section]}
-     * @param config.package
-     * @param config.route
-     * @param config.path
-     * @param config.description
-     * @param config.icon
-     * @param config.pack
-     * @return void
+     * @param {string} config.package package name for engine
+     * @param {string} config.route route name for nav entry
+     * @param {string} config.description description
+     * @param {string} config.icon icon
+     * @param {string} config.pack icon pack
      */
     obj.engine = function () {
       let args = argify(...arguments)
@@ -235,11 +228,11 @@ export default {
      * Creates a menu item that serves as an action,
      * without performing a transition
      * @parent {type:[column, section]}
-     * @param config.description
-     * @param config.icon
-     * @param config.pack
-     * @param config.action
-     * @param config.dismiss
+     * @param {string} config.description description
+     * @param {string} config.icon icon
+     * @param {string} config.pack icon pack
+     * @param {string} config.action key for action on controller
+     * @param {boolean} config.dismiss flag to dismiss modal after click
      */
     obj.action = function () {
       let args = argify(...arguments)
@@ -268,12 +261,11 @@ export default {
     /**
      * Creates a link accessible from frost-navigation
      * @parent {type:[column, section]}
-     * @param config.description
-     * @param config.icon
-     * @param config.pack
-     * @param config.url
-     * @param config.openInNewTab
-     * @return void
+     * @param {string} config.description description
+     * @param {string} config.icon icon
+     * @param {string} config.pack icon pack
+     * @param {string} config.url url to set href to
+     * @param {boolean} config.openInNewTab flag to open in new tab
      */
     obj.link = function () {
       let args = argify(...arguments)

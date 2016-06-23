@@ -5,37 +5,39 @@
   flex-direction: row;
 
   & > div:first-of-type {
+    border-bottom: 1px solid $frost-color-grey-2;
     border-left: 1px solid rgba($frost-color-white, 0.2);
+    overflow: hidden;
   }
   .lf-dialog {
     border: initial;
     padding: initial;
   }
   .nav-modal {
-    position: fixed;
-    top: 50px;
+    background: rgba($frost-color-night-2, 0.8);
+    border: none;
     left:0;
-    width: 100%;
-    min-height: 500px;
     max-height: 80vh;
     max-width: none;
-    padding: 0;
-    border: none;
+    min-height: 500px;
     overflow-x: hidden;
-    background: rgba($frost-color-night-2, 0.8);
+    padding: 0;
+    position: fixed;
+    top: 50px;
+    width: 100%;
     & .liquid-container .liquid-child {
       display: flex;
       flex-direction: row;
+      max-height: 80vh;
+      min-height: 500px;
       overflow: initial;
       overflow-x: hidden;
-      min-height: 500px;
-      max-height: 80vh;
 
     }
     svg.actions-icon.frost-icon {
+      fill: currentColor;
       height: 15px;
       width: 15px;
-      fill: currentColor;
     }
     .flip {
       transform: rotate(180deg);
@@ -43,29 +45,29 @@
   }
 
   .nav-category {
-    display: flex;
-    cursor: pointer;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px 20px;
-    transition: all 0.5s ease;
-    border-right: 1px solid rgba($frost-color-white, 0.2);
-    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    -webkit-user-select: none;
+    align-items: center;
+    border-right: 1px solid rgba($frost-color-white, 0.2);
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    transition: all 0.5s ease;
     user-select: none;
 
     .nav-category-icon .frost-icon {
-      width: 30px;
       height: 30px;
       margin-right: 10px;
+      width: 30px;
     }
     .nav-category-name {
-      transition: all 0.5s ease;
-      margin-bottom: 5px;
+      color: $frost-color-grey-6;
       font-size: 18px;
       font-weight: 300;
-      color: $frost-color-grey-6;
+      margin-bottom: 5px;
+      transition: all 0.5s ease;
     }
     &:hover {
       .nav-category-name {
@@ -73,7 +75,7 @@
       }
     }
     &.active {
-      background: rgba(0,0,0,0.1);
+      background: rgba(39,36,37,0.5);
       .nav-category-name {
         color: $frost-color-white;
       }
@@ -86,8 +88,8 @@
 
   }
   .nav-column {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     padding: 30px;
 
@@ -101,15 +103,15 @@
       margin-top: 50px;
     }
     .nav-section-header {
+      align-items: center;
+      border-bottom: 1px solid $frost-color-white;
+      color: $frost-color-white;
       display: flex;
       flex-direction: row;
-      align-items: center;
+      font-size: $frost-font-l; // Override colors using inline style
+      font-weight: 200;
       margin-bottom: 30px;
       padding-bottom: 5px;
-      border-bottom: 1px solid $frost-color-white; // Override colors using inline style
-      font-size: $frost-font-l;
-      font-weight: 200;
-      color: $frost-color-white;
       & .title {
         display: inline-block;
         padding-left: 10px;
@@ -133,24 +135,24 @@
       }
     }
     .nav-section-actions {
-      height: 30px;
+      align-items: center;
       display: flex;
       flex-direction: row;
-      align-items: center;
-      margin-left: auto;
       font-size: $frost-font-m;
+      height: 30px;
+      margin-left: auto;
       transition: color 0.2s ease;
       &:hover {
         color: $frost-color-grey-6;
       }
       &+ .nav-section-action {
-        padding-left: 10px;
-        margin-left: 10px;
         border-left: 1px solid rgba($frost-color-white, 0.2);
+        margin-left: 10px;
+        padding-left: 10px;
       }
       & .frost-icon {
-        width: 30px;
         height: 30px;
+        width: 30px;
       }
       & .sub {
         font-size: $frost-font-s;
@@ -159,9 +161,9 @@
     }
 
     .nav-route {
+      align-items: center;
       display: flex;
       flex-direction: row;
-      align-items: center;
       font-weight: 200;
       .content {
         text-align: initial;
@@ -170,36 +172,36 @@
         height: 50px;
         margin-right: 15px;
         .frost-icon {
-          width: 50px;
           height: 50px;
+          width: 50px;
         }
       }
 
       .nav-route-name {
-        transition: all 0.2s ease;
-        font-size: $frost-font-m;
         color: $frost-color-lgrey-3;
+        font-size: $frost-font-m;
+        transition: all 0.2s ease;
       }
 
       .nav-route-description {
-        transition: all 0.2s ease;
+        color: $frost-color-grey-6;
         font-size: $frost-font-s;
         padding-top: 4px;
-        color: $frost-color-grey-6;
+        transition: all 0.2s ease;
       }
       .frost-link {
-        cursor: pointer;
-        transition: all 0.2s ease;
         border-radius: 3px;
+        cursor: pointer;
         padding: 3px;
+        transition: all 0.2s ease;
         width: 100%;
         .content {
           justify-content: initial;
         }
         &:focus {
+          background: rgba(0,0,0,0.2);
           box-shadow: 0px 0px 6px #fff;
           outline: none;
-          background: rgba(0,0,0,0.2);
           .nav-route-name {
             color: $frost-color-white;
           }

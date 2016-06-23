@@ -5,8 +5,6 @@ var Router = Ember.Router.extend({
   location: config.locationType
 })
 Router.map(function () {
-  let routerConfig = config.APP.routingConfig
-
   this.nav('demo', function () {
     this.category('category1', {}, function () {
       this.column('column1', {
