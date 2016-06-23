@@ -66,7 +66,6 @@
       color: $frost-color-grey-6;
       font-size: 18px;
       font-weight: 300;
-      margin-bottom: 5px;
       transition: all 0.5s ease;
     }
     &:hover {
@@ -83,9 +82,6 @@
     &.disabled {
       color: $frost-color-grey-5;
     }
-  }
-  .nav-modal {
-
   }
   .nav-column {
     display: flex;
@@ -159,7 +155,6 @@
         padding-right: 5px;
       }
     }
-
     .nav-route {
       align-items: center;
       display: flex;
@@ -176,13 +171,11 @@
           width: 50px;
         }
       }
-
       .nav-route-name {
         color: $frost-color-lgrey-3;
         font-size: $frost-font-m;
         transition: all 0.2s ease;
       }
-
       .nav-route-description {
         color: $frost-color-grey-6;
         font-size: $frost-font-s;
