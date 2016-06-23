@@ -7,17 +7,20 @@ var Router = Ember.Router.extend({
 Router.map(function () {
   let routerConfig = config.APP.routingConfig
 
-  this.nav('demo', {
-    model: routerConfig.categories
-  }, function () {
+  this.nav('demo', function () {
     this.category('category1', {}, function () {
       this.column('column1', {
         color: '#009eef'
       }, function () {
         this.app('app1', {
+          route: 'demo.go',
           description: 'description1',
           pack: 'dummy',
           icon: 'sample'
+        })
+        this.engine('Blog Engine', {
+          route: 'blog',
+          package: 'ember-blog-engine'
         })
         this.section('section1', {
           color: '#a1e7ff'
@@ -38,9 +41,9 @@ Router.map(function () {
     })
   })
 
-  this.route('demo', { path: '/' }, function () {
-    this.route('go')
-  })
+  this.route('demo', {
+    path: '/'
+  }, function () {})
 })
 
 export default Router

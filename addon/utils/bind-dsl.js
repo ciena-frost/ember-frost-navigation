@@ -14,7 +14,12 @@ export default {
     let obj = {}
 
     /**
-     * Initializes the nav
+     * Initializes the navigation bar
+     * @parent Ember.RouterDSL
+     * @param config.dialogClass
+     * @param config.actions
+     * @param config.model
+     * @return void
      */
     proto.nav = function () {
       let args = argify(...arguments)
@@ -46,35 +51,44 @@ export default {
       })(args.string, args.object, args.function)
     }
     /**
-     * Creates a menu item on the navigation bar.
+     * Category as a navigation bar entry
+     * @parent {type:nav}
+     * @param config.icon
+     * @param config.pack
+     * @param config.model
+     * @return void
      */
     obj.category = function () {
       let args = argify(...arguments)
       let self = this
       Ember.assert(A.category, self.parent.type === 'nav')
       ;(function (name, config = {}, callback = function () {}) {
-        navigation._registerCategory({
+        let category = navigation._registerCategory({
           name,
           icon: config.icon,
           pack: config.pack || 'frost',
           columns: config.model || []
-        }).then(function (category) {
-          callback.call({
-            column: obj.column.bind({
-              parent: {
-                type: 'category',
-                name,
-                config
-              },
-              element: category,
-              DSL: self.DSL
-            })
+        })
+        callback.call({
+          column: obj.column.bind({
+            parent: {
+              type: 'category',
+              name,
+              config
+            },
+            element: category,
+            DSL: self.DSL
           })
         })
       })(args.string, args.object, args.function)
     }
     /**
-     * Creates a column that performs under the context of a navigation bar.
+     * Creates a column viewable within a category
+     * @parent {type:category}
+     * @param config.color
+     * @param config.routes
+     * @param config.actions
+     * @return void
      */
     obj.column = function () {
       let args = argify(...arguments)
@@ -100,21 +114,23 @@ export default {
             element: c,
             DSL: self.DSL
           }
-
           callback.call({
             section: obj.section.bind(o),
             app: obj.app.bind(o),
+            engine: obj.engine.bind(o),
             action: obj.action.bind(o),
             link: obj.link.bind(o)
           })
-        } else {
-          Ember.assert('Problem in the pipeline')
         }
       })(args.string, args.object, args.function)
     }
-
     /**
-     * Creates a section under a given column
+     * Creates a section under within a category
+     * @parent {type:category}
+     * @param config.color
+     * @param config.routes
+     * @param config.actions
+     * @return void
      */
     obj.section = function () {
       let args = argify(...arguments)
@@ -140,22 +156,27 @@ export default {
         callback.call({
           app: obj.app.bind(o),
           action: obj.action.bind(o),
+          engine: obj.engine.bind(o),
           link: obj.link.bind(o)
         })
       })(args.string, args.object, args.function)
     }
     /**
-     * Creates a routable interface, either of type
-     * engine or route.
+     * Creates a routable route instance
+     * @parent {type:[column, section]}
+     * @param config.description
+     * @param config.icon
+     * @param config.pack
+     * @param config.route
+     * @return void
      */
     obj.app = function () {
       let args = argify(...arguments)
       let self = this
       Ember.assert(A.app, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
-        config.type = config.type || 'route'
-        Ember.assert(A.type, config.type)
-        self.DSL[config.type === 'engine' ? 'mount' : 'route'](name, config)
+        Ember.assert(A.route, config.route)
+        self.DSL.route(config.route, config)
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         e.push({
           name,
@@ -170,14 +191,55 @@ export default {
             name,
             config
           }
-
         })
       })(args.string, args.object, args.function)
     }
-
+    /**
+     * Creates a routable engine instance
+     * @parent {type:[column, section]}
+     * @param config.package
+     * @param config.route
+     * @param config.path
+     * @param config.description
+     * @param config.icon
+     * @param config.pack
+     * @return void
+     */
+    obj.engine = function () {
+      let args = argify(...arguments)
+      let self = this
+      Ember.assert(A.engine, self.parent.type === 'section' || self.parent.type === 'column')
+      ;(function (name, config = {}, callback = function () {}) {
+        Ember.assert(A.package, config.package)
+        Ember.assert(A.route, config.route)
+        config.as = config.as || config.route
+        self.DSL.mount(config.package, config)
+        let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
+        e.push({
+          name,
+          description: config.description,
+          icon: config.icon,
+          pack: config.pack || 'frost',
+          route: config.route
+        })
+        callback.call({
+          parent: {
+            type: 'app',
+            name,
+            config
+          }
+        })
+      })(args.string, args.object, args.function)
+    }
     /**
      * Creates a menu item that serves as an action,
      * without performing a transition
+     * @parent {type:[column, section]}
+     * @param config.description
+     * @param config.icon
+     * @param config.pack
+     * @param config.action
+     * @param config.dismiss
      */
     obj.action = function () {
       let args = argify(...arguments)
@@ -203,6 +265,16 @@ export default {
         })
       })(args.string, args.object, args.function)
     }
+    /**
+     * Creates a link accessible from frost-navigation
+     * @parent {type:[column, section]}
+     * @param config.description
+     * @param config.icon
+     * @param config.pack
+     * @param config.url
+     * @param config.openInNewTab
+     * @return void
+     */
     obj.link = function () {
       let args = argify(...arguments)
       let self = this

@@ -10,6 +10,8 @@ export default {
   section: `${b}section must be nested within this.column`,
   app: `${b}app must be nested within this.section or this.column`,
   action: `${b}action must be nested within this.section or this.column`,
-  actionConfig: `${b}Configuration object requires property as an action`
-
+  actionConfig: `${b}Configuration object requires property as an action`,
+  categoryExists: `${b}Category already exists`,
+  route: `${b}'config.route must be defined'`,
+  package: `${b}config.package must be defined`
 }
