@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import asserts from 'ember-frost-navigation/utils/asserts'
+import A from 'ember-frost-navigation/utils/asserts'
 
 export default Ember.Service.extend({
   routing: Ember.inject.service('-routing'),
@@ -7,48 +7,17 @@ export default Ember.Service.extend({
   _activeCategory: null,
   categories: Ember.A(),
   _registerCategory (config = {}) {
-    return new Ember.RSVP.Promise((resolve, reject) => {
-      Ember.assert(asserts.categoryName, config.name)
-      let exists = this.categories.some(e => e.name === config.name)
-      Ember.assert('Cannot have more than one categories with the same name', !exists)
-      let c
-      this.categories.push(c = {
-        name: config.name,
-        icon: config.icon,
-        pack: config.pack,
-        columns: config.columns || []
-      })
-      resolve(c)
+    Ember.assert(A.categoryName, config.name)
+    let exists = this.categories.some(e => e.name === config.name)
+    Ember.assert(A.categoryExists, !exists)
+    let c
+    this.categories.push(c = {
+      name: config.name,
+      icon: config.icon,
+      pack: config.pack,
+      columns: config.columns || []
     })
-  },
-  _registerApp (config = {}) {
-    return new Ember.RSVP.Promise((resolve, reject) => {
-      try {
-        let _category = this.categories.find(e => e.name === config.categoryName)
-        Ember.assert(asserts.categoryNotFound, _category)
-        let section = null
-        _category.columns.forEach(function (row) {
-          section = row.find(e => e.title === config.columnTitle)
-        })
-        if (!section) {
-          _category.columns.push([section = {
-            title: config.columnTitle,
-            color: config.color,
-            routes: []
-          }])
-        }
-        section.routes.push({
-          icon: config.icon,
-          pack: config.pack,
-          name: config.name,
-          description: config.description,
-          route: config.route
-        })
-      } catch (e) {
-        reject(e)
-      }
-      resolve(this)
-    })
+    return c
   },
   transitionTo (route) {
     this.get('routing').transitionTo(route)

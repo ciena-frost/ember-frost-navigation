@@ -5,80 +5,90 @@
   flex-direction: row;
 
   & > div:first-of-type {
+    border-bottom: 1px solid $frost-color-grey-2;
     border-left: 1px solid rgba($frost-color-white, 0.2);
+    overflow: hidden;
+    .user {
+      border-left: none;
+    }
   }
   .lf-dialog {
     border: initial;
     padding: initial;
   }
   .nav-modal {
-    position: absolute;
+    background: rgba(51,66,79,0.85);
+    border: none;
+    left:0;
+    max-height: 80vh;
+    max-width: none;
+    min-height: 500px;
+    overflow-x: hidden;
+    padding: 0;
+    position: fixed;
     top: 50px;
     width: 100%;
-    max-width: none;
-    padding: 0;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    left: 0;
-    overflow-x: hidden;
+    & .liquid-container .liquid-child {
+      display: flex;
+      flex-direction: row;
+      max-height: 80vh;
+      min-height: 500px;
+      overflow: initial;
+      overflow-x: hidden;
+
+    }
     svg.actions-icon.frost-icon {
+      fill: currentColor;
       height: 15px;
       width: 15px;
-      fill: currentColor;
     }
     .flip {
       transform: rotate(180deg);
     }
-
   }
 
   .nav-category {
-    display: flex;
-    cursor: pointer;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px 20px;
-    border-right: 1px solid rgba($frost-color-white, 0.2);
-    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    -webkit-user-select: none;
+    align-items: center;
+    border-right: 1px solid rgba($frost-color-white, 0.2);
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    transition: all 0.5s ease;
     user-select: none;
-    &.disabled {
+
+    .nav-category-icon .frost-icon {
+      height: 30px;
+      margin-right: 10px;
+      width: 30px;
+    }
+    .nav-category-name {
+      color: $frost-color-grey-6;
+      font-size: 18px;
+      font-weight: 300;
+      transition: all 0.5s ease;
+    }
+    &:hover {
       .nav-category-name {
-        color: $frost-color-grey-6;
+        color: $frost-color-white;
       }
     }
-  }
-
-  .nav-category-icon .frost-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-  }
-
-  .nav-category-name {
-    margin-bottom: 5px;
-    font-size: $frost-font-m;
-    font-weight: 300;
-    color: $frost-color-white;
-  }
-
-  .nav-modal {
-    width: 100%;
-    min-height: 500px;
-    max-height: 80vh;
-    position: fixed;
-    top: 50px;
-    left:0;
-    background: rgba($frost-color-night-2, 0.8);
-    & .liquid-container .liquid-child {
-      display: flex;
-      flex-direction: row;
+    &.active {
+      background: rgba(39,36,37,0.5);
+      .nav-category-name {
+        color: $frost-color-white;
+      }
+    }
+    &.disabled {
+      color: $frost-color-grey-5;
     }
   }
   .nav-column {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     padding: 30px;
 
@@ -91,116 +101,135 @@
     &+ .nav-section {
       margin-top: 50px;
     }
-  }
-
-  .nav-section-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid $frost-color-white; // Override colors using inline style
-    font-size: $frost-font-l;
-    font-weight: 200;
-    color: $frost-color-white;
-    & .title {
-      display: inline-block;
-      padding-left: 10px;
-      .sub {
+    .nav-section-header {
+      align-items: center;
+      border-bottom: 1px solid $frost-color-white;
+      color: $frost-color-white;
+      display: flex;
+      flex-direction: row;
+      font-size: $frost-font-l; // Override colors using inline style
+      font-weight: 200;
+      margin-bottom: 30px;
+      padding-bottom: 5px;
+      & .title {
         display: inline-block;
-        font-size: $frost-font-s;
+        padding-left: 10px;
+        .sub {
+          display: inline-block;
+          font-size: $frost-font-s;
+        }
+      }
+      & .frost-button > .icon {
+        align-items: initial;
       }
     }
-    & .frost-button > .icon {
-      align-items: initial;
-    }
-  }
-  .nav-section-action {
-    .nav-section {
-      .nav-section-header {
-        transition: color 0.2s ease;
-        &:hover {
-          color: $frost-color-grey-6;
+    .nav-section-action {
+      .nav-section {
+        .nav-section-header {
+          transition: color 0.2s ease;
+          &:hover {
+            color: $frost-color-grey-6;
+          }
         }
       }
     }
-  }
-  .nav-section-actions {
-    height: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: auto;
-    font-size: $frost-font-m;
-    transition: color 0.2s ease;
-    &:hover {
-      color: $frost-color-grey-6;
-    }
-    &+ .nav-section-action {
-      padding-left: 10px;
-      margin-left: 10px;
-      border-left: 1px solid rgba($frost-color-white, 0.2);
-    }
-    & .frost-icon {
-      width: 30px;
-      height: 30px;
-    }
-    & .sub {
-      font-size: $frost-font-s;
-      padding-right: 5px;
-    }
-  }
-
-  .nav-route {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-weight: 200;
-    &+ .nav-route {
-      margin-top: 25px;
-    }
-    .content {
+    .nav-section-actions {
+      align-items: center;
       display: flex;
       flex-direction: row;
-      text-align: initial;
+      font-size: $frost-font-m;
+      height: 30px;
+      margin-left: auto;
+      transition: color 0.2s ease;
+      &:hover {
+        color: $frost-color-grey-6;
+      }
+      &+ .nav-section-action {
+        border-left: 1px solid rgba($frost-color-white, 0.2);
+        margin-left: 10px;
+        padding-left: 10px;
+      }
+      & .frost-icon {
+        height: 30px;
+        width: 30px;
+      }
+      & .sub {
+        font-size: $frost-font-s;
+        padding-right: 5px;
+      }
     }
-  }
+    .nav-route {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      font-weight: 200;
+      .content {
+        text-align: initial;
+      }
+      .frost-link {
+        border-radius: 3px;
+        cursor: pointer;
+        padding: 3px;
+        transition: all 0.2s ease;
+        width: 100%;
+        .content {
+          justify-content: initial;
+        }
+        .nav-route-icon {
+          height: 50px;
+          margin-right: 15px;
+          .frost-icon {
+            height: 50px;
+            width: 50px;
+          }
+        }
+        .nav-route-name {
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          border-bottom-color: transparent;
+          color: $frost-color-lgrey-3;
+          display: inline-block;
+          font-size: $frost-font-m;
+          transition: all 0.2s ease;
+        }
+        .nav-route-description {
+          color: $frost-color-grey-6;
+          font-size: $frost-font-s;
+          padding-top: 4px;
+          transition: all 0.2s ease;
+        }
+        &:focus {
+          background: rgba(0,0,0,0.2);
+          box-shadow: 0px 0px 6px #fff;
+          outline: none;
+          .nav-route-name {
+            color: $frost-color-white;
+          }
+          .nav-route-description {
+            color: $frost-color-lgrey-2;
+          }
+        }
+        &:hover {
+          .nav-route-name {
+            color: $frost-color-white;
+            border-bottom-color: $frost-color-white;
+          }
+          .nav-route-description {
+            color: $frost-color-lgrey-2;
+          }
+        }
+      }
 
-  .nav-route:hover {
-    .nav-route-name {
-      color: $frost-color-grey-6;
+      &+ .nav-route {
+        margin-top: 25px;
+      }
     }
-  }
-
-  .nav-route-icon {
-    height: 50px;
-    margin-right: 15px;
-  }
-
-  .nav-route-icon .frost-icon {
-    width: 50px;
-    height: 50px;
-  }
-
-  .nav-route-name {
-    transition: color 0.2s ease;
-    cursor: pointer;
-    font-size: $frost-font-m;
-    color: $frost-color-white;
-  }
-
-  .nav-route-description {
-    font-size: $frost-font-s;
-    padding-top: 4px;
-    color: $frost-color-grey-6;
-  }
-
-  .frost-icon-add {
-    fill: $frost-color-blue-1;
-
-    & svg rect {
+    .frost-icon-add {
       fill: $frost-color-blue-1;
+
+      & svg rect {
+        fill: $frost-color-blue-1;
+      }
     }
   }
-
 }

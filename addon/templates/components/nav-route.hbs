@@ -15,16 +15,18 @@
     </div>
   {{/frost-link}}
 {{else}}
-  <a class='frost-link content' href='{{url}}' target="_blank">
-    <div class='nav-route-icon'>
-      {{frost-icon pack=pack icon=icon}}
-    </div>
-    <div>
-      <div class='nav-route-name'>
-        {{name}}
+  <a class='frost-link' href='{{url}}' target="_blank">
+    <div class='content'>
+      <div class='nav-route-icon'>
+        {{frost-icon pack=pack icon=icon}}
       </div>
-      <div class='nav-route-description'>
-        {{description}}
+      <div>
+        <div class='nav-route-name'>
+          {{name}}
+        </div>
+        <div class='nav-route-description'>
+          {{description}}
+        </div>
       </div>
     </div>
   </a>

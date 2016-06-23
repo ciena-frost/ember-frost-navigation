@@ -5,19 +5,22 @@ var Router = Ember.Router.extend({
   location: config.locationType
 })
 Router.map(function () {
-  let routerConfig = config.APP.routingConfig
-
   this.nav('demo', {
-    model: routerConfig.categories
+    path: '/'
   }, function () {
     this.category('category1', {}, function () {
       this.column('column1', {
         color: '#009eef'
       }, function () {
         this.app('app1', {
+          route: 'go',
           description: 'description1',
           pack: 'dummy',
           icon: 'sample'
+        })
+        this.engine('Blog Engine', {
+          route: 'blog',
+          package: 'ember-blog-engine'
         })
         this.section('section1', {
           color: '#a1e7ff'
@@ -32,15 +35,10 @@ Router.map(function () {
           this.action('action1', {
             action: 'doThis'
           })
-          this.app('app2')
         })
       })
       this.column('column2')
     })
-  })
-
-  this.route('demo', { path: '/' }, function () {
-    this.route('go')
   })
 })
 
