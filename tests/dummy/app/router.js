@@ -32,7 +32,6 @@ Router.map(function () {
           this.action('action1', {
             action: 'doThis'
           })
-          this.app('app2')
         })
       })
       this.column('column2')

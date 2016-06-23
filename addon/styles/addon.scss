@@ -12,15 +12,26 @@
     padding: initial;
   }
   .nav-modal {
-    position: absolute;
+    position: fixed;
     top: 50px;
+    left:0;
     width: 100%;
+    min-height: 500px;
+    max-height: 80vh;
     max-width: none;
     padding: 0;
     border: none;
-    background-color: rgba(0, 0, 0, 0);
-    left: 0;
     overflow-x: hidden;
+    background: rgba($frost-color-night-2, 0.8);
+    & .liquid-container .liquid-child {
+      display: flex;
+      flex-direction: row;
+      overflow: initial;
+      overflow-x: hidden;
+      min-height: 500px;
+      max-height: 80vh;
+
+    }
     svg.actions-icon.frost-icon {
       height: 15px;
       width: 15px;
@@ -72,17 +83,7 @@
     }
   }
   .nav-modal {
-    width: 100%;
-    min-height: 500px;
-    max-height: 80vh;
-    position: fixed;
-    top: 50px;
-    left:0;
-    background: rgba($frost-color-night-2, 0.8);
-    & .liquid-container .liquid-child {
-      display: flex;
-      flex-direction: row;
-    }
+
   }
   .nav-column {
     flex: 1;
