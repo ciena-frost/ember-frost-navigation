@@ -6,10 +6,12 @@ export default Ember.Component.extend({
   classNames: ['nav-modal'],
   layout,
   nav: Ember.inject.service('frost-navigation'),
+  tabindex: 0,
+  attributeBindings: ['tabindex'],
   activeCategory: null,
   _categoryChanged: function () {
     this.set('activeCategory', this.get('nav._activeCategory'))
-    if (!this.get('activeCategory')) {
+    if (this.get('activeCategory') === null) {
       this.sendAction('dismiss')
     }
   }.observes('nav._activeCategory'),

@@ -27,6 +27,7 @@
     max-width: none;
     min-height: 500px;
     overflow-x: hidden;
+    outline: 0;
     padding: 0;
     position: fixed;
     top: 50px;
@@ -60,7 +61,7 @@
     display: flex;
     flex-direction: row;
     padding: 10px 20px;
-    transition: all 0.5s ease;
+    transition: background 0.5s ease;
     user-select: none;
 
     .nav-category-icon .frost-icon {
@@ -72,7 +73,7 @@
       color: $frost-color-grey-6;
       font-size: 18px;
       font-weight: 300;
-      transition: all 0.5s ease;
+      transition: color 0.5s ease;
     }
     &:hover {
       .nav-category-name {
@@ -142,8 +143,8 @@
         border-radius: 3px;
         cursor: pointer;
         padding: 3px;
-        transition: all 0.2s ease;
         width: 100%;
+        transition: box-shadow 0.3s ease;
         .content {
           justify-content: initial;
         }
@@ -162,13 +163,13 @@
           color: $frost-color-lgrey-3;
           display: inline-block;
           font-size: $frost-font-m;
-          transition: all 0.2s ease;
+          transition: color 0.5s ease;
         }
         .nav-route-description {
           color: $frost-color-grey-6;
           font-size: $frost-font-s;
           padding-top: 4px;
-          transition: all 0.2s ease;
+          transition: color 0.2s ease;
         }
         &:focus {
           background: rgba(0,0,0,0.2);
