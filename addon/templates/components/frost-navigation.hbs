@@ -1,3 +1,4 @@
+{{yield}}
 <div class='frost-application-bar'>
   {{#yield-slot 'logo'}}
     {{yield}}
@@ -9,7 +10,6 @@
       pack=category.pack
     }}
   {{/each}}
-  {{yield}}
   {{#yield-slot 'actions'}}
     {{yield}}
   {{/yield-slot}}
