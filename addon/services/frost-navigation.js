@@ -33,6 +33,6 @@ export default Ember.Service.extend({
     if (item.dismiss) {
       this.set('_activeCategory', null)
     }
-    _actionHandler(item)
+    _actionHandler.call(controller, item)
   }
 })
