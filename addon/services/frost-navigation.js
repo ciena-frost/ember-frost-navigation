@@ -28,11 +28,11 @@ export default Ember.Service.extend({
     let _actionHandler
     Ember.assert(
       `Action[${item.action}] does not exist on controller: ${controller.toString()}`,
-      _actionHandler = controller.get(item.action)
+      !!(_actionHandler = controller.get(item.action))
     )
     if (item.dismiss) {
       this.set('_activeCategory', null)
     }
-    _actionHandler(item)
+    _actionHandler.call(controller, item)
   }
 })
