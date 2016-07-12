@@ -19,7 +19,11 @@ export default Ember.Component.extend({
       pack: 'app'
     }
   },
-  click () {
+  click (e) {
+    if (e.metaKey || e.shiftKey || e.ctrlKey) {
+      this.get('nav').dismiss()
+      return
+    }
     this.get('nav').transitionTo(this.get('route'))
   }
 })

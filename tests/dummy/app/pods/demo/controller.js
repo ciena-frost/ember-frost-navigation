@@ -1,7 +1,16 @@
 import Ember from 'ember'
-
-export default Ember.Controller.extend({
-  doThis () {
-    window.alert('It works')
+const {
+  Controller,
+  Logger
+} = Ember
+export default Controller.extend({
+  actions: {
+    myAction (item) {
+      this.notifications.success(`[${item.action}] fired.`, {
+        autoClear: true,
+        clearDuration: 1000
+      })
+      Logger.log('Item: ', item)
+    }
   }
 })

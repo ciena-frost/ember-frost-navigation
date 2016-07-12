@@ -1,20 +1,25 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
+$z-index-application-bar: 9000;
+$z-index-modal: 8000;
+$z-index-navigation: 7000;
+$z-index-notification: 6000;
+
+.dummy-notification-container {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  z-index: 999;
+  width: 80%;
+  max-width: 200px;
+  margin: auto;
+}
 .dummy-content {
   position: relative;
   top: 50px;
 //  height: calc(100% - 50px);
 }
-
-// Navigation styles
-// ==================
-
-// import from frost-css variables _z_index.scss
-$z-index-application-bar: 9000;
-$z-index-modal: 8000;
-$z-index-navigation: 7000;
-$z-index-notification: 6000;
 
 .dummy-nav {
   .branding {

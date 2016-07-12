@@ -19,20 +19,18 @@ export default Ember.Service.extend({
     })
     return c
   },
+  dismiss () {
+    this.set('_activeCategory', null)
+  },
   transitionTo (route) {
     this.get('routing').transitionTo(route)
-    this.set('_activeCategory', null)
+    this.dismiss()
   },
   performAction (item) {
     let controller = this.get('_controller')
-    let _actionHandler
-    Ember.assert(
-      `Action[${item.action}] does not exist on controller: ${controller.toString()}`,
-      !!(_actionHandler = controller.get(item.action))
-    )
     if (item.dismiss) {
       this.set('_activeCategory', null)
     }
-    _actionHandler.call(controller, item)
+    controller.send(item.action, item)
   }
 })

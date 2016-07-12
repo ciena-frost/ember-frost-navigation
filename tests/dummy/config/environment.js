@@ -48,6 +48,8 @@ module.exports = function (environment) {
       enabled: true
     }
   }
-
+  ENV['ember-cli-notifications'] = {
+    includeFontAwesome: true
+  }
   return ENV
 }
