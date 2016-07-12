@@ -29,7 +29,7 @@ export default Ember.Service.extend({
   performAction (item) {
     let controller = this.get('_controller')
     if (item.dismiss) {
-      this.set('_activeCategory', null)
+      this.dismiss()
     }
     controller.send(item.action, item)
   }
