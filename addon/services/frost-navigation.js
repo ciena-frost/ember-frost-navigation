@@ -1,16 +1,23 @@
 import Ember from 'ember'
 import A from 'ember-frost-navigation/utils/asserts'
 
-export default Ember.Service.extend({
-  routing: Ember.inject.service('-routing'),
+const {
+  Service,
+  inject,
+  assert,
+  deprecate
+} = Ember
+
+export default Service.extend({
+  routing: inject.service('-routing'),
   _controller: null,
   _activeCategory: null,
   categories: Ember.A(),
   _registerCategory (config = {}) {
-    Ember.assert(A.categoryName, config.name)
+    assert(A.categoryName, config.name)
     let exists = this.categories.some(e => e.name === config.name)
-    Ember.assert(A.categoryExists, !exists)
-    let c
+    assert(A.categoryExists, !exists)
+    let c = null
     this.categories.push(c = {
       name: config.name,
       icon: config.icon,
@@ -19,20 +26,33 @@ export default Ember.Service.extend({
     })
     return c
   },
+  dismiss () {
+    this.set('_activeCategory', null)
+  },
   transitionTo (route) {
     this.get('routing').transitionTo(route)
-    this.set('_activeCategory', null)
+    this.dismiss()
   },
   performAction (item) {
     let controller = this.get('_controller')
-    let _actionHandler
-    Ember.assert(
-      `Action[${item.action}] does not exist on controller: ${controller.toString()}`,
-      !!(_actionHandler = controller.get(item.action))
-    )
+
     if (item.dismiss) {
-      this.set('_activeCategory', null)
+      this.dismiss()
     }
-    _actionHandler.call(controller, item)
+
+    try {
+      controller.send(item.action, item)
+    } catch (e) {
+      let actionHandler = controller.get(item.action)
+      if (actionHandler && typeof actionHandler === 'function') {
+        deprecate(A.depAction, false, {
+          id: 'ember-frost-navigation',
+          until: '*'
+        })
+        actionHandler.call(controller, item)
+      } else {
+        throw e
+      }
+    }
   }
 })

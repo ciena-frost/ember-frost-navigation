@@ -32,96 +32,154 @@ ember install ember-frost-navigation
 Add the `{{frost-navigation}}` component to the template where you want the navigation to appear, then configure your navigation in `app/router.js`
 
 ```js
-this.nav('demo', function () {
-  this.category('category1', {}, function () {
-    this.column('column1', { color: 'green' }, function () {
-      this.app('app1', { description: 'description1', icon: 'sample' })
-      this.section('section1', function () {
-        this.action('action1', { action: 'doThis' })
-        this.app('app2')
+Router.map(function () {
+  this.nav('demo', {
+    path: '/'
+  }, function () {
+    this.category('Category 1', {
+      pack: 'dummy',
+      icon: 'sample'
+    }, function () {
+      this.column('Column 1', {
+        color: '#009eef'
+      }, function () {
+        this.app('App 1', {
+          route: 'go',
+          description: 'description1',
+          pack: 'dummy',
+          icon: 'sample'
+        })
+        this.engine('Blog Engine', {
+          route: 'blog',
+          package: 'ember-blog-engine',
+          pack: 'dummy',
+          icon: 'sample'
+        })
+        this.section('Section 1', {
+          color: '#a1e7ff'
+        }, function () {
+          this.link('Google', {
+            url: 'http://google.ca',
+            description: 'Go to Google',
+            pack: 'dummy',
+            icon: 'sample'
+          })
+          this.link('http://google.ca')
+          this.action('Action 1', {
+            action: 'myAction',
+            pack: 'dummy',
+            icon: 'sample'
+          })
+        })
       })
+      this.column('Column 2')
     })
-    this.column('column2')
   })
 })
 ```
 
 ## Documentation
 
-`this.nav(String controllerName, Object config, Function callback)`
+### `this.nav`
+```js
+/**
+ * Initializes the navigation bar
+ * @parent Ember.RouterDSL
+ * @param {string} config.dialogClass class to apply to liquid-modal
+ * @param {object} config.actions actions to pass up to liquid-modal
+ * @param {array} config.model predefined model to be rendered
+ */
+```
 
-Provide the name of the controller, the options for its configuration,
-and a callback to nest navigation properties.
+### `this.category`
+```js
+/**
+ * Category as a navigation bar entry
+ * @parent {type:nav}
+ * @param {string} config.icon icon
+ * @param {string} config.pack icon pack
+ * @param {array} config.model predefined category model
+ */
+```
 
-| Property    | Description                                                                                                                                                                                                                  |
-|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| model       | Renders the template to match the array, but will *not* initialize the engines or routes. Recommended if you already have your routing completed, and just want to use this component as a navigation tool.                  |
-| dialogClass | An optional additional CSS class to put on the lf-dialog element. This lets you style the containing box differently for different modals.                                                                                   |
-| actions     | Wire up actions from the modal component's sendAction to your app. For example, `actions: {submit: "modalSubmitted"}` will trigger the `modalSubmitted` event on your controller when a submit event is fired in your modal. |
+### `this.column`
+```js
+/**
+ * Creates a column viewable within a category
+ * @parent {type:category}
+ * @param {string} config.color color
+ * @param {array} config.routes predefined routes array
+ * @param {array} config.actions predefined actions array
+ */
+```
+### `this.section`
+```js
+/**
+ * Creates a section under within a category
+ * @parent {type:category}
+ * @param {string} config.color color
+ * @param {array} config.routes predefined routes array
+ * @param {array} config.actions predefined actions array
+ */
+```
+### `this.app`
+```js
+/**
+ * Creates a routable route instance
+ * @parent {type:[column, section]}
+ * @param {string} config.description description
+ * @param {string} config.icon icon
+ * @param {string} config.pack icon pack
+ * @param {string} config.route route to navigate to
+ */
+```
+### `this.engine`
+```js
+/**
+ * Creates a routable engine instance
+ * @parent {type:[column, section]}
+ * @param {string} config.package package name for engine
+ * @param {string} config.route route name for nav entry
+ * @param {string} config.description description
+ * @param {string} config.icon icon
+ * @param {string} config.pack icon pack
+ */
+```
+### `this.action`
+```js
+/**
+ * Creates a menu item that serves as an action,
+ * without performing a transition
+ * @parent {type:[column, section]}
+ * @param {string} config.description description
+ * @param {string} config.icon icon
+ * @param {string} config.pack icon pack
+ * @param {string} config.action key for action on controller
+ * @param {boolean} config.dismiss flag to dismiss modal after click
+ */
+```
+### `this.link`
+```js
+/**
+ * Creates a link accessible from frost-navigation
+ * @parent {type:[column, section]}
+ * @param {string} config.description description
+ * @param {string} config.icon icon
+ * @param {string} config.pack icon pack
+ * @param {string} config.url url to set href to
+ * @param {boolean} config.openInNewTab flag to open in new tab
+ */
+```
 
-`this.category(String categoryName, Object config, Function callback)`
 
-Creates a navigation drop-down by the name `categoryName`, with properties configured by the `config` object, and function `callback` to register `app`'s, `action`'s, and `section`'s
-
-| Property | Description                         |
-|----------|-------------------------------------|
-| model  | Array of columns for given category |
-| icon  | Icon to use along side `categoryName`. Utilizes [ember-frost-core](http://ciena-frost.github.io/ember-frost-core/#/icons)|
-| pack (default=frost) | Icon pack |
-
-
-
-`this.column(String columnName, Object config, Function callback)`
-
-Creates a column listed under the parent `category`
-
-| Property | Description                               |
-|----------|-------------------------------------------|
-| color (default='#009eef')   | Color of the title line                 |
-| routes   | An array of routes that can be passed in  |
-| actions  | An array of actions that can be passed in |
-
-`this.section(String columnName, Object config, Function callback)`
-
-In terms of usage works the same as a column, but appears under a column. Section must be created within the context of a column.
-
-| Property | Description                               |
-|----------|-------------------------------------------|
-| color (default='#009eef')   | Color of the title line                 |
-| routes   | An array of routes that can be passed in  |
-| actions  | An array of actions that can be passed in |
-
-`this.app(String appName, Object config, Function callback)`
-
-Creates a route / engine against the `RouterDSL`. Must be created within the context of a `column` or `section`.
-
-| Property    | Description                                 |
-|-------------|---------------------------------------------|
-| type (default=route) | Either 'engine' or 'route', allows RouterDSL to properly set up your app |
-| icon  | Icon to use along side `appName`. Utilizes [ember-frost-core](http://ciena-frost.github.io/ember-frost-core/#/icons)|
-| pack (default=frost) | Icon pack |
-| description | Text that describes the app                 |
-| route       | Route name for your routable engine / route |
-
-`this.action(String actionName, Object config, Function callback)`
-
-| Property    | Description                                                                      |
-|-------------|----------------------------------------------------------------------------------|
-| icon  | Icon to use along side `actionName`. Utilizes [ember-frost-core](http://ciena-frost.github.io/ember-frost-core/#/icons)|
-| pack (default=frost) | Icon pack |
-| description | Text that describes the action                                                   |
-| action      | String that references parent controller for a method to execute on action click |
-| dismiss     | Boolean flag to dismiss the navigation modal on action complete                  |
-
-
-### Setup
+## Setup
 ```
 git clone git@github.com:ciena-frost/ember-frost-navigation.git
 cd ember-frost-navigation
 npm install && bower install
 ```
 
-### Development Server
+## Development Server
 A dummy application for development is available under `ember-frost-navigation/tests/dummy`.
 To run the server run `ember server` (or `npm start`) from the root of the repository and
 visit the app at http://localhost:4200.

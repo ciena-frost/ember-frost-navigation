@@ -8,11 +8,14 @@ Router.map(function () {
   this.nav('demo', {
     path: '/'
   }, function () {
-    this.category('category1', {}, function () {
-      this.column('column1', {
+    this.category('Category 1', {
+      pack: 'dummy',
+      icon: 'sample'
+    }, function () {
+      this.column('Column 1', {
         color: '#009eef'
       }, function () {
-        this.app('app1', {
+        this.app('App 1', {
           route: 'go',
           description: 'description1',
           pack: 'dummy',
@@ -20,24 +23,28 @@ Router.map(function () {
         })
         this.engine('Blog Engine', {
           route: 'blog',
-          package: 'ember-blog-engine'
+          package: 'ember-blog-engine',
+          pack: 'dummy',
+          icon: 'sample'
         })
-        this.section('section1', {
+        this.section('Section 1', {
           color: '#a1e7ff'
         }, function () {
           this.link('Google', {
             url: 'http://google.ca',
-            description: 'Go to google',
+            description: 'Go to Google',
             pack: 'dummy',
             icon: 'sample'
           })
           this.link('http://google.ca')
-          this.action('action1', {
-            action: 'doThis'
+          this.action('Action 1', {
+            action: 'myAction',
+            pack: 'dummy',
+            icon: 'sample'
           })
         })
       })
-      this.column('column2')
+      this.column('Column 2')
     })
   })
 })

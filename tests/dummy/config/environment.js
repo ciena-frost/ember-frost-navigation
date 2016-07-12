@@ -42,12 +42,14 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.baseURL = '/frost-navigation'
+    ENV.baseURL = '/ember-frost-navigation'
     ENV.isDemo = true
     ENV['ember-cli-mirage'] = {
       enabled: true
     }
   }
-
+  ENV['ember-cli-notifications'] = {
+    includeFontAwesome: true
+  }
   return ENV
 }
