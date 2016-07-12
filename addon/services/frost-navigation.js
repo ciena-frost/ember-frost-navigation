@@ -2,12 +2,14 @@ import Ember from 'ember'
 import A from 'ember-frost-navigation/utils/asserts'
 
 const {
+  Service,
+  inject,
   assert,
   deprecate
 } = Ember
 
-export default Ember.Service.extend({
-  routing: Ember.inject.service('-routing'),
+export default Service.extend({
+  routing: inject.service('-routing'),
   _controller: null,
   _activeCategory: null,
   categories: Ember.A(),
@@ -43,7 +45,10 @@ export default Ember.Service.extend({
     } catch (e) {
       let actionHandler = controller.get(item.action)
       if (actionHandler && typeof actionHandler === 'function') {
-        deprecate(A.depAction)
+        deprecate(A.depAction, false, {
+          id: 'ember-frost-navigation',
+          until: '*'
+        })
         actionHandler.call(controller, item)
       } else {
         throw e
