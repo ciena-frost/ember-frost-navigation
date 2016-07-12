@@ -1,3 +1,11 @@
+# 2.1.0
+
+Updated README.md
+Changed action to trigger action handler in controller
+Gracefully falls back to method being a controller attr
+Added font-awesome for demo app notifications
+Special clicks (Shift, Ctrl, CMD) will follow its intended behaviour.
+
 # 2.0.8
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
