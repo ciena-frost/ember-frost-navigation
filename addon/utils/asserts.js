@@ -16,5 +16,8 @@ export default {
   actionConfig: `${b}Configuration object requires property as an action`,
   categoryExists: `${b}Category already exists`,
   route: `${b}'config.route must be defined'`,
-  package: `${b}config.package must be defined`
+  package: `${b}config.package must be defined`,
+  depAction: `
+    ${b}Action should be defined within the 'actions' hook on your controller
+  `
 }

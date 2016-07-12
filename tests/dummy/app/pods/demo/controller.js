@@ -10,7 +10,7 @@ export default Controller.extend({
         autoClear: true,
         clearDuration: 1000
       })
-      Logger.log('Item: ', item)
+      Logger.log('Item:', item)
     }
   }
 })
