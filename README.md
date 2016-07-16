@@ -45,7 +45,7 @@ Router.map(function () {
       }, function () {
         this.app('App 1', {
           route: 'go',
-          description: 'description1',
+          description: 'Description 1',
           pack: 'dummy',
           icon: 'sample'
         })
