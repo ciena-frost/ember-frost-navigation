@@ -9,13 +9,12 @@ export default Ember.Component.extend({
   tabindex: 0,
   attributeBindings: ['tabindex'],
   activeCategory: null,
-  _categoryChanged: function () {
+  _categoryChanged: Ember.observer('nav._activeCategory', function () {
     this.set('activeCategory', this.get('nav._activeCategory'))
     if (this.get('activeCategory') === null) {
       this.sendAction('dismiss')
     }
-  }.observes('nav._activeCategory'),
-
+  }),
   columns: Ember.computed('nav.categories', 'activeCategory', function () {
     if (!this.get('activeCategory')) {
       return false
@@ -27,10 +26,10 @@ export default Ember.Component.extend({
   }),
   actions: {
     outsideClick () {
-      this.get('nav').set('_activeCategory', null)
+      this.get('nav').dismiss()
     },
     escape () {
-      this.get('nav').set('_activeCategory', null)
+      this.get('nav').dismiss()
     },
     showMore (section) {
       this.set('showActions', true)
