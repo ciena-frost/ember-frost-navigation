@@ -1,3 +1,6 @@
+# 2.1.1
+- Blog Engine has been upped to show ember-engines integration in dummy app
+
 # 2.1.0
 
 Updated README.md
