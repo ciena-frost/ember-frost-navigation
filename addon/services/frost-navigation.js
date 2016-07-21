@@ -15,16 +15,17 @@ export default Service.extend({
   categories: Ember.A(),
   _registerCategory (config = {}) {
     assert(A.categoryName, config.name)
-    let exists = this.categories.some(e => e.name === config.name)
-    assert(A.categoryExists, !exists)
-    let c = null
-    this.categories.push(c = {
-      name: config.name,
-      icon: config.icon,
-      pack: config.pack,
-      columns: config.columns || []
-    })
-    return c
+    let category = this.categories.find(e => e.name === config.name)
+
+    if (!category) {
+      this.categories.push(category = {
+        name: config.name,
+        icon: config.icon,
+        pack: config.pack,
+        columns: config.columns || []
+      })
+    }
+    return category
   },
   dismiss () {
     this.set('_activeCategory', null)
