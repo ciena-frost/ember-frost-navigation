@@ -1,4 +1,4 @@
-{{#unless url}}
+{{#if route}}
   {{#frost-link route disabled=true}}
     <div class='content'>
       <div class='nav-route-icon'>
@@ -15,7 +15,10 @@
     </div>
   {{/frost-link}}
 {{else}}
-  <a class='frost-link' href='{{url}}' target="_blank">
+  <a
+    class='frost-link'
+    href='{{url}}'
+    target="{{if tabbed '_blank'}}">
     <div class='content'>
       <div class='nav-route-icon'>
         {{frost-icon pack=pack icon=icon}}
@@ -30,4 +33,4 @@
       </div>
     </div>
   </a>
-{{/unless}}
+{{/if}}

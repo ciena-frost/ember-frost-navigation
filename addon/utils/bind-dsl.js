@@ -189,6 +189,7 @@ export default {
       ;(function (name, config = {}, callback = function () {}) {
         Ember.assert(A.route, config.route)
         self.DSL.route(config.route, config)
+
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         let route = self.top.name !== 'application'
           ? `${self.top.name}.${config.route}`
@@ -287,8 +288,9 @@ export default {
      * @param {string} config.description description
      * @param {string} config.icon icon
      * @param {string} config.pack icon pack
+     * @param {string} config.route navigate to route without registering on DSL
      * @param {string} config.url url to set href to
-     * @param {boolean} config.openInNewTab flag to open in new tab
+     * @param {boolean} config.tabbed flag to open in new tab
      */
     obj.link = function () {
       let args = argify(...arguments)
@@ -301,12 +303,12 @@ export default {
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
+          route: config.route,
           url: config.url || name,
-          openInNewTab: config.openInNewTab || true
+          tabbed: config.tabbed || false
         })
         callback.call({
           parent: {
-            type: 'link',
             name,
             config
           }
