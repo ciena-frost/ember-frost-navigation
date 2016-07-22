@@ -34,7 +34,8 @@ Router.map(function () {
             url: 'http://google.ca',
             description: 'Go to Google',
             pack: 'dummy',
-            icon: 'sample'
+            icon: 'sample',
+            tabbed: true
           })
           this.link('http://google.ca')
           this.action('Action 1', {

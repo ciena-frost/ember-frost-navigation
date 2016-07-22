@@ -166,8 +166,9 @@ Router.map(function () {
  * @param {string} config.description description
  * @param {string} config.icon icon
  * @param {string} config.pack icon pack
+ * @param {string} config.route navigate to route without registering on DSL
  * @param {string} config.url url to set href to
- * @param {boolean} config.openInNewTab flag to open in new tab
+ * @param {boolean} config.tabbed flag to open in new tab (default false)
  */
 ```
 
