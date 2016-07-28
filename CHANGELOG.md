@@ -1,3 +1,9 @@
+# 2.1.3
+ - No assertion on duplicate categories
+     - When service checks to see if category exists, will either use pre-existing, or create one.
+ - `this.link`
+    - `this.app` will register against RouterDSL. For the case that a route already exists, and you just want to link to it, you can use `this.link('lorem', {route:'foobar'})`
+
 # 2.1.2
  - No assertion on duplicate categories
      - When service checks to see if category exists, will either use pre-existing, or create one.
