@@ -1,12 +1,13 @@
 import Ember from 'ember'
 import layout from '../templates/components/frost-navigation'
 import transitions from 'ember-frost-navigation/transitions/frost-navigation'
+import SlotsMixin from 'ember-block-slots'
 
 const {
   Component
 } = Ember
 
-export default Component.extend({
+export default Component.extend(SlotsMixin, {
   classNames: ['frost-navigation'],
   layout,
   nav: Ember.inject.service('frost-navigation'),
