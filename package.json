@@ -54,7 +54,7 @@
     "eslint": "^2.9.0",
     "eslint-config-frost-standard": "^2.0.0",
     "frost-guide-custom-routing": "0.0.4",
-    "liquid-fire": "0.23.1",
+    "liquid-fire": "0.24.1",
     "loader.js": "^4.0.0",
     "lodash-es": "4.14.1",
     "redux": "3.5.2",
@@ -70,7 +70,7 @@
     "ember-computed-decorators": "^0.2.2",
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-sass": "^5.2.0",
-    "liquid-fire": "0.23.1"
+    "liquid-fire": "0.24.1"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
