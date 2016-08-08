@@ -4,8 +4,7 @@
     {{yield}}
   {{/yield-slot}}
   {{#each categories as |category|}}
-    {{#if category.visible}}
-      {{log category}}
+    {{#if category.isVisible}}
       {{nav-category
         icon=category.icon
         name=category.name

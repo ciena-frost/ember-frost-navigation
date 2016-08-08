@@ -3,7 +3,7 @@
     {{#each columns as |column|}}
       <div class='nav-column'>
         {{#each column as |section|}}
-          {{#if section.visible}}
+          {{#if section.isVisible}}
             <div class='nav-section'>
               <div class='nav-section-header' style='
                 border-bottom-color: {{section.color}};
@@ -28,7 +28,7 @@
                     route=route.route
                     url=route.url
                     tabbed=route.tabbed
-                    visible=route.visible
+                    isVisible=route.isVisible
                   }}
                 {{/each}}
               </div>

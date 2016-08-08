@@ -80,7 +80,7 @@ export default {
           icon: config.icon,
           pack: config.pack || 'frost',
           columns: config.model || [],
-          visible: config.visible !== false
+          isVisible: config.isVisible !== false
         })
         callback.call({
           column: obj.column.bind({
@@ -116,7 +116,7 @@ export default {
               color: config.color || '#009eef',
               routes: config.routes || [],
               actions: config.actions || [],
-              visible: config.visible !== false
+              isVisible: config.isVisible !== false
             }
           ])
           let o = {
@@ -157,7 +157,7 @@ export default {
           color: config.color || '#009eef',
           routes: config.routes || [],
           actions: config.actions || [],
-          visible: config.visible !== false
+          isVisible: config.isVisible !== false
         })
         let o = {
           top: self.top,
@@ -203,7 +203,7 @@ export default {
           icon: config.icon,
           pack: config.pack || 'frost',
           route,
-          visible: config.visible !== false
+          isVisible: config.isVisible !== false
         })
         callback.call({
           parent: {
@@ -242,7 +242,7 @@ export default {
           icon: config.icon,
           pack: config.pack || 'frost',
           route,
-          visible: config.visible !== false
+          isVisible: config.isVisible !== false
         })
         callback.call({
           parent: {
@@ -277,7 +277,7 @@ export default {
           pack: config.pack || 'frost',
           action: config.action,
           dismiss: config.dismiss || true,
-          visible: config.visible !== false
+          isVisible: config.isVisible !== false
         })
         callback.call({
           parent: {
@@ -312,7 +312,7 @@ export default {
           route: config.route,
           url: config.url || name,
           tabbed: config.tabbed || false,
-          visible: config.visible !== false
+          isVisible: config.isVisible !== false
         })
         callback.call({
           parent: {
