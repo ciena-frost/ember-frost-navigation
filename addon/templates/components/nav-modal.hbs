@@ -3,34 +3,37 @@
     {{#each columns as |column|}}
       <div class='nav-column'>
         {{#each column as |section|}}
-          <div class='nav-section'>
-            <div class='nav-section-header' style='
-              border-bottom-color: {{section.color}};
-            '>
-              {{section.title}}
-              {{#if section.actions}}
-                <div class='nav-section-actions' {{action 'showMore' section}}>
-                  <div class='sub'>Actions</div>
-                  <div style='color: {{section.color}}'>
-                    {{frost-icon class='actions-icon flip' icon='chevron'}}
+          {{#if section.visible}}
+            <div class='nav-section'>
+              <div class='nav-section-header' style='
+                border-bottom-color: {{section.color}};
+              '>
+                {{section.title}}
+                {{#if section.actions}}
+                  <div class='nav-section-actions' {{action 'showMore' section}}>
+                    <div class='sub'>Actions</div>
+                    <div style='color: {{section.color}}'>
+                      {{frost-icon class='actions-icon flip' icon='chevron'}}
+                    </div>
                   </div>
-                </div>
-              {{/if}}
+                {{/if}}
+              </div>
+              <div class='body'>
+                {{#each section.routes as |route|}}
+                  {{nav-route
+                    description=route.description
+                    icon=route.icon
+                    pack=route.pack
+                    name=route.name
+                    route=route.route
+                    url=route.url
+                    tabbed=route.tabbed
+                    visible=route.visible
+                  }}
+                {{/each}}
+              </div>
             </div>
-            <div class='body'>
-              {{#each section.routes as |route|}}
-                {{nav-route
-                  description=route.description
-                  icon=route.icon
-                  pack=route.pack
-                  name=route.name
-                  route=route.route
-                  url=route.url
-                  tabbed=route.tabbed
-                }}
-              {{/each}}
-            </div>
-          </div>
+          {{/if}}
         {{/each}}
       </div>
     {{/each}}

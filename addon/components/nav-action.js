@@ -1,10 +1,13 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-action'
 
-export default Ember.Component.extend({
+const {
+  Component
+} = Ember
+export default Component.extend({
+  nav: Ember.inject.service('frost-navigation'),
   classNames: ['nav-route'],
   layout,
-  nav: Ember.inject.service('frost-navigation'),
   click () {
     this.get('nav').performAction(this.get('item'))
   }

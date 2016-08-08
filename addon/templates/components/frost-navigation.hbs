@@ -4,11 +4,14 @@
     {{yield}}
   {{/yield-slot}}
   {{#each categories as |category|}}
-    {{nav-category
-      icon=category.icon
-      name=category.name
-      pack=category.pack
-    }}
+    {{#if category.visible}}
+      {{log category}}
+      {{nav-category
+        icon=category.icon
+        name=category.name
+        pack=category.pack
+      }}
+    {{/if}}
   {{/each}}
   {{#yield-slot 'actions'}}
     {{yield}}

@@ -8,9 +8,10 @@ const {
 } = Ember
 
 export default Component.extend(SlotsMixin, {
+  nav: Ember.inject.service('frost-navigation'),
+
   classNames: ['frost-navigation'],
   layout,
-  nav: Ember.inject.service('frost-navigation'),
   transitionService: Ember.inject.service('liquid-fire-transitions'),
   categories: Ember.computed.alias('nav.categories'),
   registerTransitions: Ember.on('init', function () {

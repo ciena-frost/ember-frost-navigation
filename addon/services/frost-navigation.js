@@ -22,7 +22,8 @@ export default Service.extend({
         name: config.name,
         icon: config.icon,
         pack: config.pack,
-        columns: config.columns || []
+        columns: config.columns || [],
+        visible: config.visible
       })
     }
     return category

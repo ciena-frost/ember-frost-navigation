@@ -79,7 +79,8 @@ export default {
           name,
           icon: config.icon,
           pack: config.pack || 'frost',
-          columns: config.model || []
+          columns: config.model || [],
+          visible: config.visible !== false ? true : false
         })
         callback.call({
           column: obj.column.bind({
@@ -114,7 +115,8 @@ export default {
               title: name,
               color: config.color || '#009eef',
               routes: config.routes || [],
-              actions: config.actions || []
+              actions: config.actions || [],
+              visible: config.visible !== false ? true : false
             }
           ])
           let o = {
@@ -154,7 +156,8 @@ export default {
           title: name,
           color: config.color || '#009eef',
           routes: config.routes || [],
-          actions: config.actions || []
+          actions: config.actions || [],
+          visible: config.visible !== false ? true : false
         })
         let o = {
           top: self.top,
@@ -199,7 +202,8 @@ export default {
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route
+          route,
+          visible: config.visible !== false ? true : false
         })
         callback.call({
           parent: {
@@ -237,7 +241,8 @@ export default {
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route
+          route,
+          visible: config.visible !== false ? true : false
         })
         callback.call({
           parent: {
@@ -271,7 +276,8 @@ export default {
           icon: config.icon,
           pack: config.pack || 'frost',
           action: config.action,
-          dismiss: config.dismiss || true
+          dismiss: config.dismiss || true,
+          visible: config.visible !== false ? true : false
         })
         callback.call({
           parent: {
@@ -305,7 +311,8 @@ export default {
           pack: config.pack || 'frost',
           route: config.route,
           url: config.url || name,
-          tabbed: config.tabbed || false
+          tabbed: config.tabbed || false,
+          visible: config.visible !== false ? true : false
         })
         callback.call({
           parent: {
