@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
 export default Ember.Service.extend({
   user: null,
 
-  init() {
-    this._super();
-    this.user = 'Test User';
+  init () {
+    this._super()
+    this.user = 'Test User'
   }
-});
+})
