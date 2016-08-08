@@ -18,7 +18,7 @@ export default Service.extend({
     let category = this.categories.find(e => e.name === config.name)
 
     if (!category) {
-      this.categories.push(category = {
+      this.categories.pushObject(category = {
         name: config.name,
         icon: config.icon,
         pack: config.pack,
