@@ -1,3 +1,7 @@
+# 3.0.0
+
+Upgraded to `ember-block-slots` 1.0 and adjusted the interface for the logo and actions
+
 # 2.1.4
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
