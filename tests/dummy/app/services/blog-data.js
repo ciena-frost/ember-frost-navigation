@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
 export default Ember.Service.extend({
   posts: null,
   session: Ember.inject.service('active-session'),
-  init() {
-    this._super(...arguments);
+  init () {
+    this._super(...arguments)
 
     this.posts = [
       {
@@ -19,7 +19,7 @@ export default Ember.Service.extend({
           {
             id: '101',
             author: 'rwjblue',
-            comment: `Good luck!`
+            comment: 'Good luck!'
           }
         ]
       },
@@ -35,11 +35,11 @@ export default Ember.Service.extend({
           {
             id: '102',
             author: 'rwjblue',
-            comment: `Too bad!`
+            comment: 'Too bad!'
           }
         ]
       }
-    ];
+    ]
   },
   add (title, body) {
     this.get('posts').push({
@@ -48,6 +48,6 @@ export default Ember.Service.extend({
       title,
       body,
       comments: []
-    });
+    })
   }
-});
+})

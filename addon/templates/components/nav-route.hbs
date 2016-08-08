@@ -1,36 +1,38 @@
-{{#if route}}
-  {{#frost-link route disabled=true}}
-    <div class='content'>
-      <div class='nav-route-icon'>
-        {{frost-icon pack=pack icon=icon}}
-      </div>
-      <div>
-        <div class='nav-route-name'>
-          {{name}}
+{{#if isVisible}}
+  {{#if route}}
+    {{#frost-link route disabled=true}}
+      <div class='content'>
+        <div class='nav-route-icon'>
+          {{frost-icon pack=pack icon=icon}}
         </div>
-        <div class='nav-route-description'>
-          {{description}}
-        </div>
-      </div>
-    </div>
-  {{/frost-link}}
-{{else}}
-  <a
-    class='frost-link'
-    href='{{url}}'
-    target="{{if tabbed '_blank'}}">
-    <div class='content'>
-      <div class='nav-route-icon'>
-        {{frost-icon pack=pack icon=icon}}
-      </div>
-      <div>
-        <div class='nav-route-name'>
-          {{name}}
-        </div>
-        <div class='nav-route-description'>
-          {{description}}
+        <div>
+          <div class='nav-route-name'>
+            {{name}}
+          </div>
+          <div class='nav-route-description'>
+            {{description}}
+          </div>
         </div>
       </div>
-    </div>
-  </a>
+    {{/frost-link}}
+  {{else}}
+    <a
+      class='frost-link'
+      href='{{url}}'
+      target="{{if tabbed '_blank'}}">
+      <div class='content'>
+        <div class='nav-route-icon'>
+          {{frost-icon pack=pack icon=icon}}
+        </div>
+        <div>
+          <div class='nav-route-name'>
+            {{name}}
+          </div>
+          <div class='nav-route-description'>
+            {{description}}
+          </div>
+        </div>
+      </div>
+    </a>
+  {{/if}}
 {{/if}}

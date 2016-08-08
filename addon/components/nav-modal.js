@@ -3,9 +3,10 @@ import layout from '../templates/components/nav-modal'
 import _ from 'lodash'
 
 export default Ember.Component.extend({
+  nav: Ember.inject.service('frost-navigation'),
+
   classNames: ['nav-modal'],
   layout,
-  nav: Ember.inject.service('frost-navigation'),
   tabindex: 0,
   attributeBindings: ['tabindex'],
   activeCategory: null,
