@@ -15,6 +15,13 @@ Router.map(function () {
       this.column('Column 1', {
         color: '#009eef'
       }, function () {
+        this.action('Action 1', {
+          action: 'myAction',
+          pack: 'dummy',
+          icon: 'sample',
+          description: 'My description',
+          inline: true
+        })
         this.app('App 1', {
           route: 'go',
           description: 'Description 1',
