@@ -1,3 +1,22 @@
+# 3.0.1
+- Ability to add inline 'actions'
+- Added ember block slots to blueprint
+
+
+Usage:
+
+```
+this.action('Action 1', {
+  action: 'myAction',
+  pack: 'dummy',
+  icon: 'sample',
+  description: 'My description',
+  inline: true
+})
+```
+
+Where `inline: true` would determine whether it gets rendered in the actions tab or with the other apps.
+
 # 3.0.0
 
 Upgraded to `ember-block-slots` 1.0 and adjusted the interface for the logo and actions
