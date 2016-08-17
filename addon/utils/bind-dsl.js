@@ -269,7 +269,12 @@ export default {
       Ember.assert(A.action, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
         Ember.assert(A.actionConfig, config.action)
-        let e = self.parent.type === 'section' ? self.element.actions : self.element[0].actions
+        let e
+        if (config.inline) {
+          e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
+        } else {
+          e = self.parent.type === 'section' ? self.element.actions : self.element[0].actions
+        }
         e.push({
           name,
           description: config.description,
