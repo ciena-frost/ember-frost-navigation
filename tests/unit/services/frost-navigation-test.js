@@ -8,10 +8,6 @@ import {
 describeModule(
   'service:frost-navigation',
   'FrostNavigationService',
-  {
-    // Specify the other units that are required for this test.
-    // needs: ['service:foo']
-  },
   function () {
     // Replace this with your real tests.
     it('exists', function () {
@@ -24,6 +20,13 @@ describeModule(
         name: 'Test name'
       })
       expect(service.categories).to.not.be.empty
+    })
+    it('dismisses', function () {
+      let service = this.subject()
+      service.set('_activeCategory', 'test')
+      expect(service.get('_activeCategory')).to.equal('test')
+      service.dismiss()
+      expect(service.get('_activeCategory')).to.equal(null)
     })
   }
 )

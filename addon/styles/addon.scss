@@ -116,6 +116,9 @@
       margin-bottom: 30px;
       padding-bottom: 5px;
       .pointer {
+        div {
+          display: inline-block;
+        }
         cursor: pointer;
       }
       & .title {

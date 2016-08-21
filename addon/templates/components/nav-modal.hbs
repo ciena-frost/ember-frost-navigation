@@ -2,41 +2,9 @@
   {{#liquid-unless showActions class='actionSlide'}}
     {{#each columns as |column|}}
       <div class='nav-column'>
-        {{#each column as |section|}}
-          {{#if section.isVisible}}
-            <div class='nav-section'>
-              <div class='nav-section-header' style='
-                border-bottom-color: {{section.color}};
-              '>
-                {{section.title}}
-                {{#if section.actions}}
-                  <div class='nav-section-actions' {{action 'showMore' section}}>
-                    <div class='sub'>Actions</div>
-                    <div style='color: {{section.color}}'>
-                      {{frost-icon class='actions-icon flip' icon='chevron'}}
-                    </div>
-                  </div>
-                {{/if}}
-              </div>
-              <div class='body'>
-                {{#each section.routes as |item|}}
-                  {{#if item.action}}
-                    {{nav-action item=item}}
-                  {{else}}
-                    {{nav-route
-                      description=item.description
-                      icon=item.icon
-                      pack=item.pack
-                      name=item.name
-                      route=item.route
-                      url=item.url
-                      tabbed=item.tabbed
-                      isVisible=item.isVisible
-                    }}
-                  {{/if}}
-                {{/each}}
-              </div>
-            </div>
+        {{#each column as |_section|}}
+          {{#if _section.isVisible}}
+            {{nav-section section=_section showMore=(action 'showMore')}}
           {{/if}}
         {{/each}}
       </div>
