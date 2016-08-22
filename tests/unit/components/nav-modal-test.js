@@ -25,8 +25,42 @@ describeComponent(
     it('handles actions', function () {
       let component = this.subject()
       this.render()
-      Object.keys(component._actions).forEach(e => {
-        component.send(e, {})
+      ;[
+        {
+          name: 'outsideClick',
+          test () {
+            expect(component.get('activeCategory')).to.equal(null)
+          },
+          cleanup () {
+            component.get('frostNavigation').set('_activeCategory', 'test')
+          }
+        },
+        {
+          name: 'escape',
+          test () {
+            expect(component.get('activeCategory')).to.equal(null)
+          }
+        },
+        {
+          name: 'showMore',
+          test () {
+            expect(component.get('showActions')).to.equal(true)
+          }
+        },
+        {
+          name: 'goBack',
+          test () {
+            expect(component.get('showActions')).to.equal(false)
+          }
+        }
+      ].forEach(e => {
+        component.send(e.name, {})
+        if (e.hasOwnProperty('test')) {
+          e.test()
+        }
+        if (e.hasOwnProperty('cleanup')) {
+          e.cleanup()
+        }
       })
     })
   }
