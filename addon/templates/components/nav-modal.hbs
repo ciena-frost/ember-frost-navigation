@@ -18,16 +18,21 @@
               {{/if}}
             </div>
             <div class='body'>
-              {{#each section.routes as |route|}}
-                {{nav-route
-                  description=route.description
-                  icon=route.icon
-                  pack=route.pack
-                  name=route.name
-                  route=route.route
-                  url=route.url
-                  tabbed=route.tabbed
-                }}
+              {{#each section.routes as |item|}}
+                {{#if item.action}}
+                  {{nav-action item=item}}
+                {{else}}
+                  {{nav-route
+                    description=item.description
+                    icon=item.icon
+                    pack=item.pack
+                    name=item.name
+                    route=item.route
+                    url=item.url
+                    tabbed=item.tabbed
+                    isVisible=item.isVisible
+                  }}
+                {{/if}}
               {{/each}}
             </div>
           </div>
