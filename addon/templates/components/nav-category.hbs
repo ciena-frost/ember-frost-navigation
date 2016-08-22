@@ -1,8 +1,10 @@
 <div class='nav-category-icon'>
-  {{frost-icon
-    icon=icon
-    pack=pack
-  }}
+  {{#if icon}}
+    {{frost-icon
+      icon=icon
+      pack=pack
+    }}
+  {{/if}}
 </div>
 <div class='nav-category-name'>
   {{name}}

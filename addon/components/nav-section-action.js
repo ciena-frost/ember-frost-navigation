@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-section-action'
-
+import { PropTypes } from 'ember-prop-types'
 const {
   Component,
   computed
@@ -8,10 +8,18 @@ const {
 export default Component.extend({
   classNames: ['nav-column', 'nav-section-action'],
   layout,
+  propTypes: {
+    section: PropTypes.object
+  },
   borderBottomBinding: computed('section.color', function () {
     let color = this.get('section.color')
     return Ember.String.htmlSafe(`border-bottom-color: ${color}`)
   }),
+  getDefaultProps () {
+    return {
+      section: null
+    }
+  },
   actions: {
     back () {
       this.get('goBack').call()

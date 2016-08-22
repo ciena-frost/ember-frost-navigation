@@ -13,17 +13,11 @@ export default Component.extend({
   layout,
 
   propTypes: {
-    description: PropTypes.string,
-    icon: PropTypes.string,
     name: PropTypes.string.isRequired,
-    pack: PropTypes.string,
-    route: PropTypes.string
-  },
-
-  getDefaultProps () {
-    return {
-      pack: 'app'
-    }
+    description: PropTypes.string,
+    route: PropTypes.string,
+    icon: PropTypes.string,
+    pack: PropTypes.string
   },
   click (e) {
     const navigation = this.get('frostNavigation')
@@ -32,5 +26,14 @@ export default Component.extend({
       return
     }
     navigation.transitionTo(this.get('route'))
+  },
+  getDefaultProps () {
+    return {
+      name: null,
+      description: null,
+      route: null,
+      icon: null,
+      pack: 'frost'
+    }
   }
 })

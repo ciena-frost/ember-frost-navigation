@@ -10,6 +10,7 @@
       </div>
     {{/each}}
   {{else}}
+    {{log content}}
     {{nav-section-action section=content goBack=(action 'goBack')}}
   {{/liquid-unless}}
 {{/if}}

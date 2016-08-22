@@ -11,7 +11,7 @@ export default Component.extend({
   classNames: 'nav-section',
   layout,
   propTypes: {
-    section: PropTypes.object.isRequired
+    section: PropTypes.object
   },
   lineStyle: computed('section.color', function () {
     let color = this.get('section.color')
@@ -19,7 +19,7 @@ export default Component.extend({
   }),
   getDefaultProps () {
     return {
-      section: {}
+      section: null
     }
   }
 })

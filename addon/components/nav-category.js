@@ -1,14 +1,10 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-category'
-
+import { PropTypes } from 'ember-prop-types'
 const {
   Component,
   inject
 } = Ember
-
-import {
-  PropTypes
-} from 'ember-prop-types'
 
 export default Component.extend({
   frostNavigation: inject.service(),
@@ -22,11 +18,6 @@ export default Component.extend({
     icon: PropTypes.string,
     name: PropTypes.string.isRequired,
     pack: PropTypes.string
-  },
-  getDefaultProps () {
-    return {
-      pack: 'frost'
-    }
   },
   click () {
     let navService = this.get('frostNavigation')
@@ -42,6 +33,13 @@ export default Component.extend({
       }, 100)
     } else {
       navService.set('_activeCategory', name)
+    }
+  },
+  getDefaultProps () {
+    return {
+      name: null,
+      icon: null,
+      pack: 'frost'
     }
   }
 })

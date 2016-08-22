@@ -1,5 +1,6 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-action'
+import { PropTypes } from 'ember-prop-types'
 
 const {
   Component,
@@ -7,9 +8,26 @@ const {
 } = Ember
 export default Component.extend({
   frostNavigation: inject.service(),
-  classNames: ['nav-route', 'nav-action'],
+  classNames: [
+    'nav-route',
+    'nav-action'
+  ],
   layout,
+  propTypes: {
+    item: PropTypes.object.isRequired
+  },
   click () {
     this.get('frostNavigation').performAction(this.get('item'))
+  },
+  getDefaultProps () {
+    return {
+      item: {
+        name: null,
+        description: null,
+        action: null,
+        icon: null,
+        pack: 'frost'
+      }
+    }
   }
 })
