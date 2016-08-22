@@ -16,6 +16,7 @@
     "ember": "2.6.0"
   },
   "devDependencies": {
-    "blanket": "5e94fc30f2e694bb5c3718ddcbf60d467f4b4d26"
+    "blanket": "5e94fc30f2e694bb5c3718ddcbf60d467f4b4d26",
+    "lodash": "^4.15.0"
   }
 }
