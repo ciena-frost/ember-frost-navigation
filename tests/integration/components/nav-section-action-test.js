@@ -17,5 +17,14 @@ describeComponent(
       this.render(hbs`{{nav-section-action}}`)
       expect(this.$()).to.have.length(1)
     })
+    it('goes back on click', function () {
+      let wentBack = false
+      this.set('goBack', function () {
+        wentBack = true
+      })
+      this.render(hbs`{{nav-section-action goBack=goBack}}`)
+      this.$('.nav-section-header').click()
+      expect(wentBack).to.equal(true)
+    })
   }
 )

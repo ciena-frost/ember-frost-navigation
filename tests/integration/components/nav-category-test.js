@@ -21,21 +21,22 @@ describeComponent(
       expect(this.$()).to.have.length(1)
     })
     describe('clicks', function () {
-      it('handles null case', function () {
-        this.set('_name', 'test')
+      const helper = function (name, active) {
+        this.set('_name', name)
         this.set('_nav', Ember.Object.create({
-          _activeCategory: null
+          _activeCategory: active
         }))
-        this.render(hbs`{{nav-category name=name frostNavigation=_nav}}`)
+        this.render(hbs`{{nav-category name=_name frostNavigation=_nav}}`)
         this.$('.nav-category').click()
+      }
+      it('handles null case', function () {
+        helper.call(this, 'test', null)
       })
       it('handles not equal case', function () {
-        this.set('_name', 'test')
-        this.set('_nav', Ember.Object.create({
-          _activeCategory: '_test'
-        }))
-        this.render(hbs`{{nav-category name=name frostNavigation=_nav}}`)
-        this.$('.nav-category').click()
+        helper.call(this, 'test', '_test')
+      })
+      it('handles equal case', function () {
+        helper.call(this, 'test', 'test')
       })
     })
   }
