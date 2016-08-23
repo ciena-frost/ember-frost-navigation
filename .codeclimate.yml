@@ -1,6 +1,28 @@
 engines:
- watson:
+  watson:
     enabled: true
+  scss-lint:
+    enabled: true
+  nodesecurity:
+    enabled: true
+  fixme:
+    enabled: true
+    config:
+      strings:
+        - TODO
+        - FIX
+        - BUG
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - javascript
+exclude_paths:
+  - node_modules/
+  - bower_components/
+  - tmp/
+  - dist/
 ratings:
    paths:
    - "**.js"
+   - "**.scss"
