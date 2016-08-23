@@ -22,10 +22,6 @@ export default Component.extend({
   getDefaultProps () {
     return {
       item: {
-        name: null,
-        description: null,
-        action: null,
-        icon: null,
         pack: 'frost'
       }
     }

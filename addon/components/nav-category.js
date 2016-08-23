@@ -37,8 +37,6 @@ export default Component.extend({
   },
   getDefaultProps () {
     return {
-      name: null,
-      icon: null,
       pack: 'frost'
     }
   }

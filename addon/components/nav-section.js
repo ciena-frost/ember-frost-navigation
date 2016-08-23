@@ -16,10 +16,5 @@ export default Component.extend({
   lineStyle: computed('section.color', function () {
     let color = this.get('section.color')
     return Ember.String.htmlSafe(`border-bottom-color: ${color}`)
-  }),
-  getDefaultProps () {
-    return {
-      section: null
-    }
-  }
+  })
 })

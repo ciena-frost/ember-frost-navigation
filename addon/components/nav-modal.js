@@ -6,6 +6,7 @@ const {
   computed,
   observer,
   inject,
+  run,
   A
 } = Ember
 
@@ -18,10 +19,12 @@ export default Component.extend({
   attributeBindings: ['tabindex'],
   activeCategory: null,
   _categoryChanged: observer('frostNavigation._activeCategory', function () {
-    this.set('activeCategory', this.get('frostNavigation._activeCategory'))
-    if (this.get('activeCategory') === null) {
-      this.sendAction('dismiss')
-    }
+    run.scheduleOnce('sync', () => {
+      this.set('activeCategory', this.get('frostNavigation._activeCategory'))
+      if (this.get('activeCategory') === null) {
+        this.sendAction('dismiss')
+      }
+    })
   }),
   columns: computed(
     'frostNavigation.categories',

@@ -20,7 +20,6 @@ describeComponent(
       // renders the component on the page
       this.render()
       expect(component).to.be.ok
-      expect(component.getDefaultProps()).to.be.a('object')
       expect(this.$()).to.have.length(1)
     })
   }

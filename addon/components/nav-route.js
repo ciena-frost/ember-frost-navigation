@@ -29,10 +29,6 @@ export default Component.extend({
   },
   getDefaultProps () {
     return {
-      name: null,
-      description: null,
-      route: null,
-      icon: null,
       pack: 'frost'
     }
   }

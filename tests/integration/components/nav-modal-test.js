@@ -1,10 +1,18 @@
-
+import Ember from 'ember'
 import { expect } from 'chai'
 import {
   describeComponent,
   it
 } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
+
+const {
+  run
+} = Ember
+
+const {
+  next
+} = run
 
 describeComponent(
   'nav-modal',
@@ -25,18 +33,20 @@ describeComponent(
       this.render(hbs`{{nav-modal frostNavigation=_nav}}`)
       obj.set('_activeCategory', 'recompute')
     })
-    it('recomputes on _activeCategory, and dismisses', function () {
-      let obj = Ember.Object.create({
+    it('recomputes on _activeCategory, and dismisses', function (done) {
+      let nav = Ember.Object.create({
         _activeCategory: null,
         categories: []
       })
-      this.set('_nav', obj)
+      this.set('_nav', nav)
       this.render(hbs`{{nav-modal activeCategory=activeCategory frostNavigation=_nav}}`)
-
-      obj.set('_activeCategory', 'test')
-      expect(this.get('activeCategory')).to.equal('test')
-
-      obj.set('_activeCategory', null)
+      next(() => {
+        nav.set('_activeCategory', 'test')
+        next(() => {
+          expect(this.get('activeCategory')).to.equal('test')
+          done()
+        })
+      })
     })
   }
 )

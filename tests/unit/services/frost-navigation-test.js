@@ -91,5 +91,14 @@ describeModule(
         })
       }).to.throw(e)
     })
+    it('transitions to a route', function () {
+      let service = this.subject()
+      let didDismiss = false
+      service.set('dismiss', () => {
+        didDismiss = true
+      })
+      service.transitionTo('index')
+      expect(didDismiss).to.equal(true)
+    })
   }
 )
