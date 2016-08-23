@@ -15,6 +15,7 @@ export default Component.extend({
 
   classNames: ['nav-modal'],
   layout,
+  hook: 'frost-nav-modal',
   tabindex: 0,
   attributeBindings: ['tabindex'],
   activeCategory: null,

@@ -9,7 +9,7 @@ describeComponent(
   'NavRouteComponent',
   {
     // Specify the other units that are required for this test
-    // needs: ['component:foo', 'helper:bar'],
+    needs: ['helper:hook'],
     unit: true
   },
   function () {

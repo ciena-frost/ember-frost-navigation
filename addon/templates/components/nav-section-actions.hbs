@@ -8,6 +8,9 @@
     </div>
   </div>
   {{#each section.actions as |item|}}
-    {{nav-action item=item}}
+    {{nav-action
+      item=item
+      hook=(concat hook '-action')
+    }}
   {{/each}}
 </div>

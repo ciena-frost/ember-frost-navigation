@@ -25,9 +25,9 @@ export default Component.extend({
     let activeCategory = navService.get('_activeCategory')
     let name = this.get('name')
     if (name === activeCategory) {
-      navService.set('_activeCategory', null)
+      navService.dismiss()
     } else if (typeof activeCategory === 'string') {
-      navService.set('_activeCategory', null)
+      navService.dismiss()
       Ember.run.later(() => {
         navService.set('_activeCategory', name)
       }, 100)
