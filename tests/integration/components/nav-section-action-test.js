@@ -1,5 +1,5 @@
-
 import { expect } from 'chai'
+import sinon from 'sinon'
 import {
   describeComponent,
   it
@@ -18,13 +18,11 @@ describeComponent(
       expect(this.$()).to.have.length(1)
     })
     it('goes back on click', function () {
-      let wentBack = false
-      this.set('goBack', function () {
-        wentBack = true
-      })
+      let spy = sinon.spy()
+      this.set('goBack', spy)
       this.render(hbs`{{nav-section-action goBack=goBack}}`)
       this.$('.nav-section-header').click()
-      expect(wentBack).to.equal(true)
+      expect(spy.called).to.be.true
     })
   }
 )

@@ -1,11 +1,10 @@
-
 import { expect } from 'chai'
 import Ember from 'ember'
 import {
   describeModule,
   it
 } from 'ember-mocha'
-
+import sinon from 'sinon'
 const {
   Controller
 } = Ember
@@ -35,12 +34,10 @@ describeModule(
     })
     it('performs action', function () {
       let service = this.subject()
-      let actionFired = false
+      let spy = sinon.spy()
       let controller = Controller.extend({
         actions: {
-          testAction () {
-            actionFired = true
-          }
+          testAction: spy
         }
       }).create()
       service.set('_activeCategory', 'test')
@@ -49,19 +46,17 @@ describeModule(
         dismiss: true,
         action: 'testAction'
       })
-      expect(actionFired).to.equal(true)
-      expect(service.get('_activeCategory')).to.equal(null)
+      expect(spy.called).to.be.true
+      expect(service.get('_activeCategory')).to.be.null
     })
     it('performs deprec action', function () {
       let service = this.subject()
-      let actionFired = false
+      let spy = sinon.spy()
       let controller = Controller.extend({
-        testAction () {
-          actionFired = true
-        },
+        testAction: spy,
         send () {
           this._super(...arguments)
-          if (!actionFired) {
+          if (!spy.called) { // send won't throw error in tests
             throw Error()
           }
         }
@@ -70,7 +65,7 @@ describeModule(
       service.performAction({
         action: 'testAction'
       })
-      expect(actionFired).to.equal(true)
+      expect(spy.called).to.be.true
     })
     it('throws error when no action', function () {
       let service = this.subject()
@@ -93,12 +88,10 @@ describeModule(
     })
     it('transitions to a route', function () {
       let service = this.subject()
-      let didDismiss = false
-      service.set('dismiss', () => {
-        didDismiss = true
-      })
+      let spy = sinon.spy()
+      service.set('dismiss', spy)
       service.transitionTo('index')
-      expect(didDismiss).to.equal(true)
+      expect(spy.called).to.be.true
     })
   }
 )
