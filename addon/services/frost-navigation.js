@@ -5,7 +5,8 @@ const {
   Service,
   inject,
   assert,
-  deprecate
+  deprecate,
+  Logger
 } = Ember
 
 export default Service.extend({
@@ -32,7 +33,11 @@ export default Service.extend({
     this.set('_activeCategory', null)
   },
   transitionTo (route) {
-    this.get('routing').transitionTo(route)
+    try {
+      this.get('routing').transitionTo(route)
+    } catch (e) {
+      Logger.warn('Unable to perform transition', e)
+    }
     this.dismiss()
   },
   performAction (item) {

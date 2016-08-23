@@ -1,5 +1,5 @@
-/* jshint expr:true */
 import { expect } from 'chai'
+import sinon from 'sinon'
 import {
   describeComponent,
   it
@@ -16,6 +16,13 @@ describeComponent(
     it('renders', function () {
       this.render(hbs`{{nav-section-action}}`)
       expect(this.$()).to.have.length(1)
+    })
+    it('goes back on click', function () {
+      let spy = sinon.spy()
+      this.set('goBack', spy)
+      this.render(hbs`{{nav-section-action goBack=goBack}}`)
+      this.$('.nav-section-header').click()
+      expect(spy.called).to.be.true
     })
   }
 )

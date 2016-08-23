@@ -4,35 +4,40 @@ import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 import SlotsMixin from 'ember-block-slots'
 
 const {
-  Component
+  Component,
+  inject,
+  computed
 } = Ember
 
 export default Component.extend(SlotsMixin, {
-  nav: Ember.inject.service('frost-navigation'),
+  frostNavigation: inject.service(),
+  liquidFireTransitions: inject.service(),
 
   classNames: ['frost-navigation'],
   layout,
-  transitionService: Ember.inject.service('liquid-fire-transitions'),
-  categories: Ember.computed.alias('nav.categories'),
-  registerTransitions: Ember.on('init', function () {
-    let navigationService = this.get('nav')
-    let transitionService = this.get('transitionService')
-    let ctrl = this.get('targetObject')
-    transitionService.map(transitions)
+  categories: computed.alias('frostNavigation.categories'),
+  init () {
+    this._super(...arguments)
 
-    navigationService.set('_controller', ctrl)
-    navigationService.addObserver(
+    let frostNavigation = this.get('frostNavigation')
+    let liquidFireTransitions = this.get('liquidFireTransitions')
+
+    let ctrl = this.get('targetObject')
+    liquidFireTransitions.map(transitions)
+
+    frostNavigation.set('_controller', ctrl)
+    frostNavigation.addObserver(
       '_activeCategory',
-      navigationService,
+      frostNavigation,
       () => {
-        let active = navigationService.get('_activeCategory')
+        let active = frostNavigation.get('_activeCategory')
         if (active) {
           ctrl.set('activeCategory', active)
         }
       }
     )
     window.addEventListener('popstate', () => {
-      navigationService.set('_activeCategory', null)
+      frostNavigation.set('_activeCategory', null)
     }, false)
-  })
+  }
 })

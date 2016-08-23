@@ -1,0 +1,28 @@
+<div class='nav-section-header' style={{lineStyle}}>
+  {{section.title}}
+  {{#if section.actions}}
+    <div class='nav-section-actions' {{action showMore section}}>
+      <div class='sub'>Actions</div>
+      {{frost-icon class='actions-icon flip' icon='chevron'}}
+    </div>
+  {{/if}}
+</div>
+<div class='body'>
+  {{#each section.routes as |item|}}
+    {{#if item.action}}
+      {{nav-action item=item}}
+    {{else}}
+      {{nav-route
+        description=item.description
+        icon=item.icon
+        pack=item.pack
+        name=item.name
+        route=item.route
+        url=item.url
+        tabbed=item.tabbed
+        isVisible=item.isVisible
+      }}
+    {{/if}}
+  {{/each}}
+</div>
+{{yield}}

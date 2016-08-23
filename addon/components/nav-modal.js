@@ -1,36 +1,51 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-modal'
-import _ from 'lodash'
 
-export default Ember.Component.extend({
-  nav: Ember.inject.service('frost-navigation'),
+const {
+  Component,
+  computed,
+  observer,
+  inject,
+  run,
+  A
+} = Ember
+
+export default Component.extend({
+  frostNavigation: inject.service(),
 
   classNames: ['nav-modal'],
   layout,
   tabindex: 0,
   attributeBindings: ['tabindex'],
   activeCategory: null,
-  _categoryChanged: Ember.observer('nav._activeCategory', function () {
-    this.set('activeCategory', this.get('nav._activeCategory'))
-    if (this.get('activeCategory') === null) {
-      this.sendAction('dismiss')
-    }
-  }),
-  columns: Ember.computed('nav.categories', 'activeCategory', function () {
-    if (!this.get('activeCategory')) {
-      return false
-    }
-    const category = _.find(this.get('nav.categories'), (category) => {
-      return category.name.toLowerCase() === this.get('activeCategory').toLowerCase()
+  _categoryChanged: observer('frostNavigation._activeCategory', function () {
+    run.scheduleOnce('sync', () => {
+      this.set('activeCategory', this.get('frostNavigation._activeCategory'))
+      if (this.get('activeCategory') === null) {
+        this.sendAction('dismiss')
+      }
     })
-    return category.columns
   }),
+  columns: computed(
+    'frostNavigation.categories',
+    'activeCategory',
+    function () {
+      if (!this.get('activeCategory')) {
+        return false
+      }
+      const categories = this.get('frostNavigation.categories') || A()
+      const category = categories.find((category) => {
+        let name = category.name.toLowerCase()
+        return name === this.get('activeCategory').toLowerCase()
+      })
+      return category ? category.columns : null
+    }),
   actions: {
     outsideClick () {
-      this.get('nav').dismiss()
+      this.get('frostNavigation').dismiss()
     },
     escape () {
-      this.get('nav').dismiss()
+      this.get('frostNavigation').dismiss()
     },
     showMore (section) {
       this.set('showActions', true)
@@ -40,5 +55,4 @@ export default Ember.Component.extend({
       this.set('showActions', false)
     }
   }
-
 })

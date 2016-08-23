@@ -2,28 +2,34 @@ import Ember from 'ember'
 import layout from '../templates/components/nav-route'
 import { PropTypes } from 'ember-prop-types'
 
-export default Ember.Component.extend({
-  nav: Ember.inject.service('frost-navigation'),
+const {
+  Component,
+  inject
+} = Ember
+
+export default Component.extend({
+  frostNavigation: inject.service(),
   classNames: ['nav-route'],
   layout,
-  propTypes: {
-    description: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    pack: PropTypes.string,
-    route: PropTypes.string
-  },
 
-  getDefaultProps () {
-    return {
-      pack: 'app'
-    }
+  propTypes: {
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    route: PropTypes.string,
+    icon: PropTypes.string,
+    pack: PropTypes.string
   },
   click (e) {
+    const navigation = this.get('frostNavigation')
     if (e.metaKey || e.shiftKey || e.ctrlKey) {
-      this.get('nav').dismiss()
+      navigation.dismiss()
       return
     }
-    this.get('nav').transitionTo(this.get('route'))
+    navigation.transitionTo(this.get('route'))
+  },
+  getDefaultProps () {
+    return {
+      pack: 'frost'
+    }
   }
 })

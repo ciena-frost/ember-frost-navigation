@@ -3,7 +3,9 @@
     {{#frost-link route disabled=true}}
       <div class='content'>
         <div class='nav-route-icon'>
-          {{frost-icon pack=pack icon=icon}}
+          {{#if icon}}
+            {{frost-icon pack=pack icon=icon}}
+          {{/if}}
         </div>
         <div>
           <div class='nav-route-name'>
@@ -22,7 +24,9 @@
       target="{{if tabbed '_blank'}}">
       <div class='content'>
         <div class='nav-route-icon'>
-          {{frost-icon pack=pack icon=icon}}
+          {{#if icon}}
+            {{frost-icon pack=pack icon=icon}}
+          {{/if}}
         </div>
         <div>
           <div class='nav-route-name'>
