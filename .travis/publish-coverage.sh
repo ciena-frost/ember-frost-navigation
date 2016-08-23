@@ -7,3 +7,4 @@ then
 fi
 
 cat coverage/lcov.info | coveralls
+codeclimate-test-reporter < coverage/lcov.info

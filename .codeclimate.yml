@@ -1,0 +1,6 @@
+engines:
+ watson:
+    enabled: true
+ratings:
+   paths:
+   - "**.js"
