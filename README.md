@@ -7,7 +7,7 @@
 [npm-img]: https://img.shields.io/npm/v/ember-frost-navigation.svg "NPM Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-navigation
 
-[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![Code Climate](https://codeclimate.com/github/ciena-frost/ember-frost-navigation/badges/gpa.svg)](https://codeclimate.com/github/ciena-frost/ember-frost-navigation) [![npm](https://img.shields.io/npm/dm/localeval.svg?maxAge=2592000)]() [![NPM][npm-img]][npm-url]
+[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![Code Climate](https://codeclimate.com/github/ciena-frost/ember-frost-navigation/badges/gpa.svg)](https://codeclimate.com/github/ciena-frost/ember-frost-navigation) [![NPM][npm-img]][npm-url]
 
 # ember-frost-navigation
 
