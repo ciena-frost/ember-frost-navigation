@@ -31,23 +31,23 @@ export default Component.extend({
     'frostNavigation.categories',
     'activeCategory',
     function () {
-      if (!this.get('activeCategory')) {
-        return false
-      }
       const categories = this.get('frostNavigation.categories') || A()
       const category = categories.find((category) => {
         let name = category.name.toLowerCase()
         return name === this.get('activeCategory').toLowerCase()
       })
       return category ? category.columns : null
-    }),
+    }
+  ),
+  init () {
+    this._super(...arguments)
+    ;['outsideClick', 'escape'].forEach(e => {
+      this.actions[e] = function () {
+        this.get('frostNavigation').dismiss()
+      }
+    })
+  },
   actions: {
-    outsideClick () {
-      this.get('frostNavigation').dismiss()
-    },
-    escape () {
-      this.get('frostNavigation').dismiss()
-    },
     showMore (section) {
       this.set('showActions', true)
       this.set('content', section)

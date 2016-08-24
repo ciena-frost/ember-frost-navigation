@@ -17,7 +17,6 @@ export default Service.extend({
   _registerCategory (config = {}) {
     assert(A.categoryName, config.name)
     let category = this.categories.find(e => e.name === config.name)
-
     if (!category) {
       this.categories.pushObject(category = {
         name: config.name,
