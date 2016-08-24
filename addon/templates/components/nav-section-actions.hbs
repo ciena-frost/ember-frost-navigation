@@ -7,7 +7,10 @@
       <div class='title'>{{section.title}}'s actions</div>
     </div>
   </div>
-  {{#each section.actions as |item|}}
-    {{nav-action item=item}}
+  {{#each section.actions as |item index|}}
+    {{nav-action
+      item=item
+      hook=(concat hook '-' index)
+    }}
   {{/each}}
 </div>

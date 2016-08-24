@@ -3,12 +3,13 @@
   {{#yield-slot 'logo'}}
     {{yield}}
   {{/yield-slot}}
-  {{#each categories as |category|}}
+  {{#each categories as |category index|}}
     {{#if category.isVisible}}
       {{nav-category
         icon=category.icon
         name=category.name
         pack=category.pack
+        hook=(concat hook '-category-' index)
       }}
     {{/if}}
   {{/each}}

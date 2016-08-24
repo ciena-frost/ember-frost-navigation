@@ -27,7 +27,10 @@ describeComponent(
       const helper = function (name, active) {
         this.set('_name', name)
         this.set('_nav', Ember.Object.create({
-          _activeCategory: active
+          _activeCategory: active,
+          dismiss () {
+            this.set('_activeCategory', null)
+          }
         }))
         this.render(hbs`{{nav-category
           name=_name

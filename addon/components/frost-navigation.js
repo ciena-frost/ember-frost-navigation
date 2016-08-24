@@ -6,15 +6,16 @@ import SlotsMixin from 'ember-block-slots'
 const {
   Component,
   inject,
-  computed
+  computed,
+  run
 } = Ember
 
 export default Component.extend(SlotsMixin, {
   frostNavigation: inject.service(),
   liquidFireTransitions: inject.service(),
-
   classNames: ['frost-navigation'],
   layout,
+  hook: 'frost-nav',
   categories: computed.alias('frostNavigation.categories'),
   init () {
     this._super(...arguments)
@@ -37,7 +38,9 @@ export default Component.extend(SlotsMixin, {
       }
     )
     window.addEventListener('popstate', () => {
-      frostNavigation.set('_activeCategory', null)
+      run.scheduleOnce('sync', () => {
+        frostNavigation.dismiss()
+      })
     }, false)
   }
 })

@@ -40,12 +40,10 @@ describeComponent(
       })
       this.set('_nav', nav)
       this.render(hbs`{{nav-modal activeCategory=activeCategory frostNavigation=_nav}}`)
+      nav.set('_activeCategory', 'test')
       next(() => {
-        nav.set('_activeCategory', 'test')
-        next(() => {
-          expect(this.get('activeCategory')).to.equal('test')
-          done()
-        })
+        expect(this.get('activeCategory')).to.equal('test')
+        done()
       })
     })
   }

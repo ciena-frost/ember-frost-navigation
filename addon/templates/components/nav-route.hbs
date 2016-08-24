@@ -1,6 +1,6 @@
 {{#if isVisible}}
   {{#if route}}
-    {{#frost-link route disabled=true}}
+    {{#frost-link route disabled=true hook=(concat hook '-link')}}
       <div class='content'>
         <div class='nav-route-icon'>
           {{#if icon}}
@@ -21,7 +21,8 @@
     <a
       class='frost-link'
       href='{{url}}'
-      target="{{if tabbed '_blank'}}">
+      target="{{if tabbed '_blank'}}"
+      data-test={{hook (concat hook '-link')}}>
       <div class='content'>
         <div class='nav-route-icon'>
           {{#if icon}}

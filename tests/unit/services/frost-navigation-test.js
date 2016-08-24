@@ -4,6 +4,7 @@ import {
   describeModule,
   it
 } from 'ember-mocha'
+import { beforeEach } from 'mocha'
 import sinon from 'sinon'
 const {
   Controller
@@ -13,27 +14,37 @@ describeModule(
   'service:frost-navigation',
   'FrostNavigationService',
   function () {
-    // Replace this with your real tests.
+    let service
+    beforeEach(function () {
+      service = this.subject()
+    })
     it('exists', function () {
-      let service = this.subject()
       expect(service).to.be.ok
     })
     it('adds categories correctly', function () {
-      let service = this.subject()
       service._registerCategory({
-        name: 'Test name'
+        name: 'add new category'
       })
       expect(service.categories).to.not.be.empty
     })
+    it('returns existing category', function () {
+      let name = 'existing category'
+      service.set('categories', Ember.A())
+      service.get('categories').pushObject({
+        name
+      })
+      service._registerCategory({
+        name
+      })
+      expect(service.categories.length).to.equal(1)
+    })
     it('dismisses', function () {
-      let service = this.subject()
       service.set('_activeCategory', 'test')
       expect(service.get('_activeCategory')).to.equal('test')
       service.dismiss()
       expect(service.get('_activeCategory')).to.equal(null)
     })
     it('performs action', function () {
-      let service = this.subject()
       let spy = sinon.spy()
       let controller = Controller.extend({
         actions: {
@@ -50,7 +61,6 @@ describeModule(
       expect(service.get('_activeCategory')).to.be.null
     })
     it('performs deprec action', function () {
-      let service = this.subject()
       let spy = sinon.spy()
       let controller = Controller.extend({
         testAction: spy,
@@ -68,7 +78,6 @@ describeModule(
       expect(spy.called).to.be.true
     })
     it('throws error when no action', function () {
-      let service = this.subject()
       let actionFired = false
       let e = 'no luck'
       let controller = Controller.extend({
@@ -87,7 +96,6 @@ describeModule(
       }).to.throw(e)
     })
     it('transitions to a route', function () {
-      let service = this.subject()
       let spy = sinon.spy()
       service.set('dismiss', spy)
       service.transitionTo('index')

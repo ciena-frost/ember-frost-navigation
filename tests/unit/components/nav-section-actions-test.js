@@ -5,8 +5,8 @@ import {
 } from 'ember-mocha'
 
 describeComponent(
-  'nav-section-action',
-  'NavSectionActionComponent',
+  'nav-section-actions',
+  'NavSectionActionsComponent',
   {
     // Specify the other units that are required for this test
     needs: ['component:frost-icon'],

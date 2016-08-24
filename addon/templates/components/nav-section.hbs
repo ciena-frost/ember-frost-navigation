@@ -8,9 +8,12 @@
   {{/if}}
 </div>
 <div class='body'>
-  {{#each section.routes as |item|}}
+  {{#each section.routes as |item index|}}
     {{#if item.action}}
-      {{nav-action item=item}}
+      {{nav-action
+        item=item
+        hook=(concat hook '-action-' index)
+      }}
     {{else}}
       {{nav-route
         description=item.description
@@ -21,6 +24,7 @@
         url=item.url
         tabbed=item.tabbed
         isVisible=item.isVisible
+        hook=(concat hook '-route-' index)
       }}
     {{/if}}
   {{/each}}

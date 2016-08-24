@@ -10,11 +10,6 @@ engines:
         - TODO
         - FIX
         - BUG
-  duplication:
-    enabled: true
-    config:
-      languages:
-        - javascript
 exclude_paths:
   - node_modules/
   - bower_components/

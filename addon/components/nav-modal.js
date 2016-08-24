@@ -15,6 +15,7 @@ export default Component.extend({
 
   classNames: ['nav-modal'],
   layout,
+  hook: 'frost-nav-modal',
   tabindex: 0,
   attributeBindings: ['tabindex'],
   activeCategory: null,
@@ -30,23 +31,26 @@ export default Component.extend({
     'frostNavigation.categories',
     'activeCategory',
     function () {
-      if (!this.get('activeCategory')) {
-        return false
-      }
       const categories = this.get('frostNavigation.categories') || A()
       const category = categories.find((category) => {
         let name = category.name.toLowerCase()
         return name === this.get('activeCategory').toLowerCase()
       })
       return category ? category.columns : null
-    }),
+    }
+  ),
+  _initEvents () {
+    ;['outsideClick', 'escape'].forEach(e => {
+      this.actions[e] = function () {
+        this.get('frostNavigation').dismiss()
+      }
+    })
+  },
+  init () {
+    this._super(...arguments)
+    this._initEvents()
+  },
   actions: {
-    outsideClick () {
-      this.get('frostNavigation').dismiss()
-    },
-    escape () {
-      this.get('frostNavigation').dismiss()
-    },
     showMore (section) {
       this.set('showActions', true)
       this.set('content', section)

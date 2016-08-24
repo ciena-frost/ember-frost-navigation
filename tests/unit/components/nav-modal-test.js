@@ -3,6 +3,7 @@ import {
   describeComponent,
   it
 } from 'ember-mocha'
+import { beforeEach } from 'mocha'
 
 describeComponent(
   'nav-modal',
@@ -13,17 +14,16 @@ describeComponent(
     unit: true
   },
   function () {
-    it('renders', function () {
-      // creates the component instance
-      let component = this.subject()
-      // renders the component on the page
+    let component
+    beforeEach(function () {
+      component = this.subject()
       this.render()
+    })
+    it('renders', function () {
       expect(component).to.be.ok
       expect(this.$()).to.have.length(1)
     })
     it('handles actions', function () {
-      let component = this.subject()
-      this.render()
       ;[
         {
           name: 'outsideClick',
@@ -37,19 +37,19 @@ describeComponent(
         {
           name: 'escape',
           test () {
-            expect(component.get('activeCategory')).to.equal(null)
+            expect(component.get('activeCategory')).to.be.null
           }
         },
         {
           name: 'showMore',
           test () {
-            expect(component.get('showActions')).to.equal(true)
+            expect(component.get('showActions')).to.be.true
           }
         },
         {
           name: 'goBack',
           test () {
-            expect(component.get('showActions')).to.equal(false)
+            expect(component.get('showActions')).to.be.false
           }
         }
       ].forEach(e => {
@@ -61,6 +61,20 @@ describeComponent(
           e.cleanup()
         }
       })
+    })
+    it('computes categories correctly', function () {
+      let columns = [1, 2, 3]
+      let nav = component.get('frostNavigation')
+      component.set('activeCategory', 'test')
+      nav.setProperties({
+        categories: [
+          {
+            name: 'test',
+            columns
+          }
+        ]
+      })
+      expect(component.get('columns')).to.equal(columns)
     })
   }
 )
