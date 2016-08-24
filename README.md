@@ -186,7 +186,7 @@ The navigation component is accessible using ember-hook with the top level hook 
 | inline action from section context           	| `$hook('frost-nav-modal-section-<sectionIndex>-action-<actionIndex>')`          	|
 | route hook                                   	| `$hook('frost-nav-modal-section-<sectionIndex>-route-<routeIndex>')`            	|
 | frost-link within the route / action context 	| `$hook('frost-nav-modal-section-<sectionIndex>-(route / action)-<index>-link')` 	|
-| action from section actions context          	| `$hook('frost-nav-modal-section-actions-action-<index>')`                       	|
+| action from section actions context          	| `$hook('frost-nav-modal-section-actions-<index>')`                       	|
 
 
 ## Setup

@@ -10,7 +10,7 @@
   {{#each section.actions as |item index|}}
     {{nav-action
       item=item
-      hook=(concat hook '-action-' index)
+      hook=(concat hook '-' index)
     }}
   {{/each}}
 </div>
