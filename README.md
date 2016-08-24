@@ -7,7 +7,7 @@
 [npm-img]: https://img.shields.io/npm/v/ember-frost-navigation.svg "NPM Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-navigation
 
-[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
+[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![Code Climate](https://codeclimate.com/github/ciena-frost/ember-frost-navigation/badges/gpa.svg)](https://codeclimate.com/github/ciena-frost/ember-frost-navigation) [![npm](https://img.shields.io/npm/dm/localeval.svg?maxAge=2592000)]() [![NPM][npm-img]][npm-url]
 
 # ember-frost-navigation
 
@@ -171,6 +171,22 @@ Router.map(function () {
  * @param {boolean} config.tabbed flag to open in new tab (default false)
  */
 ```
+
+## Testing with [ember-hook](https://www.npmjs.com/package/ember-hook)
+
+The navigation component is accessible using ember-hook with the top level hook names, or you can access the internal components as well -
+
+| Property                                     	| Hook                                                                            	|
+|----------------------------------------------	|---------------------------------------------------------------------------------	|
+| top level hook                               	| `$hook('frost-nav')`                                                            	|
+| modal hook                                   	| `$hook('frost-nav-modal')`                                                      	|
+| category hook                                	| `$hook('frost-nav-category-<index>')`                                           	|
+| section / column hook                        	| `$hook('frost-nav-modal-section-<index>')`                                      	|
+| section actions hook`                        	| `$hook('frost-nav-modal-section-actions')`                                      	|
+| inline action from section context           	| `$hook('frost-nav-modal-section-<sectionIndex>-action-<actionIndex>')`          	|
+| route hook                                   	| `$hook('frost-nav-modal-section-<sectionIndex>-route-<routeIndex>')`            	|
+| frost-link within the route / action context 	| `$hook('frost-nav-modal-section-<sectionIndex>-(route / action)-<index>-link')` 	|
+| action from section actions context          	| `$hook('frost-nav-modal-section-actions-action-<index>')`                       	|
 
 
 ## Setup
