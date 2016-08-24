@@ -39,13 +39,16 @@ export default Component.extend({
       return category ? category.columns : null
     }
   ),
-  init () {
-    this._super(...arguments)
+  _initEvents () {
     ;['outsideClick', 'escape'].forEach(e => {
       this.actions[e] = function () {
         this.get('frostNavigation').dismiss()
       }
     })
+  },
+  init () {
+    this._super(...arguments)
+    this._initEvents()
   },
   actions: {
     showMore (section) {

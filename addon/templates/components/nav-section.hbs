@@ -8,11 +8,11 @@
   {{/if}}
 </div>
 <div class='body'>
-  {{#each section.routes as |item|}}
+  {{#each section.routes as |item index|}}
     {{#if item.action}}
       {{nav-action
         item=item
-        hook=(concat hook '-action')
+        hook=(concat hook '-action-' index)
       }}
     {{else}}
       {{nav-route
@@ -24,7 +24,7 @@
         url=item.url
         tabbed=item.tabbed
         isVisible=item.isVisible
-        hook=(concat hook '-route')
+        hook=(concat hook '-route-' index)
       }}
     {{/if}}
   {{/each}}
