@@ -1,5 +1,5 @@
 [ci-img]: https://img.shields.io/travis/ciena-frost/ember-frost-navigation.svg "Travis CI Build Status"
-[ci-url]: https://travis-ci.org/ciena-frost/ember-frost-navigation
+[ci-url]: https://travis-ci.org/ciena-frost/ember-frost-navigation.svg?branch=master
 
 [cov-img]: https://img.shields.io/coveralls/ciena-frost/ember-frost-navigation.svg "Coveralls Code Coverage"
 [cov-url]: https://coveralls.io/github/ciena-frost/ember-frost-navigation
