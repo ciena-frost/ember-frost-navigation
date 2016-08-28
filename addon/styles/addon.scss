@@ -209,14 +209,6 @@
     }
   }
   .nav-section-actions {
-    .nav-section-header {
-      transition: color 0.2s ease;
-      &:hover {
-        color: $frost-color-grey-6;
-      }
-    }
-  }
-  .nav-section-actions {
     align-items: center;
     cursor: pointer;
     display: flex;
@@ -228,13 +220,19 @@
     &:hover {
       color: $frost-color-grey-6;
     }
-    & .frost-icon {
+    .frost-icon {
       height: 30px;
       width: 30px;
     }
-    & .sub {
+    .sub {
       font-size: $frost-font-s;
       padding-right: 5px;
+    }
+    .nav-section-header {
+      transition: color 0.2s ease;
+      &:hover {
+        color: $frost-color-grey-6;
+      }
     }
   }
 }

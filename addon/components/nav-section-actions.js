@@ -6,7 +6,7 @@ const {
   computed
 } = Ember
 export default Component.extend({
-  classNames: ['nav-column', 'nav-section-actions'],
+  classNames: ['nav-column'],
   layout,
   propTypes: {
     section: PropTypes.object
