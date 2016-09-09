@@ -1,0 +1,21 @@
+engines:
+  watson:
+    enabled: true
+  scss-lint:
+    enabled: true
+  fixme:
+    enabled: true
+    config:
+      strings:
+        - TODO
+        - FIX
+        - BUG
+exclude_paths:
+  - node_modules/
+  - bower_components/
+  - tmp/
+  - dist/
+ratings:
+   paths:
+   - "**.js"
+   - "**.scss"

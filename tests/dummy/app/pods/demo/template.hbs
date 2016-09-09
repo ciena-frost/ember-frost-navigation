@@ -1,0 +1,22 @@
+{{frost-navigation
+  logo-container=(component
+    'custom-logo'
+    class='nav-category navigation-logo'
+  )
+  actions-container=(component
+    'user-pane'
+    class='nav-category user'
+    model=(hash
+      logo=(component
+        'frost-icon'
+        icon='user'
+        pack='dummy'
+      )
+      label="Username"
+    )
+  )
+}}
+
+<div class='page-content'>
+  {{outlet}}
+</div>

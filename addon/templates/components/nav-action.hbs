@@ -1,0 +1,17 @@
+{{#frost-link route disabled=true hook=(concat hook '-link')}}
+  <div class='content'>
+    <div class='nav-route-icon'>
+      {{#if item.icon}}
+        {{frost-icon pack=item.pack icon=item.icon}}
+      {{/if}}
+    </div>
+    <div>
+      <div class='nav-route-name'>
+        {{item.name}}
+      </div>
+      <div class='nav-route-description'>
+        {{item.description}}
+      </div>
+    </div>
+  </div>
+{{/frost-link}}
