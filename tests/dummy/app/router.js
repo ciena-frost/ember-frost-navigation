@@ -15,21 +15,22 @@ Router.map(function () {
       this.column('Column 1', {
         color: '#009eef'
       }, function () {
-        this.action('Action 1', {
+        this.action('Action Example', {
           action: 'myAction',
           pack: 'dummy',
           icon: 'sample',
-          description: 'My description',
+          description: 'This is an action',
           inline: true
         })
-        this.app('App 1', {
+        this.app('Route Example', {
           route: 'go',
-          description: 'Description 1',
+          description: 'This is a route',
           pack: 'dummy',
           icon: 'sample'
         })
         this.engine('Blog Engine', {
           route: 'blog',
+          description: 'This is an engine example',
           package: 'ember-blog-engine',
           pack: 'dummy',
           icon: 'sample'

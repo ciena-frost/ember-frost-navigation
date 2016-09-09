@@ -3,15 +3,21 @@ import layout from '../templates/components/nav-category'
 import { PropTypes } from 'ember-prop-types'
 const {
   Component,
-  inject
+  inject: {
+    service
+  },
+  run: {
+    later
+  },
+  computed
 } = Ember
 
 export default Component.extend({
-  frostNavigation: inject.service(),
+  frostNavigation: service(),
   classNames: ['nav-category'],
   classNameBindings: ['active'],
-  active: Ember.computed('nav._activeCategory', function () {
-    return this.name === this.get('nav._activeCategory')
+  active: computed('frostNavigation._activeCategory', function () {
+    return this.name === this.get('frostNavigation._activeCategory')
   }),
   layout,
   propTypes: {
@@ -28,7 +34,7 @@ export default Component.extend({
       navService.dismiss()
     } else if (typeof activeCategory === 'string') {
       navService.dismiss()
-      Ember.run.later(() => {
+      later(() => {
         navService.set('_activeCategory', name)
       }, 100)
     } else {

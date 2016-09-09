@@ -1,4 +1,50 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-app';
+
+$z-index-application-bar: 3 !default;
+$z-index-modal: 2 !default;
+
+.frost-application-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  background-color: $frost-color-night-2;
+  z-index: $z-index-application-bar;
+
+  .branding {
+    height: 50px;
+    padding: 0 25px;
+    border-right: 1px solid $frost-color-grey-3;
+    display: flex;
+    align-items: center;
+  }
+
+  .navigation {
+    padding: 0 15px;
+    height: 50px;
+    border-right: solid 1px $frost-color-grey-3;
+
+    .frost-icon {
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+    }
+  }
+}
+
+//TODO import pattern from ember-css-* when it's available
+// import from frost-css patterns modal.scss
+.lf-overlay {
+  top: 50px;
+  opacity: 0.1;
+}
+
+.lf-dialog, .lm-container {
+  z-index: $z-index-modal;
+}
 
 .frost-navigation {
   display: flex;

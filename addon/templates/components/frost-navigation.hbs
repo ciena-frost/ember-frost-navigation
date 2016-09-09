@@ -1,8 +1,9 @@
 {{yield}}
 <div class='frost-application-bar'>
-  {{#yield-slot 'logo'}}
-    {{yield}}
-  {{/yield-slot}}
+
+  <!-- Logo -->
+  {{component logo-container}}
+
   {{#each categories as |category index|}}
     {{#if category.isVisible}}
       {{nav-category
@@ -13,8 +14,9 @@
       }}
     {{/if}}
   {{/each}}
-  {{#yield-slot 'actions'}}
-    {{yield}}
-  {{/yield-slot}}
+
+  <!-- Actions -->
+  {{component actions-container}}
+
 </div>
 {{liquid-modal}}
