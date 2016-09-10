@@ -6,9 +6,7 @@ module.exports = function (defaults) {
     babel: {
       optional: ['es7.decorators']
     },
-    snippetPath: [
-      'snippets'
-    ],
+    snippetSearchPaths: ['tests/dummy/app'],
     'ember-cli-mocha': {
       useLintTree: false
     }

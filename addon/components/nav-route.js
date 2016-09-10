@@ -20,6 +20,7 @@ export default Component.extend({
     pack: PropTypes.string
   },
   click (e) {
+    e.preventDefault()
     const navigation = this.get('frostNavigation')
     if (e.metaKey || e.shiftKey || e.ctrlKey) {
       navigation.dismiss()

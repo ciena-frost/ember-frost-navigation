@@ -1,11 +1,15 @@
 import Ember from 'ember'
 const {
   Controller,
+  Logger: {
+    log
+  },
   inject: {
     service
   },
   get
 } = Ember
+// BEGIN-SNIPPET controller
 export default Controller.extend({
   notificationMessages: service(),
   _notify (type, msg) {
@@ -17,7 +21,8 @@ export default Controller.extend({
   actions: {
     myAction (item) {
       this._notify('success', JSON.stringify(item))
-      Logger.log(item)
+      log(item)
     }
   }
 })
+// END-SNIPPET

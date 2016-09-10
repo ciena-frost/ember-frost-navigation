@@ -16,7 +16,8 @@ export default Component.extend({
   propTypes: {
     item: PropTypes.object.isRequired
   },
-  click () {
+  click (e) {
+    e.preventDefault()
     this.get('frostNavigation').performAction(this.get('item'))
   },
   getDefaultProps () {

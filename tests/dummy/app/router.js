@@ -4,6 +4,7 @@ import config from './config/environment'
 var Router = Ember.Router.extend({
   location: config.locationType
 })
+// BEGIN-SNIPPET router
 Router.map(function () {
   this.nav('demo', {
     path: '/'
@@ -35,7 +36,7 @@ Router.map(function () {
           pack: 'dummy',
           icon: 'sample'
         })
-        this.section('Section 1', {
+        this.section('More Content', {
           color: '#a1e7ff'
         }, function () {
           this.link('Google', {
@@ -53,9 +54,10 @@ Router.map(function () {
           })
         })
       })
-      this.column('Column 2')
+      this.column('Empty Column')
     })
   })
 })
 
 export default Router
+// END-SNIPPET

@@ -1,3 +1,4 @@
+<!-- BEGIN-SNIPPET template -->
 {{frost-navigation
   logo-container=(component
     'custom-logo'
@@ -16,7 +17,30 @@
     )
   )
 }}
-
+<!-- END-SNIPPET -->
 <div class='page-content'>
-  {{outlet}}
+  <div class='row'>
+    <div class='column item'>
+      <div class='row item'>
+        <div class='item'>
+          <h3>Router</h3>
+          {{code-snippet name='router.js'}}
+        </div>
+        <div class='item'>
+          <h3>Controller</h3>
+          {{code-snippet name='controller.js'}}
+        </div>
+      </div>
+      <div class='row item'>
+        <div class='item'>
+          <h3>Template</h3>
+          {{code-snippet name='template.hbs'}}
+        </div>
+        <div class='item'>
+          <h3>Outlet</h3>
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
