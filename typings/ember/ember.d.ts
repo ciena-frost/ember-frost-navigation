@@ -1304,7 +1304,7 @@ declare module 'ember' {
       /**
        * Represents the URL of the root of the application, often '/'. This prefix is assumed on all routes defined on this router.
        */
-      baseURL: any;
+      rootURL: any;
       /**
        * Handles updating the paths and notifying any listeners of the URL change.
        */
