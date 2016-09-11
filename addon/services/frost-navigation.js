@@ -3,14 +3,12 @@ import A from 'ember-frost-navigation/utils/asserts'
 
 const {
   Service,
-  inject,
   assert,
   deprecate,
   Logger
 } = Ember
 
 export default Service.extend({
-  routing: inject.service('-routing'),
   _controller: null,
   _activeCategory: null,
   categories: Ember.A(),
@@ -33,7 +31,7 @@ export default Service.extend({
   },
   transitionTo (route) {
     try {
-      this.get('routing').transitionTo(route)
+      this.get('_controller').transitionToRoute(route)
     } catch (e) {
       Logger.warn('Unable to perform transition', e)
     }
