@@ -14,9 +14,6 @@ module.exports = {
         {
           name: 'ember-frost-core',
           target: '>=0.24.0 <2.0.0'
-        }, {
-          name: 'ember-block-slots',
-          target: '>=1.1.1 <2.0.0'
         }
       ]
     })

@@ -1,5 +1,43 @@
-{{frost-navigation}}
-
-<div class='dummy-content'>
-  {{outlet}}
+<!-- BEGIN-SNIPPET template -->
+{{frost-navigation
+  logo=(component 'custom-logo'
+    class='nav-category navigation-logo'
+  )
+  menu=(component 'user-pane'
+    class='nav-category user'
+    model=(hash
+      logo=(component 'frost-icon'
+        icon='user'
+        pack='dummy'
+      )
+      label='Username'
+    )
+  )
+}}
+<!-- END-SNIPPET -->
+<div class='page-content'>
+  <div class='row'>
+    <div class='column item'>
+      <div class='row item'>
+        <div class='item'>
+          <h3>Router</h3>
+          {{code-snippet name='router.js'}}
+        </div>
+        <div class='item'>
+          <h3>Controller</h3>
+          {{code-snippet name='controller.js'}}
+        </div>
+      </div>
+      <div class='row item'>
+        <div class='item'>
+          <h3>Template</h3>
+          {{code-snippet name='template.hbs'}}
+        </div>
+        <div class='item'>
+          <h3>Outlet</h3>
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

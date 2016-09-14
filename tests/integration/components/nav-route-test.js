@@ -33,6 +33,7 @@ describeComponent(
       this.set('_nav', nav)
       this.render(hbs`{{nav-route
         frostNavigation=_nav
+        route='test'
         hook='nav-route'
       }}`)
       const e = (o) => Ember.$.Event('click', o)

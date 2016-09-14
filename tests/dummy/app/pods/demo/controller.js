@@ -1,16 +1,28 @@
 import Ember from 'ember'
 const {
   Controller,
-  Logger
+  Logger: {
+    log
+  },
+  inject: {
+    service
+  },
+  get
 } = Ember
+// BEGIN-SNIPPET controller
 export default Controller.extend({
+  notificationMessages: service(),
+  _notify (type, msg) {
+    get(this, 'notificationMessages')[type](msg, {
+      autoClear: true,
+      clearDuration: 1000
+    })
+  },
   actions: {
     myAction (item) {
-      this.notifications.success(`[${item.action}] fired.`, {
-        autoClear: true,
-        clearDuration: 1000
-      })
-      Logger.log('Item:', item)
+      this._notify('success', JSON.stringify(item))
+      log(item)
     }
   }
 })
+// END-SNIPPET

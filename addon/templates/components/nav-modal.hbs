@@ -3,13 +3,12 @@
     {{#each columns as |column|}}
       <div class='nav-column'>
         {{#each column as |_section index|}}
-          {{#if _section.isVisible}}
-            {{nav-section
-              section=_section
-              showMore=(action 'showMore')
-              hook=(concat hook '-section-' index)
-            }}
-          {{/if}}
+          {{nav-section
+            isVisible=_section.isVisible
+            section=_section
+            showMore=(action 'showMore')
+            hook=(concat hook '-section-' index)
+          }}
         {{/each}}
       </div>
     {{/each}}

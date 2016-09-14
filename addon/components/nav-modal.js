@@ -1,17 +1,18 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-modal'
-
+import computed from 'ember-computed-decorators'
 const {
   Component,
-  computed,
   observer,
-  inject,
+  inject: {
+    service
+  },
   run,
   A
 } = Ember
 
 export default Component.extend({
-  frostNavigation: inject.service(),
+  frostNavigation: service(),
 
   classNames: ['nav-modal'],
   layout,
@@ -27,18 +28,14 @@ export default Component.extend({
       }
     })
   }),
-  columns: computed(
-    'frostNavigation.categories',
-    'activeCategory',
-    function () {
-      const categories = this.get('frostNavigation.categories') || A()
-      const category = categories.find((category) => {
-        let name = category.name.toLowerCase()
-        return name === this.get('activeCategory').toLowerCase()
-      })
-      return category ? category.columns : null
-    }
-  ),
+  @computed('frostNavigation.categories', 'activeCategory')
+  columns (categories = A(), activeCategory) {
+    const category = categories.find((category) => {
+      let name = category.name.toLowerCase()
+      return name === activeCategory.toLowerCase()
+    })
+    return category ? category.columns : null
+  },
   _initEvents () {
     ;['outsideClick', 'escape'].forEach(e => {
       this.actions[e] = function () {

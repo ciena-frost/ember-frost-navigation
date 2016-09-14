@@ -1,43 +1,41 @@
-{{#if isVisible}}
-  {{#if route}}
-    {{#frost-link route disabled=true hook=(concat hook '-link')}}
-      <div class='content'>
-        <div class='nav-route-icon'>
-          {{#if icon}}
-            {{frost-icon pack=pack icon=icon}}
-          {{/if}}
+{{#if route}}
+  {{#frost-link route disabled=true hook=(concat hook '-link')}}
+    <div class='content'>
+      <div class='nav-route-icon'>
+        {{#if icon}}
+          {{frost-icon pack=pack icon=icon}}
+        {{/if}}
+      </div>
+      <div>
+        <div class='nav-route-name'>
+          {{name}}
         </div>
-        <div>
-          <div class='nav-route-name'>
-            {{name}}
-          </div>
-          <div class='nav-route-description'>
-            {{description}}
-          </div>
+        <div class='nav-route-description'>
+          {{description}}
         </div>
       </div>
-    {{/frost-link}}
-  {{else}}
-    <a
-      class='frost-link'
-      href='{{url}}'
-      target="{{if tabbed '_blank'}}"
-      data-test={{hook (concat hook '-link')}}>
-      <div class='content'>
-        <div class='nav-route-icon'>
-          {{#if icon}}
-            {{frost-icon pack=pack icon=icon}}
-          {{/if}}
+    </div>
+  {{/frost-link}}
+{{else}}
+  <a
+    class='frost-link'
+    href='{{url}}'
+    target="{{if tabbed '_blank'}}"
+    data-test={{hook (concat hook '-link')}}>
+    <div class='content'>
+      <div class='nav-route-icon'>
+        {{#if icon}}
+          {{frost-icon pack=pack icon=icon}}
+        {{/if}}
+      </div>
+      <div>
+        <div class='nav-route-name'>
+          {{name}}
         </div>
-        <div>
-          <div class='nav-route-name'>
-            {{name}}
-          </div>
-          <div class='nav-route-description'>
-            {{description}}
-          </div>
+        <div class='nav-route-description'>
+          {{description}}
         </div>
       </div>
-    </a>
-  {{/if}}
+    </div>
+  </a>
 {{/if}}

@@ -1,20 +1,20 @@
-{{yield}}
 <div class='frost-application-bar'>
-  {{#yield-slot 'logo'}}
-    {{yield}}
-  {{/yield-slot}}
+
+  <!-- Logo -->
+  {{component logo}}
+
   {{#each categories as |category index|}}
-    {{#if category.isVisible}}
-      {{nav-category
-        icon=category.icon
-        name=category.name
-        pack=category.pack
-        hook=(concat hook '-category-' index)
-      }}
-    {{/if}}
+    {{nav-category
+      isVisible=category.isVisible
+      icon=category.icon
+      name=category.name
+      pack=category.pack
+      hook=(concat hook '-category-' index)
+    }}
   {{/each}}
-  {{#yield-slot 'actions'}}
-    {{yield}}
-  {{/yield-slot}}
+  <!-- More Content -->
+  {{yield}}
+  <!-- User Menu -->
+  {{component menu}}
 </div>
 {{liquid-modal}}

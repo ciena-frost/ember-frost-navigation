@@ -25,24 +25,18 @@ describeComponent(
       this.render(hbs`{{nav-modal}}`)
       expect(this.$()).to.have.length(1)
     })
-    it('recomputes on _activeCategory change', function () {
+    it('recomputes on _activeCategory change', function (done) {
       let obj = Ember.Object.create({
         _activeCategory: 'test'
       })
       this.set('_nav', obj)
-      this.render(hbs`{{nav-modal frostNavigation=_nav}}`)
+      this.render(hbs`{{nav-modal
+        frostNavigation=_nav
+        activeCategory=activeCategory
+      }}`)
       obj.set('_activeCategory', 'recompute')
-    })
-    it('recomputes on _activeCategory, and dismisses', function (done) {
-      let nav = Ember.Object.create({
-        _activeCategory: null,
-        categories: []
-      })
-      this.set('_nav', nav)
-      this.render(hbs`{{nav-modal activeCategory=activeCategory frostNavigation=_nav}}`)
-      nav.set('_activeCategory', 'test')
       next(() => {
-        expect(this.get('activeCategory')).to.equal('test')
+        expect(this.get('activeCategory')).to.equal('recompute')
         done()
       })
     })
