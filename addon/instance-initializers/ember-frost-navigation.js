@@ -3,10 +3,12 @@ const {
   init
 } = dsl
 
+export function initialize (instance) {
+  let navigation = instance.lookup('service:frost-navigation')
+  init(navigation)
+}
+
 export default {
   name: 'ember-frost-navigation',
-  initialize (instance) {
-    let navigation = instance.lookup('service:frost-navigation')
-    init(navigation)
-  }
+  initialize
 }

@@ -1,22 +1,26 @@
 import Ember from 'ember'
 import layout from '../templates/components/frost-navigation'
 import transitions from 'ember-frost-navigation/transitions/frost-navigation'
-import SlotsMixin from 'ember-block-slots'
 
 const {
   Component,
   inject,
-  computed,
+  computed: {
+    alias
+  },
   run
 } = Ember
 
-export default Component.extend(SlotsMixin, {
+export default Component.extend({
   frostNavigation: inject.service(),
   liquidFireTransitions: inject.service(),
-  classNames: ['frost-navigation'],
+  classNames: [
+    'frost-navigation',
+    'frost-application-bar'
+  ],
   layout,
   hook: 'frost-nav',
-  categories: computed.alias('frostNavigation.categories'),
+  categories: alias('frostNavigation.categories'),
   init () {
     this._super(...arguments)
 

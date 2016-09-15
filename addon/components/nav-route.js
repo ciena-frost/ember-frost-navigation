@@ -1,14 +1,16 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-route'
-import { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 
 const {
   Component,
-  inject
+  inject: {
+    service
+  }
 } = Ember
 
-export default Component.extend({
-  frostNavigation: inject.service(),
+export default Component.extend(PropTypesMixin, {
+  frostNavigation: service(),
   classNames: ['nav-route'],
   layout,
 
@@ -21,10 +23,16 @@ export default Component.extend({
   },
   click (e) {
     const navigation = this.get('frostNavigation')
+
     if (e.metaKey || e.shiftKey || e.ctrlKey) {
       navigation.dismiss()
       return
     }
+
+    if (this.get('route')) {
+      e.preventDefault()
+    }
+
     navigation.transitionTo(this.get('route'))
   },
   getDefaultProps () {

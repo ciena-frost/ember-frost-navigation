@@ -1,20 +1,23 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-section'
-import { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import computed from 'ember-computed-decorators'
 
 const {
   Component,
-  computed
+  String: {
+    htmlSafe
+  }
 } = Ember
 
-export default Component.extend({
+export default Component.extend(PropTypesMixin, {
   classNames: 'nav-section',
   layout,
   propTypes: {
     section: PropTypes.object
   },
-  lineStyle: computed('section.color', function () {
-    let color = this.get('section.color')
-    return Ember.String.htmlSafe(`border-bottom-color: ${color}`)
-  })
+  @computed('section.color')
+  lineStyle (color) {
+    return htmlSafe(`border-bottom-color: ${color}`)
+  }
 })

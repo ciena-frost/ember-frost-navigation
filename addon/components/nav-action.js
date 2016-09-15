@@ -4,10 +4,12 @@ import { PropTypes } from 'ember-prop-types'
 
 const {
   Component,
-  inject
+  inject: {
+    service
+  }
 } = Ember
 export default Component.extend({
-  frostNavigation: inject.service(),
+  frostNavigation: service(),
   classNames: [
     'nav-route',
     'nav-action'
@@ -16,7 +18,8 @@ export default Component.extend({
   propTypes: {
     item: PropTypes.object.isRequired
   },
-  click () {
+  click (e) {
+    e.preventDefault()
     this.get('frostNavigation').performAction(this.get('item'))
   },
   getDefaultProps () {

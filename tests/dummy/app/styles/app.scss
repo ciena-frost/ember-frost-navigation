@@ -1,71 +1,72 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
-@import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
-$z-index-application-bar: 9000;
-$z-index-modal: 8000;
-$z-index-navigation: 7000;
-$z-index-notification: 6000;
-
-.dummy-notification-container {
-  position: fixed;
-  top: 60px;
-  right: 10px;
-  z-index: 999;
-  width: 80%;
-  max-width: 200px;
-  margin: auto;
-}
-.dummy-content {
+.page-content {
   position: relative;
   top: 50px;
-//  height: calc(100% - 50px);
-}
-
-.dummy-nav {
-  .branding {
-    width: 125px;
-
-    .frost-svg {
-      width: 125px;
-      height: 25px;
-    }
-  }
-}
-
-//TODO import pattern from ember-css-* when it's available
-// import from frost-css patterns _application-bar.scss
-.frost-application-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 50px;
-  width: 100%;
   display: flex;
-  background-color: $frost-color-night-2;
-  z-index: $z-index-application-bar;
+  align-items: center;
+  justify-content: center;
+  .row {
+   display: flex;
+   flex-direction: row;
 
-  .branding {
-    height: 50px;
-    padding: 0 25px;
-    border-right: 1px solid $frost-color-grey-3;
-    display: flex;
-    align-items: center;
+   .column {
+     display: flex;
+     flex-direction: column;
+   }
+   .item {
+     width: 100%;
+   }
   }
-
-  .navigation {
-    padding: 0 15px;
-    height: 50px;
-    border-right: solid 1px $frost-color-grey-3;
-
-    .frost-icon {
-      width: 35px;
-      height: 35px;
-      margin-right: 10px;
+  .hljs {
+    background: #21252E;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 0.9em;
+    color: #98A0B0;
+    // font-size: 0.85em;
+    max-height: 50vh;
+    overflow: scroll;
+    width: 90%;
+    .hljs-keyword {
+      color: #B959D8;
+    }
+    .hljs-built_in {
+      color: #DFB563;
+    }
+    .hljs-string {
+      color: #86BB62;
+    }
+    .hljs-number, .hljs-subst {
+      color: #C7894F;
+    }
+    .hljs-tag {
+      color: inherit;
+      .hljs-name {
+        color: #D95360;
+      }
+      .hljs-attr {
+        color: #C7894F;
+      }
     }
   }
+}
+.frost-application-bar {
+  .navigation-logo {
+    height: 50px;
+    border-right: solid 1px #666666;
+    cursor: pointer;
+    .frost-icon {
+      width: 125px;
+    }
 
-
-   .user {
+    > div .frost-svg {
+      margin: 0px 24px;
+      height: 40px;
+      width: 125px;
+    }
+  }
+  .user {
     margin-left: auto;
     display: flex;
     flex-direction: row;
@@ -81,21 +82,7 @@ $z-index-notification: 6000;
     .frost-icon {
       width: 35px;
       height: 35px;
-    }
-    .icon {
-      margin: 0;
-      margin-right: -15px;
+      padding-left: 5px;
     }
   }
-}
-
-//TODO import pattern from ember-css-* when it's available
-// import from frost-css patterns modal.scss
-.lf-overlay {
-  top: 50px;
-  opacity: 0.1;
-}
-
-.lf-dialog {
-  z-index: 2;
 }

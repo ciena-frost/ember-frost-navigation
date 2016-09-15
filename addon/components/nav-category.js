@@ -1,18 +1,26 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-category'
-import { PropTypes } from 'ember-prop-types'
+import computed from 'ember-computed-decorators'
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 const {
   Component,
-  inject
+  inject: {
+    service
+  },
+  run: {
+    later
+  },
+  get
 } = Ember
 
-export default Component.extend({
-  frostNavigation: inject.service(),
+export default Component.extend(PropTypesMixin, {
+  frostNavigation: service(),
   classNames: ['nav-category'],
   classNameBindings: ['active'],
-  active: Ember.computed('nav._activeCategory', function () {
-    return this.name === this.get('nav._activeCategory')
-  }),
+  @computed('frostNavigation._activeCategory')
+  active (category) {
+    return get(this, 'name') === category
+  },
   layout,
   propTypes: {
     icon: PropTypes.string,
@@ -20,19 +28,22 @@ export default Component.extend({
     pack: PropTypes.string
   },
   click () {
-    let navService = this.get('frostNavigation')
+    let navService = get(this, 'frostNavigation')
     if (!navService) return
-    let activeCategory = navService.get('_activeCategory')
-    let name = this.get('name')
+    document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
+    let activeCategory = get(navService, '_activeCategory')
+    let name = get(this, 'name')
     if (name === activeCategory) {
       navService.dismiss()
-    } else if (typeof activeCategory === 'string') {
-      navService.dismiss()
-      Ember.run.later(() => {
-        navService.set('_activeCategory', name)
-      }, 100)
     } else {
-      navService.set('_activeCategory', name)
+      if (typeof activeCategory === 'string') {
+        navService.dismiss()
+        later(() => {
+          navService.set('_activeCategory', name)
+        }, 200)
+      } else {
+        navService.set('_activeCategory', name)
+      }
     }
   },
   getDefaultProps () {
