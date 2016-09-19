@@ -3,34 +3,35 @@
 
 $z-index-application-bar: 3 !default;
 $z-index-modal: 2 !default;
+$z-index-modal-hidden: -1 !default;
 
 .frost-application-bar {
+  background-color: $frost-color-night-2;
+  display: flex;
+  height: 50px;
+  left: 0;
   position: fixed;
   top: 0;
-  left: 0;
-  height: 50px;
   width: 100%;
-  display: flex;
-  background-color: $frost-color-night-2;
   z-index: $z-index-application-bar;
 
   .branding {
-    height: 50px;
-    padding: 0 25px;
+    align-items: center;
     border-right: 1px solid $frost-color-grey-3;
     display: flex;
-    align-items: center;
+    height: 50px;
+    padding: 0 25px;
   }
 
   .navigation {
-    padding: 0 15px;
-    height: 50px;
     border-right: solid 1px $frost-color-grey-3;
+    height: 50px;
+    padding: 0 15px;
 
     .frost-icon {
-      width: 35px;
       height: 35px;
       margin-right: 10px;
+      width: 35px;
     }
   }
 }
@@ -38,32 +39,36 @@ $z-index-modal: 2 !default;
 //TODO import pattern from ember-css-* when it's available
 // import from frost-css patterns modal.scss
 .nav-modal-binding {
-  position: fixed;
-  display:flex;
-  flex-direction: row;
-  width: 100%;
-  z-index: $z-index-modal;
-
-  flex-direction: row;
   max-height: 80vh;
   min-height: 500px;
+
+  position: fixed;
+  width: 100%;
+  &.liquid-container {
+    overflow: inherit;
+    z-index: $z-index-modal;
+    .is_hidden &{
+      z-index: $z-index-modal-hidden;
+    }
+  }
   .nav-modal {
-    display:flex;
-    flex-direction: row;
     background: rgba(51,66,79,0.85);
-    border: none;
-    left:0;
-    overflow-x: hidden;
+    border: 0;
+    display: flex;
+    flex-direction: row;
+    left: 0;
+    max-height: 80vh;
+    min-height: 500px;
     outline: 0;
+    overflow-x: hidden;
     padding: 0;
     position: fixed;
     top: 50px;
-    height: 100%;
     width: 100%;
     .liquid-container, .liquid-child {
-      width: 100%;
       display: flex;
       flex-direction: row;
+      width: 100%;
     }
     svg.actions-icon.frost-icon {
       fill: currentColor;
@@ -129,8 +134,8 @@ $z-index-modal: 2 !default;
           border-radius: 3px;
           cursor: pointer;
           padding: 3px;
-          width: 100%;
           transition: box-shadow 0.3s ease;
+          width: 100%;
           .content {
             justify-content: initial;
           }
@@ -143,9 +148,9 @@ $z-index-modal: 2 !default;
             }
           }
           .nav-route-name {
+            border-bottom-color: transparent;
             border-bottom-style: solid;
             border-bottom-width: 1px;
-            border-bottom-color: transparent;
             color: $frost-color-lgrey-3;
             display: inline-block;
             font-size: $frost-font-m;
@@ -170,8 +175,8 @@ $z-index-modal: 2 !default;
           }
           &:hover {
             .nav-route-name {
-              color: $frost-color-white;
               border-bottom-color: $frost-color-white;
+              color: $frost-color-white;
             }
             .nav-route-description {
               color: $frost-color-lgrey-2;
@@ -229,7 +234,7 @@ $z-index-modal: 2 !default;
     border-left: 1px solid rgba($frost-color-white, 0.2);
     overflow: hidden;
     .user {
-      border-left: none;
+      border-left: 0;
     }
   }
 
