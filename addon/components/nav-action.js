@@ -6,7 +6,8 @@ const {
   Component,
   inject: {
     service
-  }
+  },
+  get
 } = Ember
 export default Component.extend({
   frostNavigation: service(),
@@ -20,7 +21,7 @@ export default Component.extend({
   },
   click (e) {
     e.preventDefault()
-    this.get('frostNavigation').performAction(this.get('item'))
+    get(this, 'frostNavigation').performAction(get(this, 'item'))
   },
   getDefaultProps () {
     return {

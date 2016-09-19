@@ -42,9 +42,9 @@ export default Ember.Service.extend({
     ]
   },
   add (title, body) {
-    this.get('posts').push({
+    get(this, 'posts').push({
       id: this.posts.length,
-      author: this.get('session.user'),
+      author: get(this, 'session.user'),
       title,
       body,
       comments: []

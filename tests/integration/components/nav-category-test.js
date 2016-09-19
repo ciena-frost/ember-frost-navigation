@@ -25,11 +25,11 @@ describeComponent(
     })
     describe('clicks', function () {
       const helper = function (name, active) {
-        this.set('_name', name)
-        this.set('_nav', Ember.Object.create({
+        set(this, '_name', name)
+        set(this, '_nav', Ember.Object.create({
           _activeCategory: active,
           dismiss () {
-            this.set('_activeCategory', null)
+            set(this, '_activeCategory', null)
           }
         }))
         this.render(hbs`{{nav-category

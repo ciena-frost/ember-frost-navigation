@@ -1,0 +1,8 @@
+{{#from-elsewhere name="modal" as |modal|}}
+    {{#liquid-if activeCategory class='nav-modal-binding'}}
+      <div class="frost-navigation-background"></div>
+      <div class="frost-navigation-modal-container">
+        {{nav-modal}}
+      </div>
+    {{/liquid-if}}
+{{/from-elsewhere}}

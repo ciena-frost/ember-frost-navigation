@@ -5,13 +5,18 @@ const {
   Service,
   assert,
   deprecate,
-  Logger
+  Logger: {
+    warn
+  },
+  get,
+  set,
+  A: EmberArray
 } = Ember
 
 export default Service.extend({
-  _controller: null,
+  ctrl: null,
   _activeCategory: null,
-  categories: Ember.A(),
+  categories: EmberArray(),
   _registerCategory (config = {}) {
     assert(A.categoryName, config.name)
     let category = this.categories.find(e => e.name === config.name)
@@ -27,18 +32,18 @@ export default Service.extend({
     return category
   },
   dismiss () {
-    this.set('_activeCategory', null)
+    set(this, '_activeCategory', null)
   },
   transitionTo (route) {
     try {
-      this.get('_controller').transitionToRoute(route)
+      get(this, 'ctrl').transitionToRoute(route)
     } catch (e) {
-      Logger.warn('Unable to perform transition', e)
+      warn('Unable to perform transition', e)
     }
     this.dismiss()
   },
   performAction (item) {
-    let controller = this.get('_controller')
+    let controller = get(this, 'ctrl')
 
     if (item.dismiss) {
       this.dismiss()

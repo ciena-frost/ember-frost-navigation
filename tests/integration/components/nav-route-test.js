@@ -30,7 +30,7 @@ describeComponent(
         dismiss: sinon.spy(),
         transitionTo: sinon.spy()
       })
-      this.set('_nav', nav)
+      set(this, '_nav', nav)
       this.render(hbs`{{nav-route
         frostNavigation=_nav
         route='test'

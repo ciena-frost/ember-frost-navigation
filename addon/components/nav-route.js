@@ -6,7 +6,8 @@ const {
   Component,
   inject: {
     service
-  }
+  },
+  get
 } = Ember
 
 export default Component.extend(PropTypesMixin, {
@@ -22,18 +23,18 @@ export default Component.extend(PropTypesMixin, {
     pack: PropTypes.string
   },
   click (e) {
-    const navigation = this.get('frostNavigation')
+    const navigation = get(this, 'frostNavigation')
 
     if (e.metaKey || e.shiftKey || e.ctrlKey) {
       navigation.dismiss()
       return
     }
 
-    if (this.get('route')) {
+    if (get(this, 'route')) {
       e.preventDefault()
     }
 
-    navigation.transitionTo(this.get('route'))
+    navigation.transitionTo(get(this, 'route'))
   },
   getDefaultProps () {
     return {

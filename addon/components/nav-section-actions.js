@@ -17,10 +17,5 @@ export default Component.extend(PropTypesMixin, {
   @computed('section.color')
   borderBottomBinding (color) {
     return htmlSafe(`border-bottom-color: ${color}`)
-  },
-  actions: {
-    back () {
-      this.get('goBack').call()
-    }
   }
 })

@@ -38,6 +38,7 @@
     "ember-computed-decorators": "0.2.2",
     "ember-concurrency": "0.7.8",
     "ember-disable-proxy-controllers": "^1.0.1",
+    "ember-elsewhere": "0.3.0",
     "ember-engines": "0.2.4",
     "ember-export-application-global": "^1.0.4",
     "ember-frost-core": "0.25.6",
@@ -52,7 +53,8 @@
     "eslint": "^2.9.0",
     "eslint-config-frost-standard": "^2.0.0",
     "frost-guide-custom-routing": "0.0.4",
-    "liquid-fire": "0.24.1",
+    "liquid-fire": "0.25.0",
+    "liquid-tether": "1.1.1",
     "loader.js": "^4.0.0",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
@@ -67,7 +69,7 @@
     "ember-computed-decorators": "^0.2.2",
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-sass": "5.4.0",
-    "liquid-fire": "0.24.1"
+    "liquid-fire": "0.25.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

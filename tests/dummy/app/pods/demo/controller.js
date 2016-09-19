@@ -11,6 +11,7 @@ const {
 } = Ember
 // BEGIN-SNIPPET controller
 export default Controller.extend({
+  frostNavigation: service(),
   notificationMessages: service(),
   _notify (type, msg) {
     get(this, 'notificationMessages')[type](msg, {

@@ -26,8 +26,8 @@ describeComponent(
       let nav = Ember.Object.create({
         performAction: sinon.spy()
       })
-      this.set('_nav', nav)
-      this.set('_item', 'test')
+      set(this, '_nav', nav)
+      set(this, '_item', 'test')
       this.render(hbs`{{nav-action
         frostNavigation=_nav
         item=_item

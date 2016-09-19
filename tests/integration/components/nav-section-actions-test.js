@@ -19,7 +19,7 @@ describeComponent(
     })
     it('goes back on click', function () {
       let spy = sinon.spy()
-      this.set('goBack', spy)
+      set(this, 'goBack', spy)
       this.render(hbs`{{nav-section-actions goBack=goBack}}`)
       this.$('.nav-section-header').click()
       expect(spy.called).to.be.true

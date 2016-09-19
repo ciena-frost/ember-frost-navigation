@@ -24,14 +24,6 @@ export default {
       let args = argify(...arguments)
       let self = this
       ;(function (name, config = {}, callback = function () {}) {
-        self.modal('nav-modal', {
-          withParams: 'activeCategory',
-          dialogClass: config.dialogClass,
-          dismissWithOutsideClick: false,
-          dismissWithEscape: false,
-          controller: name,
-          actions: config.actions
-        })
         if (config.model) {
           config.model.forEach(function (e) {
             navigation._registerCategory(e)

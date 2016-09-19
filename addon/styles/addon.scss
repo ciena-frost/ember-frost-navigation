@@ -37,63 +37,201 @@ $z-index-modal: 2 !default;
 
 //TODO import pattern from ember-css-* when it's available
 // import from frost-css patterns modal.scss
-.lf-overlay {
-  top: 50px;
-  opacity: 0.1;
-}
-
-.lf-dialog, .lm-container {
+.nav-modal-binding {
+  position: fixed;
+  display:flex;
+  flex-direction: row;
+  width: 100%;
   z-index: $z-index-modal;
+
+  flex-direction: row;
+  max-height: 80vh;
+  min-height: 500px;
+  .frost-navigation-modal-container {
+    .nav-modal {
+      display:flex;
+      flex-direction: row;
+      background: rgba(51,66,79,0.85);
+      border: none;
+      left:0;
+      max-height: 80vh;
+      max-width: none;
+      min-height: 500px;
+      overflow-x: hidden;
+      outline: 0;
+      padding: 0;
+      position: fixed;
+      top: 50px;
+      width: 100%;
+      .liquid-container, .liquid-child {
+        width: 100%;
+      }
+      svg.actions-icon.frost-icon {
+        fill: currentColor;
+        height: 15px;
+        width: 15px;
+      }
+      .flip {
+        transform: rotate(180deg);
+      }
+      .nav-column {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 30px;
+
+        &+ .nav-column {
+          border-left: 1px solid rgba($frost-color-white, 0.3);
+        }
+      }
+
+      .nav-section {
+        &+ .nav-section {
+          margin-top: 50px;
+        }
+        .nav-section-header {
+          align-items: center;
+          border-bottom: 1px solid $frost-color-white;
+          color: $frost-color-white;
+          display: flex;
+          flex-direction: row;
+          font-size: $frost-font-l; // Override colors using inline style
+          font-weight: 200;
+          margin-bottom: 30px;
+          padding-bottom: 5px;
+          .pointer {
+            div {
+              display: inline-block;
+            }
+            cursor: pointer;
+          }
+          & .title {
+            display: inline-block;
+            padding-left: 10px;
+            .sub {
+              display: inline-block;
+              font-size: $frost-font-s;
+            }
+          }
+          & .frost-button > .icon {
+            align-items: initial;
+          }
+        }
+
+        .nav-route {
+          align-items: center;
+          display: flex;
+          flex-direction: row;
+          font-weight: 200;
+          .content {
+            text-align: initial;
+          }
+          .frost-link {
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 3px;
+            width: 100%;
+            transition: box-shadow 0.3s ease;
+            .content {
+              justify-content: initial;
+            }
+            .nav-route-icon {
+              height: 50px;
+              margin-right: 15px;
+              .frost-icon {
+                height: 50px;
+                width: 50px;
+              }
+            }
+            .nav-route-name {
+              border-bottom-style: solid;
+              border-bottom-width: 1px;
+              border-bottom-color: transparent;
+              color: $frost-color-lgrey-3;
+              display: inline-block;
+              font-size: $frost-font-m;
+              transition: color 0.5s ease;
+            }
+            .nav-route-description {
+              color: $frost-color-grey-6;
+              font-size: $frost-font-s;
+              padding-top: 4px;
+              transition: color 0.2s ease;
+            }
+            &:focus {
+              background: rgba(0,0,0,0.2);
+              box-shadow: 0px 0px 6px #fff;
+              outline: none;
+              .nav-route-name {
+                color: $frost-color-white;
+              }
+              .nav-route-description {
+                color: $frost-color-lgrey-2;
+              }
+            }
+            &:hover {
+              .nav-route-name {
+                color: $frost-color-white;
+                border-bottom-color: $frost-color-white;
+              }
+              .nav-route-description {
+                color: $frost-color-lgrey-2;
+              }
+            }
+          }
+
+          &+ .nav-route {
+            margin-top: 25px;
+          }
+        }
+        .frost-icon-add {
+          fill: $frost-color-blue-1;
+
+          & svg rect {
+            fill: $frost-color-blue-1;
+          }
+        }
+      }
+      .nav-section-actions {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        font-size: $frost-font-m;
+        height: 30px;
+        margin-left: auto;
+        transition: color 0.2s ease;
+        &:hover {
+          color: $frost-color-grey-6;
+        }
+        .frost-icon {
+          height: 30px;
+          width: 30px;
+        }
+        .sub {
+          font-size: $frost-font-s;
+          padding-right: 5px;
+        }
+        .nav-section-header {
+          transition: color 0.2s ease;
+          &:hover {
+            color: $frost-color-grey-6;
+          }
+        }
+      }
+    }
+  }
 }
 
 .frost-navigation {
   display: flex;
   flex-direction: row;
-
   & > div:first-of-type {
     border-bottom: 1px solid $frost-color-grey-2;
     border-left: 1px solid rgba($frost-color-white, 0.2);
     overflow: hidden;
     .user {
       border-left: none;
-    }
-  }
-  .lf-dialog {
-    border: initial;
-    padding: initial;
-  }
-  .lm-container {
-    cursor: initial;
-  }
-  .nav-modal {
-    background: rgba(51,66,79,0.85);
-    border: none;
-    left:0;
-    max-height: 80vh;
-    max-width: none;
-    min-height: 500px;
-    overflow-x: hidden;
-    outline: 0;
-    padding: 0;
-    position: fixed;
-    top: 50px;
-    width: 100%;
-    & .liquid-container .liquid-child {
-      display: flex;
-      flex-direction: row;
-      max-height: 80vh;
-      min-height: 500px;
-      overflow: initial;
-      overflow-x: hidden;
-
-    }
-    svg.actions-icon.frost-icon {
-      fill: currentColor;
-      height: 15px;
-      width: 15px;
-    }
-    .flip {
-      transform: rotate(180deg);
     }
   }
 
@@ -136,149 +274,5 @@ $z-index-modal: 2 !default;
       color: $frost-color-grey-5;
     }
   }
-  .nav-column {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: 30px;
 
-    &+ .nav-column {
-      border-left: 1px solid rgba($frost-color-white, 0.3);
-    }
-  }
-
-  .nav-section {
-    &+ .nav-section {
-      margin-top: 50px;
-    }
-    .nav-section-header {
-      align-items: center;
-      border-bottom: 1px solid $frost-color-white;
-      color: $frost-color-white;
-      display: flex;
-      flex-direction: row;
-      font-size: $frost-font-l; // Override colors using inline style
-      font-weight: 200;
-      margin-bottom: 30px;
-      padding-bottom: 5px;
-      .pointer {
-        div {
-          display: inline-block;
-        }
-        cursor: pointer;
-      }
-      & .title {
-        display: inline-block;
-        padding-left: 10px;
-        .sub {
-          display: inline-block;
-          font-size: $frost-font-s;
-        }
-      }
-      & .frost-button > .icon {
-        align-items: initial;
-      }
-    }
-
-    .nav-route {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      font-weight: 200;
-      .content {
-        text-align: initial;
-      }
-      .frost-link {
-        border-radius: 3px;
-        cursor: pointer;
-        padding: 3px;
-        width: 100%;
-        transition: box-shadow 0.3s ease;
-        .content {
-          justify-content: initial;
-        }
-        .nav-route-icon {
-          height: 50px;
-          margin-right: 15px;
-          .frost-icon {
-            height: 50px;
-            width: 50px;
-          }
-        }
-        .nav-route-name {
-          border-bottom-style: solid;
-          border-bottom-width: 1px;
-          border-bottom-color: transparent;
-          color: $frost-color-lgrey-3;
-          display: inline-block;
-          font-size: $frost-font-m;
-          transition: color 0.5s ease;
-        }
-        .nav-route-description {
-          color: $frost-color-grey-6;
-          font-size: $frost-font-s;
-          padding-top: 4px;
-          transition: color 0.2s ease;
-        }
-        &:focus {
-          background: rgba(0,0,0,0.2);
-          box-shadow: 0px 0px 6px #fff;
-          outline: none;
-          .nav-route-name {
-            color: $frost-color-white;
-          }
-          .nav-route-description {
-            color: $frost-color-lgrey-2;
-          }
-        }
-        &:hover {
-          .nav-route-name {
-            color: $frost-color-white;
-            border-bottom-color: $frost-color-white;
-          }
-          .nav-route-description {
-            color: $frost-color-lgrey-2;
-          }
-        }
-      }
-
-      &+ .nav-route {
-        margin-top: 25px;
-      }
-    }
-    .frost-icon-add {
-      fill: $frost-color-blue-1;
-
-      & svg rect {
-        fill: $frost-color-blue-1;
-      }
-    }
-  }
-  .nav-section-actions {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    font-size: $frost-font-m;
-    height: 30px;
-    margin-left: auto;
-    transition: color 0.2s ease;
-    &:hover {
-      color: $frost-color-grey-6;
-    }
-    .frost-icon {
-      height: 30px;
-      width: 30px;
-    }
-    .sub {
-      font-size: $frost-font-s;
-      padding-right: 5px;
-    }
-    .nav-section-header {
-      transition: color 0.2s ease;
-      &:hover {
-        color: $frost-color-grey-6;
-      }
-    }
-  }
 }
