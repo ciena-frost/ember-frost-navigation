@@ -3,14 +3,12 @@ import layout from '../templates/components/nav-modal'
 import computed from 'ember-computed-decorators'
 const {
   Component,
-  observer,
   inject: {
     service
   },
   computed: {
     alias
   },
-  run,
   set,
   A
 } = Ember
@@ -28,18 +26,17 @@ export default Component.extend({
 
   @computed('frostNavigation.categories', 'activeCategory')
   columns (categories = A(), activeCategory) {
-    if (!activeCategory)
-      return null
-    const category = categories.find(cat => cat.name === activeCategory)
-    return category ? category.columns : null
+    return !activeCategory
+      ? null
+      : (() => {
+        const category = categories.find(cat => cat.name === activeCategory)
+        return category ? category.columns : null
+      })()
   },
   actions: {
-    showMore (section) {
+    setView (section) {
       set(this, 'showActions', true)
       set(this, 'content', section)
-    },
-    goBack () {
-      set(this, 'showActions', false)
     }
   }
 })

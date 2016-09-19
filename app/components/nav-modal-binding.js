@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-navigation/components/nav-modal-binding';
+export { default } from 'ember-frost-navigation/components/nav-modal-binding'

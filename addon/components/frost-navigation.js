@@ -1,7 +1,6 @@
 import Ember from 'ember'
 import layout from '../templates/components/frost-navigation'
 import transitions from 'ember-frost-navigation/transitions/frost-navigation'
-import computed from 'ember-computed-decorators'
 const {
   Component,
   inject: {
@@ -19,7 +18,7 @@ export default Component.extend({
   frostNavigation: service(),
   liquidFireTransitions: service(),
   classNames: [
-    'frost-navigation',
+    'frost-navigation'
   ],
   layout,
   hook: 'frost-nav',

@@ -1,8 +1,14 @@
 import Ember from 'ember'
-
-export default Ember.Service.extend({
+const {
+  Service,
+  inject: {
+    service
+  },
+  get
+} = Ember
+export default Service.extend({
   posts: null,
-  session: Ember.inject.service('active-session'),
+  session: service('active-session'),
   init () {
     this._super(...arguments)
 

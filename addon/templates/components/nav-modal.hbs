@@ -6,7 +6,7 @@
           {{nav-section
             isVisible=_section.isVisible
             section=_section
-            showMore=(action 'showMore')
+            setView=(action 'setView')
             hook=(concat hook '-section-' index)
           }}
         {{/each}}
@@ -15,7 +15,7 @@
   {{else}}
     {{nav-section-actions
       section=content
-      goBack=(action 'goBack')
+      goBack=(action (mut showActions) false)
       hook=(concat hook '-section-actions')
     }}
   {{/liquid-unless}}

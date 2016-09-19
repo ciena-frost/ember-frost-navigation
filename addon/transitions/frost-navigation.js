@@ -1,7 +1,7 @@
 
 export default function () {
   let duration = 100
-    this.transition(
+  this.transition(
       this.toValue(true),
       this.use('explode', {
         pick: '.nav-modal',
@@ -17,7 +17,7 @@ export default function () {
         pick: '.frost-navigation-background',
         use: 'fade'
       }),
-    );
+    )
   this.transition(
     this.hasClass('actionSlide'),
     this.toValue(true),
