@@ -52,7 +52,7 @@
     "eslint": "^2.9.0",
     "eslint-config-frost-standard": "^2.0.0",
     "frost-guide-custom-routing": "0.0.4",
-    "liquid-fire": "0.24.1",
+    "liquid-fire": "0.26.1",
     "loader.js": "^4.0.0",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
