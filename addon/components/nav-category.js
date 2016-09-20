@@ -4,9 +4,6 @@ import computed from 'ember-computed-decorators'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 const {
   Component,
-  computed: {
-    alias
-  },
   typeOf,
   inject: {
     service
@@ -22,8 +19,7 @@ export default Component.extend(PropTypesMixin, {
   frostNavigation: service(),
   classNames: ['nav-category'],
   classNameBindings: ['active'],
-  activeCategory: alias('frostNavigation._activeCategory'),
-  @computed('activeCategory')
+  @computed('frostNavigation._activeCategory')
   active (category) {
     return get(this, 'name') === category
   },
@@ -37,18 +33,18 @@ export default Component.extend(PropTypesMixin, {
     document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
 
     let frostNavigation = get(this, 'frostNavigation')
-    let active = get(this, 'activeCategory')
+    let active = get(frostNavigation, '_activeCategory')
     let name = get(this, 'name')
 
     if (typeOf(active) === 'string') {
       frostNavigation.dismiss()
       if (name !== active) { // click on another tab
         later(() => {
-          set(this, 'activeCategory', name)
+          set(frostNavigation, '_activeCategory', name)
         }, 200)
       }
     } else {
-      set(this, 'activeCategory', name)
+      set(frostNavigation, '_activeCategory', name)
     }
   },
   getDefaultProps () {
