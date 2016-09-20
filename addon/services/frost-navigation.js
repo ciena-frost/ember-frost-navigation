@@ -52,7 +52,7 @@ export default Service.extend({
     try {
       controller.send(item.action, item)
     } catch (e) {
-      let actionHandler = controller.get(item.action)
+      let actionHandler = get(controller, item.action)
       if (actionHandler && typeof actionHandler === 'function') {
         deprecate(A.depAction, false, {
           id: 'ember-frost-navigation',
