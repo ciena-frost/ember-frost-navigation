@@ -1,7 +1,6 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-modal'
 import computed from 'ember-computed-decorators'
-import KeyCodes from '../utils/keycodes'
 const {
   Component,
   inject: {
@@ -10,7 +9,6 @@ const {
   computed: {
     alias
   },
-  get,
   set,
   A: EmberArray
 } = Ember
