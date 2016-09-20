@@ -25,12 +25,55 @@ Also supports [ember-engines](https://github.com/dgeb/ember-engines)
 ember install ember-frost-navigation
 ```
 
-## Examples
-
-<img src='assets/ex1.gif'/>
+## Usage
 
 Add the `{{frost-navigation}}` component to the template where you want the navigation to appear, then configure your navigation in `app/router.js`
 
+#### Template
+```hbs
+{{frost-navigation
+  logo=(component 'custom-logo'
+    class='nav-category navigation-logo'
+  )
+  menu=(component 'user-pane'
+    class='nav-category user'
+    model=(hash
+      logo=(component 'frost-icon'
+        icon='user'
+        pack='dummy'
+      )
+      label='Username'
+    )
+  )
+}}
+{{nav-modal-binding}}
+```
+#### Controller
+```js
+export default Controller.extend({
+  frostNavigation: service(),
+  notificationMessages: service(),
+  _notify (type, msg) {
+    get(this, 'notificationMessages')[type](msg, {
+      htmlContent: true,
+      autoClear: true,
+      clearDuration: 1000
+    })
+  },
+  actions: {
+    myAction (item) {
+      this._notify(
+        'success',
+        `<code>
+          <pre>${JSON.stringify(item, null, ' ')}</pre>
+        </code>`
+      )
+      log(item)
+    }
+  }
+})
+```
+#### Router
 ```js
 Router.map(function () {
   this.nav('demo', {
@@ -43,26 +86,35 @@ Router.map(function () {
       this.column('Column 1', {
         color: '#009eef'
       }, function () {
-        this.app('App 1', {
+        this.action('Action Example', {
+          action: 'myAction',
+          pack: 'dummy',
+          icon: 'sample',
+          description: 'This is an action',
+          inline: true
+        })
+        this.app('Route Example', {
           route: 'go',
-          description: 'Description 1',
+          description: 'This is a route',
           pack: 'dummy',
           icon: 'sample'
         })
         this.engine('Blog Engine', {
           route: 'blog',
+          description: 'This is an engine example',
           package: 'ember-blog-engine',
           pack: 'dummy',
           icon: 'sample'
         })
-        this.section('Section 1', {
+        this.section('More Content', {
           color: '#a1e7ff'
         }, function () {
           this.link('Google', {
             url: 'http://google.ca',
             description: 'Go to Google',
             pack: 'dummy',
-            icon: 'sample'
+            icon: 'sample',
+            tabbed: true
           })
           this.link('http://google.ca')
           this.action('Action 1', {
@@ -72,7 +124,7 @@ Router.map(function () {
           })
         })
       })
-      this.column('Column 2')
+      this.column('Empty Column')
     })
   })
 })
@@ -92,6 +144,7 @@ Router.map(function () {
 ```
 
 ### `this.category`
+
 ```js
 /**
  * Category as a navigation bar entry
