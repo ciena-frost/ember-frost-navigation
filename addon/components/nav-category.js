@@ -4,20 +4,26 @@ import computed from 'ember-computed-decorators'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 const {
   Component,
+  computed: {
+    alias
+  },
+  typeOf,
   inject: {
     service
   },
   run: {
     later
   },
-  get
+  get,
+  set
 } = Ember
 
 export default Component.extend(PropTypesMixin, {
   frostNavigation: service(),
   classNames: ['nav-category'],
   classNameBindings: ['active'],
-  @computed('frostNavigation._activeCategory')
+  activeCategory: alias('frostNavigation._activeCategory'),
+  @computed('activeCategory')
   active (category) {
     return get(this, 'name') === category
   },
@@ -28,22 +34,21 @@ export default Component.extend(PropTypesMixin, {
     pack: PropTypes.string
   },
   click () {
-    let navService = get(this, 'frostNavigation')
-    if (!navService) return
     document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
-    let activeCategory = get(navService, '_activeCategory')
+
+    let frostNavigation = get(this, 'frostNavigation')
+    let active = get(this, 'activeCategory')
     let name = get(this, 'name')
-    if (name === activeCategory) {
-      navService.dismiss()
-    } else {
-      if (typeof activeCategory === 'string') {
-        navService.dismiss()
+
+    if (typeOf(active) === 'string') {
+      frostNavigation.dismiss()
+      if (name !== active) { // click on another tab
         later(() => {
-          navService.set('_activeCategory', name)
+          set(this, 'activeCategory', name)
         }, 200)
-      } else {
-        navService.set('_activeCategory', name)
       }
+    } else {
+      set(this, 'activeCategory', name)
     }
   },
   getDefaultProps () {

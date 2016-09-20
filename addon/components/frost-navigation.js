@@ -9,7 +9,9 @@ const {
   computed: {
     alias
   },
-  run,
+  run: {
+    scheduleOnce
+  },
   get,
   set
 } = Ember
@@ -34,7 +36,7 @@ export default Component.extend({
     liquidFireTransitions.map(transitions)
 
     window.addEventListener('popstate', () => {
-      run.scheduleOnce('sync', () => {
+      scheduleOnce('sync', () => {
         frostNavigation.dismiss()
       })
     }, false)

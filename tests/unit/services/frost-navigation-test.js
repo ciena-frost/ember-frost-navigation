@@ -52,7 +52,7 @@ describeModule(
         }
       }).create()
       service.set('_activeCategory', 'test')
-      service.set('_controller', controller)
+      service.set('ctrl', controller)
       service.performAction({
         dismiss: true,
         action: 'testAction'
@@ -71,7 +71,7 @@ describeModule(
           }
         }
       }).create()
-      service.set('_controller', controller)
+      service.set('ctrl', controller)
       service.performAction({
         action: 'testAction'
       })
@@ -88,7 +88,7 @@ describeModule(
           }
         }
       }).create()
-      service.set('_controller', controller)
+      service.set('ctrl', controller)
       expect(function () {
         service.performAction({
           action: 'testAction'
