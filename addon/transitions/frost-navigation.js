@@ -1,6 +1,6 @@
 
 export default function () {
-  let duration = 100
+  let duration = 200
   this.transition(
       this.toValue(true),
       this.use('explode', {

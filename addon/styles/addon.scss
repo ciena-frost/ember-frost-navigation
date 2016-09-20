@@ -47,8 +47,10 @@ $z-index-modal-hidden: -1 !default;
   &.liquid-container {
     overflow: inherit;
     z-index: $z-index-modal;
-    .is_hidden &{
-      z-index: $z-index-modal-hidden;
+    .is_hidden & {
+      &:not(.liquid-animating) {
+        z-index: $z-index-modal-hidden;
+      }
     }
   }
   .nav-modal {
