@@ -17,6 +17,7 @@ describeComponent(
       // creates the component instance
       let component = this.subject()
       // renders the component on the page
+      component.set('goBack', function () {})
       this.render()
       expect(component).to.be.ok
       expect(this.$()).to.have.length(1)

@@ -1,5 +1,24 @@
-import A from './asserts'
+import Asserts from './asserts'
 import Ember from 'ember'
+
+const {
+  RouterDSL,
+  assert
+} = Ember
+
+const {
+  CATEGORY,
+  COLUMN,
+  SECTION,
+  APP,
+  ROUTE,
+  ENGINE,
+  PACKAGE,
+  ACTION,
+  ACTION_CONFIG,
+  LINK
+} = Asserts
+
 export default {
   init (navigation) {
     let argify = function () {
@@ -10,12 +29,12 @@ export default {
       })
       return r
     }
-    let proto = Ember.RouterDSL.prototype
+    let proto = RouterDSL.prototype
     let obj = {}
 
     /**
      * Initializes the navigation bar
-     * @parent Ember.RouterDSL
+     * @parent RouterDSL
      * @param {string} config.dialogClass class to apply to liquid-modal
      * @param {object} config.actions actions to pass up to liquid-modal
      * @param {array} config.model predefined model to be rendered
@@ -65,7 +84,7 @@ export default {
     obj.category = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.category, self.parent.type === 'nav')
+      assert(CATEGORY, self.parent.type === 'nav')
       ;(function (name, config = {}, callback = function () {}) {
         let category = navigation._registerCategory({
           name,
@@ -98,7 +117,7 @@ export default {
     obj.column = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.column, self.parent.type === 'category')
+      assert(COLUMN, self.parent.type === 'category')
       ;(function (name, config = {}, callback = function () {}) {
         if (self.element) {
           let c
@@ -141,7 +160,7 @@ export default {
     obj.section = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.section, self.parent.type === 'column')
+      assert(SECTION, self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
         let c
         self.element.push(c = {
@@ -180,9 +199,9 @@ export default {
     obj.app = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.app, self.parent.type === 'section' || self.parent.type === 'column')
+      assert(APP, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
-        Ember.assert(A.route, config.route)
+        assert(ROUTE, config.route)
         self.DSL.route(config.route, config)
 
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
@@ -218,10 +237,10 @@ export default {
     obj.engine = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.engine, self.parent.type === 'section' || self.parent.type === 'column')
+      assert(ENGINE, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
-        Ember.assert(A.package, config.package)
-        Ember.assert(A.route, config.route)
+        assert(PACKAGE, config.package)
+        assert(ROUTE, config.route)
         config.as = config.as || config.route
         self.DSL.mount(config.package, config)
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
@@ -258,9 +277,10 @@ export default {
     obj.action = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.action, self.parent.type === 'section' || self.parent.type === 'column')
+      let type = self.parent.type
+      assert(ACTION, type === 'section' || type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
-        Ember.assert(A.actionConfig, config.action)
+        assert(ACTION_CONFIG, config.action)
         let e
         if (config.inline) {
           e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
@@ -298,7 +318,7 @@ export default {
     obj.link = function () {
       let args = argify(...arguments)
       let self = this
-      Ember.assert(A.link, self.parent.type === 'section' || self.parent.type === 'column')
+      assert(LINK, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         e.push({

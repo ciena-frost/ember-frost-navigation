@@ -26,30 +26,9 @@ describeComponent(
     it('handles actions', function () {
       ;[
         {
-          name: 'outsideClick',
-          test () {
-            expect(component.get('activeCategory')).to.equal(null)
-          },
-          cleanup () {
-            component.get('frostNavigation').set('_activeCategory', 'test')
-          }
-        },
-        {
-          name: 'escape',
-          test () {
-            expect(component.get('activeCategory')).to.be.null
-          }
-        },
-        {
-          name: 'showMore',
+          name: 'setView',
           test () {
             expect(component.get('showActions')).to.be.true
-          }
-        },
-        {
-          name: 'goBack',
-          test () {
-            expect(component.get('showActions')).to.be.false
           }
         }
       ].forEach(e => {

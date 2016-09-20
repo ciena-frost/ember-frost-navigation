@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import A from 'ember-frost-navigation/utils/asserts'
+import Asserts from 'ember-frost-navigation/utils/asserts'
 
 const {
   Service,
@@ -13,12 +13,17 @@ const {
   A: EmberArray
 } = Ember
 
+const {
+  CATEGORY_NAME,
+  DEPRECATE_ACTION
+} = Asserts
+
 export default Service.extend({
   ctrl: null,
   _activeCategory: null,
   categories: EmberArray(),
   _registerCategory (config = {}) {
-    assert(A.categoryName, config.name)
+    assert(CATEGORY_NAME, config.name)
     let category = this.categories.find(e => e.name === config.name)
     if (!category) {
       this.categories.pushObject(category = {
@@ -54,7 +59,7 @@ export default Service.extend({
     } catch (e) {
       let actionHandler = get(controller, item.action)
       if (actionHandler && typeof actionHandler === 'function') {
-        deprecate(A.depAction, false, {
+        deprecate(DEPRECATE_ACTION, false, {
           id: 'ember-frost-navigation',
           until: '*'
         })
