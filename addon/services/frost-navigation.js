@@ -19,7 +19,7 @@ const {
 } = Asserts
 
 export default Service.extend({
-  ctrl: null,
+  controller: null,
   _activeCategory: null,
   categories: EmberArray(),
   _registerCategory (config = {}) {
@@ -41,14 +41,14 @@ export default Service.extend({
   },
   transitionTo (route) {
     try {
-      get(this, 'ctrl').transitionToRoute(route)
+      get(this, 'controller').transitionToRoute(route)
     } catch (e) {
       warn('Unable to perform transition', e)
     }
     this.dismiss()
   },
   performAction (item) {
-    let controller = get(this, 'ctrl')
+    let controller = get(this, 'controller')
 
     if (item.dismiss) {
       this.dismiss()

@@ -32,7 +32,7 @@ export default Component.extend({
     let frostNavigation = get(this, 'frostNavigation')
     let liquidFireTransitions = get(this, 'liquidFireTransitions')
 
-    set(frostNavigation, 'ctrl', get(this, 'targetObject'))
+    set(frostNavigation, 'controller', get(this, 'targetObject'))
     liquidFireTransitions.map(transitions)
 
     window.addEventListener('popstate', () => {

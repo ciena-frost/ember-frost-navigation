@@ -32,47 +32,12 @@ Add the `{{frost-navigation}}` component to the template where you want the navi
 #### Template
 ```hbs
 {{frost-navigation
-  logo=(component 'custom-logo'
-    class='nav-category navigation-logo'
-  )
-  menu=(component 'user-pane'
-    class='nav-category user'
-    model=(hash
-      logo=(component 'frost-icon'
-        icon='user'
-        pack='dummy'
-      )
-      label='Username'
-    )
-  )
+  logo=(component ...)
+  menu=(component ...)
 }}
-{{nav-modal-binding}}
+{{nav-modal-outlet}}
 ```
-#### Controller
-```js
-export default Controller.extend({
-  frostNavigation: service(),
-  notificationMessages: service(),
-  _notify (type, msg) {
-    get(this, 'notificationMessages')[type](msg, {
-      htmlContent: true,
-      autoClear: true,
-      clearDuration: 1000
-    })
-  },
-  actions: {
-    myAction (item) {
-      this._notify(
-        'success',
-        `<code>
-          <pre>${JSON.stringify(item, null, ' ')}</pre>
-        </code>`
-      )
-      log(item)
-    }
-  }
-})
-```
+
 #### Router
 ```js
 Router.map(function () {

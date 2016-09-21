@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import layout from '../templates/components/nav-modal-binding'
+import layout from '../templates/components/nav-modal-outlet'
 const {
   Component,
   inject: {
@@ -13,6 +13,6 @@ const {
 export default Component.extend({
   frostNavigation: service(),
   layout,
-  classNameBindings: ['activeCategory::is_hidden'],
+  classNameBindings: ['activeCategory::is-hidden'],
   activeCategory: alias('frostNavigation._activeCategory')
 })

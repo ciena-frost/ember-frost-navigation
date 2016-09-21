@@ -7,8 +7,8 @@ import {
 import hbs from 'htmlbars-inline-precompile'
 
 describeComponent(
-  'nav-modal-binding',
-  'Integration: NavModalBindingComponent',
+  'nav-modal-outlet',
+  'Integration: NavModalOutletComponent',
   {
     integration: true
   },
@@ -18,12 +18,12 @@ describeComponent(
       // Handle any actions with this.on('myAction', function(val) { ... });
       // Template block usage:
       // this.render(hbs`
-      //   {{#nav-modal-binding}}
+      //   {{#nav-modal-outlet}}
       //     template content
-      //   {{/nav-modal-binding}}
+      //   {{/nav-modal-outlet}}
       // `);
 
-      this.render(hbs`{{nav-modal-binding}}`)
+      this.render(hbs`{{nav-modal-outlet}}`)
       expect(this.$()).to.have.length(1)
     })
   }
