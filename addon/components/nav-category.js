@@ -4,13 +4,15 @@ import computed from 'ember-computed-decorators'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 const {
   Component,
+  typeOf,
   inject: {
     service
   },
   run: {
     later
   },
-  get
+  get,
+  set
 } = Ember
 
 export default Component.extend(PropTypesMixin, {
@@ -28,22 +30,21 @@ export default Component.extend(PropTypesMixin, {
     pack: PropTypes.string
   },
   click () {
-    let navService = get(this, 'frostNavigation')
-    if (!navService) return
     document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
-    let activeCategory = get(navService, '_activeCategory')
+
+    let frostNavigation = get(this, 'frostNavigation')
+    let active = get(frostNavigation, '_activeCategory')
     let name = get(this, 'name')
-    if (name === activeCategory) {
-      navService.dismiss()
-    } else {
-      if (typeof activeCategory === 'string') {
-        navService.dismiss()
+
+    if (typeOf(active) === 'string') {
+      frostNavigation.dismiss()
+      if (name !== active) { // click on another tab
         later(() => {
-          navService.set('_activeCategory', name)
+          set(frostNavigation, '_activeCategory', name)
         }, 200)
-      } else {
-        navService.set('_activeCategory', name)
       }
+    } else {
+      set(frostNavigation, '_activeCategory', name)
     }
   },
   getDefaultProps () {

@@ -1,5 +1,4 @@
 <div class='frost-application-bar'>
-
   <!-- Logo -->
   {{component logo}}
 
@@ -17,4 +16,10 @@
   <!-- User Menu -->
   {{component menu}}
 </div>
-{{liquid-modal}}
+{{to-elsewhere
+  named='navigation'
+  send=(hash
+    modal=(component 'nav-modal')
+    active=activeCategory
+  )
+}}

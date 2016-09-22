@@ -1,8 +1,14 @@
 import Ember from 'ember'
-
-export default Ember.Service.extend({
+const {
+  Service,
+  inject: {
+    service
+  },
+  get
+} = Ember
+export default Service.extend({
   posts: null,
-  session: Ember.inject.service('active-session'),
+  session: service('active-session'),
   init () {
     this._super(...arguments)
 
@@ -42,9 +48,9 @@ export default Ember.Service.extend({
     ]
   },
   add (title, body) {
-    this.get('posts').push({
+    get(this, 'posts').push({
       id: this.posts.length,
-      author: this.get('session.user'),
+      author: get(this, 'session.user'),
       title,
       body,
       comments: []

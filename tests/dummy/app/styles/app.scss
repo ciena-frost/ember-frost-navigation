@@ -1,11 +1,11 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 
 .page-content {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   position: relative;
   top: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   .row {
    display: flex;
    flex-direction: row;
@@ -15,18 +15,18 @@
      flex-direction: column;
    }
    .item {
-     width: 100%;
+     width: 90%;
    }
   }
   .hljs {
     background: #21252E;
     border-radius: 3px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 0 4px 8px 0 rgba(0,0,0,0.2);
-    padding: 0.9em;
     color: #98A0B0;
-    // font-size: 0.85em;
     max-height: 50vh;
+    // font-size: 0.85em;
     overflow: scroll;
+    padding: 0.9em;
     width: 90%;
     .hljs-keyword {
       color: #B959D8;
@@ -53,36 +53,36 @@
 }
 .frost-application-bar {
   .navigation-logo {
-    height: 50px;
-    border-right: solid 1px #666666;
+    border-right: solid 1px #666;
     cursor: pointer;
+    height: 50px;
     .frost-icon {
       width: 125px;
     }
 
     > div .frost-svg {
-      margin: 0px 24px;
       height: 40px;
+      margin: 0px 24px;
       width: 125px;
     }
   }
   .user {
-    margin-left: auto;
+    align-items: center;
+    border-left: solid 1px $frost-color-grey-3;
+    border-right: 0;
+    color: $frost-color-white;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    vertical-align: middle;
+    height: 50px;
+    margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
-    height: 50px;
-    border-right: none;
-    border-left: solid 1px $frost-color-grey-3;
-    color: $frost-color-white;
+    vertical-align: middle;
 
     .frost-icon {
-      width: 35px;
       height: 35px;
       padding-left: 5px;
+      width: 35px;
     }
   }
 }

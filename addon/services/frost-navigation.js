@@ -1,19 +1,29 @@
 import Ember from 'ember'
-import A from 'ember-frost-navigation/utils/asserts'
+import Asserts from 'ember-frost-navigation/utils/asserts'
 
 const {
   Service,
   assert,
   deprecate,
-  Logger
+  Logger: {
+    warn
+  },
+  get,
+  set,
+  A: EmberArray
 } = Ember
 
+const {
+  CATEGORY_NAME,
+  DEPRECATE_ACTION
+} = Asserts
+
 export default Service.extend({
-  _controller: null,
+  controller: null,
   _activeCategory: null,
-  categories: Ember.A(),
+  categories: EmberArray(),
   _registerCategory (config = {}) {
-    assert(A.categoryName, config.name)
+    assert(CATEGORY_NAME, config.name)
     let category = this.categories.find(e => e.name === config.name)
     if (!category) {
       this.categories.pushObject(category = {
@@ -27,18 +37,18 @@ export default Service.extend({
     return category
   },
   dismiss () {
-    this.set('_activeCategory', null)
+    set(this, '_activeCategory', null)
   },
   transitionTo (route) {
     try {
-      this.get('_controller').transitionToRoute(route)
+      get(this, 'controller').transitionToRoute(route)
     } catch (e) {
-      Logger.warn('Unable to perform transition', e)
+      warn('Unable to perform transition', e)
     }
     this.dismiss()
   },
   performAction (item) {
-    let controller = this.get('_controller')
+    let controller = get(this, 'controller')
 
     if (item.dismiss) {
       this.dismiss()
@@ -47,9 +57,9 @@ export default Service.extend({
     try {
       controller.send(item.action, item)
     } catch (e) {
-      let actionHandler = controller.get(item.action)
+      let actionHandler = get(controller, item.action)
       if (actionHandler && typeof actionHandler === 'function') {
-        deprecate(A.depAction, false, {
+        deprecate(DEPRECATE_ACTION, false, {
           id: 'ember-frost-navigation',
           until: '*'
         })

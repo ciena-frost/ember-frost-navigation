@@ -14,7 +14,7 @@ describeComponent(
   },
   function () {
     it('renders', function () {
-      this.render(hbs`{{nav-section-actions}}`)
+      this.render(hbs`{{nav-section-actions goBack=(action (mut showActions) false)}}`)
       expect(this.$()).to.have.length(1)
     })
     it('goes back on click', function () {

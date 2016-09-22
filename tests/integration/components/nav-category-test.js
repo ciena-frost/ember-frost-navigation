@@ -24,10 +24,10 @@ describeComponent(
       expect(this.$()).to.have.length(1)
     })
     describe('clicks', function () {
-      const helper = function (name, active) {
+      const helper = function (name, _activeCategory) {
         this.set('_name', name)
         this.set('_nav', Ember.Object.create({
-          _activeCategory: active,
+          _activeCategory,
           dismiss () {
             this.set('_activeCategory', null)
           }
