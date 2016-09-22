@@ -38,7 +38,7 @@ Add the `{{frost-navigation}}` component to the template where you want the navi
 {{nav-modal-outlet}}
 ```
 
-#### Router
+#### Router (Full Example)
 ```js
 Router.map(function () {
   this.nav('demo', {

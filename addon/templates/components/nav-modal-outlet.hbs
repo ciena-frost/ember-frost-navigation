@@ -1,5 +1,5 @@
-{{#from-elsewhere name="navigation" as |modal|}}
-  {{#liquid-if activeCategory class='nav-modal-outlet'}}
-    {{component modal}}
+{{#from-elsewhere name="navigation" as |body|}}
+  {{#liquid-if body.active class='nav-modal-outlet'}}
+    {{component body.modal}}
   {{/liquid-if}}
 {{/from-elsewhere}}

@@ -39,19 +39,11 @@ $z-index-modal-hidden: -1 !default;
 //TODO import pattern from ember-css-* when it's available
 // import from frost-css patterns modal.scss
 .nav-modal-outlet {
-  max-height: 80vh;
-  min-height: 500px;
-
   position: fixed;
   width: 100%;
   &.liquid-container {
     overflow: inherit;
     z-index: $z-index-modal;
-    .is-hidden & {
-      &:not(.liquid-animating) {
-        z-index: $z-index-modal-hidden;
-      }
-    }
   }
   .nav-modal {
     background: rgba(51,66,79,0.9);
@@ -188,13 +180,6 @@ $z-index-modal-hidden: -1 !default;
 
         &+ .nav-route {
           margin-top: 25px;
-        }
-      }
-      .frost-icon-add {
-        fill: $frost-color-blue-1;
-
-        & svg rect {
-          fill: $frost-color-blue-1;
         }
       }
     }

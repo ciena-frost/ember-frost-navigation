@@ -1,13 +1,13 @@
-const b = '[ember-frost-navigation] - '
+const title = '[ember-frost-navigation] - '
 export default {
-  CATEGORY_NAME: `${b}Property 'name' was not defined.`,
-  CATEGORY: `${b}category must be nested within this.nav`,
-  COLUMN: `${b}column must be nested within this.category`,
-  SECTION: `${b}section must be nested within this.column`,
-  APP: `${b}app must be nested within this.section or this.column`,
-  ACTION: `${b}action must be nested within this.section or this.column`,
-  ACTION_CONFIG: `${b}Configuration object requires property as an action`,
-  ROUTE: `${b}'config.route must be defined'`,
-  PACKAGE: `${b}config.package must be defined`,
-  DEPRECATE_ACTION: `${b}Action should be defined within the 'actions' hook on your controller`
+  CATEGORY_NAME: `${title}Property 'name' was not defined.`,
+  CATEGORY: `${title}category must be nested within this.nav`,
+  COLUMN: `${title}column must be nested within this.category`,
+  SECTION: `${title}section must be nested within this.column`,
+  APP: `${title}app must be nested within this.section or this.column`,
+  ACTION: `${title}action must be nested within this.section or this.column`,
+  ACTION_CONFIG: `${title}Configuration object requires property as an action`,
+  ROUTE: `${title}'config.route must be defined'`,
+  PACKAGE: `${title}config.package must be defined`,
+  DEPRECATE_ACTION: `${title}Action should exist within the 'actions' hook`
 }

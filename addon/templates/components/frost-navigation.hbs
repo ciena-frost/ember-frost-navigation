@@ -18,5 +18,8 @@
 </div>
 {{to-elsewhere
   named='navigation'
-  send=(component 'nav-modal')
+  send=(hash
+    modal=(component 'nav-modal')
+    active=activeCategory
+  )
 }}
