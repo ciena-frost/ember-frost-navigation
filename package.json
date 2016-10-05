@@ -39,7 +39,7 @@
     "ember-concurrency": "0.7.10",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-elsewhere": "0.3.0",
-    "ember-engines": "0.2.4",
+    "ember-engines": "0.3.3",
     "ember-export-application-global": "^1.0.4",
     "ember-frost-core": "0.27.3",
     "ember-hook": "^1.3.1",
