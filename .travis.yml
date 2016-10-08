@@ -41,6 +41,7 @@ script:
 - npm run lint
 - ember try:one $EMBER_TRY_SCENARIO --- ember test
 after_success:
+- COVERAGE=true ember test -r 'dot'
 - .travis/publish-coverage.sh
 before_deploy:
 - pr-bumper bump
