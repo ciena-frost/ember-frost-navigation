@@ -34,6 +34,10 @@ Add the `{{frost-navigation}}` component to the template where you want the navi
 {{frost-navigation
   logo=(component ...)
   menu=(component ...)
+  
+  navActions=(hash
+    myAction=(action 'custom-action')
+  )
 }}
 {{nav-modal-outlet}}
 ```
