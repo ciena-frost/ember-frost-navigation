@@ -1,5 +1,9 @@
 <!-- BEGIN-SNIPPET template -->
 {{frost-navigation
+  navActions=(hash
+    myAction=(action 'myAction')
+    increment=(action (mut count) (inc count))
+  )
   logo=(component 'custom-logo'
     class='nav-category navigation-logo'
   )
