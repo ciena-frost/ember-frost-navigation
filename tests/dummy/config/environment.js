@@ -1,5 +1,3 @@
-var routingConfig = require('./routing')
-
 module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'dummy',
@@ -17,7 +15,6 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      routingConfig: routingConfig
     }
   }
 
@@ -43,7 +40,6 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     ENV.baseURL = '/ember-frost-navigation'
-
     ENV.isDemo = true
   }
   ENV['ember-cli-notifications'] = {

@@ -12,8 +12,7 @@ const {
   run: {
     scheduleOnce
   },
-  get,
-  set
+  get
 } = Ember
 
 export default Component.extend({
@@ -32,7 +31,7 @@ export default Component.extend({
     let frostNavigation = get(this, 'frostNavigation')
     let liquidFireTransitions = get(this, 'liquidFireTransitions')
 
-    set(frostNavigation, 'controller', get(this, 'targetObject'))
+    frostNavigation.set('_actions', get(this, 'navActions') || {})
     liquidFireTransitions.map(transitions)
 
     window.addEventListener('popstate', () => {

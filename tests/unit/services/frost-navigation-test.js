@@ -6,9 +6,6 @@ import {
 } from 'ember-mocha'
 import { beforeEach } from 'mocha'
 import sinon from 'sinon'
-const {
-  Controller
-} = Ember
 
 describeModule(
   'service:frost-navigation',
@@ -46,54 +43,16 @@ describeModule(
     })
     it('performs action', function () {
       let spy = sinon.spy()
-      let controller = Controller.extend({
-        actions: {
-          testAction: spy
-        }
-      }).create()
+      service.set('_actions', {
+        testAction: spy
+      })
       service.set('_activeCategory', 'test')
-      service.set('controller', controller)
       service.performAction({
         dismiss: true,
         action: 'testAction'
       })
       expect(spy.called).to.be.true
       expect(service.get('_activeCategory')).to.be.null
-    })
-    it('performs deprec action', function () {
-      let spy = sinon.spy()
-      let controller = Controller.extend({
-        testAction: spy,
-        send () {
-          this._super(...arguments)
-          if (!spy.called) { // send won't throw error in tests
-            throw Error()
-          }
-        }
-      }).create()
-      service.set('controller', controller)
-      service.performAction({
-        action: 'testAction'
-      })
-      expect(spy.called).to.be.true
-    })
-    it('throws error when no action', function () {
-      let actionFired = false
-      let e = 'no luck'
-      let controller = Controller.extend({
-        send () {
-          this._super(...arguments)
-          if (!actionFired) {
-            throw e
-          }
-        }
-      }).create()
-      service.set('controller', controller)
-      expect(function () {
-        service.performAction({
-          action: 'testAction'
-        })
-      }).to.throw(e)
     })
     it('transitions to a route', function () {
       let spy = sinon.spy()

@@ -11,6 +11,7 @@ const {
 } = Ember
 // BEGIN-SNIPPET controller
 export default Controller.extend({
+  count: 0,
   frostNavigation: service(),
   notificationMessages: service(),
   _notify (type, msg) {

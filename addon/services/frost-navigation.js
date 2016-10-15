@@ -4,7 +4,9 @@ import Asserts from 'ember-frost-navigation/utils/asserts'
 const {
   Service,
   assert,
-  deprecate,
+  inject: {
+    service
+  },
   Logger: {
     warn
   },
@@ -14,13 +16,13 @@ const {
 } = Ember
 
 const {
-  CATEGORY_NAME,
-  DEPRECATE_ACTION
+  CATEGORY_NAME
 } = Asserts
 
 export default Service.extend({
-  controller: null,
+  routing: service('-routing'),
   _activeCategory: null,
+  _actions: null,
   categories: EmberArray(),
   _registerCategory (config = {}) {
     assert(CATEGORY_NAME, config.name)
@@ -41,32 +43,19 @@ export default Service.extend({
   },
   transitionTo (route) {
     try {
-      get(this, 'controller').transitionToRoute(route)
+      get(this, 'routing').transitionTo(route)
     } catch (e) {
       warn('Unable to perform transition', e)
     }
     this.dismiss()
   },
   performAction (item) {
-    let controller = get(this, 'controller')
-
     if (item.dismiss) {
       this.dismiss()
     }
-
-    try {
-      controller.send(item.action, item)
-    } catch (e) {
-      let actionHandler = get(controller, item.action)
-      if (actionHandler && typeof actionHandler === 'function') {
-        deprecate(DEPRECATE_ACTION, false, {
-          id: 'ember-frost-navigation',
-          until: '*'
-        })
-        actionHandler.call(controller, item)
-      } else {
-        throw e
-      }
+    const action = get(this, '_actions')[item.action]
+    if (action && typeof action === 'function') {
+      action(item)
     }
   }
 })
