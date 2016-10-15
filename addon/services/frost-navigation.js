@@ -4,7 +4,6 @@ import Asserts from 'ember-frost-navigation/utils/asserts'
 const {
   Service,
   assert,
-  deprecate,
   inject: {
     service
   },
@@ -17,8 +16,7 @@ const {
 } = Ember
 
 const {
-  CATEGORY_NAME,
-  DEPRECATE_ACTION
+  CATEGORY_NAME
 } = Asserts
 
 export default Service.extend({
