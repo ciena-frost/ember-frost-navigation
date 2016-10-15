@@ -46,13 +46,10 @@ describeModule(
     })
     it('performs action', function () {
       let spy = sinon.spy()
-      let controller = Controller.extend({
-        actions: {
-          testAction: spy
-        }
-      }).create()
+      service.set('_actions', {
+        testAction: spy
+      })
       service.set('_activeCategory', 'test')
-      service.set('controller', controller)
       service.performAction({
         dismiss: true,
         action: 'testAction'
