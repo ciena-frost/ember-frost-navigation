@@ -6,9 +6,6 @@ import {
 } from 'ember-mocha'
 import { beforeEach } from 'mocha'
 import sinon from 'sinon'
-const {
-  Controller
-} = Ember
 
 describeModule(
   'service:frost-navigation',
