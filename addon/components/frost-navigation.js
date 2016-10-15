@@ -12,8 +12,7 @@ const {
   run: {
     scheduleOnce
   },
-  get,
-  set
+  get
 } = Ember
 
 export default Component.extend({
