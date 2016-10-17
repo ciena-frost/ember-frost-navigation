@@ -20,7 +20,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "broccoli-asset-rev": "^2.2.0",
+    "broccoli-asset-rev": "^2.5.0",
     "ember-blog-engine": "git://github.com/srowhani/ember-blog-engine.git#fc083eb7da328e1cbb338225c3cb628d684dbc3c",
     "ember-browserify": "1.1.11",
     "ember-cli": "~2.5.0",
