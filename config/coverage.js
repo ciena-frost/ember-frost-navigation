@@ -1,3 +1,6 @@
 module.exports = {
-  useBabelInstrumenter: true
+  useBabelInstrumenter: true,
+  excludes: [
+    /dummy\/(.*)/
+  ]
 }
