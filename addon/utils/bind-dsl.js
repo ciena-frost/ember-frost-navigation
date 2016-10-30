@@ -274,6 +274,8 @@ export default {
      * @param {string} config.action key for action on controller
      * @param {boolean} config.dismiss flag to dismiss modal after click
      */
+    // FIXME: refactor to reduce complexity
+    /* eslint complexity: [2, 6] */
     obj.action = function () {
       let args = argify(...arguments)
       let self = this

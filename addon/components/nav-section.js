@@ -11,11 +11,19 @@ const {
 } = Ember
 
 export default Component.extend(PropTypesMixin, {
+  // == Component properties ==================================================
+
   classNames: 'nav-section',
   layout,
+
+  // == State properties ======================================================
+
   propTypes: {
     section: PropTypes.object
   },
+
+  // == Computed properties ===================================================
+
   @computed('section.color')
   lineStyle (color) {
     return htmlSafe(`border-bottom-color: ${color}`)

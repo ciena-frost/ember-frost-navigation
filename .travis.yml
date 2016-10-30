@@ -1,8 +1,9 @@
+sudo: required
+dist: trusty
 language: node_js
 node_js:
 - '5.0'
 - 'stable'
-sudo: false
 branches:
   except:
   - "/^v[0-9\\.]+/"
@@ -31,15 +32,20 @@ before_install:
 - npm install -g coveralls pr-bumper
 - pr-bumper check
 before_script:
+- export CHROME_BIN=/usr/bin/google-chrome
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start"
 - sleep 3 # give xvfb some time to start
+- sudo apt-get update
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
 install:
 - npm install
 - bower install
 script:
 - npm run lint
-- ember try:one $EMBER_TRY_SCENARIO --- ember test
+- ember try:one $EMBER_TRY_SCENARIO --- ember tva --push-var='false' --msg-on=$EMBER_TRY_SCENARIO
 after_success:
 - COVERAGE=true ember test -r 'dot'
 - .travis/publish-coverage.sh

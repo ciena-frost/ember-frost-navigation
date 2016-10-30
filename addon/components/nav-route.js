@@ -11,9 +11,16 @@ const {
 } = Ember
 
 export default Component.extend(PropTypesMixin, {
+  // == Services ==============================================================
+
   frostNavigation: service(),
+
+  // == Component properties ==================================================
+
   classNames: ['nav-route'],
   layout,
+
+  // == State properties ======================================================
 
   propTypes: {
     name: PropTypes.string.isRequired,
@@ -22,6 +29,14 @@ export default Component.extend(PropTypesMixin, {
     icon: PropTypes.string,
     pack: PropTypes.string
   },
+  getDefaultProps () {
+    return {
+      pack: 'frost'
+    }
+  },
+
+  // == Actions ===============================================================
+
   click (e) {
     const navigation = get(this, 'frostNavigation')
 
@@ -35,10 +50,5 @@ export default Component.extend(PropTypesMixin, {
     }
 
     navigation.transitionTo(get(this, 'route'))
-  },
-  getDefaultProps () {
-    return {
-      pack: 'frost'
-    }
   }
 })

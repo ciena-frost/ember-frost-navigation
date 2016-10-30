@@ -16,19 +16,38 @@ const {
 } = Ember
 
 export default Component.extend(PropTypesMixin, {
+  // == Services ==============================================================
+
   frostNavigation: service(),
+
+  // == Component properties ==================================================
+
   classNames: ['nav-category'],
   classNameBindings: ['active'],
-  @computed('frostNavigation._activeCategory')
-  active (category) {
-    return get(this, 'name') === category
-  },
   layout,
+
+  // == State properties ======================================================
+
   propTypes: {
     icon: PropTypes.string,
     name: PropTypes.string.isRequired,
     pack: PropTypes.string
   },
+  getDefaultProps () {
+    return {
+      pack: 'frost'
+    }
+  },
+
+  // == Computed properties ===================================================
+
+  @computed('frostNavigation._activeCategory')
+  active (category) {
+    return get(this, 'name') === category
+  },
+
+  // == Actions ===============================================================
+
   click () {
     document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
 
@@ -45,11 +64,6 @@ export default Component.extend(PropTypesMixin, {
       }
     } else {
       set(frostNavigation, '_activeCategory', name)
-    }
-  },
-  getDefaultProps () {
-    return {
-      pack: 'frost'
     }
   }
 })
