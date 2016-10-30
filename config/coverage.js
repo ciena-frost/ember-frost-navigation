@@ -1,6 +1,14 @@
 module.exports = {
-  useBabelInstrumenter: true,
+  coverageEnvVar: 'COVERAGE',
+  coverageFolder: 'coverage',
   excludes: [
-    /dummy\/(.*)/
+    '**/mirage/**/*',
+    '**/dummy/**/*'
+  ],
+  useBabelInstrumenter: true,
+  reporters: [
+    'html',
+    'lcov',
+    'text-summary'
   ]
 }
