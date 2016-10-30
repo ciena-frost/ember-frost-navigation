@@ -13,7 +13,7 @@ module.exports = {
       packages: [
         {
           name: 'ember-frost-core',
-          target: '>=0.24.0 <1.0.0'
+          target: '>=0.24.0 <=1.0.0'
         }
       ]
     })
