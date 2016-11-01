@@ -50,7 +50,7 @@
     "ember-sinon": "^0.5.1",
     "ember-truth-helpers": "1.2.0",
     "ember-try": "0.2.5",
-    "eslint": "^3.7.1",
+    "eslint": "^3.9.0",
     "eslint-config-frost-standard": "^2.0.0",
     "frost-guide-custom-routing": "0.0.4",
     "liquid-fire": "0.26.1",
