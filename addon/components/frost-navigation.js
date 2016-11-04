@@ -16,15 +16,29 @@ const {
 } = Ember
 
 export default Component.extend({
+  // == Services ==============================================================
+
   frostNavigation: service(),
   liquidFireTransitions: service(),
+
+  // == Component properties ==================================================
+
   classNames: [
     'frost-navigation'
   ],
   layout,
+
+  // == Properties ============================================================
+
   hook: 'frost-nav',
+
+  // == Alias properties ======================================================
+
   categories: alias('frostNavigation.categories'),
   activeCategory: alias('frostNavigation._activeCategory'),
+
+  // == Events ================================================================
+
   init () {
     this._super(...arguments)
 

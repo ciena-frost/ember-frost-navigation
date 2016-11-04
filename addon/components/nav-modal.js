@@ -14,13 +14,22 @@ const {
 } = Ember
 
 export default Component.extend({
+  // == Services ==============================================================
+
   frostNavigation: service(),
+
+  // == Component properties ==================================================
+
   classNames: [
     'nav-modal'
   ],
   layout,
+
+  // == Properties ============================================================
+
   hook: 'frost-nav-modal',
-  activeCategory: alias('frostNavigation._activeCategory'),
+
+  // == Computed properties ===================================================
 
   @computed('frostNavigation.categories', 'activeCategory')
   columns (categories = EmberArray(), activeCategory) {
@@ -31,6 +40,13 @@ export default Component.extend({
         return category ? category.columns : null
       })()
   },
+
+  // == Alias properties ======================================================
+
+  activeCategory: alias('frostNavigation._activeCategory'),
+
+  // == Actions ===============================================================
+
   actions: {
     setView (section) {
       set(this, 'showActions', true)

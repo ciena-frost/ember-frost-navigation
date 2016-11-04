@@ -5,5 +5,7 @@ const {
 } = Ember
 
 export default Component.extend({
+  // == Component properties ==================================================
+
   layout
 })

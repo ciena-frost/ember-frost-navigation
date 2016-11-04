@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-action'
-import { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 const {
   Component,
@@ -9,19 +9,23 @@ const {
   },
   get
 } = Ember
-export default Component.extend({
+export default Component.extend(PropTypeMixin, {
+  // == Services ==============================================================
+
   frostNavigation: service(),
+
+  // == Component properties ==================================================
+
   classNames: [
     'nav-route',
     'nav-action'
   ],
   layout,
+
+  // == State properties ======================================================
+
   propTypes: {
     item: PropTypes.object.isRequired
-  },
-  click (e) {
-    e.preventDefault()
-    get(this, 'frostNavigation').performAction(get(this, 'item'))
   },
   getDefaultProps () {
     return {
@@ -29,5 +33,12 @@ export default Component.extend({
         pack: 'frost'
       }
     }
+  },
+
+  // == Actions ===============================================================
+
+  click (e) {
+    e.preventDefault()
+    get(this, 'frostNavigation').performAction(get(this, 'item'))
   }
 })

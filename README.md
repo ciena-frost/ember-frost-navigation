@@ -1,5 +1,5 @@
 [ci-img]: https://img.shields.io/travis/ciena-frost/ember-frost-navigation.svg "Travis CI Build Status"
-[ci-url]: https://travis-ci.org/ciena-frost/ember-frost-navigation.svg?branch=master
+[ci-url]: https://travis-ci.org/ciena-frost/ember-frost-navigation
 
 [cov-img]: https://img.shields.io/coveralls/ciena-frost/ember-frost-navigation.svg "Coveralls Code Coverage"
 [cov-url]: https://coveralls.io/github/ciena-frost/ember-frost-navigation
@@ -7,9 +7,31 @@
 [npm-img]: https://img.shields.io/npm/v/ember-frost-navigation.svg "NPM Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-navigation
 
-[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![Code Climate](https://codeclimate.com/github/ciena-frost/ember-frost-navigation/badges/gpa.svg)](https://codeclimate.com/github/ciena-frost/ember-frost-navigation)  [![Ember Observer Score](https://emberobserver.com/badges/ember-frost-navigation.svg)](https://emberobserver.com/addons/ember-frost-navigation) [![NPM][npm-img]][npm-url]
+[ember-observer-badge]: http://emberobserver.com/badges/ember-frost-navigation.svg "Ember Observer score"
+[ember-observer-badge-url]: http://emberobserver.com/addons/ember-frost-navigation
+
+[ember-img]: https://img.shields.io/badge/ember-1.12.2+-orange.svg "Ember 2.3.0+"
+
+[bithound-img]: https://www.bithound.io/github/ciena-frost/ember-frost-navigation/badges/score.svg "bitHound"
+[bithound-url]: https://www.bithound.io/github/ciena-frost/ember-frost-navigation
 
 # ember-frost-navigation
+###### Dependencies
+
+![Ember][ember-img]
+[![NPM][npm-img]][npm-url]
+
+###### Health
+
+[![Travis][ci-img]][ci-url]
+[![Coveralls][cov-img]][cov-url]
+
+###### Security
+
+[![bitHound][bithound-img]][bithound-url]
+
+###### Ember Observer score
+[![EmberObserver][ember-observer-badge]][ember-observer-badge-url]
 
 Navigation made easy. Makes use of liquid fire and the `RouterDSL` prototype to make a clean and concise way of creating, and navigating routes.
 
@@ -208,7 +230,7 @@ The navigation component is accessible using ember-hook with the top level hook 
 | inline action from section context           	| `$hook('frost-nav-modal-section-<sectionIndex>-action-<actionIndex>')`          	|
 | route hook                                   	| `$hook('frost-nav-modal-section-<sectionIndex>-route-<routeIndex>')`            	|
 | frost-link within the route / action context 	| `$hook('frost-nav-modal-section-<sectionIndex>-(route / action)-<index>-link')` 	|
-| action from section actions context          	| `$hook('frost-nav-modal-section-actions-<index>')`                       	|
+| action from section actions context          	| `$hook('frost-nav-modal-section-actions-<index>')`                       	        |
 
 
 ## Setup
