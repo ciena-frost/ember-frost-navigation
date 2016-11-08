@@ -1,3 +1,8 @@
+# 6.0.5
+**fixed** build by pinning ember-cli-code-coverage to 0.3.5
+
+
+
 # 6.0.4
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
