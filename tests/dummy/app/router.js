@@ -11,31 +11,31 @@ Router.map(function () {
     path: '/'
   }, function () {
     this.category('Category 1', {
-      pack: 'dummy',
-      icon: 'sample'
+      pack: 'nav',
+      icon: 'application'
     }, function () {
       this.column('Column 1', {
         color: '#009eef'
       }, function () {
         this.action('Action Example', {
           action: 'myAction',
-          pack: 'dummy',
-          icon: 'sample',
+          pack: 'nav',
+          icon: 'application',
           description: 'This is an action',
           inline: true
         })
         this.app('Route Example', {
           route: 'go',
           description: 'This is a route',
-          pack: 'dummy',
-          icon: 'sample'
+          pack: 'nav',
+          icon: 'application'
         })
         this.engine('Blog Engine', {
           route: 'blog',
           description: 'This is an engine example',
           package: 'ember-blog-engine',
-          pack: 'dummy',
-          icon: 'sample'
+          pack: 'nav',
+          icon: 'application'
         })
         this.section('More Content', {
           color: '#a1e7ff'
@@ -43,15 +43,15 @@ Router.map(function () {
           this.link('Google', {
             url: 'http://google.ca',
             description: 'Go to Google',
-            pack: 'dummy',
-            icon: 'sample',
+            pack: 'nav',
+            icon: 'application',
             tabbed: true
           })
           this.link('http://google.ca')
           this.action('Action 1', {
             action: 'myAction',
-            pack: 'dummy',
-            icon: 'sample'
+            pack: 'nav',
+            icon: 'application'
           })
         })
       })
