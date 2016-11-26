@@ -82,6 +82,6 @@
     "configPath": "tests/dummy/config"
   },
   "ember-frost-icon-pack": {
-    "name": "nav"
+    "name": "frost-nav"
   }
 }
