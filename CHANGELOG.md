@@ -1,3 +1,6 @@
+# 6.1.0
+* Add app icons
+
 # 6.0.5
 **fixed** build by pinning ember-cli-code-coverage to 0.3.5
 

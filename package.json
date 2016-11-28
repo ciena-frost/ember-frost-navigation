@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-navigation",
-  "version": "6.0.5",
+  "version": "6.1.0",
   "description": "A modal navigation menu component",
   "frostGuideDirectory": "ui-components/menu-controls/navigation",
   "directories": {
@@ -80,5 +80,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "ember-frost-icon-pack": {
+    "name": "frost-nav"
   }
 }
