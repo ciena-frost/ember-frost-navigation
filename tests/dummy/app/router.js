@@ -11,7 +11,7 @@ Router.map(function () {
     path: '/'
   }, function () {
     this.category('Category 1', {
-      pack: 'nav',
+      pack: 'frost-nav',
       icon: 'application'
     }, function () {
       this.column('Column 1', {
@@ -19,7 +19,7 @@ Router.map(function () {
       }, function () {
         this.action('Action Example', {
           action: 'myAction',
-          pack: 'nav',
+          pack: 'frost-nav',
           icon: 'application',
           description: 'This is an action',
           inline: true
@@ -27,14 +27,14 @@ Router.map(function () {
         this.app('Route Example', {
           route: 'go',
           description: 'This is a route',
-          pack: 'nav',
+          pack: 'frost-nav',
           icon: 'application'
         })
         this.engine('Blog Engine', {
           route: 'blog',
           description: 'This is an engine example',
           package: 'ember-blog-engine',
-          pack: 'nav',
+          pack: 'frost-nav',
           icon: 'application'
         })
         this.section('More Content', {
@@ -43,14 +43,14 @@ Router.map(function () {
           this.link('Google', {
             url: 'http://google.ca',
             description: 'Go to Google',
-            pack: 'nav',
+            pack: 'frost-nav',
             icon: 'application',
             tabbed: true
           })
           this.link('http://google.ca')
           this.action('Action 1', {
             action: 'myAction',
-            pack: 'nav',
+            pack: 'frost-nav',
             icon: 'application'
           })
         })
