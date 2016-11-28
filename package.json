@@ -27,6 +27,7 @@
     "ember-blog-engine": "git://github.com/srowhani/ember-blog-engine.git#caf6e66089b9639cbb076b5eeaa656161f91a5b9",
     "ember-browserify": "~1.1.0",
     "ember-cli": "~2.8.0",
+    "ember-cli-chai": "^0.2.0",
     "ember-cli-code-coverage": "0.3.5",
     "ember-cli-dependency-checker": "^1.2.0",
     "ember-cli-deploy": "~0.6.4",
