@@ -1,5 +1,4 @@
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' style='display: none'>
-<symbol id="application" viewBox="0 0 45 45" preserveAspectRatio="undefined">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs/><symbol id="application" viewBox="0 0 45 45">
 	<path class="base" d="M40.12,45h-35c-2.761,0-5-2.239-5-5V5c0-2.761,2.239-5,5-5h35c2.761,0,5,2.239,5,5v35
 		C45.12,42.761,42.882,45,40.12,45z"/>
 	<polygon style="fill:#272425;opacity:0.15;" points="35,9.772 45,21.721 45.086,40.586 44.917,41.375 44.75,41.75 44.417,42.542
@@ -16,8 +15,7 @@
 	<rect x="16.562" y="15.333" style="fill:#F1F1F1;opacity:0.5;" width="16.938" height="5"/>
 	<rect x="16.562" y="21.92" style="fill:#F1F1F1;opacity:0.5;" width="16.938" height="5"/>
 	<rect x="16.562" y="28.48" style="fill:#F1F1F1;opacity:0.5;" width="16.938" height="5"/>
-</symbol>
-<symbol id="user" viewBox="0 0 35 35" preserveAspectRatio="undefined">
+</symbol><symbol id="user" viewBox="0 0 35 35">
 	<g>
 		<path style="fill:#E8E8E8;" d="M17.462,6.65H17.4l-0.005,0c-3.689,0.038-6.658,3.058-6.658,6.767c0,0.562,0.067,1.107,0.196,1.628
 			l0.472-0.116l-0.206-0.441c-0.218,0.102-0.422,0.24-0.598,0.415l0,0c-0.362,0.361-0.596,0.865-0.596,1.424l0.004,0.065
@@ -90,5 +88,4 @@
 			c0-3.18,2.544-5.763,5.694-5.794l-0.005,0h0.062V6.65"/>
 		<polyline style="fill:#E8E8E8;" points="31.663,0.487 17.485,0.487 31.663,0.487 		"/>
 	</g>
-</symbol>
-</svg>
+</symbol></svg>
