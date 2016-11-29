@@ -1,3 +1,7 @@
+# 7.0.0
+Please add a description of your change here, it will be automatically prepended to the `CHANGELOG.md` file.
+
+
 # 6.1.0
 * Add app icons
 
