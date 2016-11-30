@@ -58,8 +58,9 @@ export default Controller.extend({
       log(item)
     },
     incrementCount () {
-      set(this, 'count', get(this, 'count') + 1)
-      set(get(this, 'customRouteObject'), 'params', {count: get(this, 'count')})
+      let count = get(this, 'count') + 1
+      set(this, 'count', count)
+      set(this, 'customRouteObject.params', {count})
     }
   }
 })
