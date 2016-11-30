@@ -27,7 +27,8 @@ export default Component.extend(PropTypesMixin, {
     description: PropTypes.string,
     route: PropTypes.string,
     icon: PropTypes.string,
-    pack: PropTypes.string
+    pack: PropTypes.string,
+    params: PropTypes.object
   },
   getDefaultProps () {
     return {

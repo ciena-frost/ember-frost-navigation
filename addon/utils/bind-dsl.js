@@ -214,6 +214,7 @@ export default {
           icon: config.icon,
           pack: config.pack || 'frost',
           route,
+          params: config.params,
           isVisible: config.isVisible !== false
         })
         callback.call({
@@ -253,6 +254,7 @@ export default {
           icon: config.icon,
           pack: config.pack || 'frost',
           route,
+          params: config.params,
           isVisible: config.isVisible !== false
         })
         callback.call({

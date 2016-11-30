@@ -56,7 +56,7 @@ Add the `{{frost-navigation}}` component to the template where you want the navi
 {{frost-navigation
   logo=(component ...)
   menu=(component ...)
-  
+
   navActions=(hash
     myAction=(action 'custom-action')
   )
@@ -175,6 +175,7 @@ Router.map(function () {
  * @param {string} config.icon icon
  * @param {string} config.pack icon pack
  * @param {string} config.route route to navigate to
+ * @param {object} config.params query params
  */
 ```
 ### `this.engine`
@@ -184,6 +185,7 @@ Router.map(function () {
  * @parent {type:[column, section]}
  * @param {string} config.package package name for engine
  * @param {string} config.route route name for nav entry
+ * @param {object} config.params query params
  * @param {string} config.description description
  * @param {string} config.icon icon
  * @param {string} config.pack icon pack
