@@ -44,11 +44,6 @@ export default Component.extend(PropTypesMixin, {
       navigation.dismiss()
       return
     }
-
-    if (get(this, 'route')) {
-      e.preventDefault()
-    }
-
-    navigation.transitionTo(get(this, 'route'))
   }
+
 })

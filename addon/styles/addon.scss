@@ -4,6 +4,7 @@
 $nav-modal-bg: rgba(51, 66, 79, .97);
 $nav-colum-border: rgba($frost-color-white, .3);
 $nav-route-focus-bg: rgba(0, 0, 0, .2);
+$nav-route-active-bg: rgba($nav-route-focus-bg, .05);
 $nav-route-focus-box-shadow: #fff;
 $frost-nav-border-left: rgba($frost-color-white, .2);
 $nav-category-border-right: rgba($frost-color-white, .2);
@@ -186,6 +187,19 @@ $z-index-modal-hidden: -1 !default;
             transition: color .2s ease;
             color: $frost-color-grey-6;
             font-size: $frost-font-s;
+          }
+
+          &.active {
+            background: $nav-route-active-bg;
+            box-shadow: 0 0 1px $nav-route-focus-box-shadow;
+
+            .nav-route-name {
+              color: $frost-color-lgrey-1;
+            }
+
+            .nav-route-description {
+              color: $frost-color-lgrey-3;
+            }
           }
 
           &:focus {
