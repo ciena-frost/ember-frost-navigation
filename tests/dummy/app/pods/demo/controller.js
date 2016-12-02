@@ -7,7 +7,8 @@ const {
   inject: {
     service
   },
-  get
+  get,
+  set
 } = Ember
 // BEGIN-SNIPPET controller
 export default Controller.extend({
@@ -21,6 +22,31 @@ export default Controller.extend({
       clearDuration: 1000
     })
   },
+  init () {
+    this._super(...arguments)
+    let customRouteObject = Ember.Object.extend({
+      description: 'custom route',
+      icon: 'application',
+      pack: 'frost-nav',
+      name: 'Custom Route',
+      route: 'demo.go'
+    }).create()
+    set(this, 'customRouteObject', customRouteObject)
+    let columns = [
+      [
+        {
+          title: 'Custom Column',
+          routes: [
+            customRouteObject
+          ]
+        }
+      ]
+    ]
+    get(this, 'frostNavigation.categories').push({
+      name: 'Custom Category',
+      columns
+    })
+  },
   actions: {
     myAction (item) {
       this._notify(
@@ -30,6 +56,11 @@ export default Controller.extend({
         </code>`
       )
       log(item)
+    },
+    incrementCount () {
+      let count = get(this, 'count') + 1
+      set(this, 'count', count)
+      set(this, 'customRouteObject.params', {count})
     }
   }
 })

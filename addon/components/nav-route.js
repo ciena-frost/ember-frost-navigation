@@ -27,7 +27,8 @@ export default Component.extend(PropTypesMixin, {
     description: PropTypes.string,
     route: PropTypes.string,
     icon: PropTypes.string,
-    pack: PropTypes.string
+    pack: PropTypes.string,
+    params: PropTypes.object
   },
   getDefaultProps () {
     return {
@@ -44,11 +45,6 @@ export default Component.extend(PropTypesMixin, {
       navigation.dismiss()
       return
     }
-
-    if (get(this, 'route')) {
-      e.preventDefault()
-    }
-
-    navigation.transitionTo(get(this, 'route'))
   }
+
 })

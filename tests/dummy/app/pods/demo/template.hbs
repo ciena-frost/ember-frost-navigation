@@ -2,7 +2,6 @@
 {{frost-navigation
   navActions=(hash
     myAction=(action 'myAction')
-    increment=(action (mut count) (inc count))
   )
   logo=(component 'custom-logo'
     class='nav-category navigation-logo'
@@ -24,6 +23,19 @@
 <div class='page-content'>
   <div class='row'>
     <div class='column item'>
+      <div class='row item'>
+        <div class='item'>
+          <h3>Click me</h3>
+
+          {{frost-button
+            icon='add'
+            priority='primary'
+            size='small'
+            onClick=(action 'incrementCount')
+          }}
+          {{count}}
+        </div>
+      </div>
       <div class='row item'>
         <div class='item'>
           <h3>Router</h3>
