@@ -1,3 +1,9 @@
+# 7.1.0
+- Changes to css to show active state provided by link-to
+- Add property `params`, of type hash that abuses ember's LinkTo Components way of parsing query params to allow for dynamic query parameters.
+
+
+
 # 7.0.0
 Please add a description of your change here, it will be automatically prepended to the `CHANGELOG.md` file.
 
