@@ -2,6 +2,8 @@ import Ember from 'ember'
 import layout from '../templates/components/nav-category'
 import computed from 'ember-computed-decorators'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import SpreadMixin from 'ember-spread'
+
 const {
   Component,
   typeOf,
@@ -15,7 +17,7 @@ const {
   set
 } = Ember
 
-export default Component.extend(PropTypesMixin, {
+export default Component.extend(SpreadMixin, PropTypesMixin, {
   // == Services ==============================================================
 
   frostNavigation: service(),
@@ -30,7 +32,7 @@ export default Component.extend(PropTypesMixin, {
 
   propTypes: {
     icon: PropTypes.string,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     pack: PropTypes.string
   },
   getDefaultProps () {

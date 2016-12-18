@@ -1,8 +1,10 @@
 {{#if route}}
   {{#frost-link
-      route
-      (hash isQueryParams=true values=params)
-      hook=(concat hook '-link')
+    options=(hash
+      route=route
+      routeModels=routeModels
+      routeQueryParams=routeQueryParams
+    )
   }}
     <div class='content'>
       <div class='nav-route-icon'>

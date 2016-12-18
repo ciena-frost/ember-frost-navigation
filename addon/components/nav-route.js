@@ -1,6 +1,8 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-route'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import SpreadMixin from 'ember-spread'
+
 
 const {
   Component,
@@ -10,7 +12,7 @@ const {
   get
 } = Ember
 
-export default Component.extend(PropTypesMixin, {
+export default Component.extend(SpreadMixin, PropTypesMixin, {
   // == Services ==============================================================
 
   frostNavigation: service(),
@@ -23,7 +25,7 @@ export default Component.extend(PropTypesMixin, {
   // == State properties ======================================================
 
   propTypes: {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     description: PropTypes.string,
     route: PropTypes.string,
     icon: PropTypes.string,

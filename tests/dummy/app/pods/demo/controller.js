@@ -24,13 +24,15 @@ export default Controller.extend({
   },
   init () {
     this._super(...arguments)
-    let customRouteObject = Ember.Object.extend({
+    let customRouteObject = Ember.Object.extend({}).create({
       description: 'custom route',
       icon: 'application',
       pack: 'frost-nav',
       name: 'Custom Route',
-      route: 'demo.go'
-    }).create()
+      route: 'demo.test',
+      routeModels: ['id0'],
+      routeQueryParams: {count: 0}
+    })
     set(this, 'customRouteObject', customRouteObject)
     let columns = [
       [
@@ -59,8 +61,11 @@ export default Controller.extend({
     },
     incrementCount () {
       let count = get(this, 'count') + 1
+
       set(this, 'count', count)
-      set(this, 'customRouteObject.params', {count})
+
+      set(this, 'customRouteObject.routeModels', [`id${count}`])
+      set(this, 'customRouteObject.routeQueryParams', {count})
     }
   }
 })

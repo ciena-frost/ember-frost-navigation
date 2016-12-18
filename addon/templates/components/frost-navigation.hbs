@@ -4,10 +4,7 @@
 
   {{#each categories as |category index|}}
     {{nav-category
-      isVisible=category.isVisible
-      icon=category.icon
-      name=category.name
-      pack=category.pack
+      options=category
       hook=(concat hook '-category-' index)
     }}
   {{/each}}
