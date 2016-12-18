@@ -8,6 +8,5 @@ export default {
   ACTION: `${title}action must be nested within this.section or this.column`,
   ACTION_CONFIG: `${title}Configuration object requires property as an action`,
   ROUTE: `${title}'config.route must be defined'`,
-  PACKAGE: `${title}config.package must be defined`,
   DEPRECATE_ACTION: `${title}Action should exist within the 'actions' hook`
 }

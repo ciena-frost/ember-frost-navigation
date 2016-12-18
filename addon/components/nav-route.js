@@ -3,7 +3,6 @@ import layout from '../templates/components/nav-route'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import SpreadMixin from 'ember-spread'
 
-
 const {
   Component,
   inject: {

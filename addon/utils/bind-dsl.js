@@ -13,7 +13,6 @@ const {
   APP,
   ROUTE,
   ENGINE,
-  PACKAGE,
   ACTION,
   ACTION_CONFIG,
   LINK
