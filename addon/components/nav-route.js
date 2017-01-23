@@ -1,5 +1,7 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-route'
+import computed from 'ember-computed-decorators'
+
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import SpreadMixin from 'ember-spread'
 
@@ -36,7 +38,11 @@ export default Component.extend(SpreadMixin, PropTypesMixin, {
       pack: 'frost'
     }
   },
-
+  // == Computed Properties ===================================================
+  @computed('icon')
+  iconVisible (icon) {
+    return !!icon
+  },
   // == Actions ===============================================================
 
   click (e) {

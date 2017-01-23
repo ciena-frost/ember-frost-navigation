@@ -9,7 +9,7 @@ describeComponent(
   'NavCategoryComponent',
   {
     // Specify the other units that are required for this test
-    // needs: ['component:foo', 'helper:bar'],
+    needs: ['component:frost-icon', 'helper:hook'],
     unit: true
   },
   function () {

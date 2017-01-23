@@ -9,7 +9,7 @@ describeComponent(
   'NavRouteComponent',
   {
     // Specify the other units that are required for this test
-    needs: ['helper:hook'],
+    needs: ['component:frost-icon', 'helper:hook'],
     unit: true
   },
   function () {

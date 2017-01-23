@@ -1,5 +1,6 @@
 {{#if route}}
   {{#frost-link
+    hook=(concat hook '-link')
     options=(hash
       route=route
       routeModels=routeModels
@@ -8,12 +9,12 @@
   }}
     <div class='content'>
       <div class='nav-route-icon'>
-        {{#if icon}}
-          {{frost-icon
-            pack=pack
-            icon=icon
-          }}
-        {{/if}}
+        {{frost-icon
+          hook=(concat hook '-link-icon')
+          pack=pack
+          icon=icon
+          isVisible=iconVisible
+        }}
       </div>
       <div>
         <div class='nav-route-name'>
@@ -33,12 +34,12 @@
     data-test={{hook (concat hook '-link')}}>
     <div class='content'>
       <div class='nav-route-icon'>
-        {{#if icon}}
-          {{frost-icon
-            pack=pack
-            icon=icon
-          }}
-        {{/if}}
+        {{frost-icon
+          hook=(concat hook '-link-icon')
+          pack=pack
+          icon=icon
+          isVisible=iconVisible
+        }}
       </div>
       <div>
         <div class='nav-route-name'>

@@ -9,7 +9,7 @@ describeComponent(
   'NavSectionActionsComponent',
   {
     // Specify the other units that are required for this test
-    needs: ['component:frost-icon'],
+    needs: ['component:frost-icon', 'helper:hook'],
     unit: true
   },
   function () {

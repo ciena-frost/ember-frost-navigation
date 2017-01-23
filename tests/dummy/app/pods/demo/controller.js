@@ -14,12 +14,13 @@ const {
 export default Controller.extend({
   count: 0,
   frostNavigation: service(),
-  notificationMessages: service(),
-  _notify (type, msg) {
-    get(this, 'notificationMessages')[type](msg, {
-      htmlContent: true,
+  notifier: service(),
+  _notify (type, message) {
+    get(this, 'notifier').addNotification({
+      message,
+      type,
       autoClear: true,
-      clearDuration: 1000
+      clearDuration: 1200
     })
   },
   init () {
@@ -53,9 +54,7 @@ export default Controller.extend({
     myAction (item) {
       this._notify(
         'success',
-        `<code>
-          <pre>${JSON.stringify(item, null, ' ')}</pre>
-        </code>`
+        `Item '${item.action}' fired`
       )
       log(item)
     },

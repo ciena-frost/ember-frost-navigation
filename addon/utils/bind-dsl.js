@@ -191,16 +191,14 @@ export default {
         assert(ROUTE, config.route)
 
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
-        let route = self.top.name !== 'application'
-          ? `${self.top.name}.${config.route}`
-          : config.route
         e.push({
           name,
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route,
-          params: config.params,
+          route: config.route,
+          routeQueryParams: config.routeQueryParams,
+          routeModels: config.routeModels,
           isVisible: config.isVisible !== false
         })
         callback.call({
@@ -229,16 +227,14 @@ export default {
         assert(ROUTE, config.route)
         config.as = config.as || config.route
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
-        let route = self.top.name !== 'application'
-          ? `${self.top.name}.${config.route}`
-          : config.route
         e.push({
           name,
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route,
-          params: config.params,
+          route: config.route,
+          routeQueryParams: config.routeQueryParams,
+          routeModels: config.routeModels,
           isVisible: config.isVisible !== false
         })
         callback.call({

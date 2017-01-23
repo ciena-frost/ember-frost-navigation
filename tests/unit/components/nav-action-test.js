@@ -9,7 +9,7 @@ describeComponent(
   'NavActionComponent',
   {
     // Specify the other units that are required for this test
-    needs: ['component:frost-link', 'helper:eq'],
+    needs: ['component:frost-icon', 'helper:eq'],
     unit: true
   },
   function () {

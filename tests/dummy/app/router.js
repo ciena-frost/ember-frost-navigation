@@ -30,13 +30,13 @@ Router.map(function () {
           inline: true
         })
         this.app('Route Example', {
-          route: 'go',
+          route: 'demo.go',
           description: 'This is a route',
           pack: 'frost-nav',
           icon: 'application'
         })
         this.engine('Blog Engine', {
-          route: 'blog',
+          route: 'demo.blog',
           description: 'This is an engine example',
           pack: 'frost-nav',
           icon: 'application'

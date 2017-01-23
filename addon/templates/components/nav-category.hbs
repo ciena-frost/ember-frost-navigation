@@ -1,10 +1,10 @@
 <div class='nav-category-icon'>
-  {{#if icon}}
-    {{frost-icon
-      pack=pack
-      icon=icon
-    }}
-  {{/if}}
+  {{frost-icon
+    hook=(concat hook '-icon')
+    pack=pack
+    icon=icon
+    isVisible=iconVisible
+  }}
 </div>
 <div class='nav-category-name'>
   {{name}}

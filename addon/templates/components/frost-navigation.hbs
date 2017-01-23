@@ -1,6 +1,8 @@
 <div class='frost-application-bar'>
   <!-- Logo -->
-  {{component logo}}
+  {{component logo
+    hook=(concat hook '-logo')
+  }}
 
   {{#each categories as |category index|}}
     {{nav-category
@@ -11,7 +13,9 @@
   <!-- More Content -->
   {{yield}}
   <!-- User Menu -->
-  {{component menu}}
+  {{component menu
+    hook=(concat hook '-menu')
+  }}
 </div>
 {{to-elsewhere
   named='navigation'

@@ -33,11 +33,13 @@ export default Component.extend(SpreadMixin, PropTypesMixin, {
   propTypes: {
     icon: PropTypes.string,
     name: PropTypes.string,
-    pack: PropTypes.string
+    pack: PropTypes.string,
+    hook: PropTypes.string
   },
   getDefaultProps () {
     return {
-      pack: 'frost'
+      pack: 'frost',
+      hook: 'nav-category'
     }
   },
 
@@ -46,6 +48,10 @@ export default Component.extend(SpreadMixin, PropTypesMixin, {
   @computed('frostNavigation._activeCategory')
   active (category) {
     return get(this, 'name') === category
+  },
+  @computed('icon')
+  iconVisible (icon) {
+    return !!icon
   },
 
   // == Actions ===============================================================
