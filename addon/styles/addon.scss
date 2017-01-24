@@ -16,6 +16,7 @@ $z-index-modal-hidden: -1 !default;
 
 $frost-navigation-bar-height: 50px !default;
 $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
+
 .frost-application-bar {
   display: flex;
   position: fixed;
@@ -51,8 +52,9 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
 // import from frost-css patterns modal.scss
 .nav-modal-outlet {
   position: fixed;
-  width: 100%;
   top: 0;
+  width: 100%;
+
   &.liquid-container {
     overflow: inherit;
     z-index: $z-index-modal;
@@ -275,6 +277,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
   display: flex;
   flex-direction: row;
   height: $frost-navigation-bar-height;
+
   & > div {
     &:first-of-type {
       border-bottom: 1px solid $frost-color-grey-2;
@@ -295,9 +298,6 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
     transition: background .5s ease;
     border-right: 1px solid $nav-category-border-right;
     cursor: pointer;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
     user-select: none;
 
     .nav-category-icon {
