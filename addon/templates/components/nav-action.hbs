@@ -1,12 +1,15 @@
-<div class='frost-link'>
+{{#link-to route
+  class='frost-link'
+}}
   <div class='content'>
     <div class='nav-route-icon'>
-      {{frost-icon
-        hook=(concat hook '-icon')
-        pack=item.pack
-        icon=item.icon
-        isVisible=iconVisible
-      }}
+      {{#if icon}}
+        {{frost-icon
+          hook=(concat hook '-icon')
+          pack=item.pack
+          icon=item.icon
+        }}
+      {{/if}}
     </div>
     <div>
       <div class='nav-route-name'>
@@ -17,4 +20,4 @@
       </div>
     </div>
   </div>
-</div>
+{{/link-to}}

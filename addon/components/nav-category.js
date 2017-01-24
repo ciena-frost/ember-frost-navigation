@@ -49,10 +49,6 @@ export default Component.extend(SpreadMixin, PropTypesMixin, {
   active (category) {
     return get(this, 'name') === category
   },
-  @computed('icon')
-  iconVisible (icon) {
-    return !!icon
-  },
 
   // == Actions ===============================================================
 

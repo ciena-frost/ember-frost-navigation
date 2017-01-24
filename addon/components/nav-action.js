@@ -1,7 +1,6 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-action'
 import PropTypeMixin, {PropTypes} from 'ember-prop-types'
-import computed from 'ember-computed-decorators'
 
 const {
   Component,
@@ -38,10 +37,7 @@ export default Component.extend(PropTypeMixin, {
     }
   },
   // == Computed Properties ===================================================
-  @computed('icon')
-  iconVisible (icon) {
-    return !!icon
-  },
+
   // == Actions ===============================================================
 
   click (e) {

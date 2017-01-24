@@ -39,10 +39,7 @@ export default Component.extend(SpreadMixin, PropTypesMixin, {
     }
   },
   // == Computed Properties ===================================================
-  @computed('icon')
-  iconVisible (icon) {
-    return !!icon
-  },
+
   // == Actions ===============================================================
 
   click (e) {

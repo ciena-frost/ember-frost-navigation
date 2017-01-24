@@ -9,12 +9,13 @@
   }}
     <div class='content'>
       <div class='nav-route-icon'>
-        {{frost-icon
-          hook=(concat hook '-link-icon')
-          pack=pack
-          icon=icon
-          isVisible=iconVisible
-        }}
+        {{#if icon}}
+          {{frost-icon
+            hook=(concat hook '-link-icon')
+            pack=pack
+            icon=icon
+          }}
+        {{/if}}
       </div>
       <div>
         <div class='nav-route-name'>
@@ -34,12 +35,13 @@
     data-test={{hook (concat hook '-link')}}>
     <div class='content'>
       <div class='nav-route-icon'>
-        {{frost-icon
-          hook=(concat hook '-link-icon')
-          pack=pack
-          icon=icon
-          isVisible=iconVisible
-        }}
+        {{#if icon}}
+          {{frost-icon
+            hook=(concat hook '-link-icon')
+            pack=pack
+            icon=icon
+          }}
+        {{/if}}
       </div>
       <div>
         <div class='nav-route-name'>

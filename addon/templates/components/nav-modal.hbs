@@ -1,22 +1,20 @@
-{{#if activeCategory}}
-  {{#liquid-unless showActions class='actionSlide'}}
-    {{#each columns as |column|}}
-      <div class='nav-column'>
-        {{#each column as |_section index|}}
-          {{nav-section
-            isVisible=_section.isVisible
-            section=_section
-            setView=(action 'setView')
-            hook=(concat hook '-section-' index)
-          }}
-        {{/each}}
-      </div>
-    {{/each}}
-  {{else}}
-    {{nav-section-actions
-      section=content
-      goBack=(action (mut showActions) false)
-      hook=(concat hook '-section-actions')
-    }}
-  {{/liquid-unless}}
-{{/if}}
+{{#liquid-unless showActions class='actionSlide' isVisible=activeCategory}}
+  {{#each columns as |column|}}
+    <div class='nav-column'>
+      {{#each column as |_section index|}}
+        {{nav-section
+          isVisible=_section.isVisible
+          section=_section
+          setView=(action 'setView')
+          hook=(concat hook '-section-' index)
+        }}
+      {{/each}}
+    </div>
+  {{/each}}
+{{else}}
+  {{nav-section-actions
+    section=content
+    goBack=(action (mut showActions) false)
+    hook=(concat hook '-section-actions')
+  }}
+{{/liquid-unless}}

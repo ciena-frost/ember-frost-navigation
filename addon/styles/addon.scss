@@ -14,14 +14,16 @@ $z-index-application-bar: 3 !default;
 $z-index-modal: 2 !default;
 $z-index-modal-hidden: -1 !default;
 
+$frost-navigation-bar-height: 50px !default;
+$frost-navigation-bar-bg-color: $frost-color-night-2 !default;
 .frost-application-bar {
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
-  background-color: $frost-color-night-2;
+  height: inherit;
+  background-color: $frost-navigation-bar-bg-color;
   z-index: $z-index-application-bar;
 
   .branding {
@@ -50,7 +52,7 @@ $z-index-modal-hidden: -1 !default;
 .nav-modal-outlet {
   position: fixed;
   width: 100%;
-
+  top: 0;
   &.liquid-container {
     overflow: inherit;
     z-index: $z-index-modal;
@@ -59,7 +61,7 @@ $z-index-modal-hidden: -1 !default;
   .nav-modal {
     display: flex;
     position: fixed;
-    top: 50px;
+    top: $frost-navigation-bar-height;
     left: 0;
     flex-direction: row;
     width: 100%;
@@ -272,7 +274,7 @@ $z-index-modal-hidden: -1 !default;
 .frost-navigation {
   display: flex;
   flex-direction: row;
-
+  height: $frost-navigation-bar-height;
   & > div {
     &:first-of-type {
       border-bottom: 1px solid $frost-color-grey-2;

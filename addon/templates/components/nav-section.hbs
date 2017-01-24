@@ -4,6 +4,7 @@
     <div class='nav-section-actions' {{action setView section}}>
       <div class='sub'>Actions</div>
       {{frost-icon
+        hook=(concat hook '-section-actions-icon')
         class='actions-icon flip'
         icon='chevron'
       }}
