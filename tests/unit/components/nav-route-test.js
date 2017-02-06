@@ -1,27 +1,20 @@
-import { expect } from 'chai'
-import {
-  describeComponent,
-  it
-} from 'ember-mocha'
+import {expect} from 'chai'
+import {describe, it} from 'mocha'
 
-describeComponent(
-  'nav-route',
-  'NavRouteComponent',
-  {
-    // Specify the other units that are required for this test
-    needs: ['helper:hook'],
-    unit: true
-  },
-  function () {
-    it('renders', function () {
-      // creates the component instance
-      let component = this.subject()
-      // renders the component on the page
-      this.render()
-      expect(component).to.be.ok
-      expect(component.getDefaultProps).to.be.a('array')
+import {unit} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
-      expect(this.$()).to.have.length(1)
-    })
-  }
-)
+const test = unit('nav-route', ['helper:hook'])
+describe(test.label, function () {
+  test.setup()
+
+  it('renders', function () {
+    // creates the component instance
+    let component = this.subject()
+    // renders the component on the page
+    this.render()
+    expect(component).to.be.ok
+    expect(component.getDefaultProps).to.be.a('array')
+
+    expect(this.$()).to.have.length(1)
+  })
+})

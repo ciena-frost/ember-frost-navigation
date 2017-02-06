@@ -1,49 +1,41 @@
-import { expect } from 'chai'
-import { $hook, initialize } from 'ember-hook'
-
+import {expect} from 'chai'
+import Ember from 'ember'
+import {$hook, initialize} from 'ember-hook'
+import hbs from 'htmlbars-inline-precompile'
+import {beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import {
-  describeComponent,
-  it
-} from 'ember-mocha'
-import { beforeEach } from 'mocha'
-import hbs from 'htmlbars-inline-precompile'
-import Ember from 'ember'
+import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
-describeComponent(
-  'nav-route',
-  'Integration: NavRouteComponent',
-  {
-    integration: true
-  },
-  function () {
-    beforeEach(function () {
-      initialize()
+const test = integration('nav-route')
+describe(test.label, function () {
+  test.setup()
+
+  beforeEach(function () {
+    initialize()
+  })
+  it('renders', function () {
+    this.render(hbs`{{nav-route}}`)
+    expect(this.$()).to.have.length(1)
+  })
+  it('handles click, and dismiss', function () {
+    let nav = Ember.Object.create({
+      dismiss: sinon.spy(),
+      transitionTo: sinon.spy()
     })
-    it('renders', function () {
-      this.render(hbs`{{nav-route}}`)
-      expect(this.$()).to.have.length(1)
-    })
-    it('handles click, and dismiss', function () {
-      let nav = Ember.Object.create({
-        dismiss: sinon.spy(),
-        transitionTo: sinon.spy()
-      })
-      this.set('_nav', nav)
-      this.render(hbs`{{nav-route
-        frostNavigation=_nav
-        route='test'
-        hook='nav-route'
-      }}`)
-      const e = (o) => Ember.$.Event('click', o)
-      ;[
-        e({shiftKey: true}),
-        e({metaKey: true}),
-        e({ctrlKey: true}),
-        e()
-      ].forEach(e => $hook('nav-route').trigger(e))
-      expect(nav.dismiss.calledThrice).to.be.true
-    })
-  }
-)
+    this.set('_nav', nav)
+    this.render(hbs`{{nav-route
+      frostNavigation=_nav
+      route='test'
+      hook='nav-route'
+    }}`)
+    const e = (o) => Ember.$.Event('click', o)
+    ;[
+      e({shiftKey: true}),
+      e({metaKey: true}),
+      e({ctrlKey: true}),
+      e()
+    ].forEach(e => $hook('nav-route').trigger(e))
+    expect(nav.dismiss.calledThrice).to.be.true
+  })
+})
