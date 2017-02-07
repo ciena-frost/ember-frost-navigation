@@ -1,30 +1,25 @@
 /* jshint expr:true */
-import { expect } from 'chai'
-import {
-  describeComponent,
-  it
-} from 'ember-mocha'
+import {expect} from 'chai'
 import hbs from 'htmlbars-inline-precompile'
+import {describe, it} from 'mocha'
 
-describeComponent(
-  'nav-modal-outlet',
-  'Integration: NavModalOutletComponent',
-  {
-    integration: true
-  },
-  function () {
-    it('renders', function () {
-      // Set any properties with set(this, 'myProperty', 'value');
-      // Handle any actions with this.on('myAction', function(val) { ... });
-      // Template block usage:
-      // this.render(hbs`
-      //   {{#nav-modal-outlet}}
-      //     template content
-      //   {{/nav-modal-outlet}}
-      // `);
+import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
-      this.render(hbs`{{nav-modal-outlet}}`)
-      expect(this.$()).to.have.length(1)
-    })
-  }
-)
+const test = integration('nav-modal-outlet')
+describe(test.label, function () {
+  test.setup()
+
+  it('renders', function () {
+    // Set any properties with set(this, 'myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    // Template block usage:
+    // this.render(hbs`
+    //   {{#nav-modal-outlet}}
+    //     template content
+    //   {{/nav-modal-outlet}}
+    // `);
+
+    this.render(hbs`{{nav-modal-outlet}}`)
+    expect(this.$()).to.have.length(1)
+  })
+})
