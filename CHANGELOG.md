@@ -1,3 +1,8 @@
+# 7.2.0
+* **Updated** integration/unit tests to remove the deprecated use of `describeComponent()`
+* **Updated** unit tests to remove the deprecated use of `describeModule()`
+* **Added** ember-test-utils dependency for usage in testing
+
 # 7.1.0
 - Changes to css to show active state provided by link-to
 - Add property `params`, of type hash that abuses ember's LinkTo Components way of parsing query params to allow for dynamic query parameters.
