@@ -21,7 +21,7 @@ describe(test.label, function () {
       {
         name: 'setView',
         test () {
-          expect(component.get('showActions')).to.be.true
+          expect(component.get('actionsVisible')).to.be.true
         }
       }
     ].forEach(e => {
