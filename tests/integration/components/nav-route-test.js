@@ -1,57 +1,3 @@
-<<<<<<< HEAD
-/**
- * Integration test for the nav-route component
- */
-
-import {expect} from 'chai'
-import {describeComponent, it} from 'ember-mocha'
-import hbs from 'htmlbars-inline-precompile'
-import {$hook, initialize as initializeHook} from 'ember-hook'
-import wait from 'ember-test-helpers/wait'
-import {afterEach, beforeEach, describe} from 'mocha'
-import sinon from 'sinon'
-
-describeComponent(
-  'nav-modal',
-  'Integration: NavModalComponent',
-  {
-    integration: true
-  },
-  function () {
-    let sandbox
-
-    beforeEach(function () {
-      sandbox = sinon.sandbox.create()
-      initializeHook()
-    })
-
-    afterEach(function () {
-      sandbox.restore()
-    })
-
-    describe('after render', function () {
-      beforeEach(function () {
-        this.setProperties({
-          myHook: 'myThing'
-        })
-
-        this.render(hbs`
-          {{nav-route
-            hook=myHook
-          }}
-        `)
-
-        return wait()
-      })
-
-      it('should have an element', function () {
-        expect(this.$()).to.have.length(1)
-      })
-
-      it('should be accessible via the hook', function () {
-        expect($hook('myThing')).to.have.length(1)
-      })
-=======
 import {expect} from 'chai'
 import Ember from 'ember'
 import {$hook, initialize} from 'ember-hook'
@@ -76,7 +22,6 @@ describe(test.label, function () {
     let nav = Ember.Object.create({
       dismiss: sinon.spy(),
       transitionTo: sinon.spy()
->>>>>>> c671bbd72c75a67897fefdae43d2a90210c97974
     })
     this.set('_nav', nav)
     this.render(hbs`{{nav-route

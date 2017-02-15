@@ -82,18 +82,13 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
       width: 100%;
     }
 
-    svg {
-      &.actions-icon {
-        &.frost-icon {
-          width: 15px;
-          height: 15px;
-          fill: currentColor;
-        }
+    .actions-icon {
+      width: 25px;
+      height: 25px;
+      transform: translate(15%, 15%);
+      &.flip {
+        transform: rotate(180deg);
       }
-    }
-
-    .flip {
-      transform: rotate(180deg);
     }
 
     .nav-column,
