@@ -1,11 +1,7 @@
-import Ember from 'ember'
+import {Component} from 'ember-frost-core'
 import layout from '../templates/components/nav-modal-outlet'
-const {
-  Component
-} = Ember
 
 export default Component.extend({
   // == Component properties ==================================================
-
   layout
 })

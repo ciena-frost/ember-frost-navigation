@@ -14,7 +14,7 @@ Router.map(function () {
       as: 'blog'
     })
   })
-  this.nav('demo', function () {
+  this.nav(function () {
     this.category('Category 1', {
       pack: 'frost-nav',
       icon: 'application'

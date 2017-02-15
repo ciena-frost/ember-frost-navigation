@@ -1,8 +1,8 @@
 import Ember from 'ember'
+import {Component} from 'ember-frost-core'
 import layout from '../templates/components/frost-navigation'
 import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 const {
-  Component,
   inject: {
     service
   },
@@ -17,21 +17,17 @@ const {
 
 export default Component.extend({
   // == Services ==============================================================
-
   frostNavigation: service(),
   liquidFireTransitions: service(),
-
+  routingService: service('-routing'),
   // == Component properties ==================================================
-
-  classNames: [
-    'frost-navigation'
-  ],
   layout,
-
   // == Properties ============================================================
-
-  hook: 'frost-nav',
-
+  getDefaultProps () {
+    return {
+      hook: 'frost-navigation'  
+    }
+  },
   // == Alias properties ======================================================
 
   categories: alias('frostNavigation.categories'),
@@ -42,16 +38,16 @@ export default Component.extend({
   init () {
     this._super(...arguments)
 
-    let frostNavigation = get(this, 'frostNavigation')
-    let liquidFireTransitions = get(this, 'liquidFireTransitions')
+    const frostNavigation = this.get('frostNavigation')
+    const liquidFireTransitions = this.get('liquidFireTransitions')
+    const routingService = this.get('routingService')
 
-    frostNavigation.set('_actions', get(this, 'navActions') || {})
+    frostNavigation.set('_actions', this.get('navActions') || {})
+
     liquidFireTransitions.map(transitions)
 
-    window.addEventListener('popstate', () => {
-      scheduleOnce('sync', () => {
-        frostNavigation.dismiss()
-      })
-    }, false)
+    routingService.addObserver('currentRouteName', () => {
+      frostNavigation.dismiss()
+    })
   }
 })

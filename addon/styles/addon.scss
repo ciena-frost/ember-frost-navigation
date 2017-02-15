@@ -96,7 +96,8 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
       transform: rotate(180deg);
     }
 
-    .nav-column {
+    .nav-column,
+    .nav-section-actions {
       display: flex;
       flex: 1;
       flex-direction: column;
@@ -145,7 +146,8 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
         }
       }
 
-      .nav-route {
+      .nav-route,
+      .nav-action {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -238,7 +240,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
       }
     }
 
-    .nav-section-actions {
+    .nav-section-actions-link {
       display: flex;
       flex-direction: row;
       align-items: center;

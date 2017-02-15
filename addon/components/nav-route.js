@@ -1,27 +1,23 @@
 import Ember from 'ember'
+import {Component} from 'ember-frost-core'
+import {PropTypes} from 'ember-prop-types'
+
 import layout from '../templates/components/nav-route'
 
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
-import SpreadMixin from 'ember-spread'
-
 const {
-  Component,
   inject: {
     service
   },
   get
 } = Ember
 
-export default Component.extend(SpreadMixin, PropTypesMixin, {
+export default Component.extend({
   // == Services ==============================================================
 
   frostNavigation: service(),
 
   // == Component properties ==================================================
-
-  classNames: ['nav-route'],
   layout,
-
   // == State properties ======================================================
 
   propTypes: {

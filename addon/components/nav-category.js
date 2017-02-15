@@ -1,11 +1,10 @@
 import Ember from 'ember'
+import {Component} from 'ember-frost-core'
+import computed, {readOnly} from 'ember-computed-decorators'
+import { PropTypes } from 'ember-prop-types'
 import layout from '../templates/components/nav-category'
-import computed from 'ember-computed-decorators'
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
-import SpreadMixin from 'ember-spread'
 
 const {
-  Component,
   typeOf,
   inject: {
     service
@@ -17,7 +16,7 @@ const {
   set
 } = Ember
 
-export default Component.extend(SpreadMixin, PropTypesMixin, {
+export default Component.extend({
   // == Services ==============================================================
 
   frostNavigation: service(),
@@ -36,6 +35,7 @@ export default Component.extend(SpreadMixin, PropTypesMixin, {
     pack: PropTypes.string,
     hook: PropTypes.string
   },
+
   getDefaultProps () {
     return {
       pack: 'frost',
@@ -44,7 +44,7 @@ export default Component.extend(SpreadMixin, PropTypesMixin, {
   },
 
   // == Computed properties ===================================================
-
+  @readOnly
   @computed('frostNavigation._activeCategory')
   active (category) {
     return get(this, 'name') === category

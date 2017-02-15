@@ -1,8 +1,9 @@
 import Ember from 'ember'
+import {Component} from 'ember-frost-core'
+import computed, {readOnly} from 'ember-computed-decorators'
 import layout from '../templates/components/nav-modal'
-import computed from 'ember-computed-decorators'
+
 const {
-  Component,
   inject: {
     service
   },
@@ -19,18 +20,13 @@ export default Component.extend({
   frostNavigation: service(),
 
   // == Component properties ==================================================
-
-  classNames: [
-    'nav-modal'
-  ],
   layout,
 
   // == Properties ============================================================
 
-  hook: 'frost-nav-modal',
-
   // == Computed properties ===================================================
 
+  @readOnly
   @computed('frostNavigation.categories', 'activeCategory')
   columns (categories = EmberArray(), activeCategory) {
     return !activeCategory
@@ -49,8 +45,8 @@ export default Component.extend({
 
   actions: {
     setView (section) {
-      set(this, 'showActions', true)
-      set(this, 'content', section)
+      this.set('actionsVisible', true)
+      this.set('content', section)
     }
   }
 })

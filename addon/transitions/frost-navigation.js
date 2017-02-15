@@ -19,7 +19,7 @@ export default function () {
       }),
     )
   this.transition(
-    this.hasClass('actionSlide'),
+    this.hasClass('nav-modal-content'),
     this.toValue(true),
     this.use('toLeft', {duration}),
     this.reverse('toRight', {duration})

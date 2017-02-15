@@ -20,7 +20,9 @@
 {{to-elsewhere
   named='navigation'
   send=(hash
-    modal=(component 'nav-modal')
+    modal=(component 'nav-modal'
+      hook=(concat hook '-nav-modal')
+    )
     active=activeCategory
   )
 }}

@@ -1,5 +1,5 @@
 {{#if activeCategory}}
-  {{#liquid-unless showActions class='actionSlide'}}
+  {{#liquid-unless actionsVisible class='nav-modal-content'}}
     {{#each columns as |column|}}
       <div class='nav-column'>
         {{#each column as |_section index|}}
@@ -15,7 +15,7 @@
   {{else}}
     {{nav-section-actions
       section=content
-      goBack=(action (mut showActions) false)
+      goBack=(action (mut actionsVisible) false)
       hook=(concat hook '-section-actions')
     }}
   {{/liquid-unless}}
