@@ -86,6 +86,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
       width: 25px;
       height: 25px;
       transform: translate(15%, 15%);
+
       &.flip {
         transform: rotate(180deg);
       }

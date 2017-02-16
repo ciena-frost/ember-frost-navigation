@@ -8,11 +8,7 @@ const {
   },
   computed: {
     alias
-  },
-  run: {
-    scheduleOnce
-  },
-  get
+  }
 } = Ember
 
 export default Component.extend({
@@ -25,11 +21,10 @@ export default Component.extend({
   // == Properties ============================================================
   getDefaultProps () {
     return {
-      hook: 'frost-navigation'  
+      hook: 'frost-navigation'
     }
   },
   // == Alias properties ======================================================
-
   categories: alias('frostNavigation.categories'),
   activeCategory: alias('frostNavigation._activeCategory'),
 

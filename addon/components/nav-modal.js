@@ -10,7 +10,6 @@ const {
   computed: {
     alias
   },
-  set,
   A: EmberArray
 } = Ember
 
