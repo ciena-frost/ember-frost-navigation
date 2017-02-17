@@ -10,7 +10,8 @@ const {
   computed: {
     alias
   },
-  A: EmberArray
+  run: {bind},
+  $
 } = Ember
 
 export default Component.extend({
@@ -27,7 +28,7 @@ export default Component.extend({
 
   @readOnly
   @computed('frostNavigation.categories', 'activeCategory')
-  columns (categories = EmberArray(), activeCategory) {
+  columns (categories = [], activeCategory) {
     return !activeCategory
       ? null
       : (() => {
@@ -40,8 +41,30 @@ export default Component.extend({
 
   activeCategory: alias('frostNavigation._activeCategory'),
 
-  // == Actions ===============================================================
+  // == DOM Events ============================================================
+  _onFocusOut (event) {
+    const frostNavigation = this.get('frostNavigation')
+    const $target = $(event.target)
 
+    const isOutsideClick = !$('.frost-navigation').has($target).length
+
+    if (isOutsideClick) {
+      frostNavigation.dismiss()
+    }
+  },
+  // == Lifecycle Hooks =======================================================
+  didInsertElement () {
+    this._super(...arguments)
+    this._boundedFocusOut = bind(this, this._onFocusOut)
+
+    $(document).on('click', this._boundedFocusOut)
+  },
+  willDestroyElement () {
+    this._super(...arguments)
+
+    $(document).off('click', this._boundedFocusOut)
+  },
+  // == Actions ===============================================================
   actions: {
     setView (section) {
       this.set('actionsVisible', true)
