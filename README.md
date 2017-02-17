@@ -61,7 +61,6 @@ Add the `{{frost-navigation}}` component to the template where you want the navi
     myAction=(action 'custom-action')
   )
 }}
-{{nav-modal-outlet}}
 ```
 
 #### Router (Full Example)

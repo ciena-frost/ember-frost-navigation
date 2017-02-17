@@ -17,15 +17,6 @@
     hook=(concat hook '-menu')
   }}
 </div>
-{{to-elsewhere
-  named='navigation'
-  send=(hash
-    modal=(component 'nav-modal'
-      hook=(concat hook '-nav-modal')
-    )
-    active=activeCategory
-  )
-}}
-{{nav-modal-outlet
-  hook=(concat hook '-nav-modal-outlet')
-}}
+{{#liquid-if activeCategory class='nav-modal-outlet'}}
+  {{nav-modal}}
+{{/liquid-if}}
