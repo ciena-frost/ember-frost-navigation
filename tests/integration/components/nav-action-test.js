@@ -29,6 +29,6 @@ describe(test.label, function () {
       hook='nav-action'
     }}`)
     $hook('nav-action').click()
-    expect(nav.performAction.called).to.be.true
+    expect(nav.performAction.called).to.equal(true)
   })
 })

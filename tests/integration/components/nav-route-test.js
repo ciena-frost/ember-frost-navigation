@@ -36,6 +36,6 @@ describe(test.label, function () {
       e({ctrlKey: true}),
       e()
     ].forEach(e => $hook('nav-route').trigger(e))
-    expect(nav.dismiss.calledThrice).to.be.true
+    expect(nav.dismiss.calledThrice).to.equal(true)
   })
 })

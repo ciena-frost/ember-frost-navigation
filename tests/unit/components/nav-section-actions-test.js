@@ -13,7 +13,6 @@ describe(test.label, function () {
     // renders the component on the page
     component.set('goBack', function () {})
     this.render()
-    expect(component).to.be.ok
     expect(this.$()).to.have.length(1)
   })
 })
