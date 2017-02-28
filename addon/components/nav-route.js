@@ -1,13 +1,13 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-route'
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
 const {
   Component,
+  get,
   inject: {
     service
-  },
-  get
+  }
 } = Ember
 
 export default Component.extend(PropTypesMixin, {

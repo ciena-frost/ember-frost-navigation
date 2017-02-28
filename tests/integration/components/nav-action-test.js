@@ -1,8 +1,8 @@
 import {expect} from 'chai'
 import {$hook, initialize} from 'ember-hook'
-import sinon from 'sinon'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
+import sinon from 'sinon'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 

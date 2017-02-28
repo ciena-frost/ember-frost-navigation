@@ -2,17 +2,17 @@ import Ember from 'ember'
 import Asserts from 'ember-frost-navigation/utils/asserts'
 
 const {
-  Service,
-  assert,
-  inject: {
-    service
-  },
+  A: EmberArray,
   Logger: {
     warn
   },
+  Service,
+  assert,
   get,
-  set,
-  A: EmberArray
+  inject: {
+    service
+  },
+  set
 } = Ember
 
 const {

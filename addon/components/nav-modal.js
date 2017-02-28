@@ -2,15 +2,15 @@ import Ember from 'ember'
 import layout from '../templates/components/nav-modal'
 import computed from 'ember-computed-decorators'
 const {
+  A: EmberArray,
   Component,
-  inject: {
-    service
-  },
   computed: {
     alias
   },
-  set,
-  A: EmberArray
+  inject: {
+    service
+  },
+  set
 } = Ember
 
 export default Component.extend({

@@ -3,16 +3,16 @@ import layout from '../templates/components/frost-navigation'
 import transitions from 'ember-frost-navigation/transitions/frost-navigation'
 const {
   Component,
-  inject: {
-    service
-  },
   computed: {
     alias
   },
+  get,
+  inject: {
+    service
+  },
   run: {
     scheduleOnce
-  },
-  get
+  }
 } = Ember
 
 export default Component.extend({

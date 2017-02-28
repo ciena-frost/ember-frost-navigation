@@ -1,7 +1,7 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-section'
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import computed from 'ember-computed-decorators'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
 const {
   Component,
