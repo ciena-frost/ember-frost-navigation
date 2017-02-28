@@ -13,7 +13,6 @@ describe(test.label, function () {
     this.render()
   })
   it('renders', function () {
-    expect(component).to.be.ok
     expect(this.$()).to.have.length(1)
   })
   it('handles actions', function () {
@@ -21,7 +20,7 @@ describe(test.label, function () {
       {
         name: 'setView',
         test () {
-          expect(component.get('showActions')).to.be.true
+          expect(component.get('showActions')).to.equal(true)
         }
       }
     ].forEach(e => {

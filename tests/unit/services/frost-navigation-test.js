@@ -1,5 +1,6 @@
 import {expect} from 'chai'
 import Ember from 'ember'
+const {A} = Ember
 import {setupTest} from 'ember-mocha'
 import {beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
@@ -13,18 +14,15 @@ describe('Unit / Service / frost-navigation', function () {
   beforeEach(function () {
     service = this.subject()
   })
-  it('exists', function () {
-    expect(service).to.be.ok
-  })
   it('adds categories correctly', function () {
     service._registerCategory({
       name: 'add new category'
     })
-    expect(service.categories).to.not.be.empty
+    expect(service.categories.length).to.equal(1)
   })
   it('returns existing category', function () {
     let name = 'existing category'
-    service.set('categories', Ember.A())
+    service.set('categories', A())
     service.get('categories').pushObject({
       name
     })
@@ -49,13 +47,13 @@ describe('Unit / Service / frost-navigation', function () {
       dismiss: true,
       action: 'testAction'
     })
-    expect(spy.called).to.be.true
-    expect(service.get('_activeCategory')).to.be.null
+    expect(spy.called).to.equal(true)
+    expect(service.get('_activeCategory')).to.equal(null)
   })
   it('transitions to a route', function () {
     let spy = sinon.spy()
     service.set('dismiss', spy)
     service.transitionTo('index')
-    expect(spy.called).to.be.true
+    expect(spy.called).to.equal(true)
   })
 })
