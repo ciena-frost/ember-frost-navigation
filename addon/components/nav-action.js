@@ -4,10 +4,10 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 const {
   Component,
+  get,
   inject: {
     service
-  },
-  get
+  }
 } = Ember
 export default Component.extend(PropTypeMixin, {
   // == Services ==============================================================

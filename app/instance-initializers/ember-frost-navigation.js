@@ -1,1 +1,1 @@
-export { default, initialize } from 'ember-frost-navigation/instance-initializers/ember-frost-navigation'
+export {default, initialize} from 'ember-frost-navigation/instance-initializers/ember-frost-navigation'

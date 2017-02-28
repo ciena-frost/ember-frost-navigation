@@ -7,16 +7,16 @@ const {
 } = Ember
 
 const {
-  CATEGORY,
-  COLUMN,
-  SECTION,
-  APP,
-  ROUTE,
-  ENGINE,
-  PACKAGE,
   ACTION,
   ACTION_CONFIG,
-  LINK
+  APP,
+  CATEGORY,
+  COLUMN,
+  ENGINE,
+  LINK,
+  PACKAGE,
+  ROUTE,
+  SECTION
 } = Asserts
 
 export default {

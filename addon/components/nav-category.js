@@ -1,18 +1,18 @@
 import Ember from 'ember'
 import layout from '../templates/components/nav-category'
 import computed from 'ember-computed-decorators'
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 const {
   Component,
-  typeOf,
+  get,
   inject: {
     service
   },
   run: {
     later
   },
-  get,
-  set
+  set,
+  typeOf
 } = Ember
 
 export default Component.extend(PropTypesMixin, {
