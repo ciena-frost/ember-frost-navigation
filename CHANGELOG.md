@@ -1,3 +1,12 @@
+# 7.2.1
+* **Updated** to use latest pr-bumper which supports being able to set a PR to `none` when publishing a new version is not desired.
+
+<!-- Reviewable:start -->
+---
+This change is [<img src="https://reviewable.io/review_button.svg" height="34" align="absmiddle" alt="Reviewable"/>](https://reviewable.io/reviews/ciena-frost/ember-frost-navigation/197)
+<!-- Reviewable:end -->
+
+
 # 7.2.0
 * **Updated** integration/unit tests to remove the deprecated use of `describeComponent()`
 * **Updated** unit tests to remove the deprecated use of `describeModule()`
