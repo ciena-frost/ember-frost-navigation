@@ -1,18 +1,24 @@
 sudo: required
 dist: trusty
 language: node_js
+
 node_js:
-- '6.9'
+- '6.9.1'
 - 'stable'
-branches:
-  except:
-  - "/^v[0-9\\.]+/"
+
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
+    - google-chrome
     packages:
+    - google-chrome-stable
     - g++-4.8
+
+cache:
+  directories:
+  - node_modules
+
 env:
   matrix:
   - EMBER_TRY_SCENARIO=default
@@ -22,35 +28,34 @@ env:
   global:
     - CXX=g++-4.8
     - secure: U4XjmtClm2N9KLQ3FWyyu1c8Y53HNThD8eEgbhAWcw0sye2I1DmmBVYtkLUFZVGtAR/RnHiSZds2pq749GU1V9Pwr7thwXPqLo9ZjpUrpVxMcDqPKdKdG0dG20mYlsdnjXpses9KLqYlDx/gbWbWSzvfQtLHeE1QH+lQJ6f8W8NTZGWeRLfyHpacXhsaoZvThAJ4A/o4nFZ15Bd9TihtnC8UroTBmS99OeKdI3GTjbguwqtVF+TJZtYfvwvV6XmH19BaO6ZP40NjMvNLaOWZEvfqbtCvxWK75WQQile5T1wHD9lnb3DFEsaNnSoGUi+qvDy1yeZa1tMxXNH/5LYa4P5TpkcMAbhC3HODg1VvAI+I4WG0F6nM+PoMzVySgaZKt0xYcc21nomIw+vg1kaVjyXuOI4sT0GaDtucXOhkSXk9ohuncfL7GqNqnEFYz9CTYjjKDQTVBac+rNS9QcV/KaNifa7h+5Uo5ERf+X7VXnzbJwoKVTktGOchPh7RkfexLl/PhngEQPTxDGXmsi5gy6sG2UGA6aFhrtUnCKY+0kFRoxefXbCGBc4Sm9w9F9q+G7H9e1ZMyWg0+Cy8jh3aOl36Pew9YUOuw4oSXnGB6/yS4V+90hoqj7z2jU4HZFXSsUqzmkw+TFeajg4y8AHI9+I8ZLGtdd4i7eADGPU/Ols=
+
 matrix:
   fast_finish: true
   allow_failures:
   - env: EMBER_TRY_SCENARIO=ember-canary
   - env: EMBER_TRY_SCENARIO=ember-beta
+
 before_install:
 - npm config set spin false
-- npm install -g coveralls pr-bumper
-- pr-bumper check
+- npm install -g coveralls pr-bumper@^1.0.0
+- $(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh
+
+install:
+- $(npm root -g)/pr-bumper/.travis/maybe-install.sh
+
 before_script:
-- export CHROME_BIN=/usr/bin/google-chrome
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start"
 - sleep 3 # give xvfb some time to start
-- sudo apt-get update
-- sudo apt-get install -y libappindicator1 fonts-liberation
-- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-- sudo dpkg -i google-chrome*.deb
-install:
-- npm install
-- bower install
+
 script:
-- npm run lint
-- ember try:one $EMBER_TRY_SCENARIO --- ember tva --push-var='false' --msg-on=$EMBER_TRY_SCENARIO
+- $(npm root -g)/pr-bumper/.travis/maybe-test.sh
+- .travis/maybe-bump-version.sh
+
 after_success:
-- COVERAGE=true ember test -r 'dot'
-- .travis/publish-coverage.sh
-before_deploy:
-- pr-bumper bump
+- .travis/maybe-publish-coverage.sh
+- .travis/maybe-publish-gh-pages.sh
+
 deploy:
   provider: npm
   email: npm.ciena@gmail.com
@@ -58,12 +63,11 @@ deploy:
   api_key:
     secure: kS9GXHiBMNrFZDrjH1Dy22/6DzLWDo0NXIVK0Xhvh9Avk90k/T1RzGIVyzpB7574+wSw4bJ4cK6oc76jkwsru1R8mzgjkM8WtYYRPlkHOAQlMVq6uiPLE82jJvhwKjhRoStvW0Y8WWId5vp655tm6GaP0ZLmz5vael2fkwaDn/QSuxxzWgkJXfDyD/e9F9NgxwGfZjW2QGroqnF/ugDM3aqTD7wqis1N5RiW6vJR0KYDvrBl1ixrc+OH21ZVIEyAxlBqLrK4+L8CkGF7uQJ4I6mkhUtLHhNMqxwfmWS3jtELVBLzTpPckvh0aqaflwNUMQGOPrb196a/7so3OPaIMaXpRMZx5NrZ3w8CXNKub9mVnxTF0Qahef3+K96HjYCYx3trrhoLkI9kJymvjL9sgViC51dzmGCTtLC/i3B1tFj2HR8ZysqYswbEeI7O44eqivQ452AvPCCjc6Gmf7nRpw6ArG6x7QeYTnrnaA9i/Bgv94NLaWKW65f8K09KD3t70JTTP3937rxYtGjMG9AjUF8gNwn5/g2dATnF+0bPU6LQZMLyQPV5QMaZx8SeQRXJa5lulgQ6nxgUm5p3BHHmbyjntSWhB/WnkTj8ZQEjlzdDQeqwuacmw6X+QcEU3aRrl21IJE4jPZ4kz98++F43rXScHO29u3E3vUKniRp/NVQ=
   on:
-    branch: master
+    all_branches: true
     condition: "$EMBER_TRY_SCENARIO = 'default'"
-    node: 'stable'
+    node: '6.9.1'
     tags: true
-after_deploy:
-- .travis/publish-gh-pages.sh
+
 notifications:
   slack:
     secure: k7CHsQ7Bymxew9zkotZWRIq8maw1v5Nt1vZS2HwjvPpc5EDEKHOU4RFrFuwtXzaFJZziXUoWRG77sA00+kFVOQIoSGT1tXahvx/ZVCd4EHELBH5qboV85wg+fQaY1/dJuUU36JQQGvOGHysq25ArE2ixS0OAdjxjbdVaf9RPeOWibyvbaVkIWDwT0A/aB8JhSIUoxnmn3bpAHNvDKZBfsDoUQvkX5CjBrn007uSvQeazxKWpVXKFvLPBKkzvbBshbQrMIsEXfGpB8HFU9yPXLu37DxQPcXQm3qZt2O0Efv8PUeL07MwhG08CML+HwsCKuVgksaPK4R1nWI488BFGgByYOHXD5mV6gVY/A2mwVsdAB3AHaBzMeLgMbTV18wRsjcCBzZ62zP8cCUFnIQcDZq8yU46ScLtPNrWNzGIk9E9vSnaCGyDR7IwgpafexMEICQdx+GtTHz9pzWVL1RsbcFJWYfK/Mx12VLdd+qlo8LlMFhYhkSsEKNWUT1WqxBGxr72cJMNVAaQ7glq3PFPU7dUfCZ8n6AN4Y/AvKRiQw6ltAR9RhyWAz9WlVmBPtJ0XmnmzlfZ3OLncRK+jDGzLQ1klulQkQB9Y/qAazw95nWJr+K4kR+Vet/++PZlnNYTnK5oj6WEoyf4vpkwc622tPg8vSqjlzhLr/0zDIUtkfmM=
