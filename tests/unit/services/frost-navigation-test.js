@@ -18,7 +18,6 @@ describe('Unit / Service / frost-navigation', function () {
     service._registerCategory({
       name: 'add new category'
     })
-    console.log('service: ', service.categories.length)
     expect(service.categories.length).to.equal(1)
   })
   it('returns existing category', function () {
