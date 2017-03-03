@@ -1,10 +1,10 @@
 import Ember from 'ember'
 const {
   Service,
+  get,
   inject: {
     service
-  },
-  get
+  }
 } = Ember
 export default Service.extend({
   posts: null,

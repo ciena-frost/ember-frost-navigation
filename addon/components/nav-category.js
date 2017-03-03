@@ -12,8 +12,8 @@ const {
   run: {
     later
   },
-  get,
-  set
+  set,
+  typeOf
 } = Ember
 
 export default Component.extend({

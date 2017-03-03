@@ -7,8 +7,7 @@ import layout from '../templates/components/nav-route'
 const {
   inject: {
     service
-  },
-  get
+  }
 } = Ember
 
 export default Component.extend({

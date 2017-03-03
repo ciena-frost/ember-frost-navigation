@@ -33,7 +33,8 @@
 ###### Ember Observer score
 [![EmberObserver][ember-observer-badge]][ember-observer-badge-url]
 
-Navigation made easy. Makes use of liquid fire and the `RouterDSL` prototype to make a clean and concise way of creating, and navigating routes.
+Navigation made easy. Makes use of liquid fire and the `RouterDSL` prototype to make a clean and concise way of
+creating, and navigating routes.
 
 Also supports [ember-engines](https://github.com/dgeb/ember-engines)
 
@@ -49,7 +50,8 @@ ember install ember-frost-navigation
 
 ## Usage
 
-Add the `{{frost-navigation}}` component to the template where you want the navigation to appear, then configure your navigation in `app/router.js`
+Add the `{{frost-navigation}}` component to the template where you want the navigation to appear, then configure
+your navigation in `app/router.js`
 
 #### Template
 ```hbs
@@ -219,7 +221,8 @@ Router.map(function () {
 
 ## Testing with [ember-hook](https://www.npmjs.com/package/ember-hook)
 
-The navigation component is accessible using ember-hook with the top level hook names, or you can access the internal components as well -
+The navigation component is accessible using ember-hook with the top level hook names, or you can access the internal
+components as well -
 
 | Property                                     	| Hook                                                                            	|
 |----------------------------------------------	|---------------------------------------------------------------------------------	|

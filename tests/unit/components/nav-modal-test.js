@@ -13,7 +13,6 @@ describe(test.label, function () {
     this.render()
   })
   it('renders', function () {
-    expect(component).to.be.ok
     expect(this.$()).to.have.length(1)
   })
   it('handles actions', function () {

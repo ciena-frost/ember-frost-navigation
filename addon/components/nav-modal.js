@@ -57,18 +57,20 @@ export default Component.extend({
     this._super(...arguments)
     this._boundedFocusOut = bind(this, this._onFocusOut)
 
-    $(document).on('click', this._boundedFocusOut)
+    window.addEventListener('click', this._boundedFocusOut, {passive: true})
   },
   willDestroyElement () {
     this._super(...arguments)
 
-    $(document).off('click', this._boundedFocusOut)
+    window.removeEventListener('click', this._boundedFocusOut)
   },
   // == Actions ===============================================================
   actions: {
-    setView (section) {
-      this.set('actionsVisible', true)
-      this.set('content', section)
+    setView (content) {
+      this.setProperties({
+        actionsVisible: true,
+        content
+      })
     }
   }
 })

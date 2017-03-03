@@ -1,8 +1,8 @@
 import {expect} from 'chai'
 import {$hook, initialize} from 'ember-hook'
-import sinon from 'sinon'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
+import sinon from 'sinon'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
@@ -29,6 +29,6 @@ describe(test.label, function () {
       hook='nav-action'
     }}`)
     $hook('nav-action').click()
-    expect(nav.performAction.called).to.be.true
+    expect(nav.performAction.called).to.equal(true)
   })
 })

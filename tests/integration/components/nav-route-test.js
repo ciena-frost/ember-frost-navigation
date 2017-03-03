@@ -1,5 +1,6 @@
 import {expect} from 'chai'
 import Ember from 'ember'
+const {$} = Ember
 import {$hook, initialize} from 'ember-hook'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
@@ -29,13 +30,13 @@ describe(test.label, function () {
       route='test'
       hook='nav-route'
     }}`)
-    const e = (o) => Ember.$.Event('click', o)
+    const e = (o) => $.Event('click', o)
     ;[
       e({shiftKey: true}),
       e({metaKey: true}),
       e({ctrlKey: true}),
       e()
     ].forEach(e => $hook('nav-route').trigger(e))
-    expect(nav.dismiss.calledThrice).to.be.true
+    expect(nav.dismiss.calledThrice).to.equal(true)
   })
 })

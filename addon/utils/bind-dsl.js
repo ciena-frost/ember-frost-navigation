@@ -7,11 +7,11 @@ const {
 } = Ember
 
 const {
+  ACTION,
+  ACTION_CONFIG,
+  APP,
   CATEGORY,
   COLUMN,
-  SECTION,
-  APP,
-  ROUTE,
   ENGINE,
   ACTION,
   ACTION_CONFIG,

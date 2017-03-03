@@ -1,3 +1,12 @@
+# 7.2.1
+* **Updated** to use latest pr-bumper which supports being able to set a PR to `none` when publishing a new version is not desired.
+
+<!-- Reviewable:start -->
+---
+This change is [<img src="https://reviewable.io/review_button.svg" height="34" align="absmiddle" alt="Reviewable"/>](https://reviewable.io/reviews/ciena-frost/ember-frost-navigation/197)
+<!-- Reviewable:end -->
+
+
 # 7.2.0
 * **Updated** integration/unit tests to remove the deprecated use of `describeComponent()`
 * **Updated** unit tests to remove the deprecated use of `describeModule()`
@@ -5,7 +14,8 @@
 
 # 7.1.0
 - Changes to css to show active state provided by link-to
-- Add property `params`, of type hash that abuses ember's LinkTo Components way of parsing query params to allow for dynamic query parameters.
+- Add property `params`, of type hash that abuses ember's LinkTo Components way of parsing query params to allow for
+dynamic query parameters.
 
 
 
@@ -128,13 +138,15 @@ Use a `# CHANGELOG` section in your Pull Request description to auto-populate th
  - No assertion on duplicate categories
      - When service checks to see if category exists, will either use pre-existing, or create one.
  - `this.link`
-    - `this.app` will register against RouterDSL. For the case that a route already exists, and you just want to link to it, you can use `this.link('lorem', {route:'foobar'})`
+    - `this.app` will register against RouterDSL. For the case that a route already exists, and you just want to
+    link to it, you can use `this.link('lorem', {route:'foobar'})`
 
 # 2.1.2
  - No assertion on duplicate categories
      - When service checks to see if category exists, will either use pre-existing, or create one.
  - `this.link`
-    - `this.app` will register against RouterDSL. For the case that a route already exists, and you just want to link to it, you can use `this.link('lorem', {route:'foobar'})`
+    - `this.app` will register against RouterDSL. For the case that a route already exists, and you just want to link
+    to it, you can use `this.link('lorem', {route:'foobar'})`
 
 # 2.1.1
 - Blog Engine has been upped to show ember-engines integration in dummy app
@@ -181,5 +193,6 @@ Use a `# CHANGELOG` section in your Pull Request description to auto-populate th
 
 # 2.0.0
 
-See the README for information on how to use the new navigation system.  Visual redesign and support for engines included.
+See the README for information on how to use the new navigation system.  Visual redesign and support
+for engines included.
 

@@ -4,10 +4,10 @@ const {
   Logger: {
     log
   },
+  get,
   inject: {
     service
   },
-  get,
   set
 } = Ember
 // BEGIN-SNIPPET controller

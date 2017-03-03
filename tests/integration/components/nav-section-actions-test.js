@@ -20,6 +20,6 @@ describe(test.label, function () {
     this.set('goBack', spy)
     this.render(hbs`{{nav-section-actions goBack=goBack}}`)
     this.$('.nav-section-header').click()
-    expect(spy.called).to.be.true
+    expect(spy.called).to.equal(true)
   })
 })

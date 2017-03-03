@@ -6,8 +6,7 @@ import layout from '../templates/components/nav-action'
 const {
   inject: {
     service
-  },
-  get
+  }
 } = Ember
 export default Component.extend({
   // == Services ==============================================================
