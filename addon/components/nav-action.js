@@ -37,6 +37,7 @@ export default Component.extend({
 
   click (e) {
     e.preventDefault()
-    get(this, 'frostNavigation').performAction(get(this, 'item'))
+
+    this.get('frostNavigation').performAction(this.get('item'))
   }
 })

@@ -5,7 +5,6 @@ import { PropTypes } from 'ember-prop-types'
 import layout from '../templates/components/nav-category'
 
 const {
-  typeOf,
   inject: {
     service
   },
@@ -45,9 +44,9 @@ export default Component.extend({
 
   // == Computed properties ===================================================
   @readOnly
-  @computed('frostNavigation._activeCategory')
-  active (category) {
-    return get(this, 'name') === category
+  @computed('name', 'frostNavigation._activeCategory')
+  active (name, category) {
+    return name === category
   },
 
   // == Actions ===============================================================
@@ -55,9 +54,10 @@ export default Component.extend({
   click () {
     document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
 
-    const frostNavigation = get(this, 'frostNavigation')
-    const active = get(frostNavigation, '_activeCategory')
-    const name = get(this, 'name')
+    const frostNavigation = this.get('frostNavigation')
+    const name = this.get('name')
+
+    const active = frostNavigation._activeCategory
 
     if (typeOf(active) === 'string') {
       frostNavigation.dismiss()

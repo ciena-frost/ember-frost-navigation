@@ -13,9 +13,9 @@ const {
   CATEGORY,
   COLUMN,
   ENGINE,
-  ACTION,
-  ACTION_CONFIG,
-  LINK
+  LINK,
+  ROUTE,
+  SECTION
 } = Asserts
 
 export default {

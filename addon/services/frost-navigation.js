@@ -2,13 +2,11 @@ import Ember from 'ember'
 import Asserts from 'ember-frost-navigation/utils/asserts'
 
 const {
-  A: EmberArray,
   Logger: {
     warn
   },
   Service,
   assert,
-  get,
   inject: {
     service
   },
@@ -23,7 +21,7 @@ export default Service.extend({
   routing: service('-routing'),
   _activeCategory: null,
   _actions: null,
-  categories: EmberArray(),
+  categories: [],
   _registerCategory (config = {}) {
     assert(CATEGORY_NAME, config.name)
     let category = this.categories.find(e => e.name === config.name)
@@ -43,7 +41,7 @@ export default Service.extend({
   },
   transitionTo (route) {
     try {
-      get(this, 'routing').transitionTo(route)
+      this.get('routing').transitionTo(route)
     } catch (e) {
       warn('Unable to perform transition', e)
     }
@@ -53,7 +51,7 @@ export default Service.extend({
     if (item.dismiss) {
       this.dismiss()
     }
-    const action = get(this, '_actions')[item.action]
+    const action = this.get('_actions')[item.action]
     if (action && typeof action === 'function') {
       action(item)
     }

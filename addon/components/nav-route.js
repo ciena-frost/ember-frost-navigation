@@ -37,7 +37,7 @@ export default Component.extend({
   // == Actions ===============================================================
 
   click (e) {
-    const navigation = get(this, 'frostNavigation')
+    const navigation = this.get('frostNavigation')
 
     if (e.metaKey || e.shiftKey || e.ctrlKey) {
       navigation.dismiss()

@@ -9,6 +9,8 @@
       options=category
       hook=(concat hook '-category-' index)
     }}
+    {{else}}
+      {{yield to='inverse'}}
   {{/each}}
   <!-- More Content -->
   {{yield}}
@@ -18,5 +20,5 @@
   }}
 </div>
 {{#liquid-if activeCategory class='nav-modal-outlet'}}
-  {{nav-modal}}
+  {{nav-modal hook=(concat hook '-modal')}}
 {{/liquid-if}}
