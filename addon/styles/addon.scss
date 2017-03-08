@@ -64,7 +64,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
     display: flex;
     position: fixed;
     top: $frost-navigation-bar-height;
-    left: 0;
+    left: 0 !important;
     flex-direction: row;
     width: 100%;
     min-height: 500px;
