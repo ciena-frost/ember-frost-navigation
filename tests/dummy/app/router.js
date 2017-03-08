@@ -31,13 +31,13 @@ Router.map(function () {
           inline: true
         })
         this.app('Route Example', {
-          route: 'demo.go',
+          route: 'go',
           description: 'This is a route',
           pack: 'frost-nav',
           icon: 'application'
         })
         this.engine('Blog Engine', {
-          route: 'demo.blog',
+          route: 'blog',
           description: 'This is an engine example',
           package: 'ember-blog-engine',
           pack: 'frost-nav',
