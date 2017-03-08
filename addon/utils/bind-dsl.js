@@ -14,6 +14,7 @@ const {
   COLUMN,
   ENGINE,
   LINK,
+  PACKAGE,
   ROUTE,
   SECTION
 } = Asserts
@@ -52,13 +53,25 @@ export default {
           name,
           config
         }
-        callback.call({
-          category: obj.category.bind({
-            top: parent,
-            parent,
-            DSL: self
+        if (name !== 'application') {
+          self.route(name, config, function () {
+            callback.call({
+              category: obj.category.bind({
+                top: parent,
+                parent,
+                DSL: this
+              })
+            })
           })
-        })
+        } else {
+          callback.call({
+            category: obj.category.bind({
+              top: parent,
+              parent,
+              DSL: self
+            })
+          })
+        }
       })(args.string, args.object, args.function)
     }
     /**
@@ -189,16 +202,19 @@ export default {
       assert(APP, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
         assert(ROUTE, config.route)
+        self.DSL.route(config.route, config)
 
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
+        let route = self.top.name !== 'application'
+          ? `${self.top.name}.${config.route}`
+          : config.route
         e.push({
           name,
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route: config.route,
-          routeQueryParams: config.routeQueryParams,
-          routeModels: config.routeModels,
+          route,
+          params: config.params,
           isVisible: config.isVisible !== false
         })
         callback.call({
@@ -224,17 +240,21 @@ export default {
       let self = this
       assert(ENGINE, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
+        assert(PACKAGE, config.package)
         assert(ROUTE, config.route)
         config.as = config.as || config.route
+        self.DSL.mount(config.package, config)
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
+        let route = self.top.name !== 'application'
+          ? `${self.top.name}.${config.route}`
+          : config.route
         e.push({
           name,
           description: config.description,
           icon: config.icon,
           pack: config.pack || 'frost',
-          route: config.route,
-          routeQueryParams: config.routeQueryParams,
-          routeModels: config.routeModels,
+          route,
+          params: config.params,
           isVisible: config.isVisible !== false
         })
         callback.call({
