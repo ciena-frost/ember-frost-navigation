@@ -15,7 +15,7 @@ Router.map(function () {
       as: 'blog'
     })
   })
-  this.nav(function () {
+  this.nav('demo', function () {
     this.category('Category 1', {
       pack: 'frost-nav',
       icon: 'application'
@@ -39,6 +39,7 @@ Router.map(function () {
         this.engine('Blog Engine', {
           route: 'demo.blog',
           description: 'This is an engine example',
+          package: 'ember-blog-engine',
           pack: 'frost-nav',
           icon: 'application'
         })

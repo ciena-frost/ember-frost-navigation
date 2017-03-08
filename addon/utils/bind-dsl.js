@@ -42,7 +42,7 @@ export default {
     proto.nav = function () {
       let args = argify(...arguments)
       let self = this
-      ;(function (name, config = {}, callback = function () {}) {
+      ;(function (name = 'application', config = {}, callback = function () {}) {
         if (config.model) {
           config.model.forEach(function (e) {
             navigation._registerCategory(e)
