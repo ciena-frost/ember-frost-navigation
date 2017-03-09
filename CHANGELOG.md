@@ -1,3 +1,13 @@
+# 7.3.0
+- Update dependencies
+   - Biproduct of running the generators
+- Added hooks 
+- Switched from ember-cli-notifications to frost-notifier
+- outsideClick handler to dismiss outlet
+- fix delay to prevent broken transition (transition would start before next would end)
+- remove ember-elsewhere, and move nav-modal into frost-navigation template
+- nav-modal-outlet deprecated. It will now print deprecated message
+
 # 7.2.1
 * **Updated** to use latest pr-bumper which supports being able to set a PR to `none` when publishing a new version is not desired.
 
