@@ -2,7 +2,7 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
 $nav-modal-bg: rgba(51, 66, 79, .97);
-$nav-colum-border: rgba($frost-color-white, .3);
+$nav-column-border: rgba($frost-color-white, .3);
 $nav-route-focus-bg: rgba(0, 0, 0, .2);
 $nav-route-active-bg: rgba($nav-route-focus-bg, .05);
 $nav-route-focus-box-shadow: #fff;
@@ -64,6 +64,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
     display: flex;
     position: fixed;
     top: $frost-navigation-bar-height;
+    // To address liquid-fire's explode animation adding `left` directly
     left: 0 !important; // sass-lint:disable-line no-important
     flex-direction: row;
     width: 100%;
@@ -100,7 +101,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
       padding: 30px;
 
       &+ .nav-column {
-        border-left: 1px solid $nav-colum-border;
+        border-left: 1px solid $nav-column-border;
       }
     }
 
