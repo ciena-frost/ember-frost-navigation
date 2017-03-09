@@ -22,7 +22,6 @@ export default Component.extend({
 
   // == Component properties ==================================================
 
-  classNames: ['nav-category'],
   classNameBindings: ['active'],
   layout,
 
@@ -37,8 +36,7 @@ export default Component.extend({
 
   getDefaultProps () {
     return {
-      pack: 'frost',
-      hook: 'nav-category'
+      pack: 'frost'
     }
   },
 

@@ -27,8 +27,7 @@ export default Component.extend({
     return {
       item: {
         pack: 'frost'
-      },
-      hook: 'nav-action'
+      }
     }
   },
   // == Computed Properties ===================================================
