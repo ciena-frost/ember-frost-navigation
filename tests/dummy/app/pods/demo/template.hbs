@@ -1,15 +1,18 @@
 <!-- BEGIN-SNIPPET template -->
 {{frost-navigation
+  hook='my-navigation'
   navActions=(hash
     myAction=(action 'myAction')
   )
   logo=(component 'custom-logo'
+    hook='my-custom-logo'
     class='nav-category navigation-logo'
   )
   menu=(component 'user-pane'
     class='nav-category user'
     model=(hash
       logo=(component 'frost-icon'
+        hook='my-custom-menu'
         icon='user'
         pack='frost-nav'
       )
@@ -17,8 +20,6 @@
     )
   )
 }}
-{{nav-modal-outlet}}
-
 <!-- END-SNIPPET -->
 <div class='page-content'>
   <div class='row'>
@@ -31,6 +32,7 @@
             icon='add'
             priority='primary'
             size='small'
+            hook='my-incrementer'
             onClick=(action 'incrementCount')
           }}
           {{count}}

@@ -1,9 +1,10 @@
 <div class='nav-section-header' style={{lineStyle}}>
   {{section.title}}
   {{#if section.actions}}
-    <div class='nav-section-actions' {{action setView section}}>
+    <div class='nav-section-actions-link' {{action setView section}}>
       <div class='sub'>Actions</div>
       {{frost-icon
+        hook=(concat hook '-section-actions-icon')
         class='actions-icon flip'
         icon='chevron'
       }}
@@ -19,15 +20,7 @@
       }}
     {{else}}
       {{nav-route
-        description=item.description
-        icon=item.icon
-        pack=item.pack
-        name=item.name
-        route=item.route
-        params=item.params
-        url=item.url
-        tabbed=item.tabbed
-        isVisible=item.isVisible
+        options=item
         hook=(concat hook '-route-' index)
       }}
     {{/if}}

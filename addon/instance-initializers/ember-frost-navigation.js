@@ -1,4 +1,5 @@
 import dsl from 'ember-frost-navigation/utils/bind-dsl'
+
 const {
   init
 } = dsl

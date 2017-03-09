@@ -1,16 +1,17 @@
 import Ember from 'ember'
+import {Component} from 'ember-frost-core'
+import computed, {readOnly} from 'ember-computed-decorators'
 import layout from '../templates/components/nav-modal'
-import computed from 'ember-computed-decorators'
+
 const {
-  A: EmberArray,
-  Component,
-  computed: {
-    alias
-  },
   inject: {
     service
   },
-  set
+  computed: {
+    alias
+  },
+  run: {bind},
+  $
 } = Ember
 
 export default Component.extend({
@@ -19,20 +20,15 @@ export default Component.extend({
   frostNavigation: service(),
 
   // == Component properties ==================================================
-
-  classNames: [
-    'nav-modal'
-  ],
   layout,
 
   // == Properties ============================================================
 
-  hook: 'frost-nav-modal',
-
   // == Computed properties ===================================================
 
+  @readOnly
   @computed('frostNavigation.categories', 'activeCategory')
-  columns (categories = EmberArray(), activeCategory) {
+  columns (categories = [], activeCategory) {
     return !activeCategory
       ? null
       : (() => {
@@ -45,12 +41,36 @@ export default Component.extend({
 
   activeCategory: alias('frostNavigation._activeCategory'),
 
-  // == Actions ===============================================================
+  // == DOM Events ============================================================
+  _onFocusOut (event) {
+    const frostNavigation = this.get('frostNavigation')
+    const $target = $(event.target)
 
+    const isOutsideClick = !$('.frost-navigation').has($target).length
+
+    if (isOutsideClick) {
+      frostNavigation.dismiss()
+    }
+  },
+  // == Lifecycle Hooks =======================================================
+  didInsertElement () {
+    this._super(...arguments)
+    this._boundedFocusOut = bind(this, this._onFocusOut)
+
+    window.addEventListener('click', this._boundedFocusOut, {passive: true})
+  },
+  willDestroyElement () {
+    this._super(...arguments)
+
+    window.removeEventListener('click', this._boundedFocusOut)
+  },
+  // == Actions ===============================================================
   actions: {
-    setView (section) {
-      set(this, 'showActions', true)
-      set(this, 'content', section)
+    setView (content) {
+      this.setProperties({
+        actionsVisible: true,
+        content
+      })
     }
   }
 })

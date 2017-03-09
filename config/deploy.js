@@ -6,7 +6,7 @@ module.exports = function (deployTarget) {
     // include other plugin configuration that applies to all deploy targets here
   }
   ENV['gh-pages'] = {
-    force: process.env.gitForcePush,
+    force: true,
     slack: {
       webhookURL: process.env.webhookURL,
       options: {

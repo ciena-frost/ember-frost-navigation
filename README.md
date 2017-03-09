@@ -63,7 +63,6 @@ your navigation in `app/router.js`
     myAction=(action 'custom-action')
   )
 }}
-{{nav-modal-outlet}}
 ```
 
 #### Router (Full Example)

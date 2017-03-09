@@ -1,12 +1,11 @@
 <div class='nav-section'>
   <div {{action goBack}} class='nav-section-header' style={{borderBottomBinding}}>
     <div class='pointer'>
-      <div style={{colorBinding}}>
-        {{frost-icon
-          class="actions-icon"
-          icon='chevron'
-        }}
-      </div>
+      {{frost-icon
+        hook=(concat hook '-actions-icon')
+        class="actions-icon"
+        icon='chevron'
+      }}
       <div class='title'>{{section.title}} actions</div>
     </div>
   </div>

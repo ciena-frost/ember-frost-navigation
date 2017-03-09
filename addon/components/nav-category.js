@@ -1,10 +1,10 @@
 import Ember from 'ember'
+import {Component} from 'ember-frost-core'
+import computed, {readOnly} from 'ember-computed-decorators'
+import { PropTypes } from 'ember-prop-types'
 import layout from '../templates/components/nav-category'
-import computed from 'ember-computed-decorators'
-import PropTypesMixin, {PropTypes} from 'ember-prop-types'
+
 const {
-  Component,
-  get,
   inject: {
     service
   },
@@ -15,14 +15,13 @@ const {
   typeOf
 } = Ember
 
-export default Component.extend(PropTypesMixin, {
+export default Component.extend({
   // == Services ==============================================================
 
   frostNavigation: service(),
 
   // == Component properties ==================================================
 
-  classNames: ['nav-category'],
   classNameBindings: ['active'],
   layout,
 
@@ -30,9 +29,11 @@ export default Component.extend(PropTypesMixin, {
 
   propTypes: {
     icon: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    pack: PropTypes.string
+    name: PropTypes.string,
+    pack: PropTypes.string,
+    hook: PropTypes.string
   },
+
   getDefaultProps () {
     return {
       pack: 'frost'
@@ -40,10 +41,10 @@ export default Component.extend(PropTypesMixin, {
   },
 
   // == Computed properties ===================================================
-
-  @computed('frostNavigation._activeCategory')
-  active (category) {
-    return get(this, 'name') === category
+  @readOnly
+  @computed('name', 'frostNavigation._activeCategory')
+  active (name, category) {
+    return name === category
   },
 
   // == Actions ===============================================================
@@ -51,16 +52,17 @@ export default Component.extend(PropTypesMixin, {
   click () {
     document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
 
-    let frostNavigation = get(this, 'frostNavigation')
-    let active = get(frostNavigation, '_activeCategory')
-    let name = get(this, 'name')
+    const frostNavigation = this.get('frostNavigation')
+    const name = this.get('name')
+
+    const active = frostNavigation._activeCategory
 
     if (typeOf(active) === 'string') {
       frostNavigation.dismiss()
       if (name !== active) { // click on another tab
         later(() => {
           set(frostNavigation, '_activeCategory', name)
-        }, 200)
+        }, 250)
       }
     } else {
       set(frostNavigation, '_activeCategory', name)

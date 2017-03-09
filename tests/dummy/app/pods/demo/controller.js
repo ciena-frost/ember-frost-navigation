@@ -14,23 +14,26 @@ const {
 export default Controller.extend({
   count: 0,
   frostNavigation: service(),
-  notificationMessages: service(),
-  _notify (type, msg) {
-    get(this, 'notificationMessages')[type](msg, {
-      htmlContent: true,
+  notifier: service(),
+  _notify (type, message) {
+    get(this, 'notifier').addNotification({
+      message,
+      type,
       autoClear: true,
-      clearDuration: 1000
+      clearDuration: 1200
     })
   },
   init () {
     this._super(...arguments)
-    let customRouteObject = Ember.Object.extend({
+    let customRouteObject = Ember.Object.extend({}).create({
       description: 'custom route',
       icon: 'application',
       pack: 'frost-nav',
       name: 'Custom Route',
-      route: 'demo.go'
-    }).create()
+      route: 'demo.test',
+      routeModels: ['id0'],
+      routeQueryParams: {count: 0}
+    })
     set(this, 'customRouteObject', customRouteObject)
     let columns = [
       [
@@ -51,16 +54,17 @@ export default Controller.extend({
     myAction (item) {
       this._notify(
         'success',
-        `<code>
-          <pre>${JSON.stringify(item, null, ' ')}</pre>
-        </code>`
+        `Item '${item.action}' fired`
       )
       log(item)
     },
     incrementCount () {
       let count = get(this, 'count') + 1
+
       set(this, 'count', count)
-      set(this, 'customRouteObject.params', {count})
+
+      set(this, 'customRouteObject.routeModels', [`id${count}`])
+      set(this, 'customRouteObject.routeQueryParams', {count})
     }
   }
 })

@@ -8,9 +8,14 @@ var Router = EmberRouter.extend({
 })
 // BEGIN-SNIPPET router
 Router.map(function () {
-  this.nav('demo', {
-    path: '/'
-  }, function () {
+  this.route('demo', {path: '/'}, function () {
+    this.route('go')
+    this.route('test', {path: '/test/:id'})
+    this.mount('ember-blog-engine', {
+      as: 'blog'
+    })
+  })
+  this.nav('demo', function () {
     this.category('Category 1', {
       pack: 'frost-nav',
       icon: 'application'

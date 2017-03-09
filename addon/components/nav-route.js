@@ -1,29 +1,26 @@
 import Ember from 'ember'
+import {Component} from 'ember-frost-core'
+import {PropTypes} from 'ember-prop-types'
+
 import layout from '../templates/components/nav-route'
-import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
 const {
-  Component,
-  get,
   inject: {
     service
   }
 } = Ember
 
-export default Component.extend(PropTypesMixin, {
+export default Component.extend({
   // == Services ==============================================================
 
   frostNavigation: service(),
 
   // == Component properties ==================================================
-
-  classNames: ['nav-route'],
   layout,
-
   // == State properties ======================================================
 
   propTypes: {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     description: PropTypes.string,
     route: PropTypes.string,
     icon: PropTypes.string,
@@ -35,11 +32,12 @@ export default Component.extend(PropTypesMixin, {
       pack: 'frost'
     }
   },
+  // == Computed Properties ===================================================
 
   // == Actions ===============================================================
 
   click (e) {
-    const navigation = get(this, 'frostNavigation')
+    const navigation = this.get('frostNavigation')
 
     if (e.metaKey || e.shiftKey || e.ctrlKey) {
       navigation.dismiss()

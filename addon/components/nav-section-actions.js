@@ -1,21 +1,17 @@
 import Ember from 'ember'
+import { Component } from 'ember-frost-core'
+import { PropTypes } from 'ember-prop-types'
+import computed, {readOnly} from 'ember-computed-decorators'
 import layout from '../templates/components/nav-section-actions'
-import computed from 'ember-computed-decorators'
-import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
 const {
-  Component,
   String: {
     htmlSafe
   }
 } = Ember
-
-export default Component.extend(PropTypesMixin, {
+export default Component.extend({
   // == Component properties ==================================================
-
-  classNames: ['nav-column'],
   layout,
-
   // == State properties ======================================================
 
   propTypes: {
@@ -24,6 +20,7 @@ export default Component.extend(PropTypesMixin, {
 
   // == Computed properties ===================================================
 
+  @readOnly
   @computed('section.color')
   borderBottomBinding (color) {
     return htmlSafe(`border-bottom-color: ${color}`)
