@@ -1,27 +1,26 @@
 import Ember from 'ember'
+const {Logger, Service, assert, inject, set} = Ember
 import Asserts from 'ember-frost-navigation/utils/asserts'
-
-const {
-  Logger: {
-    warn
-  },
-  Service,
-  assert,
-  inject: {
-    service
-  },
-  set
-} = Ember
 
 const {
   CATEGORY_NAME
 } = Asserts
 
 export default Service.extend({
-  routing: service('-routing'),
+  // == Dependencies ==========================================================
+
+  routing: inject.service('-routing'),
+
+  // == Keyword Properties ====================================================
+
   _activeCategory: null,
   _actions: null,
   categories: [],
+
+  // == Computed Properties ===================================================
+
+  // == Functions =============================================================
+
   _registerCategory (config = {}) {
     assert(CATEGORY_NAME, config.name)
     let category = this.categories.find(e => e.name === config.name)
@@ -36,17 +35,20 @@ export default Service.extend({
     }
     return category
   },
+
   dismiss () {
     set(this, '_activeCategory', null)
   },
+
   transitionTo (route) {
     try {
       this.get('routing').transitionTo(route)
     } catch (e) {
-      warn('Unable to perform transition', e)
+      Logger.warn('Unable to perform transition', e)
     }
     this.dismiss()
   },
+
   performAction (item) {
     if (item.dismiss) {
       this.dismiss()

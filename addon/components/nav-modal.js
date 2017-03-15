@@ -1,30 +1,25 @@
 import Ember from 'ember'
+const {$, inject, run} = Ember
+import computed, {alias, readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
-import computed, {readOnly} from 'ember-computed-decorators'
+
 import layout from '../templates/components/nav-modal'
 
-const {
-  inject: {
-    service
-  },
-  computed: {
-    alias
-  },
-  run: {bind},
-  $
-} = Ember
-
 export default Component.extend({
-  // == Services ==============================================================
+  // == Dependencies ==========================================================
 
-  frostNavigation: service(),
+  frostNavigation: inject.service(),
 
-  // == Component properties ==================================================
+  // == Keyword Properties ====================================================
+
   layout,
 
-  // == Properties ============================================================
+  // == PropTypes =============================================================
 
   // == Computed properties ===================================================
+
+  @alias('frostNavigation._activeCategory')
+  activeCategory: null, // eslint-disable-line ember-standard/computed-property-readonly
 
   @readOnly
   @computed('frostNavigation.categories', 'activeCategory')
@@ -37,11 +32,8 @@ export default Component.extend({
       })()
   },
 
-  // == Alias properties ======================================================
+  // == Functions =============================================================
 
-  activeCategory: alias('frostNavigation._activeCategory'),
-
-  // == DOM Events ============================================================
   _onFocusOut (event) {
     const frostNavigation = this.get('frostNavigation')
     const $target = $(event.target)
@@ -52,19 +44,26 @@ export default Component.extend({
       frostNavigation.dismiss()
     }
   },
+
+  // == DOM Events ============================================================
+
   // == Lifecycle Hooks =======================================================
+
   didInsertElement () {
     this._super(...arguments)
-    this._boundedFocusOut = bind(this, this._onFocusOut)
+    this._boundedFocusOut = run.bind(this, this._onFocusOut)
 
     window.addEventListener('click', this._boundedFocusOut, {passive: true})
   },
+
   willDestroyElement () {
     this._super(...arguments)
 
     window.removeEventListener('click', this._boundedFocusOut)
   },
+
   // == Actions ===============================================================
+
   actions: {
     setView (content) {
       this.setProperties({

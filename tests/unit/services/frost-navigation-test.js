@@ -1,59 +1,97 @@
 import {expect} from 'chai'
 import Ember from 'ember'
 const {A} = Ember
-import {setupTest} from 'ember-mocha'
-import {beforeEach, describe, it} from 'mocha'
+import {module} from 'ember-test-utils/test-support/setup-test'
+import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-describe('Unit / Service / frost-navigation', function () {
-  setupTest('service:frost-navigation', {
-    unit: true
-  })
+const test = module('service:frost-navigation')
+describe(test.label, function () {
+  test.setup()
 
-  let service
+  let sandbox, service
   beforeEach(function () {
+    sandbox = sinon.sandbox.create()
     service = this.subject()
   })
-  it('adds categories correctly', function () {
-    service._registerCategory({
-      name: 'add new category'
-    })
-    expect(service.categories.length).to.equal(1)
+
+  afterEach(function () {
+    sandbox.restore()
   })
-  it('returns existing category', function () {
-    let name = 'existing category'
-    service.set('categories', A())
-    service.get('categories').pushObject({
-      name
+
+  describe('._registerCategory()', function () {
+    describe('when no categories registered yet', function () {
+      beforeEach(function () {
+        service._registerCategory({
+          name: 'add new category'
+        })
+      })
+
+      it('should add categories correctly', function () {
+        expect(service.categories.length).to.equal(1)
+      })
     })
-    service._registerCategory({
-      name
+
+    describe('when category already exists', function () {
+      let name
+      beforeEach(function () {
+        name = 'existing category'
+        service.set('categories', A([{name}]))
+
+        service._registerCategory({
+          name
+        })
+      })
+
+      it('should not add duplicate category', function () {
+        expect(service.categories.length).to.equal(1)
+      })
     })
-    expect(service.categories.length).to.equal(1)
   })
-  it('dismisses', function () {
-    service.set('_activeCategory', 'test')
-    expect(service.get('_activeCategory')).to.equal('test')
-    service.dismiss()
-    expect(service.get('_activeCategory')).to.equal(null)
-  })
-  it('performs action', function () {
-    let spy = sinon.spy()
-    service.set('_actions', {
-      testAction: spy
+
+  describe('.dismiss()', function () {
+    beforeEach(function () {
+      service.set('_activeCategory', 'test')
+      service.dismiss()
     })
-    service.set('_activeCategory', 'test')
-    service.performAction({
-      dismiss: true,
-      action: 'testAction'
+
+    it('should clear _activeCategory', function () {
+      expect(service.get('_activeCategory')).to.equal(null)
     })
-    expect(spy.called).to.equal(true)
-    expect(service.get('_activeCategory')).to.equal(null)
   })
-  it('transitions to a route', function () {
-    let spy = sinon.spy()
-    service.set('dismiss', spy)
-    service.transitionTo('index')
-    expect(spy.called).to.equal(true)
+
+  describe('.performAction()', function () {
+    let testAction
+    beforeEach(function () {
+      testAction = sandbox.stub()
+      service.setProperties({
+        '_actions': {testAction},
+        '_activeCategory': 'test'
+      })
+
+      service.performAction({
+        dismiss: true,
+        action: 'testAction'
+      })
+    })
+
+    it('should perform the action', function () {
+      expect(testAction).to.have.callCount(1)
+    })
+
+    it('should clear _activeCategory', function () {
+      expect(service.get('_activeCategory')).to.equal(null)
+    })
+  })
+
+  describe('.transitionTo()', function () {
+    beforeEach(function () {
+      sandbox.stub(service, 'dismiss')
+      service.transitionTo('index')
+    })
+
+    it('should call dismiss()', function () {
+      expect(service.dismiss).to.have.callCount(1)
+    })
   })
 })

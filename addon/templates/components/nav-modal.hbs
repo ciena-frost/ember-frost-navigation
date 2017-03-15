@@ -4,19 +4,21 @@
       <div class='nav-column'>
         {{#each column as |_section index|}}
           {{nav-section
+            hook=(concat hook '-section-' index)
+            hookQualifiers=hookQualifiers
             isVisible=_section.isVisible
             section=_section
             setView=(action 'setView')
-            hook=(concat hook '-section-' index)
           }}
         {{/each}}
       </div>
     {{/each}}
   {{else}}
     {{nav-section-actions
+      hook=(concat hook '-section-actions')
+      hookQualifiers=hookQualifiers
       section=content
       goBack=(action (mut actionsVisible) false)
-      hook=(concat hook '-section-actions')
     }}
   {{/liquid-unless}}
 {{/if}}

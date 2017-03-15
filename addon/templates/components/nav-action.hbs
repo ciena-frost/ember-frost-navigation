@@ -5,7 +5,8 @@
     <div class='nav-route-icon'>
       {{#if item.icon}}
         {{frost-icon
-          hook=(concat hook '-icon')
+          hook=(concat hookPrefix '-icon')
+          hookQualifiers=hookQualifiers
           pack=item.pack
           icon=item.icon
         }}
