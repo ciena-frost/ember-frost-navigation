@@ -4,7 +4,6 @@ import Ember from 'ember'
 const {
   RouterDSL,
   assert,
-  compare,
   VERSION
 } = Ember
 
@@ -31,7 +30,7 @@ export default {
       })
       return r
     }
-    const shouldRegisterRoutes = compare(VERSION, '2.8.3') < 1
+    const shouldRegisterRoutes = VERSION <= '2.8.3'
     let proto = RouterDSL.prototype
     let obj = {}
 
