@@ -3,7 +3,9 @@ import Ember from 'ember'
 
 const {
   RouterDSL,
-  assert
+  assert,
+  compare,
+  VERSION
 } = Ember
 
 const {
@@ -29,6 +31,7 @@ export default {
       })
       return r
     }
+    const shouldRegisterRoutes = compare(VERSION, '2.8.3') < 1
     let proto = RouterDSL.prototype
     let obj = {}
 
@@ -53,7 +56,7 @@ export default {
           name,
           config
         }
-        if (name !== 'application') {
+        if (name !== 'application' && shouldRegisterRoutes) {
           self.route(name, config, function () {
             callback.call({
               category: obj.category.bind({
@@ -202,12 +205,16 @@ export default {
       assert(APP, self.parent.type === 'section' || self.parent.type === 'column')
       ;(function (name, config = {}, callback = function () {}) {
         assert(ROUTE, config.route)
-        self.DSL.route(config.route, config)
+
+        if (shouldRegisterRoutes) {
+          self.DSL.route(config.route, config)
+        }
 
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         let route = self.top.name !== 'application'
           ? `${self.top.name}.${config.route}`
           : config.route
+
         e.push({
           name,
           description: config.description,
@@ -243,7 +250,11 @@ export default {
         assert(PACKAGE, config.package)
         assert(ROUTE, config.route)
         config.as = config.as || config.route
-        self.DSL.mount(config.package, config)
+
+        if (shouldRegisterRoutes) {
+          self.DSL.mount(config.package, config)
+        }
+
         let e = self.parent.type === 'section' ? self.element.routes : self.element[0].routes
         let route = self.top.name !== 'application'
           ? `${self.top.name}.${config.route}`
