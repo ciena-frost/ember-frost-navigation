@@ -1,3 +1,10 @@
+# 7.4.0 (2017-03-16)
+* **Added** ability to set a `url` on a category and let it link directly to an external site
+* **Fixed** the demo (was throwing an error due to re-defining the `demo.loading` route)
+* **Updated** lint rules and cleaned up code
+* **Fixed** unit tests to use `ember-test-utils` helpers and actually test some things
+* **Integrated** `pr-bumper` code coverage management. 
+
 # 7.3.0
 - Update dependencies
    - Biproduct of running the generators
