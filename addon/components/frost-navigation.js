@@ -21,7 +21,7 @@ export default Component.extend({
 
   getDefaultProps () {
     return {
-      hook: 'frostNavigation',
+      hook: 'frost-navigation',
       hookQualifiers: {}
     }
   },
