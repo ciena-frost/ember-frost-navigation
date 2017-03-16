@@ -1,39 +1,22 @@
 import {expect} from 'chai'
-import Ember from 'ember'
+import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
-import {describe, it} from 'mocha'
-
-import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
-
-const {
-  run
-} = Ember
-
-const {
-  next
-} = run
+import {beforeEach, describe, it} from 'mocha'
 
 const test = integration('nav-modal')
 describe(test.label, function () {
   test.setup()
 
-  it('renders', function () {
+  beforeEach(function () {
     this.render(hbs`{{nav-modal}}`)
+  })
+
+  it('should render a single element in the DOM', function () {
     expect(this.$()).to.have.length(1)
   })
-  it('recomputes on _activeCategory change', function (done) {
-    let obj = Ember.Object.create({
-      _activeCategory: 'test'
-    })
-    this.set('_nav', obj)
-    this.render(hbs`{{nav-modal
-      frostNavigation=_nav
-      activeCategory=activeCategory
-    }}`)
-    obj.set('_activeCategory', 'recompute')
-    next(() => {
-      expect(this.get('activeCategory')).to.equal('recompute')
-      done()
-    })
+
+  // FIXME: add real tests
+  it.skip('should have real tests', function () {
+    expect(true).to.equal(false)
   })
 })

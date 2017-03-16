@@ -2,7 +2,8 @@
   <div {{action goBack}} class='nav-section-header' style={{borderBottomBinding}}>
     <div class='pointer'>
       {{frost-icon
-        hook=(concat hook '-actions-icon')
+        hook=(concat hookPrefix '-actions-icon')
+        hookQualifiers=hookQualifiers
         class="actions-icon"
         icon='chevron'
       }}
@@ -10,9 +11,11 @@
     </div>
   </div>
   {{#each section.actions as |item index|}}
+    {{! TODO: update below to use hookQualifiers with index instead of putting it on hook }}
     {{nav-action
+      hook=(concat hookPrefix '-' index)
+      hookQualifiers=hookQualifiers
       item=item
-      hook=(concat hook '-' index)
     }}
   {{/each}}
 </div>

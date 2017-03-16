@@ -1,25 +1,49 @@
 import {expect} from 'chai'
+import wait from 'ember-test-helpers/wait'
+import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
-import {describe, it} from 'mocha'
+import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
-
-import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
 const test = integration('nav-section-actions')
 describe(test.label, function () {
   test.setup()
 
-  it('renders', function () {
-    this.render(hbs`{{nav-section-actions
-      goBack=(action (mut actionsVisible) false)
-    }}`)
+  let sandbox, handler
+  beforeEach(function () {
+    sandbox = sinon.sandbox.create()
+    handler = sandbox.stub()
+    this.setProperties({handler})
+    this.render(hbs`
+      {{nav-section-actions
+        hook='actions'
+        goBack=handler
+      }}
+    `)
+
+    return wait()
+  })
+
+  afterEach(function () {
+    sandbox.restore()
+  })
+
+  it('should render a single element in the DOM', function () {
     expect(this.$()).to.have.length(1)
   })
-  it('goes back on click', function () {
-    let spy = sinon.spy()
-    this.set('goBack', spy)
-    this.render(hbs`{{nav-section-actions goBack=goBack}}`)
-    this.$('.nav-section-header').click()
-    expect(spy.called).to.equal(true)
+
+  it('should not call handler yet', function () {
+    expect(handler).to.have.callCount(0)
+  })
+
+  describe('when clicked', function () {
+    beforeEach(function () {
+      this.$('.nav-section-header').click()
+      return wait()
+    })
+
+    it('should call the handler', function () {
+      expect(handler).to.have.callCount(1)
+    })
   })
 })

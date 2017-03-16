@@ -4,8 +4,9 @@
     <div class='nav-section-actions-link' {{action setView section}}>
       <div class='sub'>Actions</div>
       {{frost-icon
-        hook=(concat hook '-section-actions-icon')
         class='actions-icon flip'
+        hook=(concat hookPrefix '-section-actions-icon')
+        hookQualifiers=hookQualifiers
         icon='chevron'
       }}
     </div>
@@ -14,14 +15,18 @@
 <div class='body'>
   {{#each section.routes as |item index|}}
     {{#if item.action}}
+      {{! TODO: update below to use hookQualifiers with index instead of putting it on hook }}
       {{nav-action
+        hook=(concat hookPrefix '-action-' index)
+        hookQualifiers=hookQualifiers
         item=item
-        hook=(concat hook '-action-' index)
       }}
     {{else}}
+      {{! TODO: update below to use hookQualifiers with index instead of putting it on hook }}
       {{nav-route
+        hook=(concat hookPrefix '-route-' index)
+        hookQualifiers=hookQualifiers
         options=item
-        hook=(concat hook '-route-' index)
       }}
     {{/if}}
   {{/each}}
