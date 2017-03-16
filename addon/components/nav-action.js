@@ -1,26 +1,23 @@
 import Ember from 'ember'
+const {inject} = Ember
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
+
 import layout from '../templates/components/nav-action'
 
-const {
-  inject: {
-    service
-  }
-} = Ember
 export default Component.extend({
-  // == Services ==============================================================
+  // == Dependencies ==========================================================
 
-  frostNavigation: service(),
+  frostNavigation: inject.service(),
 
-  // == Component properties ==================================================
+  // == Keyword Properties ====================================================
+
   layout,
 
-  // == State properties ======================================================
+  // == PropTypes =============================================================
 
   propTypes: {
-    item: PropTypes.object.isRequired,
-    hook: PropTypes.string
+    item: PropTypes.object.isRequired
   },
 
   getDefaultProps () {
@@ -30,13 +27,22 @@ export default Component.extend({
       }
     }
   },
+
   // == Computed Properties ===================================================
 
-  // == Actions ===============================================================
+  // == Functions =============================================================
+
+  // == DOM Events ============================================================
 
   click (e) {
     e.preventDefault()
 
     this.get('frostNavigation').performAction(this.get('item'))
-  }
+  },
+
+  // == Lifecycle Hooks =======================================================
+
+  // == Actions ===============================================================
+
+  actions: {}
 })

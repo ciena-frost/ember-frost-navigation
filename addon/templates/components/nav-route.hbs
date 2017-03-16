@@ -1,6 +1,7 @@
 {{#if route}}
   {{#frost-link
-    hook=(concat hook '-link')
+    hook=(concat hookPrefix '-link')
+    hookQualifiers=hookQualifiers
     options=(hash
       route=route
       routeModels=routeModels
@@ -11,7 +12,8 @@
       <div class='nav-route-icon'>
         {{#if icon}}
           {{frost-icon
-            hook=(concat hook '-link-icon')
+            hook=(concat hookPrefix '-link-icon')
+            hookQualifiers=hookQualifiers
             pack=pack
             icon=icon
           }}
@@ -32,12 +34,13 @@
     class='frost-link'
     href='{{url}}'
     target="{{if tabbed '_blank'}}"
-    data-test={{hook (concat hook '-link')}}>
+    data-test={{hook (concat hookPrefix '-link') hookQualifiers=hookQualifiers}}>
     <div class='content'>
       <div class='nav-route-icon'>
         {{#if icon}}
           {{frost-icon
-            hook=(concat hook '-link-icon')
+            hook=(concat hookPrefix '-link-icon')
+            hookQualifiers=hookQualifiers
             pack=pack
             icon=icon
           }}

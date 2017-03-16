@@ -9,6 +9,7 @@ module.exports = {
   reporters: [
     'html',
     'lcov',
+    'json-summary',
     'text-summary'
   ]
 }

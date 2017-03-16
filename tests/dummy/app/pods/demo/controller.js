@@ -30,7 +30,7 @@ export default Controller.extend({
       icon: 'application',
       pack: 'frost-nav',
       name: 'Custom Route',
-      route: 'demo.test',
+      route: 'test',
       routeModels: ['id0'],
       routeQueryParams: {count: 0}
     })
@@ -48,6 +48,12 @@ export default Controller.extend({
     get(this, 'frostNavigation.categories').push({
       name: 'Custom Category',
       columns
+    })
+    get(this, 'frostNavigation.categories').push({
+      name: 'NPM',
+      pack: 'frost-nav',
+      url: 'http://npmjs.org',
+      icon: 'application'
     })
   },
   actions: {

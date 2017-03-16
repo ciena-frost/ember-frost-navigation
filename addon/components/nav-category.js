@@ -1,37 +1,28 @@
 import Ember from 'ember'
-import {Component} from 'ember-frost-core'
+const {inject, run, set, typeOf} = Ember
 import computed, {readOnly} from 'ember-computed-decorators'
-import { PropTypes } from 'ember-prop-types'
+import {Component} from 'ember-frost-core'
+import {PropTypes} from 'ember-prop-types'
 import layout from '../templates/components/nav-category'
 
-const {
-  inject: {
-    service
-  },
-  run: {
-    later
-  },
-  set,
-  typeOf
-} = Ember
-
 export default Component.extend({
-  // == Services ==============================================================
+  // == Dependencies ==========================================================
 
-  frostNavigation: service(),
+  frostNavigation: inject.service(),
 
-  // == Component properties ==================================================
+  // == Keyword Properties ====================================================
 
   classNameBindings: ['active'],
   layout,
 
-  // == State properties ======================================================
+  // == PropTypes =============================================================
 
   propTypes: {
     icon: PropTypes.string,
     name: PropTypes.string,
     pack: PropTypes.string,
-    hook: PropTypes.string
+    url: PropTypes.string,
+    tabbed: PropTypes.bool
   },
 
   getDefaultProps () {
@@ -41,15 +32,23 @@ export default Component.extend({
   },
 
   // == Computed properties ===================================================
+
   @readOnly
   @computed('name', 'frostNavigation._activeCategory')
   active (name, category) {
     return name === category
   },
 
-  // == Actions ===============================================================
+  // == Functions =============================================================
+
+  // == DOM Events ============================================================
 
   click () {
+    if (this.get('url')) {
+      // when we've rendered an anchor, nothing else to do
+      return
+    }
+
     document.body.scrollTop = 0 // fix for liquid-fire modal strange animation
 
     const frostNavigation = this.get('frostNavigation')
@@ -60,12 +59,18 @@ export default Component.extend({
     if (typeOf(active) === 'string') {
       frostNavigation.dismiss()
       if (name !== active) { // click on another tab
-        later(() => {
+        run.later(() => {
           set(frostNavigation, '_activeCategory', name)
         }, 250)
       }
     } else {
       set(frostNavigation, '_activeCategory', name)
     }
-  }
+  },
+
+  // == Lifecycle Hooks =======================================================
+
+  // == Actions ===============================================================
+
+  actions: {}
 })
