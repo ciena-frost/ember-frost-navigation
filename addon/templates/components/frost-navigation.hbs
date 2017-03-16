@@ -1,13 +1,15 @@
 <div class='frost-application-bar'>
   <!-- Logo -->
   {{component logo
-    hook=(concat hook '-logo')
+    hook=(concat hookPrefix '-logo')
+    hookQualifiers=hookQualifiers
   }}
 
   {{#each categories as |category index|}}
     {{nav-category
+      hook=(concat hookPrefix '-category-' index)
+      hookQualifiers=hookQualifiers
       options=category
-      hook=(concat hook '-category-' index)
     }}
     {{else}}
       {{yield to='inverse'}}
@@ -16,9 +18,13 @@
   {{yield}}
   <!-- User Menu -->
   {{component menu
-    hook=(concat hook '-menu')
+    hook=(concat hookPrefix '-menu')
+    hookQualifiers=hookQualifiers
   }}
 </div>
 {{#liquid-if activeCategory class='nav-modal-outlet'}}
-  {{nav-modal hook=(concat hook '-modal')}}
+  {{nav-modal
+    hook=(concat hook '-modal')
+    hookQualifiers=hookQualifiers
+  }}
 {{/liquid-if}}

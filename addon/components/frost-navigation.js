@@ -1,34 +1,44 @@
 import Ember from 'ember'
+const {inject} = Ember
+import {alias, readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
+
 import layout from '../templates/components/frost-navigation'
 import transitions from 'ember-frost-navigation/transitions/frost-navigation'
-const {
-  inject: {
-    service
-  },
-  computed: {
-    alias
-  }
-} = Ember
 
 export default Component.extend({
-  // == Services ==============================================================
-  frostNavigation: service(),
-  liquidFireTransitions: service(),
-  routingService: service('-routing'),
-  // == Component properties ==================================================
+
+  // == Dependencies ==========================================================
+
+  frostNavigation: inject.service(),
+  liquidFireTransitions: inject.service(),
+  routingService: inject.service('-routing'),
+
+  // == Keyword Properties ====================================================
   layout,
-  // == Properties ============================================================
+
+  // == PropTypes =============================================================
+
   getDefaultProps () {
     return {
-      hook: 'frost-navigation'
+      hook: 'frost-navigation',
+      hookQualifiers: {}
     }
   },
-  // == Alias properties ======================================================
-  categories: alias('frostNavigation.categories'),
-  activeCategory: alias('frostNavigation._activeCategory'),
 
-  // == Events ================================================================
+  // == Computed Properties ===================================================
+
+  @readOnly
+  @alias('frostNavigation.categories')
+  categories: null,
+
+  @readOnly
+  @alias('frostNavigation._activeCategory')
+  activeCategory: null, // eslint-disable-line ember-standard/computed-property-readonly
+
+  // == Functions =============================================================
+
+  // == Lifecycle Hooks =======================================================
 
   init () {
     this._super(...arguments)
@@ -44,5 +54,9 @@ export default Component.extend({
     routingService.addObserver('currentRouteName', () => {
       frostNavigation.dismiss()
     })
-  }
+  },
+
+  // == Actions ===============================================================
+
+  actions: {}
 })

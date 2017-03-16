@@ -1,7 +1,6 @@
 import {expect} from 'chai'
+import {unit} from 'ember-test-utils/test-support/setup-component-test'
 import {beforeEach, describe, it} from 'mocha'
-
-import {unit} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
 const test = unit('nav-modal', ['service:frost-navigation'])
 describe(test.label, function () {
@@ -10,41 +9,66 @@ describe(test.label, function () {
   let component
   beforeEach(function () {
     component = this.subject()
-    this.render()
   })
-  it('renders', function () {
-    expect(this.$()).to.have.length(1)
-  })
-  it('handles actions', function () {
-    ;[
-      {
-        name: 'setView',
-        test () {
-          expect(component.get('actionsVisible')).to.be.true
-        }
-      }
-    ].forEach(e => {
-      component.send(e.name, {})
-      if (e.hasOwnProperty('test')) {
-        e.test()
-      }
-      if (e.hasOwnProperty('cleanup')) {
-        e.cleanup()
-      }
+
+  describe('after render', function () {
+    beforeEach(function () {
+      this.render()
+    })
+
+    it('should put a single element on the DOM', function () {
+      expect(this.$()).to.have.length(1)
     })
   })
-  it('computes categories correctly', function () {
-    let columns = [1, 2, 3]
-    let nav = component.get('frostNavigation')
-    component.set('activeCategory', 'test')
-    nav.setProperties({
-      categories: [
-        {
-          name: 'test',
-          columns
-        }
-      ]
+
+  describe('Actions', function () {
+    describe('setView()', function () {
+      beforeEach(function () {
+        component.setProperties({
+          actionsVisible: false,
+          content: ''
+        })
+
+        component.send('setView', 'foo-bar')
+      })
+
+      it('should set actionVisible to true', function () {
+        expect(component.get('actionsVisible')).to.equal(true)
+      })
+
+      it('should set the content', function () {
+        expect(component.get('content')).to.equal('foo-bar')
+      })
     })
-    expect(component.get('columns')).to.equal(columns)
+  })
+
+  describe('Computed Properties', function () {
+    describe('columns', function () {
+      let categories
+      beforeEach(function () {
+        categories = [
+          {
+            name: 'foo',
+            columns: [1, 2, 3]
+          },
+          {
+            name: 'bar',
+            columns: [4, 5, 6]
+          },
+          {
+            name: 'baz',
+            columns: [7, 8, 9]
+          }
+        ]
+        component.setProperties({
+          'frostNavigation._activeCategory': 'bar',
+          'frostNavigation.categories': categories
+        })
+      })
+
+      it('should grabe the right columns', function () {
+        expect(component.get('columns')).to.eql([4, 5, 6])
+      })
+    })
   })
 })

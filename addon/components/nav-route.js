@@ -1,40 +1,41 @@
 import Ember from 'ember'
+const {inject} = Ember
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
 
 import layout from '../templates/components/nav-route'
 
-const {
-  inject: {
-    service
-  }
-} = Ember
-
 export default Component.extend({
-  // == Services ==============================================================
+  // == Dependencies ==========================================================
 
-  frostNavigation: service(),
+  frostNavigation: inject.service(),
 
-  // == Component properties ==================================================
+  // == Keyword Properties ====================================================
+
   layout,
-  // == State properties ======================================================
+
+  // == PropTypes =============================================================
 
   propTypes: {
-    name: PropTypes.string,
     description: PropTypes.string,
-    route: PropTypes.string,
     icon: PropTypes.string,
+    name: PropTypes.string,
     pack: PropTypes.string,
-    params: PropTypes.object
+    params: PropTypes.object,
+    route: PropTypes.string,
+    tabbed: PropTypes.bool,
+    url: PropTypes.string
   },
+
   getDefaultProps () {
     return {
       pack: 'frost'
     }
   },
-  // == Computed Properties ===================================================
 
-  // == Actions ===============================================================
+  // == Functions =============================================================
+
+  // == DOM Events ============================================================
 
   click (e) {
     const navigation = this.get('frostNavigation')
@@ -43,6 +44,11 @@ export default Component.extend({
       navigation.dismiss()
       return
     }
-  }
+  },
 
+  // == Lifecycle Hooks =======================================================
+
+  // == Actions ===============================================================
+
+  actions: {}
 })

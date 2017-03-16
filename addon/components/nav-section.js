@@ -1,29 +1,37 @@
 import Ember from 'ember'
+import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
-import computed, {readOnly} from 'ember-computed-decorators'
 import layout from '../templates/components/nav-section'
 
-const {
-  String: {
-    htmlSafe
-  }
-} = Ember
-
 export default Component.extend({
-  // == Component properties ==================================================
+  // == Dependencies ==========================================================
+
+  // == Keyword Properties ====================================================
+
   layout,
 
-  // == State properties ======================================================
+  // == PropTypes =============================================================
 
   propTypes: {
     section: PropTypes.object
   },
 
-  // == Computed properties ===================================================
+  // == Computed Properties ===================================================
+
   @readOnly
   @computed('section.color')
   lineStyle (color) {
-    return htmlSafe(`border-bottom-color: ${color}`)
-  }
+    return Ember.String.htmlSafe(`border-bottom-color: ${color}`)
+  },
+
+  // == Functions =============================================================
+
+  // == DOM Events ============================================================
+
+  // == Lifecycle Hooks =======================================================
+
+  // == Actions ===============================================================
+
+  actions: {}
 })
