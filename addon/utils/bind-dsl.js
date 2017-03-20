@@ -3,8 +3,8 @@ import Ember from 'ember'
 
 const {
   RouterDSL,
-  assert,
-  VERSION
+  VERSION,
+  assert
 } = Ember
 
 const {
