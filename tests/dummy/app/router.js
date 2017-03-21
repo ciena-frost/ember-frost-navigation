@@ -9,7 +9,6 @@ var Router = EmberRouter.extend({
 // BEGIN-SNIPPET router
 Router.map(function () {
   this.route('test', {path: '/test/:id'})
-  this.route('test', {path: '/test/:id'})
 
   this.nav('demo', {path: '/'}, function () {
     this.category('Category 1', {

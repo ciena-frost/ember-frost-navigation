@@ -157,14 +157,33 @@ describe(test.label, function () {
           expect(navigation._activeCategory).to.equal(null)
         })
 
-        describe('after the run.later() kicks off', function () {
+        describe('when the component is destroyed', function () {
           beforeEach(function () {
-            const func = run.later.lastCall.args[0]
-            func()
+            component.destroy()
           })
 
-          it('should set _activeCategory', function () {
-            expect(navigation._activeCategory).to.equal('foo-bar')
+          describe('after the run.later() kicks off', function () {
+            beforeEach(function () {
+              const func = run.later.lastCall.args[0]
+              func()
+            })
+
+            it('should not set _activeCategory', function () {
+              expect(navigation._activeCategory).to.equal(null)
+            })
+          })
+        })
+
+        describe('when the component is all good', function () {
+          describe('after the run.later() kicks off', function () {
+            beforeEach(function () {
+              const func = run.later.lastCall.args[0]
+              func()
+            })
+
+            it('should set _activeCategory', function () {
+              expect(navigation._activeCategory).to.equal('foo-bar')
+            })
           })
         })
       })
