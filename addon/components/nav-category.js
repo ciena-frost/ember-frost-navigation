@@ -60,6 +60,10 @@ export default Component.extend({
       frostNavigation.dismiss()
       if (name !== active) { // click on another tab
         run.later(() => {
+          if (this.isDestroying || this.isDestoryed) {
+            return
+          }
+
           set(frostNavigation, '_activeCategory', name)
         }, 250)
       }

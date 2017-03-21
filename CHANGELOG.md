@@ -1,3 +1,7 @@
+# 7.4.1 (2017-03-21)
+* **Fixed** bug where destroyed component tried to update `frost-navigation` service
+
+
 # 7.4.0 (2017-03-16)
 * **Added** ability to set a `url` on a category and let it link directly to an external site
 * **Fixed** the demo (was throwing an error due to re-defining the `demo.loading` route)
