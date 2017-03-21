@@ -1,3 +1,7 @@
+# 7.4.2 (2017-03-21)
+- Only register routes if supported by version
+
+
 # 7.4.1 (2017-03-21)
 * **Fixed** bug where destroyed component tried to update `frost-navigation` service
 
