@@ -1,3 +1,6 @@
+# 7.4.4 (2017-03-22)
+ * **Fixed** [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204) finally 
+
 # 7.4.3 (2017-03-22)
  * **Added** a guard against `frost-navigation` service being destroyed when timeout finishes (attempting to fix [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204)) 
 

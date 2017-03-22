@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-navigation",
-  "version": "7.4.3",
+  "version": "7.4.4",
   "description": "A modal navigation menu component",
   "frostGuideDirectory": "ui-components/menu-controls/navigation",
   "directories": {
@@ -99,6 +99,6 @@
     "name": "frost-nav"
   },
   "pr-bumper": {
-    "coverage": 96.67
+    "coverage": 96.7
   }
 }
