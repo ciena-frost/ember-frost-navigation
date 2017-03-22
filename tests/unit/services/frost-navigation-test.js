@@ -52,11 +52,27 @@ describe(test.label, function () {
   describe('.dismiss()', function () {
     beforeEach(function () {
       service.set('_activeCategory', 'test')
-      service.dismiss()
     })
 
-    it('should clear _activeCategory', function () {
-      expect(service.get('_activeCategory')).to.equal(null)
+    describe('when destroying', function () {
+      beforeEach(function () {
+        service.destroy()
+        service.dismiss()
+      })
+
+      it('should not clear _activeCategory', function () {
+        expect(service.get('_activeCategory')).to.equal('test')
+      })
+    })
+
+    describe('when not destroying', function () {
+      beforeEach(function () {
+        service.dismiss()
+      })
+
+      it('should clear _activeCategory', function () {
+        expect(service.get('_activeCategory')).to.equal(null)
+      })
     })
   })
 
