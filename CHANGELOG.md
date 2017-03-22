@@ -1,3 +1,6 @@
+# 7.4.3 (2017-03-22)
+ * **Added** a guard against `frost-navigation` service being destroyed when timeout finishes (attempting to fix [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204)) 
+
 # 7.4.2 (2017-03-21)
 - Only register routes if supported by version
 
