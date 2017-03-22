@@ -37,6 +37,10 @@ export default Service.extend({
   },
 
   dismiss () {
+    if (this.get('isDestroying') || this.get('isDestroyed')) {
+      return
+    }
+
     set(this, '_activeCategory', null)
   },
 
