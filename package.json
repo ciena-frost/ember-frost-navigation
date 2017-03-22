@@ -79,7 +79,7 @@
     "remark-lint": "^5.1.0",
     "sass-lint": "^1.0.0",
     "sinon-chai": "^2.8.0",
-    "typescript": "^1.8.10"
+    "typescript": "^2.0.0"
   },
   "keywords": [
     "ember-addon",

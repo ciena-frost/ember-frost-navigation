@@ -174,7 +174,41 @@ describe(test.label, function () {
           })
         })
 
-        describe('when the component is all good', function () {
+        describe('when the service is destroying', function () {
+          beforeEach(function () {
+            navigation.isDestroying = true
+          })
+
+          describe('after the run.later() kicks off', function () {
+            beforeEach(function () {
+              const func = run.later.lastCall.args[0]
+              func()
+            })
+
+            it('should not set _activeCategory', function () {
+              expect(navigation._activeCategory).to.equal(null)
+            })
+          })
+        })
+
+        describe('when the service is destroyed', function () {
+          beforeEach(function () {
+            navigation.isDestroyed = true
+          })
+
+          describe('after the run.later() kicks off', function () {
+            beforeEach(function () {
+              const func = run.later.lastCall.args[0]
+              func()
+            })
+
+            it('should not set _activeCategory', function () {
+              expect(navigation._activeCategory).to.equal(null)
+            })
+          })
+        })
+
+        describe('when the component and service are all good', function () {
           describe('after the run.later() kicks off', function () {
             beforeEach(function () {
               const func = run.later.lastCall.args[0]
