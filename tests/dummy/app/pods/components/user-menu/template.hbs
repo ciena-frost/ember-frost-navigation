@@ -1,0 +1,46 @@
+{{frost-button
+  class=(concat css '-user-button')
+  hook=(concat hookPrefix '-userButton')
+  hookQualifiers=hookQualifiers
+  icon='user'
+  pack='frost-nav'
+  text=username
+}}
+
+{{#frost-popover
+  class='frost-navigation-user-menu'
+  hook=(concat hookPrefix '-userMenu')
+  hookQualifiers=hookQualifiers
+  position='bottom'
+  target=(concat '.' css '-user-button')
+}}
+  <ul class='frost-navigation-user-menu-list'>
+    <li>
+      {{frost-button
+        hook=(concat hookPrefix '-aboutButton')
+        hookQualifiers=hookQualifiers
+        priority='tertiary'
+        size='medium'
+        text='About'
+      }}
+    </li>
+    <li>
+      {{frost-button
+        hook=(concat hookPrefix '-changePasswordButton')
+        hookQualifiers=hookQualifiers
+        priority='tertiary'
+        size='medium'
+        text='Change password'
+      }}
+    </li>
+    <li>
+      {{frost-button
+        hook=(concat hookPrefix '-logoutButton')
+        hookQualifiers=hookQualifiers
+        priority='tertiary'
+        size='medium'
+        text='Logout'
+      }}
+    </li>
+  </ul>
+{{/frost-popover}}
