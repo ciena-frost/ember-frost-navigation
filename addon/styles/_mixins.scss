@@ -1,0 +1,72 @@
+//
+// Mixins used for ember-frost-navigation styles
+//
+
+@mixin category-styles {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+  transition: background .5s ease;
+  border-right: 1px solid $frost-color-nav-category-border-right;
+  cursor: pointer;
+  user-select: none;
+
+  .nav-category-icon {
+    .frost-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+  }
+
+  .nav-category-name {
+    transition: color .5s ease;
+    color: $frost-color-grey-6;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  &:hover {
+    .nav-category-name {
+      color: $frost-color-white;
+    }
+  }
+
+  &.active {
+    background: $frost-color-nav-category-active-bg;
+
+    .nav-category-name {
+      color: $frost-color-white;
+    }
+  }
+
+  &.disabled {
+    color: $frost-color-grey-5;
+  }
+}
+
+@mixin tertiary-button-color ($color) {
+  .frost-button {
+    &.tertiary {
+      color: $color;
+    }
+  }
+}
+
+@mixin do-not-expand-links {
+  .frost-link {
+    .content {
+      min-width: inherit;
+    }
+  }
+}
+
+// In some instances, the <a> tag gets a color that we don't want,
+// based on browser default styles, so we want to make sure the color
+// of the link, and by extension the color on the frost-icon is inherited (ARM 2017-04-03)
+@mixin keep-link-icon-colors-inherited {
+  .frost-link {
+    color: inherit;
+  }
+}

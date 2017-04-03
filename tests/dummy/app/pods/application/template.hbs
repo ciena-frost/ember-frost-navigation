@@ -1,2 +1,23 @@
 {{frost-notifier}}
-{{outlet}}
+<div class='frost-application'>
+  <!-- BEGIN-SNIPPET template -->
+  {{frost-navigation
+    hook='my-navigation'
+    navActions=(hash
+      myAction=(action 'myAction')
+    )
+    logo=(component 'custom-logo'
+      hook='my-custom-logo'
+      class='nav-category navigation-logo'
+    )
+    menu=(component 'user-menu'
+      class='nav-category frost-navigation-user'
+      username='Username'
+    )
+  }}
+  <!-- END-SNIPPET -->
+
+  <div class='frost-application-content'>
+    {{outlet}}
+  </div>
+</div>

@@ -1,66 +1,7 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 @import 'variables';
-
-@mixin category-styles {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 20px;
-  transition: background .5s ease;
-  border-right: 1px solid $frost-color-nav-category-border-right;
-  cursor: pointer;
-  user-select: none;
-
-  .nav-category-icon {
-    .frost-icon {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-    }
-  }
-
-  .nav-category-name {
-    transition: color .5s ease;
-    color: $frost-color-grey-6;
-    font-size: 18px;
-    font-weight: 300;
-  }
-
-  &:hover {
-    .nav-category-name {
-      color: $frost-color-white;
-    }
-  }
-
-  &.active {
-    background: $frost-color-nav-category-active-bg;
-
-    .nav-category-name {
-      color: $frost-color-white;
-    }
-  }
-
-  &.disabled {
-    color: $frost-color-grey-5;
-  }
-}
-
-@mixin tertiary-button-color ($color) {
-  .frost-button {
-    &.tertiary {
-      color: $color;
-    }
-  }
-}
-
-@mixin do-not-expand-links {
-  .frost-link {
-    .content {
-      min-width: inherit;
-    }
-  }
-}
+@import 'mixins';
 
 .frost-application-bar {
   display: flex;
@@ -106,6 +47,8 @@
   }
 
   .nav-modal {
+    @include keep-link-icon-colors-inherited;
+
     display: flex;
     position: fixed;
     top: $frost-navigation-bar-height;
@@ -333,6 +276,7 @@
   .nav-category {
     @include category-styles;
     @include do-not-expand-links;
+    @include keep-link-icon-colors-inherited;
   }
 
   &-user {
@@ -384,17 +328,16 @@
       text-align: left;
     }
   }
+}
 
-  &-parent {
-    display: flex;
+.frost-application {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-content {
     position: relative;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  &-below {
     flex: 1;
-    height: 100%;
     overflow: auto;
   }
 }
