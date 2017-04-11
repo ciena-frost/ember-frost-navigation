@@ -1,3 +1,8 @@
+# 7.5.0 (2017-04-11)
+* **Added** some additional styles that were missing, as well as an example for a user menu
+* **Fixed** [#30](https://github.com/ciena-frost/ember-frost-navigation/issues/30)
+* **Fixed** [#32](https://github.com/ciena-frost/ember-frost-navigation/issues/32)
+
 # 7.4.4 (2017-03-22)
  * **Fixed** [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204) finally 
 
