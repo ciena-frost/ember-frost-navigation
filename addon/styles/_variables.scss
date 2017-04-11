@@ -1,0 +1,22 @@
+//
+// Variables used by
+//
+
+$frost-color-nav-bar-bg: $frost-color-night-2 !default;
+$frost-color-nav-border-left: rgba($frost-color-white, .2) !default;
+$frost-color-nav-category-border-right: rgba($frost-color-white, .2) !default;
+
+// TODO: should this be a variable in ember-frost-core? (ARM 2017-04-03)
+$frost-color-nav-category-active-bg: rgba(39, 36, 37, .5) !default;
+$frost-color-nav-column-border: rgba($frost-color-white, .3) !default;
+
+// TODO: should this be a variable in ember-frost-core? (ARM 2017-04-03)
+$frost-color-nav-modal-bg: rgba(51, 66, 79, .97) !default;
+$frost-color-nav-route-focus-bg: rgba(0, 0, 0, .2) !default;
+$frost-color-nav-route-active-bg: rgba($frost-color-nav-route-focus-bg, .05) !default;
+$frost-color-nav-route-focus-box-shadow: #fff !default;
+
+$frost-navigation-bar-height: 50px !default;
+$z-index-application-bar: 3 !default;
+$z-index-modal: 2 !default;
+$z-index-modal-hidden: -1 !default;

@@ -1,21 +1,7 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
-
-$nav-modal-bg: rgba(51, 66, 79, .97);
-$nav-column-border: rgba($frost-color-white, .3);
-$nav-route-focus-bg: rgba(0, 0, 0, .2);
-$nav-route-active-bg: rgba($nav-route-focus-bg, .05);
-$nav-route-focus-box-shadow: #fff;
-$frost-nav-border-left: rgba($frost-color-white, .2);
-$nav-category-border-right: rgba($frost-color-white, .2);
-$nav-category-active-bg: rgba(39, 36, 37, .5);
-
-$z-index-application-bar: 3 !default;
-$z-index-modal: 2 !default;
-$z-index-modal-hidden: -1 !default;
-
-$frost-navigation-bar-height: 50px !default;
-$frost-navigation-bar-bg-color: $frost-color-night-2 !default;
+@import 'variables';
+@import 'mixins';
 
 .frost-application-bar {
   display: flex;
@@ -24,7 +10,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
   left: 0;
   width: 100%;
   height: inherit;
-  background-color: $frost-navigation-bar-bg-color;
+  background-color: $frost-color-nav-bar-bg;
   z-index: $z-index-application-bar;
 
   .branding {
@@ -61,6 +47,8 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
   }
 
   .nav-modal {
+    @include keep-link-icon-colors-inherited;
+
     display: flex;
     position: fixed;
     top: $frost-navigation-bar-height;
@@ -73,7 +61,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
     padding: 0;
     border: 0;
     outline: 0;
-    background: $nav-modal-bg;
+    background: $frost-color-nav-modal-bg;
     overflow-x: hidden;
 
     .liquid-container,
@@ -101,7 +89,7 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
       padding: 30px;
 
       &+ .nav-column {
-        border-left: 1px solid $nav-column-border;
+        border-left: 1px solid $frost-color-nav-column-border;
       }
     }
 
@@ -193,8 +181,8 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
           }
 
           &.active {
-            background: $nav-route-active-bg;
-            box-shadow: 0 0 1px $nav-route-focus-box-shadow;
+            background: $frost-color-nav-route-active-bg;
+            box-shadow: 0 0 1px $frost-color-nav-route-focus-box-shadow;
 
             .nav-route-name {
               color: $frost-color-lgrey-1;
@@ -207,8 +195,8 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
 
           &:focus {
             outline: none;
-            background: $nav-route-focus-bg;
-            box-shadow: 0 0 6px $nav-route-focus-box-shadow;
+            background: $frost-color-nav-route-focus-bg;
+            box-shadow: 0 0 6px $frost-color-nav-route-focus-box-shadow;
 
             .nav-route-name {
               color: $frost-color-white;
@@ -277,59 +265,79 @@ $frost-navigation-bar-bg-color: $frost-color-night-2 !default;
   flex-direction: row;
   height: $frost-navigation-bar-height;
 
-  & > div {
+  &> div {
     &:first-of-type {
       border-bottom: 1px solid $frost-color-grey-2;
-      border-left: 1px solid $frost-nav-border-left;
-      overflow: hidden;
-
-      .user {
-        border-left: 0;
-      }
+      border-left: 1px solid $frost-color-nav-border-left;
+      overflow: inherit; // allows frost-popover for the user drop-down to display
     }
   }
 
   .nav-category {
+    @include category-styles;
+    @include do-not-expand-links;
+    @include keep-link-icon-colors-inherited;
+  }
+
+  &-user {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 10px 20px;
-    transition: background .5s ease;
-    border-right: 1px solid $nav-category-border-right;
-    cursor: pointer;
-    user-select: none;
+    height: 50px;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-right: 0;
+    color: $frost-color-white;
+    vertical-align: middle;
 
-    .nav-category-icon {
-      .frost-icon {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
+    .frost-icon {
+      width: 35px;
+      height: 35px;
+      padding-left: 5px;
+    }
+  }
+
+  &-user-menu {
+    padding: 0;
+  }
+
+  &-user-menu-list {
+    min-width: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      @include tertiary-button-color($frost-color-grey-3);
+      border-top: 1px solid $frost-color-lgrey-1;
+      color: $frost-color-grey-3;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:last-child {
+        @include tertiary-button-color($frost-color-blue-1);
+        border-top: 5px solid $frost-color-lgrey-5;
       }
     }
 
-    .nav-category-name {
-      transition: color .5s ease;
-      color: $frost-color-grey-6;
-      font-size: 18px;
-      font-weight: 300;
+    .frost-button {
+      width: 100%;
+      text-align: left;
     }
+  }
+}
 
-    &:hover {
-      .nav-category-name {
-        color: $frost-color-white;
-      }
-    }
+.frost-application {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-    &.active {
-      background: $nav-category-active-bg;
-
-      .nav-category-name {
-        color: $frost-color-white;
-      }
-    }
-
-    &.disabled {
-      color: $frost-color-grey-5;
-    }
+  &-content {
+    position: relative;
+    flex: 1;
+    overflow: auto;
   }
 }

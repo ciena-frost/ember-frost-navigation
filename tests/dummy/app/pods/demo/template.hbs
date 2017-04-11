@@ -1,63 +1,34 @@
-<!-- BEGIN-SNIPPET template -->
-{{frost-navigation
-  hook='my-navigation'
-  navActions=(hash
-    myAction=(action 'myAction')
-  )
-  logo=(component 'custom-logo'
-    hook='my-custom-logo'
-    class='nav-category navigation-logo'
-  )
-  menu=(component 'user-pane'
-    class='nav-category user'
-    model=(hash
-      logo=(component 'frost-icon'
-        hook='my-custom-menu'
-        icon='user'
-        pack='frost-nav'
-      )
-      label='Username'
-    )
-  )
-}}
-<!-- END-SNIPPET -->
 <div class='page-content'>
-  <div class='row'>
-    <div class='column item'>
-      <div class='row item'>
-        <div class='item'>
-          <h3>Click me</h3>
+  <div class='item'>
+    <h3>Click me</h3>
 
-          {{frost-button
-            icon='add'
-            priority='primary'
-            size='small'
-            hook='my-incrementer'
-            onClick=(action 'incrementCount')
-          }}
-          {{count}}
-        </div>
-      </div>
-      <div class='row item'>
-        <div class='item'>
-          <h3>Router</h3>
-          {{code-snippet name='router.js'}}
-        </div>
-        <div class='item'>
-          <h3>Controller</h3>
-          {{code-snippet name='controller.js'}}
-        </div>
-      </div>
-      <div class='row item'>
-        <div class='item'>
-          <h3>Template</h3>
-          {{code-snippet name='template.hbs'}}
-        </div>
-        <div class='item'>
-          <h3>Outlet</h3>
-          {{outlet}}
-        </div>
-      </div>
+    {{frost-button
+      icon='add'
+      priority='primary'
+      size='small'
+      hook='my-incrementer'
+      onClick=(action 'incrementCount')
+    }}
+    {{count}}
+  </div>
+  <div class='row'>
+    <div class='item'>
+      <h3>Router</h3>
+      {{code-snippet name='router.js'}}
+    </div>
+    <div class='item'>
+      <h3>Controller</h3>
+      {{code-snippet name='controller.js'}}
+    </div>
+  </div>
+  <div class='row'>
+    <div class='item'>
+      <h3>Template</h3>
+      {{code-snippet name='template.hbs'}}
+    </div>
+    <div class='item'>
+      <h3>Outlet</h3>
+      {{outlet}}
     </div>
   </div>
 </div>

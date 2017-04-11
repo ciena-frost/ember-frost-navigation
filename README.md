@@ -219,6 +219,30 @@ Router.map(function () {
  */
 ```
 
+### CSS
+The following CSS classes are defined by this addon to make it easier to layout a page using `frost-navigation`:
+
+ * `frost-application`: This class should be applied to, the parent of the `frost-navigation`
+   element.
+ * `frost-application-content`: This class should be applied to the element below the `frost-navigation` element.
+   It will ensure that that element takes up all the space below the navigation.
+
+```handlebars
+<div class='frost-application'>
+  {{frost-navigation ...}}
+  <div class='frost-application-content'>
+    <!-- the rest of your page here -->
+  </div>
+</div>
+```
+
+### User menu
+An example of a user-menu is defined in the dummy app at `tests/dummy/app/pods/components/user-menu` There are also
+a couple classes defined in this addon that will format your own user-menu properly:
+ * `frost-navigation-user` for the actual user menu button
+ * `frost-navigation-user-menu` for the popover menu that is expanded when clicking on the above button
+ * `frost-navigation-user-menu-list` for the `<ul>` that holds the list items of the user menu
+
 ## Testing with [ember-hook](https://www.npmjs.com/package/ember-hook)
 
 The navigation component is accessible using ember-hook with the top level hook names, or you can access the internal
