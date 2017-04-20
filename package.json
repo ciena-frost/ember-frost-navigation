@@ -44,7 +44,7 @@
     "ember-cli-dependency-checker": "^1.2.0",
     "ember-cli-deploy": "~0.6.4",
     "ember-cli-deploy-frost-pack": "git://github.com/ciena-frost/ember-cli-deploy-frost-pack.git#e98e53709a42604815348f10bc8823c3c425b68e",
-    "ember-cli-htmlbars-inline-precompile": "^0.3.1",
+    "ember-cli-htmlbars-inline-precompile": "^0.3.6",
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-mocha": "0.13.2",
     "ember-cli-test-loader": "^1.1.0",
