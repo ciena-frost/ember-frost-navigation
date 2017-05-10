@@ -1,3 +1,7 @@
+# 7.5.1 (2017-05-10)
+* **Updated** secure auth tokens
+
+
 # 7.5.0 (2017-04-11)
 * **Added** some additional styles that were missing, as well as an example for a user menu
 * **Fixed** [#30](https://github.com/ciena-frost/ember-frost-navigation/issues/30)
