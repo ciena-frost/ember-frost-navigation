@@ -18,6 +18,18 @@ then
     exit 0
 fi
 
+if [ "$TRAVIS_NODE_VERSION" != "6.11.0" ]
+then
+  echo "Skipping gh-pages publish for TRAVIS_NODE_VERSION ${TRAVIS_NODE_VERSION}"
+  exit 0
+fi
+
+if [ "$EMBER_TRY_SCENARIO" != "default" ]
+then
+  echo "Skipping gh-pages publish for EMBER_TRY_SCENARIO ${EMBER_TRY_SCENARIO}"
+  exit 0
+fi
+
 ember build --prod
 git clone https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG} ${TMP_GH_PAGES_DIR} > /dev/null 2>&1
 cd ${TMP_GH_PAGES_DIR}
