@@ -5,6 +5,10 @@
     },
     "coverage": {
       "enabled": true
+    },
+    "maxScope": {
+      "enabled": true,
+      "value": "patch"
     }
   }
 }
