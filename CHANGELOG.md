@@ -1,3 +1,7 @@
+# 7.5.2 (2017-06-25)
+* **Upgraded** `pr-bumper` to support pre-releases so we can create a `8.0-beta` branch. 
+
+
 # 7.5.1 (2017-05-10)
 * **Updated** secure auth tokens
 
