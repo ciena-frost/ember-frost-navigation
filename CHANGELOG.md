@@ -1,3 +1,9 @@
+# 8.0.0-beta.1 (2017-06-25)
+* **Refactored** `hook` and `hookQualifiers` usage to align with best practices. 
+* **Added** some more tests
+* **Upgraded** `ember-cli-code-coverage` to get accurate coverage numbers
+
+
 # 7.5.2 (2017-06-25)
 * **Upgraded** `pr-bumper` to support pre-releases so we can create a `8.0-beta` branch. 
 
