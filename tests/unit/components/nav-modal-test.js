@@ -2,13 +2,13 @@ import {expect} from 'chai'
 import {unit} from 'ember-test-utils/test-support/setup-component-test'
 import {beforeEach, describe, it} from 'mocha'
 
-const test = unit('nav-modal', ['service:frost-navigation'])
+const test = unit('nav-modal', ['service:frost-navigation', 'helper:hook'])
 describe(test.label, function () {
   test.setup()
 
   let component
   beforeEach(function () {
-    component = this.subject()
+    component = this.subject({hook: 'nm'})
   })
 
   describe('after render', function () {

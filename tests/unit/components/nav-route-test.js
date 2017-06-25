@@ -10,7 +10,7 @@ describe(test.label, function () {
   let sandbox, component
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    component = this.subject()
+    component = this.subject({hook: 'nr'})
   })
 
   afterEach(function () {

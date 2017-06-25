@@ -3,14 +3,14 @@ import {unit} from 'ember-test-utils/test-support/setup-component-test'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-const test = unit('nav-action', ['component:frost-link', 'helper:eq'])
+const test = unit('nav-action', ['component:frost-link', 'helper:eq', 'helper:hook'])
 describe(test.label, function () {
   test.setup()
 
   let sandbox, component
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    component = this.subject()
+    component = this.subject({hook: 'na', item: {name: 'Foo'}})
   })
 
   afterEach(function () {

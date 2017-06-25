@@ -11,7 +11,7 @@ describe(test.label, function () {
   let sandbox, component
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    component = this.subject()
+    component = this.subject({hook: 'ns', onSetView () {}})
   })
 
   afterEach(function () {

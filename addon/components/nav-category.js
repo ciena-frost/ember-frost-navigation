@@ -3,6 +3,7 @@ const {inject, run, set, typeOf} = Ember
 import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
+
 import layout from '../templates/components/nav-category'
 
 export default Component.extend({

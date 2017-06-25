@@ -1,24 +1,29 @@
 {{#if activeCategory}}
   {{#liquid-unless actionsVisible class='nav-modal-content'}}
-    {{#each columns as |column|}}
-      <div class='nav-column'>
+    {{#each columns as |column columnIndex|}}
+      <div
+        class='nav-column'
+        data-test={{hook (concat hookPrefix '-column') (extend hookQualifiers columnIndex=columnIndex)}}
+      >
         {{#each column as |_section index|}}
           {{nav-section
-            hook=(concat hook '-section-' index)
-            hookQualifiers=hookQualifiers
+            hook=(concat hookPrefix '-section')
+            hookQualifiers=(extend hookQualifiers sectionIndex=index)
             isVisible=_section.isVisible
             section=_section
-            setView=(action 'setView')
+
+            onSetView=(action 'setView')
           }}
         {{/each}}
       </div>
     {{/each}}
   {{else}}
     {{nav-section-actions
-      hook=(concat hook '-section-actions')
+      hook=(concat hook '-sectionActions')
       hookQualifiers=hookQualifiers
       section=content
-      goBack=(action (mut actionsVisible) false)
+
+      onGoBack=(action (mut actionsVisible) false)
     }}
   {{/liquid-unless}}
 {{/if}}

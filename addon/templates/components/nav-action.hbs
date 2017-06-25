@@ -2,21 +2,30 @@
   class='frost-link'
 }}
   <div class='content'>
-    <div class='nav-route-icon'>
+    <div
+      class='nav-route-icon'
+      data-test={{hook (concat hookPrefix '-iconWrapper') hookQualifiers}}
+    >
       {{#if item.icon}}
         {{frost-icon
           hook=(concat hookPrefix '-icon')
           hookQualifiers=hookQualifiers
-          pack=item.pack
+          pack=iconPack
           icon=item.icon
         }}
       {{/if}}
     </div>
     <div>
-      <div class='nav-route-name'>
+      <div
+        class='nav-route-name'
+        data-test={{hook (concat hookPrefix '-name') hookQualifiers}}
+      >
         {{item.name}}
       </div>
-      <div class='nav-route-description'>
+      <div
+        class='nav-route-description'
+        data-test={{hook (concat hookPrefix '-description') hookQualifiers}}
+      >
         {{item.description}}
       </div>
     </div>
