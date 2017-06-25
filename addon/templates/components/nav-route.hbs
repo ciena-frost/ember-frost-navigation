@@ -41,9 +41,10 @@
 {{else}}
   <a
     class='frost-link'
-    data-test={{hook (concat hookPrefix '-link') hookQualifiers=hookQualifiers}}>
+    data-test={{hook (concat hookPrefix '-link') hookQualifiers}}
     href='{{url}}'
     target="{{if tabbed '_blank'}}"
+  >
     <div class='content'>
       <div
         class='nav-route-icon'

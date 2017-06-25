@@ -20,9 +20,11 @@ export default Component.extend({
   propTypes: {
     item: PropTypes.shape({
       action: PropTypes.string,
-      name: PropTypes.string.isRequired,
       description: PropTypes.string,
+      dismiss: PropTypes.bool,
       icon: PropTypes.string,
+      isVisible: PropTypes.bool,
+      name: PropTypes.string.isRequired,
       pack: PropTypes.string
     }).isRequired
   },
