@@ -52,7 +52,7 @@ describe(test.label, function () {
       beforeEach(function () {
         $icon = $hook('cat-icon', {fizz: 'bang'})
 
-        // For some reason .to.have.class() doesn't work with svg elements
+        // For some reason .to.have.class() doesn't work with svg elements (@job13er 2017-06-25)
         classNames = $icon.attr('class').split(' ')
       })
 
@@ -76,12 +76,15 @@ describe(test.label, function () {
     describe('the name', function () {
       let $name
       beforeEach(function () {
-        // TODO: add hook here?
-        $name = this.$('.nav-category-name')
+        $name = $hook('cat-name')
       })
 
       it('should exist', function () {
         expect($name).to.have.length(1)
+      })
+
+      it('should have the right class', function () {
+        expect($name).to.have.class('nav-category-name')
       })
 
       it('should have the name', function () {
@@ -152,9 +155,9 @@ describe(test.label, function () {
     describe('an icon', function () {
       let $icon, classNames
       beforeEach(function () {
-        $icon = $hook('cat-link-icon', {fizz: 'bang'})
+        $icon = $hook('cat-linkIcon', {fizz: 'bang'})
 
-        // For some reason .to.have.class() doesn't work with svg elements
+        // For some reason .to.have.class() doesn't work with svg elements (@job13er 2017-06-25)
         classNames = $icon.attr('class').split(' ')
       })
 
@@ -171,19 +174,22 @@ describe(test.label, function () {
       })
 
       it('should have a parent with "nav-category-icon" class', function () {
-        expect(this.$('.nav-category-icon')).to.have.descendants(hook('cat-link-icon', {fizz: 'bang'}))
+        expect(this.$('.nav-category-icon')).to.have.descendants(hook('cat-linkIcon', {fizz: 'bang'}))
       })
     })
 
     describe('the name', function () {
       let $name
       beforeEach(function () {
-        // TODO: add hook here?
-        $name = this.$('.nav-category-name')
+        $name = $hook('cat-linkName')
       })
 
       it('should exist', function () {
         expect($name).to.have.length(1)
+      })
+
+      it('should have the right class', function () {
+        expect($name).to.have.class('nav-category-name')
       })
 
       it('should have the name', function () {

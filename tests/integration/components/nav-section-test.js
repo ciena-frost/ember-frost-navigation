@@ -4,7 +4,8 @@ import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
 
 const test = integration('nav-section')
-describe(test.label, function () {
+// FIXME: add real tests
+describe.skip(test.label, function () {
   test.setup()
 
   beforeEach(function () {
@@ -15,8 +16,7 @@ describe(test.label, function () {
     expect(this.$()).to.have.length(1)
   })
 
-  // FIXME: add real tests
-  it.skip('should have real tests', function () {
+  it('should have real tests', function () {
     expect(true).to.equal(false)
   })
 })

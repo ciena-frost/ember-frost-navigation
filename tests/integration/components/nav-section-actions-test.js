@@ -17,7 +17,8 @@ describe(test.label, function () {
     this.render(hbs`
       {{nav-section-actions
         hook='actions'
-        goBack=handler
+
+        onGoBack=handler
       }}
     `)
 

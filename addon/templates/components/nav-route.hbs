@@ -9,10 +9,13 @@
     )
   }}
     <div class='content'>
-      <div class='nav-route-icon'>
+      <div
+        class='nav-route-icon'
+        data-test={{hook (concat hookPrefix '-linkIconWrapper') hookQualifiers}}
+      >
         {{#if icon}}
           {{frost-icon
-            hook=(concat hookPrefix '-link-icon')
+            hook=(concat hookPrefix '-linkIcon')
             hookQualifiers=hookQualifiers
             pack=pack
             icon=icon
@@ -20,10 +23,16 @@
         {{/if}}
       </div>
       <div>
-        <div class='nav-route-name'>
+        <div
+          class='nav-route-name'
+          data-test={{hook (concat hookPrefix '-name') hookQualifiers}}
+        >
           {{name}}
         </div>
-        <div class='nav-route-description'>
+        <div
+          class='nav-route-description'
+          data-test={{hook (concat hookPrefix '-description') hookQualifiers}}
+        >
           {{description}}
         </div>
       </div>
@@ -32,14 +41,18 @@
 {{else}}
   <a
     class='frost-link'
+    data-test={{hook (concat hookPrefix '-link') hookQualifiers}}
     href='{{url}}'
     target="{{if tabbed '_blank'}}"
-    data-test={{hook (concat hookPrefix '-link') hookQualifiers=hookQualifiers}}>
+  >
     <div class='content'>
-      <div class='nav-route-icon'>
+      <div
+        class='nav-route-icon'
+        data-test={{hook (concat hookPrefix '-linkIconWrapper') hookQualifiers}}
+      >
         {{#if icon}}
           {{frost-icon
-            hook=(concat hookPrefix '-link-icon')
+            hook=(concat hookPrefix '-linkIcon')
             hookQualifiers=hookQualifiers
             pack=pack
             icon=icon
@@ -47,10 +60,16 @@
         {{/if}}
       </div>
       <div>
-        <div class='nav-route-name'>
+        <div
+          class='nav-route-name'
+          data-test={{hook (concat hookPrefix '-linkName') hookQualifiers}}
+        >
           {{name}}
         </div>
-        <div class='nav-route-description'>
+        <div
+          class='nav-route-description'
+          data-test={{hook (concat hookPrefix '-linkDescription') hookQualifiers}}
+        >
           {{description}}
         </div>
       </div>

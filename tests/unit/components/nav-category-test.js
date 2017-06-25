@@ -5,14 +5,14 @@ import {unit} from 'ember-test-utils/test-support/setup-component-test'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-const test = unit('nav-category')
+const test = unit('nav-category', ['helper:hook'])
 describe(test.label, function () {
   test.setup()
 
   let sandbox, component
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    component = this.subject()
+    component = this.subject({hook: 'nc'})
   })
 
   afterEach(function () {

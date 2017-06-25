@@ -1,20 +1,25 @@
 <div class='nav-section'>
-  <div {{action goBack}} class='nav-section-header' style={{borderBottomBinding}}>
+  <div
+    {{action onGoBack}}
+    class='nav-section-header'
+    data-test={{hook (concat hookPrefix '-header') hookQualifiers}}
+    role='button'
+    style={{borderBottomBinding}}
+  >
     <div class='pointer'>
       {{frost-icon
-        hook=(concat hookPrefix '-actions-icon')
-        hookQualifiers=hookQualifiers
         class="actions-icon"
+        hook=(concat hookPrefix '-actionsIcon')
+        hookQualifiers=hookQualifiers
         icon='chevron'
       }}
       <div class='title'>{{section.title}} actions</div>
     </div>
   </div>
   {{#each section.actions as |item index|}}
-    {{! TODO: update below to use hookQualifiers with index instead of putting it on hook }}
     {{nav-action
-      hook=(concat hookPrefix '-' index)
-      hookQualifiers=hookQualifiers
+      hook=(concat hookPrefix '-action')
+      hookQualifiers=(extend hookQualifiers actionIndex=index)
       item=item
     }}
   {{/each}}

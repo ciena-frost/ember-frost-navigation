@@ -1,5 +1,6 @@
 import Ember from 'ember'
 const {inject} = Ember
+import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
 
@@ -17,18 +18,29 @@ export default Component.extend({
   // == PropTypes =============================================================
 
   propTypes: {
-    item: PropTypes.object.isRequired
+    item: PropTypes.shape({
+      action: PropTypes.string,
+      description: PropTypes.string,
+      dismiss: PropTypes.bool,
+      icon: PropTypes.string,
+      isVisible: PropTypes.bool,
+      name: PropTypes.string.isRequired,
+      pack: PropTypes.string
+    }).isRequired
   },
 
   getDefaultProps () {
     return {
-      item: {
-        pack: 'frost'
-      }
     }
   },
 
   // == Computed Properties ===================================================
+
+  @readOnly
+  @computed('item.pack')
+  iconPack (pack) {
+    return pack || 'frost'
+  },
 
   // == Functions =============================================================
 

@@ -1,39 +1,52 @@
 {{#if url}}
   <a
     class='frost-link'
+    data-test={{hook (concat hookPrefix '-link') hookQualifiers}}
     href='{{url}}'
     target="{{if tabbed '_blank'}}"
-    data-test={{hook (concat hookPrefix '-link') hookQualifiers=hookQualifiers}}>
+  >
     <div class='content'>
-      <div class='nav-category-icon'>
+      <div
+        class='nav-category-icon'
+        data-test={{hook (concat hookPrefix '-linkIconWrapper') hookQualifiers}}
+      >
         {{#if icon}}
           {{frost-icon
-            hook=(concat hookPrefix '-link-icon')
+            hook=(concat hookPrefix '-linkIcon')
             hookQualifiers=hookQualifiers
-            pack=pack
             icon=icon
+            pack=pack
           }}
         {{/if}}
       </div>
       <div>
-        <div class='nav-category-name'>
+        <div
+          class='nav-category-name'
+          data-test={{hook (concat hookPrefix '-linkName') hookQualifiers}}
+        >
           {{name}}
         </div>
       </div>
     </div>
   </a>
 {{else}}
-  <div class='nav-category-icon'>
+  <div
+    class='nav-category-icon'
+    data-test={{hook (concat hookPrefix '-iconWrapper') hookQualifiers}}
+  >
     {{#if icon}}
       {{frost-icon
         hook=(concat hookPrefix '-icon')
         hookQualifiers=hookQualifiers
-        pack=pack
         icon=icon
+        pack=pack
       }}
     {{/if}}
   </div>
-  <div class='nav-category-name'>
+  <div
+    class='nav-category-name'
+    data-test={{hook (concat hookPrefix '-name') hookQualifiers}}
+  >
     {{name}}
   </div>
 {{/if}}

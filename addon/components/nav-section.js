@@ -14,7 +14,9 @@ export default Component.extend({
   // == PropTypes =============================================================
 
   propTypes: {
-    section: PropTypes.object
+    section: PropTypes.object,
+
+    onSetView: PropTypes.func.isRequired
   },
 
   // == Computed Properties ===================================================
