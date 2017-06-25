@@ -15,10 +15,6 @@ addons:
     - google-chrome-stable
     - g++-4.8
 
-cache:
-  directories:
-  - node_modules
-
 env:
   matrix:
   - EMBER_TRY_SCENARIO=default
