@@ -12,17 +12,7 @@ Ember.MODEL_FACTORY_INJECTIONS = true
 App = Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver,
-  engines: {
-    emberBlogEngine: {
-      dependencies: {
-        services: [
-          'blog-data',
-          {'session': 'active-session'}
-        ]
-      }
-    }
-  }
+  Resolver
 })
 
 loadInitializers(App, config.modulePrefix)
