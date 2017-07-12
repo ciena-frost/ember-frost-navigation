@@ -1,3 +1,6 @@
+# 7.5.3 (2017-07-12)
+* Upgrade to `ember-cli` 2.12.3
+
 # 7.5.2 (2017-06-25)
 * **Upgraded** `pr-bumper` to support pre-releases so we can create a `8.0-beta` branch. 
 
