@@ -1,10 +1,10 @@
-/* globals module */
+/* eslint-env node */
 
 'use strict'
 
 module.exports = {
   name: 'ember-frost-navigation',
-  init: function (app) {
+  init: function () {
     this.options = this.options || {}
     this.options.babel = this.options.babel || {}
     this.options.babel.optional = this.options.babel.optional || []

@@ -5,7 +5,7 @@ import {unit} from 'ember-test-utils/test-support/setup-component-test'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-const test = unit('nav-category')
+const test = unit('nav-category', ['service:frost-navigation'])
 describe(test.label, function () {
   test.setup()
 

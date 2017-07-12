@@ -3,7 +3,7 @@ import {unit} from 'ember-test-utils/test-support/setup-component-test'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-const test = unit('nav-route', ['helper:hook'])
+const test = unit('nav-route', ['helper:hook', 'service:frost-navigation'])
 describe(test.label, function () {
   test.setup()
 
