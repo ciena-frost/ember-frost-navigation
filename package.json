@@ -70,7 +70,6 @@
     "eslint": "^3.0.0",
     "eslint-config-frost-standard": "^6.0.0",
     "frost-guide-custom-routing": "0.0.4",
-    "liquid-fire": "~0.27.3",
     "loader.js": "^4.2.3",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
@@ -90,7 +89,7 @@
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-sass": "5.6.0",
     "ember-frost-core": "^1.0.0",
-    "liquid-fire": "0.26.1"
+    "liquid-fire": "~0.27.3"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
