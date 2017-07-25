@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "ember build",
+    "check-coverage": "pr-bumper check-coverage",
     "ci-test": "EMBER_TRY_SCENARIO=${EMBER_TRY_SCENARIO:=ember-default} && ember try:one $EMBER_TRY_SCENARIO --- COVERAGE=true ember test",
     "lint": "lint-all-the-things",
     "start": "ember server",
@@ -71,6 +72,7 @@
     "eslint-config-frost-standard": "^6.0.0",
     "frost-guide-custom-routing": "0.0.4",
     "loader.js": "^4.2.3",
+    "pr-bumper": "^2.0.1",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
     "remark-cli": "^2.0.0",
