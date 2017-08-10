@@ -1,3 +1,7 @@
+# 7.5.5 (2017-08-10)
+* **Updated** Upgrade ember-cli 2.12.3 inter-dependencies
+* **Updated** pin `ember-cli-htmlbars-inline-precompile` per issue: https://github.com/ciena-frost/ember-frost-core/issues/488
+
 # 7.5.4 (2017-07-25)
 * **Added** code coverage check script to build
 * **Updated** gh-pages publish of demo app script (demo app was not being published)
