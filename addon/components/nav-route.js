@@ -9,6 +9,7 @@ export default Component.extend({
   // == Dependencies ==========================================================
 
   frostNavigation: inject.service(),
+  routingService: inject.service('-routing'),
 
   // == Keyword Properties ====================================================
 
@@ -39,8 +40,9 @@ export default Component.extend({
 
   click (e) {
     const navigation = this.get('frostNavigation')
+    const onTargetRoute = (this.get('routingService.currentRouteName') === this.get('route'))
 
-    if (e.metaKey || e.shiftKey || e.ctrlKey) {
+    if (e.metaKey || e.shiftKey || e.ctrlKey || onTargetRoute) {
       navigation.dismiss()
       return
     }

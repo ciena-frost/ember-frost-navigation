@@ -28,7 +28,7 @@ describe(test.label, function () {
   })
 
   describe('.click()', function () {
-    let navigation, evt
+    let navigation, evt, getStub
     beforeEach(function () {
       navigation = {
         dismiss: sandbox.stub()
@@ -40,7 +40,9 @@ describe(test.label, function () {
         shiftKey: false
       }
 
-      sandbox.stub(component, 'get').withArgs('frostNavigation').returns(navigation)
+      getStub = sandbox.stub(component, 'get').withArgs('frostNavigation').returns(navigation)
+      getStub.withArgs('route').returns('a-route')
+      getStub.withArgs('routingService.currentRouteName').returns('a-different-route')
     })
 
     describe('when no modifier keys are pressed', function () {
@@ -78,6 +80,17 @@ describe(test.label, function () {
     describe('when ctrl key is pressed', function () {
       beforeEach(function () {
         evt.ctrlKey = true
+        component.click(evt)
+      })
+
+      it('should call .dismiss()', function () {
+        expect(navigation.dismiss).to.have.callCount(1)
+      })
+    })
+
+    describe('when currentRouteName === targetRoute', function () {
+      beforeEach(function () {
+        getStub.withArgs('routingService.currentRouteName').returns('a-route')
         component.click(evt)
       })
 
