@@ -1,3 +1,7 @@
+# 7.5.6 (2017-10-26)
+* Fixed a bug where clicking a nav-route targeting the current route would leave the modal open
+
+
 # 7.5.5 (2017-08-10)
 * **Updated** Upgrade ember-cli 2.12.3 inter-dependencies
 * **Updated** pin `ember-cli-htmlbars-inline-precompile` per issue: https://github.com/ciena-frost/ember-frost-core/issues/488
