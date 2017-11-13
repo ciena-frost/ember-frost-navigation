@@ -1,3 +1,8 @@
+# 7.6.0 (2017-11-13)
+
+* Added ability to specify icon svgs with a URI instead of just a name and icon pack
+
+
 # 7.5.7 (2017-11-13)
 * #219 - Bind context to call of this._super.included() in index.js
 
