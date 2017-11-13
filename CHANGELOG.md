@@ -1,3 +1,6 @@
+# 7.5.7 (2017-11-13)
+* #219 - Bind context to call of this._super.included() in index.js
+
 # 7.5.6 (2017-10-26)
 * Fixed a bug where clicking a nav-route targeting the current route would leave the modal open
 
