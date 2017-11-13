@@ -1,5 +1,6 @@
 import Ember from 'ember'
 const {inject} = Ember
+import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
 
@@ -31,6 +32,16 @@ export default Component.extend({
   getDefaultProps () {
     return {
       pack: 'frost'
+    }
+  },
+
+  // == Computed Properties ===================================================
+
+  @readOnly
+  @computed('icon')
+  iconHref (icon) {
+    if (icon && icon.includes('/')) {
+      return icon.includes('#') ? icon : `${icon}#root`
     }
   },
 
