@@ -19,13 +19,22 @@ export default Controller.extend({
       routeModels: ['id0'],
       routeQueryParams: {count: 0}
     })
+    const iconLinkExample = Ember.Object.extend({}).create({
+      description: 'Icon is referenced by URI',
+      icon: '/svgs/pinpoint/nav/fiberplant.svg#Layer_1',
+      name: 'Custom Route',
+      route: 'test',
+      routeModels: ['id0'],
+      routeQueryParams: {count: 0}
+    })
     set(this, 'customRouteObject', customRouteObject)
     let columns = [
       [
         {
           title: 'Custom Column',
           routes: [
-            customRouteObject
+            customRouteObject,
+            iconLinkExample
           ]
         }
       ]

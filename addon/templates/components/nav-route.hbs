@@ -10,13 +10,20 @@
   }}
     <div class='content'>
       <div class='nav-route-icon'>
-        {{#if icon}}
-          {{frost-icon
-            hook=(concat hookPrefix '-link-icon')
-            hookQualifiers=hookQualifiers
-            pack=pack
-            icon=icon
-          }}
+        {{#if iconHref}}
+          <svg
+            class='frost-icon'
+            data-test={{hook (concat hookPrefix '-link-icon') hookQualifiers}}
+          >
+            <use xlink:href={{iconHref}} />
+          </svg>
+         {{else if icon}}
+            {{frost-icon
+              hook=(concat hookPrefix '-link-icon')
+              hookQualifiers=hookQualifiers
+              pack=pack
+              icon=icon
+            }}
         {{/if}}
       </div>
       <div>
@@ -34,10 +41,17 @@
     class='frost-link'
     href='{{url}}'
     target="{{if tabbed '_blank'}}"
-    data-test={{hook (concat hookPrefix '-link') hookQualifiers=hookQualifiers}}>
+    data-test={{hook (concat hookPrefix '-link') hookQualifiers}}>
     <div class='content'>
       <div class='nav-route-icon'>
-        {{#if icon}}
+        {{#if iconHref}}
+          <svg
+            class='frost-icon'
+            data-test={{hook (concat hookPrefix '-link-icon') hookQualifiers}}
+          >
+            <use xlink:href={{iconHref}} />
+          </svg>
+        {{else if icon}}
           {{frost-icon
             hook=(concat hookPrefix '-link-icon')
             hookQualifiers=hookQualifiers
