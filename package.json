@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-navigation",
-  "version": "7.5.6",
+  "version": "7.5.7",
   "description": "A modal navigation menu component",
   "frostGuideDirectory": "ui-components/menu-controls/navigation",
   "directories": {
