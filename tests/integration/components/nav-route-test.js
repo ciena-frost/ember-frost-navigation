@@ -1,7 +1,7 @@
 import {expect} from 'chai'
 import {$hook} from 'ember-hook'
-import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import wait from 'ember-test-helpers/wait'
+import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
 
