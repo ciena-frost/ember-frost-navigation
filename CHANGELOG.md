@@ -1,3 +1,6 @@
+# 7.6.1 (2017-11-20)
+* #222 - Remove unused `typescript` dependency
+
 # 7.6.0 (2017-11-13)
 
 * Added ability to specify icon svgs with a URI instead of just a name and icon pack
