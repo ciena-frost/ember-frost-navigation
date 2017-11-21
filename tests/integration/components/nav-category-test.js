@@ -277,7 +277,6 @@ describe(test.label, function () {
       })
     })
 
-
     describe('the name', function () {
       let $name
       beforeEach(function () {
