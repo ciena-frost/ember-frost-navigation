@@ -39,6 +39,14 @@ export default Component.extend({
     return name === category
   },
 
+  @readOnly
+  @computed('icon')
+  iconHref (icon) {
+    if (icon && icon.includes('/')) {
+      return icon.includes('#') ? icon : `${icon}#root`
+    }
+  },
+
   // == Functions =============================================================
 
   // == DOM Events ============================================================
