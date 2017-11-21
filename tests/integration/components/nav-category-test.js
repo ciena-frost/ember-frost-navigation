@@ -73,6 +73,57 @@ describe(test.label, function () {
       })
     })
 
+    describe('when icon not a path', function () {
+      beforeEach(function () {
+        this.set('icon', 'add')
+        return wait()
+      })
+
+      it('should have frost-icon class', function () {
+        const $icon = $hook('cat-icon', {fizz: 'bang'})
+        expect($icon.attr('class').split(' ')).to.include('frost-icon')
+      })
+
+      it('should have the expected xlink:href', function () {
+        const $icon = $hook('cat-icon', {fizz: 'bang'})
+        expect($icon.find('use')).to.have.attr('xlink:href', 'assets/icon-packs/frost-nav.svg#add')
+      })
+    })
+
+    describe('when icon is a path without an id', function () {
+      beforeEach(function () {
+        this.set('icon', '/my/icon/path')
+        return wait()
+      })
+
+      it('should have frost-icon class', function () {
+        const $icon = $hook('cat-icon', {fizz: 'bang'})
+        expect($icon.attr('class').split(' ')).to.include('frost-icon')
+      })
+
+      it('should have the expected xlink:href', function () {
+        const $icon = $hook('cat-icon', {fizz: 'bang'})
+        expect($icon.find('use')).to.have.attr('xlink:href', '/my/icon/path#root')
+      })
+    })
+
+    describe('when icon is a path with an id', function () {
+      beforeEach(function () {
+        this.set('icon', '/my/icon/path#Layer_1')
+        return wait()
+      })
+
+      it('should have frost-icon class', function () {
+        const $icon = $hook('cat-icon', {fizz: 'bang'})
+        expect($icon.attr('class').split(' ')).to.include('frost-icon')
+      })
+
+      it('should have the expected xlink:href', function () {
+        const $icon = $hook('cat-icon', {fizz: 'bang'})
+        expect($icon.find('use')).to.have.attr('xlink:href', '/my/icon/path#Layer_1')
+      })
+    })
+
     describe('the name', function () {
       let $name
       beforeEach(function () {
@@ -174,6 +225,58 @@ describe(test.label, function () {
         expect(this.$('.nav-category-icon')).to.have.descendants(hook('cat-link-icon', {fizz: 'bang'}))
       })
     })
+
+    describe('when icon not a path', function () {
+      beforeEach(function () {
+        this.set('icon', 'add')
+        return wait()
+      })
+
+      it('should have frost-icon class', function () {
+        const $icon = $hook('cat-link-icon', {fizz: 'bang'})
+        expect($icon.attr('class').split(' ')).to.include('frost-icon')
+      })
+
+      it('should have the expected xlink:href', function () {
+        const $icon = $hook('cat-link-icon', {fizz: 'bang'})
+        expect($icon.find('use')).to.have.attr('xlink:href', 'assets/icon-packs/frost-nav.svg#add')
+      })
+    })
+
+    describe('when icon is a path without an id', function () {
+      beforeEach(function () {
+        this.set('icon', '/my/icon/path')
+        return wait()
+      })
+
+      it('should have frost-icon class', function () {
+        const $icon = $hook('cat-link-icon', {fizz: 'bang'})
+        expect($icon.attr('class').split(' ')).to.include('frost-icon')
+      })
+
+      it('should have the expected xlink:href', function () {
+        const $icon = $hook('cat-link-icon', {fizz: 'bang'})
+        expect($icon.find('use')).to.have.attr('xlink:href', '/my/icon/path#root')
+      })
+    })
+
+    describe('when icon is a path with an id', function () {
+      beforeEach(function () {
+        this.set('icon', '/my/icon/path#Layer_1')
+        return wait()
+      })
+
+      it('should have frost-icon class', function () {
+        const $icon = $hook('cat-link-icon', {fizz: 'bang'})
+        expect($icon.attr('class').split(' ')).to.include('frost-icon')
+      })
+
+      it('should have the expected xlink:href', function () {
+        const $icon = $hook('cat-link-icon', {fizz: 'bang'})
+        expect($icon.find('use')).to.have.attr('xlink:href', '/my/icon/path#Layer_1')
+      })
+    })
+
 
     describe('the name', function () {
       let $name
