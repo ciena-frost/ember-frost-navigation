@@ -1,3 +1,8 @@
+# 7.7.0 (2017-11-21)
+
+* Added ability to specify category icons as urls, mirroring the functionality already implement for route icons.
+
+
 # 7.6.1 (2017-11-20)
 * #222 - Remove unused `typescript` dependency
 
