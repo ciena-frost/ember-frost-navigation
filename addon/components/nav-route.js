@@ -55,7 +55,6 @@ export default Component.extend({
 
     if (e.metaKey || e.shiftKey || e.ctrlKey || onTargetRoute) {
       navigation.dismiss()
-      return
     }
   },
 
