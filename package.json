@@ -61,7 +61,6 @@
     "ember-test-utils": "^3.0.0",
     "loader.js": "^4.2.3",
     "pr-bumper": "^2.0.1",
-    "remark-cli": "^2.0.0",
     "remark-lint": "^5.1.0",
     "sass-lint": "^1.0.0",
     "sinon-chai": "^2.9.0"
