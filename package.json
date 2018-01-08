@@ -52,7 +52,7 @@
     "ember-code-snippet": "1.7.0",
     "ember-export-application-global": "^1.0.5",
     "ember-frost-notifier": "^7.0.0",
-    "ember-frost-popover": "4.2.5",
+    "ember-frost-popover": "^7.0.0",
     "ember-frost-test": "1.0.2",
     "ember-hook": "1.4.1",
     "ember-load-initializers": "^0.6.0",
