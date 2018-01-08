@@ -6,10 +6,7 @@ module.exports = function (defaults) {
     babel: {
       optional: ['es7.decorators']
     },
-    snippetSearchPaths: ['tests/dummy/app'],
-    'ember-cli-mocha': {
-      useLintTree: false
-    }
+    snippetSearchPaths: ['tests/dummy/app']
   })
 
   app.import('bower_components/sinonjs/sinon.js')
