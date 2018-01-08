@@ -19,5 +19,4 @@ package-lock.json
 testem.log
 coverage.json
 .idea
-/visual-acceptance
 /typing
