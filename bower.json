@@ -5,7 +5,6 @@
     "ember-mocha": "~0.8.11",
     "ember-mocha-adapter": "~0.3.1",
     "lodash": "^4.15.0",
-    "pretender": "~0.12.0",
     "sinonjs": "1.17.1"
   }
 }
