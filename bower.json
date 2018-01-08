@@ -1,6 +1,4 @@
 {
   "name": "ember-frost-navigation",
-  "dependencies": {
-    "sinonjs": "1.17.1"
-  }
+  "dependencies": {}
 }
