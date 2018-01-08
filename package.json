@@ -54,7 +54,6 @@
     "ember-frost-notifier": "^7.0.0",
     "ember-frost-popover": "^7.0.0",
     "ember-frost-test": "1.0.2",
-    "ember-hook": "1.4.1",
     "ember-load-initializers": "^0.6.0",
     "ember-prop-types": "3.14.1",
     "ember-redux": "^1.0.0",
@@ -85,6 +84,7 @@
     "ember-cli-sass": "7.1.1",
     "ember-computed-decorators": "0.3.0",
     "ember-frost-core": "1.23.10",
+    "ember-hook": "1.4.2",
     "liquid-fire": "0.27.2"
   },
   "ember-addon": {
