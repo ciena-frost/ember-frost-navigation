@@ -1,7 +1,7 @@
 <div class='nav-section-header' style={{lineStyle}}>
   {{section.title}}
   {{#if section.actions}}
-    <div class='nav-section-actions-link' {{action setView section}}>
+    <div class='nav-section-actions-link' {{action setView section}} role="button">
       <div class='sub'>Actions</div>
       {{frost-icon
         class='actions-icon flip'

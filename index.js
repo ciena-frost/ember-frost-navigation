@@ -4,6 +4,8 @@
 
 module.exports = {
   name: 'ember-frost-navigation',
+
+  /* eslint-disable complexity */
   init: function () {
     this.options = this.options || {}
     this.options.babel = this.options.babel || {}
@@ -15,4 +17,5 @@ module.exports = {
     // eslint-disable-next-line no-unused-expressions
     this._super.init && this._super.init.apply(this, arguments)
   }
+  /* eslint-enable complexity */
 }

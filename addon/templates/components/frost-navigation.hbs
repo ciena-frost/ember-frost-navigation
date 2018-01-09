@@ -1,5 +1,5 @@
 <div class='frost-application-bar'>
-  <!-- Logo -->
+  {{! Logo }}
   {{component logo
     hook=(concat hookPrefix '-logo')
     hookQualifiers=hookQualifiers
@@ -11,12 +11,12 @@
       hookQualifiers=hookQualifiers
       options=category
     }}
-    {{else}}
-      {{yield to='inverse'}}
+  {{else}}
+    {{yield to='inverse'}}
   {{/each}}
-  <!-- More Content -->
+  {{! More Content }}
   {{yield}}
-  <!-- User Menu -->
+  {{! User Menu }}
   {{component menu
     hook=(concat hookPrefix '-menu')
     hookQualifiers=hookQualifiers

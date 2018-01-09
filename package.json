@@ -35,49 +35,33 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "bower": "^1.8.2",
     "broccoli-asset-rev": "^2.4.5",
     "chai-jquery": "^2.0.0",
-    "ember-browserify": "~1.1.0",
+    "ember-browserify": "^1.2.0",
     "ember-cli": "2.12.3",
-    "ember-cli-chai": "0.3.2",
-    "ember-cli-code-coverage": "0.3.5",
+    "ember-cli-chai": "0.4.3",
+    "ember-cli-code-coverage": "0.3.12",
     "ember-cli-dependency-checker": "^1.3.0",
-    "ember-cli-deploy": "~0.6.4",
-    "ember-cli-deploy-frost-pack": "git://github.com/ciena-frost/ember-cli-deploy-frost-pack.git#e98e53709a42604815348f10bc8823c3c425b68e",
+    "ember-cli-frost-blueprints": "^5.0.1",
     "ember-cli-htmlbars-inline-precompile": "0.3.12",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-mocha": "0.13.2",
+    "ember-cli-mocha": "0.14.4",
     "ember-cli-shims": "^1.0.2",
     "ember-cli-uglify": "^1.2.0",
-    "ember-cli-visual-acceptance": "2.2.0",
-    "ember-code-snippet": "1.8.0",
-    "ember-concurrency": "0.7.19",
-    "ember-elsewhere": "1.0.1",
+    "ember-code-snippet": "1.7.0",
     "ember-export-application-global": "^1.0.5",
-    "ember-frost-notifier": "4.2.1",
-    "ember-frost-popover": "4.2.5",
-    "ember-frost-test": "1.0.2",
-    "ember-hook": "1.4.1",
+    "ember-frost-notifier": "^7.0.0",
+    "ember-frost-popover": "^8.0.0",
+    "ember-frost-test": "^4.0.0",
     "ember-load-initializers": "^0.6.0",
-    "ember-prop-types": "3.14.1",
-    "ember-redux": "^1.0.0",
     "ember-resolver": "^2.0.3",
-    "ember-sinon": "0.6.0",
+    "ember-sinon": "^0.7.0",
     "ember-source": "~2.12.0",
-    "ember-spread": "1.2.2",
-    "ember-test-utils": "^3.0.0",
-    "ember-truth-helpers": "1.3.0",
-    "eslint": "^3.0.0",
-    "eslint-config-frost-standard": "^6.0.0",
-    "frost-guide-custom-routing": "0.0.4",
+    "ember-test-utils": "^8.1.0",
     "loader.js": "^4.2.3",
     "pr-bumper": "^2.0.1",
-    "redux": "3.6.0",
-    "redux-thunk": "2.1.0",
-    "remark-cli": "^2.0.0",
-    "remark-lint": "^5.1.0",
-    "sass-lint": "^1.0.0",
-    "sinon-chai": "^2.9.0"
+    "sinon-chai": "^2.14.0"
   },
   "keywords": [
     "ember-addon",
@@ -86,10 +70,12 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.1.1",
-    "ember-cli-sass": "5.6.0",
+    "ember-cli-sass": "7.1.1",
     "ember-computed-decorators": "0.3.0",
-    "ember-frost-core": "1.23.10",
-    "liquid-fire": "0.27.3"
+    "ember-frost-core": "^5.0.0",
+    "ember-hook": "1.4.2",
+    "ember-prop-types": "^6.0.1",
+    "liquid-fire": "0.27.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
@@ -98,6 +84,6 @@
     "name": "frost-nav"
   },
   "pr-bumper": {
-    "coverage": 96.06
+    "coverage": 60.00
   }
 }

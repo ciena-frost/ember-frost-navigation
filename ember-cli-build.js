@@ -2,17 +2,12 @@
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon')
 
 module.exports = function (defaults) {
-  var app = new EmberAddon(defaults, {
+  const app = new EmberAddon(defaults, {
     babel: {
       optional: ['es7.decorators']
     },
-    snippetSearchPaths: ['tests/dummy/app'],
-    'ember-cli-mocha': {
-      useLintTree: false
-    }
+    snippetSearchPaths: ['tests/dummy/app']
   })
-
-  app.import('bower_components/sinonjs/sinon.js')
 
   /*
     This build file specifes the options for the dummy test app of this

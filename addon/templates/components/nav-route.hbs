@@ -17,13 +17,13 @@
           >
             <use xlink:href="{{iconHref}}" />
           </svg>
-         {{else if icon}}
-            {{frost-icon
-              hook=(concat hookPrefix '-link-icon')
-              hookQualifiers=hookQualifiers
-              pack=pack
-              icon=icon
-            }}
+        {{else if icon}}
+          {{frost-icon
+            hook=(concat hookPrefix '-link-icon')
+            hookQualifiers=hookQualifiers
+            pack=pack
+            icon=icon
+          }}
         {{/if}}
       </div>
       <div>
