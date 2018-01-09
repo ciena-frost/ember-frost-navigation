@@ -1,3 +1,42 @@
+# 8.0.0 (2018-01-09)
+* Remove `ember-cli-visual-acceptance` NPM devDependency
+* Remove `ember-cli-deploy` and `ember-cli-deploy-frost-pack` NPM devDependencies
+* Remove `frost-guide-custom-routing` NPM devDependency
+* Remove `ember-concurrency` NPM devDependency
+* Remove `ember-elsewhere` NPM devDependency
+* Remove `ember-redux`, `redux`, and `redux-thunk` NPM devDependencies
+* Remove `ember-spread` NPM devDependency
+* Remove `ember-truth-helpers` NPM devDependency
+* Remove `eslint` NPM devDependency
+* Remove `eslint-config-frost-standard` NPM devDependency
+* Remove `remark-cli` NPM devDependency
+* Remove `remark-lint` NPM devDependency
+* Remove `sass-lint` NPM devDependency
+* Remove `ember-mocha` Bower dependency
+* Remove `ember-mocha-adapter` Bower dependency
+* Remove `sinonjs` Bower dependency
+* Remove `ember-inflector` Bower dependency
+* Remove `Faker` Bower dependency
+* Remove `pretender` Bower dependency
+* Remove `lodash` Bower dependency
+* Remove _package-lock.json_ until officially support Node 8
+* Remove useLintTree from ember-cli-mocha configuration
+* Move `ember-hook` NPM devDependency to dependencies and pin to `1.4.2`
+* Move `ember-cli-code-coverage` configuration file to correct location
+* Downgrade and pin `liquid-fire` NPM dependency to `0.27.2`
+* Downgrade and pin `ember-code-snippet` NPM devDependency to `1.7.0`
+* Pin `ember-cli-code-coverage` NPM devDependency to `0.3.12`
+* Upgrade `ember-browserify` to `^1.2.0`
+* Upgrade `ember-frost-notifier` NPM devDependency to `^7.0.0`
+* Upgrade `ember-frost-popover` NPM devDependency to `^8.0.0`
+* Upgrade `ember-frost-core` NPM dependency to `^5.0.0`
+* Upgrade `ember-frost-test` NPM devDependency to `^4.0.0`
+* Upgrade and pin `ember-cli-sass` NPM dependency to `7.1.1`
+* Upgrade and move `ember-prop-types` NPM devDependency to dependencies at `^6.0.1`
+* Install `bower` NPM devDependency
+* Install `ember-cli-frost-blueprints` NPM devDependency at `^5.0.1`
+  
+
 # 7.7.0 (2017-11-21)
 
 * Added ability to specify category icons as urls, mirroring the functionality already implement for route icons.
