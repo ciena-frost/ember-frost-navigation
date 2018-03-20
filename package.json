@@ -74,7 +74,7 @@
     "ember-computed-decorators": "0.3.0",
     "ember-frost-core": "^5.0.0",
     "ember-hook": "1.4.2",
-    "ember-prop-types": "^6.0.1",
+    "ember-prop-types": "^7.0.2",
     "liquid-fire": "0.27.2"
   },
   "ember-addon": {
