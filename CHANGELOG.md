@@ -1,3 +1,21 @@
+# 9.0.0 (2018-03-21)
+* Updated pull request template
+* Added issue template
+* Updated to pr-bumper version 3
+* Updated to node 8
+* Added slack integration
+* Updated ember-frost-test to ^4.0.1
+* Updated ember-test-utils to ^8.1.1
+* Updated ember-cli-frost-blueprints to ^5.0.2
+* Updated ember-frost-notifier to ^8.0.0
+* Updated ember-frost-popover to ^9.0.0
+* Updated pr-bumper to ^3.7.0
+* Updated ember-prop-types to ^7.0.1
+* Updated ember-frost-core to ^7.0.0
+* Removed ignoring of package-lock.json file
+* Added package-lock.json file
+* Updated Travis CI scripts to allow non-exact node version
+
 # 8.0.0 (2018-01-09)
 * Remove `ember-cli-visual-acceptance` NPM devDependency
 * Remove `ember-cli-deploy` and `ember-cli-deploy-frost-pack` NPM devDependencies
@@ -35,7 +53,7 @@
 * Upgrade and move `ember-prop-types` NPM devDependency to dependencies at `^6.0.1`
 * Install `bower` NPM devDependency
 * Install `ember-cli-frost-blueprints` NPM devDependency at `^5.0.1`
-  
+
 
 # 7.7.0 (2017-11-21)
 
@@ -69,7 +87,7 @@
 * Upgrade to `ember-cli` 2.12.3
 
 # 7.5.2 (2017-06-25)
-* **Upgraded** `pr-bumper` to support pre-releases so we can create a `8.0-beta` branch. 
+* **Upgraded** `pr-bumper` to support pre-releases so we can create a `8.0-beta` branch.
 
 
 # 7.5.1 (2017-05-10)
@@ -82,10 +100,10 @@
 * **Fixed** [#32](https://github.com/ciena-frost/ember-frost-navigation/issues/32)
 
 # 7.4.4 (2017-03-22)
- * **Fixed** [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204) finally 
+ * **Fixed** [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204) finally
 
 # 7.4.3 (2017-03-22)
- * **Added** a guard against `frost-navigation` service being destroyed when timeout finishes (attempting to fix [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204)) 
+ * **Added** a guard against `frost-navigation` service being destroyed when timeout finishes (attempting to fix [#204](https://github.com/ciena-frost/ember-frost-navigation/issues/204))
 
 # 7.4.2 (2017-03-21)
 - Only register routes if supported by version
@@ -100,12 +118,12 @@
 * **Fixed** the demo (was throwing an error due to re-defining the `demo.loading` route)
 * **Updated** lint rules and cleaned up code
 * **Fixed** unit tests to use `ember-test-utils` helpers and actually test some things
-* **Integrated** `pr-bumper` code coverage management. 
+* **Integrated** `pr-bumper` code coverage management.
 
 # 7.3.0
 - Update dependencies
    - Biproduct of running the generators
-- Added hooks 
+- Added hooks
 - Switched from ember-cli-notifications to frost-notifier
 - outsideClick handler to dismiss outlet
 - fix delay to prevent broken transition (transition would start before next would end)
