@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ciena-frost/ember-frost-navigation.git"
+    "url": "https://github.com/ciena-frost/ember-frost-navigation.git"
   },
   "engines": {
     "node": ">= 6.0.0"
@@ -54,7 +54,7 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-code-snippet": "1.7.0",
     "ember-export-application-global": "^1.0.5",
-    "ember-frost-notifier": "^7.0.0",
+    "ember-frost-notifier": "^8.0.0",
     "ember-frost-popover": "^9.0.0",
     "ember-frost-test": "^4.0.1",
     "ember-load-initializers": "^0.6.0",
