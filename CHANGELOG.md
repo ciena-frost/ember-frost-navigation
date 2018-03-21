@@ -1,4 +1,4 @@
-# 9.0.0 (2018-01-09)
+# 9.0.0 (2018-03-21)
 * Updated pull request template
 * Added issue template
 * Updated to pr-bumper version 3
