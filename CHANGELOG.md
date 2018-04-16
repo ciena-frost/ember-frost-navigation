@@ -1,3 +1,11 @@
+# 10.0.0 (2018-04-16)
+
+* Upgraded `ember-frost-core` to ^8.0.0
+* Upgraded `ember-frost-notifier` to `^9.0.0`
+* Upgraded `ember-frost-popover` to `^10.0.0`
+* Installed `ember-cli-svgstore`
+* Updated `frost-icon` functionality to work with new version of `ember-frost-core`
+
 # 9.0.0 (2018-03-21)
 * Updated pull request template
 * Added issue template
