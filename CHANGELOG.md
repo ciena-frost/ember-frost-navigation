@@ -1,3 +1,7 @@
+# 10.0.1 (2018-05-15)
+
+* Update `ember-frost-popover` _dev dependency_ to `^11.0.0`
+
 # 10.0.0 (2018-04-16)
 
 * Upgraded `ember-frost-core` to ^8.0.0
